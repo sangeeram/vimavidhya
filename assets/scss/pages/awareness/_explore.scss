@@ -1,0 +1,258 @@
+// ==========================================
+// Variables
+// ==========================================
+$color-bg-light: #f7f9f6;
+$color-primary-green: #1b4332;
+$color-text-dark: #111e16;
+$color-text-muted: #526357;
+$color-border: #e0e8e2;
+
+// ==========================================
+// Awareness Section Component
+// ==========================================
+.awareness-section {
+    background-color: $color-bg-light;
+    padding: 80px 20px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+    .awareness-container {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    // --------------------------------------
+    // Header & Process Steps
+    // --------------------------------------
+    .awareness-header {
+        text-align: center;
+        margin-bottom: 60px;
+
+        .sub-heading {
+            font-size: 0.875rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: $color-primary-green;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .process-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+
+            .step-item {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .step-icon {
+                    width: 72px;
+                    height: 72px;
+                    border-radius: 50%;
+                    background-color: #e4ebe4;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 16px;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                        object-fit: contain;
+                    }
+                }
+
+                h3 {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: $color-primary-green;
+                    margin-bottom: 8px;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                }
+
+                p {
+                    font-size: 0.875rem;
+                    color: $color-text-muted;
+                    line-height: 1.4;
+                    max-width: 180px;
+                    margin: 0;
+                }
+            }
+
+            .step-arrow {
+                display: flex;
+                align-items: center;
+                padding-top: 24px;
+                color: $color-text-muted;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    // --------------------------------------
+    // 5-Card Grid Layout
+    // --------------------------------------
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    // --------------------------------------
+    // Card Item Styling
+    // --------------------------------------
+   .awareness-card {
+    position: relative;
+    height: 480px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+        .card-overlay {
+            // Blends top pastel color into translucent image view at bottom
+            background: linear-gradient(
+                180deg, 
+                var(--card-bg) 0%, 
+                var(--card-bg) 55%, 
+                rgba(255, 255, 255, 0.2) 100%
+            );
+        }
+    }
+
+        // Top Gradient Overlay (Prevents Image Cover-Up)
+       .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg, 
+            var(--card-bg) 0%, 
+            var(--card-bg) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+        );
+        z-index: 1;
+        transition: background 0.3s ease;
+    }
+
+        // Inner Content Container
+       .card-content {
+        position: relative;
+        z-index: 2;
+        padding: 24px 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+
+        .card-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--card-accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+           .card-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--card-accent);
+            line-height: 1.3;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            font-size: 0.8125rem;
+            color: #111e16;
+            line-height: 1.45;
+            margin: 0 0 auto 0;
+        }
+
+           .explore-btn {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border: 1.5px solid var(--card-accent);
+            border-radius: 30px;
+            color: var(--card-accent);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            transition: all 0.25s ease;
+
+            &:hover {
+                background-color: var(--card-accent);
+                color: #ffffff;
+            }
+        }
+    }
+}
+}
+
+// ==========================================
+// Responsive Breakpoints
+// ==========================================
+@media (max-width: 1200px) {
+    .awareness-section {
+        .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .awareness-section {
+        padding: 50px 16px;
+
+        .awareness-header {
+            .process-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+
+                .step-item {
+                    min-width: 140px;
+                }
+
+                .step-arrow {
+                    display: none;
+                }
+            }
+        }
+
+        .cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    .awareness-section {
+        .cards-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .awareness-card {
+            height: 420px;
+        }
+    }
+}

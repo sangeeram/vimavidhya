@@ -1,0 +1,864 @@
+/* =========================================================
+   VIMA VIDYA — LIFE STAGES / AWARENESS SECTION
+   Blue Theme
+========================================================= */
+
+$vv-navy: #062b66;
+$vv-blue: #0b3d82;
+$vv-blue-light: #eef5fc;
+$vv-blue-soft: #f5f9fd;
+
+$vv-green: #00b074;
+$vv-green-dark: #075c4b;
+$vv-green-light: #e6f3ee;
+
+$vv-text-dark: #172033;
+$vv-text: #334155;
+$vv-text-muted: #000000;
+
+$vv-border: #dbe5ef;
+
+$vv-radius: 14px;
+$vv-transition: 0.35s ease;
+
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.awareness-section {
+
+  background: #ffffff;
+
+  /* More vertical breathing space */
+  padding: 90px 30px 100px;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+
+  color: $vv-text-dark;
+
+
+  /* =======================================================
+     MAIN CONTAINER
+  ======================================================= */
+
+  .container {
+
+    /*
+     * Previously: 860px
+     * Increased so the title and card feel like the
+     * other full-width Awareness sections.
+     */
+
+    max-width: 1120px;
+
+    margin: 0 auto;
+
+    width: 100%;
+  }
+
+
+  /* =======================================================
+     SECTION HEADER
+  ======================================================= */
+
+  .section-header {
+
+    text-align: center;
+
+    margin-bottom: 48px;
+
+    /*
+     * Gives the heading a more substantial section feel.
+     */
+    // padding: 0 12px;
+
+
+    /* -----------------------------------------------------
+       MAIN TITLE
+    ----------------------------------------------------- */
+
+    .header-title {
+
+      /*
+       * Bigger than the current 28px.
+       */
+       font-size: 32px;
+
+      line-height: 1.15;
+
+      font-weight: 800;
+
+      color: $vv-navy;
+
+      margin: 0 0 22px;
+
+      letter-spacing: -0.7px;
+
+      max-width: 1000px;
+
+
+      /*
+       * Green highlight
+       */
+      .highlight {
+
+        color: $vv-green;
+
+        font-weight: 800;
+      }
+    }
+
+
+    /* -----------------------------------------------------
+       DESCRIPTION
+    ----------------------------------------------------- */
+
+    .header-description {
+
+      max-width: 1000px;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+
+      color: $vv-text-muted;
+
+      margin: 0 0 18px;
+    }
+
+
+    /* -----------------------------------------------------
+       CALLOUT
+    ----------------------------------------------------- */
+
+    .header-callout {
+
+      max-width: 950px;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+      color: $vv-blue;
+
+      margin: 0 0 32px;
+
+
+      strong {
+
+        font-weight: 700;
+      }
+    }
+
+
+    /* -----------------------------------------------------
+       CTA AREA
+    ----------------------------------------------------- */
+
+    .header-cta {
+
+      padding-top: 4px;
+
+
+      .cta-question {
+
+        font-size: 21px;
+
+        line-height: 1.3;
+
+        font-weight: 750;
+
+        color: $vv-navy;
+
+        margin: 0 0 7px;
+      }
+
+
+      .cta-instruction {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        color: $vv-text-muted;
+
+        margin: 0;
+      }
+    }
+  }
+
+
+  /* =======================================================
+     MAIN ACCORDION CARD
+  ======================================================= */
+
+  .accordion-card {
+
+    width: 100%;
+
+    border: 1px solid $vv-border;
+
+    border-radius: $vv-radius;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 12px 35px rgba(6, 43, 102, 0.08);
+
+    overflow: hidden;
+
+
+    /* =====================================================
+       CARD HEADER
+    ===================================================== */
+
+    .card-header {
+
+      background: $vv-blue-light;
+
+      padding: 20px 26px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      border-bottom: 1px solid $vv-border;
+
+
+      .header-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        flex: 0 0 38px;
+
+        background: $vv-navy;
+
+        color: #ffffff;
+
+        border-radius: 8px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+      }
+
+
+      .stage-title {
+
+        font-size: 16px;
+
+        font-weight: 750;
+
+        color: $vv-navy;
+
+        margin: 0 0 2px;
+      }
+
+
+      .stage-subtitle {
+
+        font-size: 12px;
+
+        color: $vv-text-muted;
+
+        margin: 0;
+      }
+    }
+
+
+    /* =====================================================
+       FOCUS SECTION
+    ===================================================== */
+
+    .focus-section {
+
+      padding: 24px 26px;
+
+      border-bottom: 1px solid #edf2f7;
+
+      background: #ffffff;
+
+
+      .focus-title {
+
+        font-size: 14px;
+
+        line-height: 1.5;
+
+        color: $vv-text-dark;
+
+        margin: 0 0 8px;
+
+
+        strong {
+
+          color: $vv-navy;
+        }
+      }
+
+
+      .focus-desc {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        color: $vv-text-muted;
+
+        margin: 0;
+
+        max-width: 1000px;
+      }
+    }
+
+
+    /* =====================================================
+       ACCORDION ITEM
+    ===================================================== */
+
+    .accordion-item {
+
+      border-bottom: 1px solid #edf2f7;
+
+
+      &:last-child {
+
+        border-bottom: 0;
+      }
+
+
+      /* ---------------------------------------------------
+         TRIGGER
+      --------------------------------------------------- */
+
+      .accordion-trigger {
+
+        width: 100%;
+
+        background: #ffffff;
+
+        border: none;
+
+        padding: 20px 26px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        cursor: pointer;
+
+        text-align: left;
+
+        transition:
+          background-color $vv-transition,
+          padding $vv-transition;
+
+
+        &:hover {
+
+          background: $vv-blue-soft;
+        }
+
+
+        .trigger-left {
+
+          display: flex;
+
+          align-items: center;
+
+          gap: 14px;
+
+
+          .item-icon {
+
+            width: 34px;
+
+            height: 34px;
+
+            flex: 0 0 34px;
+
+            border-radius: 50%;
+
+            background: $vv-blue-light;
+
+            color: $vv-navy;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+              background-color $vv-transition,
+              color $vv-transition;
+          }
+
+
+          .item-title {
+
+            font-size: 14px;
+
+            line-height: 1.4;
+
+            font-weight: 650;
+
+            color: $vv-text-dark;
+          }
+        }
+
+
+        .chevron {
+
+          color: $vv-blue;
+
+          transition: transform $vv-transition;
+
+          flex-shrink: 0;
+        }
+      }
+
+
+      /* ---------------------------------------------------
+         ACCORDION CONTENT
+      --------------------------------------------------- */
+
+      .accordion-content {
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        transition: max-height 0.4s ease;
+
+        padding: 0 26px 0 74px;
+
+
+        .content-inner {
+
+          padding-bottom: 22px;
+        }
+      }
+
+
+      /* ---------------------------------------------------
+         OPEN STATE
+      --------------------------------------------------- */
+
+      &.is-open {
+
+        .accordion-trigger {
+
+          background: $vv-blue-soft;
+        }
+
+
+        .item-icon {
+
+          background: $vv-navy !important;
+
+          color: #ffffff !important;
+        }
+
+
+        .chevron {
+
+          transform: rotate(180deg);
+        }
+
+
+        .accordion-content {
+
+          max-height: 700px;
+        }
+      }
+    }
+
+
+    /* =====================================================
+       BULLET LIST
+    ===================================================== */
+
+    .bullet-list {
+
+      list-style: disc;
+
+      padding-left: 18px;
+
+      margin: 0;
+
+
+      li {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        color: $vv-text;
+
+        margin-bottom: 8px;
+
+
+        &:last-child {
+
+          margin-bottom: 0;
+        }
+
+
+        strong {
+
+          color: $vv-navy;
+
+          font-weight: 700;
+        }
+      }
+    }
+
+
+    /* =====================================================
+       COVERAGE GRID
+    ===================================================== */
+
+    .coverage-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr;
+
+      gap: 24px;
+
+
+      .sub-heading {
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        color: $vv-navy;
+
+        margin: 0 0 10px;
+      }
+    }
+
+
+    /* =====================================================
+       TAGS
+    ===================================================== */
+
+    .tags-container {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+
+      .tag-btn {
+
+        background: $vv-navy;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        padding: 8px 16px;
+
+        border-radius: 20px;
+
+        transition:
+          background-color $vv-transition,
+          transform $vv-transition;
+
+
+        &:hover {
+
+          background: $vv-blue;
+
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+
+    /* =====================================================
+       INSIGHT BANNER
+    ===================================================== */
+
+    .insight-banner {
+
+      margin: 24px 26px;
+
+      background:
+        linear-gradient(
+          135deg,
+          $vv-navy,
+          $vv-blue
+        );
+
+      border-radius: 10px;
+
+      padding: 20px 22px;
+
+      display: flex;
+
+      gap: 15px;
+
+      align-items: flex-start;
+
+      color: #ffffff;
+
+
+      .banner-icon {
+
+        width: 36px;
+
+        height: 36px;
+
+        flex: 0 0 36px;
+
+        border: 1px dashed rgba(255, 255, 255, 0.45);
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+      }
+
+
+      .insight-title {
+
+        font-size: 14px;
+
+        font-weight: 750;
+
+        margin: 0 0 5px;
+      }
+
+
+      .insight-text {
+
+        font-size: 12px;
+
+        color: #dbeafe;
+
+        line-height: 1.6;
+
+        margin: 0;
+      }
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .card-footer {
+
+      padding: 4px 26px 22px;
+
+      display: flex;
+
+      justify-content: flex-end;
+
+
+      .footer-btn {
+
+        background: $vv-navy;
+
+        color: #ffffff;
+
+        border: none;
+
+        border-radius: 18px;
+
+        padding: 7px 16px;
+
+        font-size: 11px;
+
+        font-weight: 650;
+
+        cursor: pointer;
+
+        transition:
+          background-color $vv-transition,
+          transform $vv-transition;
+
+
+        &:hover {
+
+          background: $vv-blue;
+
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .awareness-section {
+
+    padding: 70px 24px 80px;
+
+
+    .section-header {
+
+      .header-title {
+
+        font-size: 34px;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .awareness-section {
+
+    padding: 55px 16px 65px;
+
+
+    .container {
+
+      max-width: 100%;
+    }
+
+
+    .section-header {
+
+      padding: 0;
+
+      margin-bottom: 34px;
+
+
+      .header-title {
+
+        font-size: 29px;
+
+        line-height: 1.2;
+
+        letter-spacing: -0.4px;
+
+        margin-bottom: 18px;
+      }
+
+
+      .header-description {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+      }
+
+
+      .header-callout {
+
+        font-size: 13px;
+      }
+
+
+      .header-cta {
+
+        .cta-question {
+
+          font-size: 18px;
+        }
+
+        .cta-instruction {
+
+          font-size: 12px;
+        }
+      }
+    }
+
+
+    .accordion-card {
+
+
+      .card-header {
+
+        padding: 16px 18px;
+      }
+
+
+      .focus-section {
+
+        padding: 20px 18px;
+      }
+
+
+      .accordion-item {
+
+        .accordion-trigger {
+
+          padding: 17px 18px;
+
+
+          .trigger-left {
+
+            gap: 10px;
+
+
+            .item-title {
+
+              font-size: 13px;
+            }
+          }
+        }
+
+
+        .accordion-content {
+
+          padding-left: 18px;
+
+          padding-right: 18px;
+        }
+      }
+
+
+      .insight-banner {
+
+        margin: 18px;
+
+        padding: 17px;
+      }
+
+
+      .card-footer {
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+      }
+    }
+  }
+}

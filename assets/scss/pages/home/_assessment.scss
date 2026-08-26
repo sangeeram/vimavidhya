@@ -1,0 +1,586 @@
+/* =========================================================
+   VIMA VIDYA
+   DYNAMIC ASSESSMENT FLIP CARDS
+========================================================= */
+
+.vv-assessment-section {
+    background: #f8f8f8;
+    padding: 80px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+
+    .vv-assessment-header {
+        max-width: 720px;
+        margin: 0 auto 52px;
+        text-align: center;
+
+        h2 {
+            margin: 0 0 12px;
+            color: #031629;
+            font-size: 36px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    }
+
+    /* =====================================================
+       GRID
+    ===================================================== */
+
+    .vv-assessment-grid {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+    }
+
+    /* =====================================================
+       CARD CONTAINER
+    ===================================================== */
+
+   .vv-assessment-card {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    perspective: 1200px;
+}
+
+    /* =====================================================
+       HIDDEN CHECKBOX
+    ===================================================== */
+
+    .vv-flip-toggle {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* =====================================================
+       FLIP CARD
+    ===================================================== */
+
+    .vv-flip-card {
+        position: relative;
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        cursor: pointer;
+
+        transform-style: preserve-3d;
+
+        transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .vv-flip-toggle:checked + .vv-flip-card {
+        transform: rotateY(180deg);
+    }
+
+    /* =====================================================
+       CARD FACES
+    ===================================================== */
+
+    .vv-card-face {
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        box-sizing: border-box;
+
+        border-radius: 22px;
+        overflow: hidden;
+
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    /* =====================================================
+       FRONT
+    ===================================================== */
+
+    .vv-card-front {
+        padding: 32px;
+    }
+
+    /* =====================================================
+       COLOUR SYSTEM
+
+       ROW 1:
+       Light Blue → Medium Blue → Dark Blue
+
+       ROW 2:
+       Light Teal → Medium Teal → Dark Teal
+    ===================================================== */
+
+    .blue-light {
+        .vv-card-front {
+            background: #dff3fa;
+            color: #0d3040;
+        }
+    }
+
+    .blue-medium {
+        .vv-card-front {
+            background: #b9e3f0;
+            color: #0c2d3c;
+        }
+    }
+
+    .blue-dark {
+        .vv-card-front {
+            background: #91cfdf;
+            color: #092938;
+        }
+    }
+
+    .teal-light {
+        .vv-card-front {
+            background: #e1f3ef;
+            color: #103a38;
+        }
+    }
+
+    .teal-medium {
+        .vv-card-front {
+            background: #b9dfd8;
+            color: #103734;
+        }
+    }
+
+    .teal-dark {
+        .vv-card-front {
+            background: #8dc7bd;
+            color: #0c302d;
+        }
+    }
+
+    /* =====================================================
+       FRONT CONTENT
+    ===================================================== */
+
+    .vv-front-content {
+        width: 100%;
+    }
+
+    /* =====================================================
+       CARD NUMBER
+    ===================================================== */
+
+    .vv-card-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 20px;
+
+        border-radius: 12px;
+
+        background: rgba(255, 255, 255, 0.45);
+
+        color: #12364a;
+
+        font-size: 18px;
+        font-weight: 800;
+
+        letter-spacing: 0.02em;
+    }
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .vv-card-title {
+        margin: 0;
+
+        color: inherit;
+
+        font-size: 27px;
+        line-height: 1.2;
+        font-weight: 750;
+
+        letter-spacing: -0.025em;
+    }
+
+    /* =====================================================
+       DIVIDER
+    ===================================================== */
+
+    .vv-card-divider {
+        width: 100%;
+        height: 1px;
+
+        margin: 18px 0;
+
+        background: rgba(10, 45, 60, 0.15);
+    }
+
+    /* =====================================================
+       QUESTION
+    ===================================================== */
+
+    .vv-question {
+        margin: 0;
+
+        color: inherit;
+
+        font-size: 15.5px;
+        line-height: 1.6;
+
+        opacity: 0.82;
+    }
+
+    /* =====================================================
+       OPTIONS
+    ===================================================== */
+
+    .vv-options {
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-top: 22px;
+    }
+
+    .vv-option {
+        display: flex;
+        align-items: flex-start;
+
+        gap: 12px;
+
+        padding: 12px 14px;
+
+        border: 1px solid rgba(10, 45, 60, 0.12);
+        border-radius: 11px;
+
+        background: rgba(255, 255, 255, 0.46);
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.72);
+            transform: translateY(-1px);
+        }
+    }
+
+    .vv-option-key {
+        flex: 0 0 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 28px;
+        height: 28px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.65);
+
+        color: #0c3850;
+
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .vv-option-text {
+        padding-top: 3px;
+
+        color: inherit;
+
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    /* =====================================================
+       CARD ACTION
+    ===================================================== */
+
+    .vv-card-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        padding-top: 18px;
+
+        color: inherit;
+
+        font-size: 13px;
+        font-weight: 650;
+
+        opacity: 0.68;
+    }
+
+    .vv-flip-icon {
+        font-size: 18px;
+    }
+
+    /* =====================================================
+       BACK
+    ===================================================== */
+
+    .vv-card-back {
+        transform: rotateY(180deg);
+
+        padding: 30px;
+
+        background: #ffffff;
+
+        color: #0b2233;
+
+        border: 1px solid #dce7ec;
+    }
+
+    /* =====================================================
+       BACK CONTENT
+    ===================================================== */
+
+    .vv-back-content {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    /* =====================================================
+       RECOMMENDED LABEL
+    ===================================================== */
+
+    .vv-answer-label {
+        margin-top: 4px;
+
+        color: #527182;
+
+        font-size: 12px;
+        font-weight: 800;
+
+        letter-spacing: 0.13em;
+    }
+
+    /* =====================================================
+       LARGE RECOMMENDED OPTION
+    ===================================================== */
+
+    .vv-recommended-option {
+        margin-top: 6px;
+
+        color: #092a43;
+
+        font-size: 92px;
+        line-height: 0.95;
+
+        font-weight: 800;
+
+        letter-spacing: -0.05em;
+    }
+
+    /* =====================================================
+       RECOMMENDED OPTION TEXT
+    ===================================================== */
+
+    .vv-recommended-text {
+        max-width: 360px;
+
+        margin-top: 8px;
+
+        color: #102f42;
+
+        font-size: 19px;
+        line-height: 1.35;
+
+        font-weight: 700;
+    }
+
+    /* =====================================================
+       ANSWER TITLE
+    ===================================================== */
+
+    .vv-answer-title {
+        margin-top: 8px;
+
+        color: #174b63;
+
+        font-size: 14px;
+        font-weight: 700;
+
+        letter-spacing: 0.02em;
+    }
+
+    /* =====================================================
+       INFO BOXES
+    ===================================================== */
+
+    .vv-info-box,
+    .vv-takeaway-box {
+        width: 100%;
+        box-sizing: border-box;
+
+        text-align: left;
+
+        border-radius: 12px;
+
+        padding: 15px 17px;
+    }
+
+    .vv-info-box {
+        margin-top: 20px;
+
+        background: #f1f7fa;
+
+        border: 1px solid #d8e8ee;
+    }
+
+    .vv-takeaway-box {
+        margin-top: 10px;
+
+        background: #e8f2f6;
+
+        border: 1px solid #cfe2e9;
+    }
+
+    /* =====================================================
+       INFO HEADINGS
+    ===================================================== */
+
+    .vv-info-heading,
+    .vv-takeaway-heading {
+        margin-bottom: 6px;
+
+        color: #174b63;
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: 0.1em;
+    }
+
+    /* =====================================================
+       INFO CONTENT
+    ===================================================== */
+
+    .vv-info-content,
+    .vv-takeaway-content {
+        color: #415866;
+
+        font-size: 13px;
+        line-height: 1.5;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    /* =====================================================
+       BACK ACTION
+    ===================================================== */
+
+    .vv-back-action {
+        color: #486674;
+
+        border-top: 1px solid #e1eaee;
+
+        padding-top: 14px;
+    }
+
+    /* =====================================================
+       KEYBOARD ACCESSIBILITY
+    ===================================================== */
+
+    .vv-flip-toggle:focus-visible + .vv-flip-card {
+        outline: 3px solid #65b7d3;
+        outline-offset: 4px;
+    }
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+        .vv-assessment-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .vv-assessment-card {
+            height: 500px;
+        }
+    }
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+        padding: 60px 18px;
+
+        .vv-assessment-header {
+
+            h2 {
+                font-size: 30px;
+            }
+        }
+
+        .vv-assessment-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .vv-assessment-card {
+            height: 520px;
+        }
+
+        .vv-card-front,
+        .vv-card-back {
+            padding: 26px;
+        }
+
+        .vv-card-title {
+            font-size: 24px;
+        }
+
+        .vv-recommended-option {
+            font-size: 78px;
+        }
+
+        .vv-recommended-text {
+            font-size: 18px;
+        }
+    }
+}

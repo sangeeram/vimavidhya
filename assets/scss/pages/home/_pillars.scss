@@ -1,0 +1,1023 @@
+// =========================================================
+// VIMA VIDYA — MISSION PILLARS
+// =========================================================
+
+
+// =========================================================
+// VARIABLES
+// =========================================================
+
+$bg-page: #f8f6f0;
+$color-card-dark: #1f4a82;
+$color-card-medium: #3b87e4;
+$color-card-light: #b3d4f3;
+$color-text-dark: #121820;
+$color-text-muted: #5e6875;
+
+$color-green: #2b6e4f;
+
+$notch-w: 160px;
+$notch-h: 52px;
+
+$container-width: 1200px;
+
+
+// =========================================================
+// SECTION
+// =========================================================
+
+.mission-pillars {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 100px 20px;
+
+    background-color: $bg-page;
+
+    overflow: hidden;
+
+
+    // =====================================================
+    // CONTAINER
+    // =====================================================
+
+    &__container {
+
+        width: 100%;
+
+        max-width: $container-width;
+
+        margin: 0 auto;
+
+    }
+
+
+    // =====================================================
+    // HEADER
+    // =====================================================
+
+    &__header {
+
+        text-align: center;
+
+        max-width: 720px;
+
+        margin: 0 auto 58px;
+
+    }
+
+
+    // =====================================================
+    // SUBTITLE
+    // =====================================================
+
+    &__subtitle {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-bottom: 12px;
+
+        font-size: 12px;
+
+        line-height: 1;
+
+        text-transform: uppercase;
+
+        letter-spacing: 2.2px;
+
+        color: $color-green;
+
+        font-weight: 700;
+
+
+        &::before {
+
+            content: "";
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: $color-green;
+
+        }
+
+    }
+
+
+    // =====================================================
+    // TITLE
+    // =====================================================
+
+    &__title {
+
+        margin: 0 0 14px;
+
+        color: $color-text-dark;
+
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
+        font-size: clamp(32px, 4vw, 46px);
+
+        font-weight: 700;
+
+        line-height: 1.15;
+
+        letter-spacing: -1px;
+
+    }
+
+
+    // =====================================================
+    // TAGLINE
+    // =====================================================
+
+    &__tagline {
+
+        max-width: 620px;
+
+        margin: 0 auto;
+
+        color: $color-text-muted;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+
+    }
+
+
+    // =====================================================
+    // GRID
+    // =====================================================
+
+    &__grid {
+
+        display: flex;
+
+        align-items: stretch;
+
+        justify-content: center;
+
+        gap: 24px;
+
+    }
+
+}
+
+
+// =========================================================
+// CARD WRAPPER
+// =========================================================
+
+.pillar-card-wrapper {
+
+    position: relative;
+
+    flex: 1 1 0;
+
+    width: 100%;
+
+    max-width: 360px;
+
+}
+
+
+// =========================================================
+// MAIN CARD
+// =========================================================
+
+.pillar-card {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 520px;
+
+    padding: 14px 14px 70px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+
+    // =====================================================
+    // CUTOUT
+    // =====================================================
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        $notch-w 100%,
+        $notch-w calc(100% - #{$notch-h}),
+        0 calc(100% - #{$notch-h})
+    );
+
+
+    // =====================================================
+    // HOVER
+    // =====================================================
+
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.45s ease;
+
+
+    &:hover {
+
+        transform: translateY(-7px);
+
+    }
+
+
+    // =====================================================
+    // IMAGE
+    // =====================================================
+
+    &__image {
+
+        position: relative;
+
+        width: 100%;
+
+        height: 190px;
+
+        flex-shrink: 0;
+
+        overflow: hidden;
+
+        border-radius: 18px;
+
+
+        img {
+
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transform: scale(1);
+
+            transition:
+                transform 0.8s cubic-bezier(.22, 1, .36, 1),
+                filter 0.5s ease;
+
+        }
+
+
+        // =================================================
+        // IMAGE GRADIENT
+        // =================================================
+
+        &::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0) 35%,
+                    rgba(3, 34, 78, 0.32) 100%
+                );
+
+            pointer-events: none;
+
+            z-index: 1;
+
+        }
+
+
+        // =================================================
+        // LIGHT SWEEP
+        // =================================================
+
+        &::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -130%;
+
+            width: 60%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.25),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            transition:
+                left 0.8s ease;
+
+        }
+
+    }
+
+
+    // Image hover zoom
+
+    &:hover &__image img {
+
+        transform: scale(1.07);
+
+        filter: saturate(1.08);
+
+    }
+
+
+    // Light sweep
+
+    &:hover &__image::before {
+
+        left: 140%;
+
+    }
+
+
+    // =====================================================
+    // CONTENT
+    // =====================================================
+
+    &__content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        flex-grow: 1;
+
+        padding: 22px 18px 0;
+
+    }
+
+
+    // =====================================================
+    // NUMBER
+    // =====================================================
+
+    &__number {
+
+        display: block;
+
+        margin-bottom: 12px;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        opacity: 0.65;
+
+    }
+
+
+    // =====================================================
+    // TITLE
+    // =====================================================
+
+    &__title {
+
+        margin: 0 0 14px;
+
+        font-size: 25px;
+
+        font-weight: 700;
+
+        line-height: 1.2;
+
+        letter-spacing: -0.3px;
+
+        transition:
+            transform 0.35s ease;
+
+    }
+
+
+    &:hover &__title {
+
+        transform: translateX(3px);
+
+    }
+
+
+    // =====================================================
+    // DESCRIPTION
+    // =====================================================
+
+    &__description {
+
+        max-width: 320px;
+
+        margin: 0;
+
+        font-size: 14.5px;
+
+        line-height: 1.65;
+
+    }
+
+
+    // =====================================================
+    // CTA
+    // =====================================================
+
+    &__cta {
+
+        position: absolute;
+
+        left: 12px;
+
+        bottom: 6px;
+
+        z-index: 10;
+
+        height: 40px;
+
+        padding: 0 16px 0 20px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        border-radius: 30px;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        text-decoration: none;
+
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            opacity 0.3s ease;
+
+    }
+
+
+    &__arrow {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 22px;
+
+        height: 22px;
+
+        border-radius: 50%;
+
+        font-size: 14px;
+
+        transition:
+            transform 0.3s ease;
+
+    }
+
+}
+
+
+// =========================================================
+// CTA HOVER
+// =========================================================
+
+.pillar-card-wrapper:hover {
+
+    .pillar-card__cta {
+
+        transform: translateY(-3px);
+
+    }
+
+
+    .pillar-card__arrow {
+
+        transform:
+            translate(2px, -2px);
+
+    }
+
+}
+
+
+// =========================================================
+// CARD 1 — AWARENESS
+// =========================================================
+
+.pillar-card-wrapper:nth-child(1) {
+
+    .pillar-card {
+
+        background-color: $color-card-light;
+
+    }
+
+
+    .pillar-card__number {
+
+        color: $color-card-dark;
+
+    }
+
+
+    .pillar-card__title {
+
+        color: $color-card-dark;
+
+    }
+
+
+    .pillar-card__description {
+
+        color: #3b526d;
+
+    }
+
+
+    .pillar-card__cta {
+
+        background-color: $color-card-light;
+
+        color: $color-card-dark;
+
+        box-shadow:
+            0 5px 16px rgba(3, 34, 78, 0.10);
+
+    }
+
+
+    .pillar-card__arrow {
+
+        background-color: $color-card-dark;
+
+        color: #ffffff;
+
+    }
+
+}
+
+
+// =========================================================
+// CARD 2 — EDUCATION
+// =========================================================
+
+.pillar-card-wrapper:nth-child(2) {
+
+    .pillar-card {
+
+        background-color: $color-card-medium;
+
+    }
+
+
+    .pillar-card__number {
+
+        color: #d0deee;
+
+    }
+
+
+    .pillar-card__title {
+
+        color: #ffffff;
+
+    }
+
+
+    .pillar-card__description {
+
+        color: #d0deee;
+
+    }
+
+
+    .pillar-card__cta {
+
+        background-color: $color-card-medium;
+
+        color: #ffffff;
+
+        box-shadow:
+            0 5px 16px rgba(3, 34, 78, 0.18);
+
+    }
+
+
+    .pillar-card__arrow {
+
+        background-color: #ffffff;
+
+        color: $color-card-medium;
+
+    }
+
+}
+
+
+// =========================================================
+// CARD 3 — EXPERTISE
+// =========================================================
+
+.pillar-card-wrapper:nth-child(3) {
+
+    .pillar-card {
+
+        background-color: $color-card-dark;
+
+    }
+
+
+    .pillar-card__number {
+
+        color: #b0c4de;
+
+    }
+
+
+    .pillar-card__title {
+
+        color: #ffffff;
+
+    }
+
+
+    .pillar-card__description {
+
+        color: #b0c4de;
+
+    }
+
+
+    .pillar-card__cta {
+
+        background-color: $color-card-dark;
+
+        color: #ffffff;
+
+        box-shadow:
+            0 5px 18px rgba(0, 0, 0, 0.28);
+
+    }
+
+
+    .pillar-card__arrow {
+
+        background-color: #ffffff;
+
+        color: $color-card-dark;
+
+    }
+
+}
+
+
+// =========================================================
+// AOS — INITIAL STATE SAFETY
+// =========================================================
+//
+// Do NOT set opacity: 0 here.
+// AOS controls visibility itself.
+// This prevents cards from disappearing if AOS
+// doesn't load.
+//
+
+[data-aos] {
+
+    pointer-events: auto;
+
+}
+
+
+// =========================================================
+// RESPONSIVE — TABLET
+// =========================================================
+
+@media (max-width: 992px) {
+
+    .mission-pillars {
+
+        padding: 80px 20px;
+
+
+        &__grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 22px;
+
+        }
+
+    }
+
+
+    .pillar-card-wrapper {
+
+        max-width: none;
+
+    }
+
+
+    .pillar-card {
+
+        min-height: 500px;
+
+    }
+
+
+    .pillar-card-wrapper:nth-child(3) {
+
+        grid-column:
+            1 / -1;
+
+        max-width: 360px;
+
+        width: 100%;
+
+        justify-self: center;
+
+    }
+
+}
+
+
+// =========================================================
+// RESPONSIVE — MOBILE
+// =========================================================
+
+@media (max-width: 640px) {
+
+    .mission-pillars {
+
+        padding: 70px 16px;
+
+
+        &__header {
+
+            margin-bottom: 38px;
+
+        }
+
+
+        &__title {
+
+            font-size: 34px;
+
+        }
+
+
+        &__tagline {
+
+            font-size: 15px;
+
+        }
+
+
+        &__grid {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+    }
+
+
+    .pillar-card-wrapper {
+
+        width: 100%;
+
+        max-width: 390px;
+
+    }
+
+
+    .pillar-card {
+
+        min-height: 500px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .pillar-card__image {
+
+        height: 200px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .pillar-card__content {
+
+        padding:
+            20px 16px 0;
+
+    }
+
+
+    .pillar-card__title {
+
+        font-size: 23px;
+
+    }
+
+
+    .pillar-card__description {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+// =========================================================
+// REDUCED MOTION
+// =========================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pillar-card,
+    .pillar-card__image img,
+    .pillar-card__image::before,
+    .pillar-card__title,
+    .pillar-card__cta,
+    .pillar-card__arrow {
+
+        transition: none !important;
+
+        animation: none !important;
+
+        transform: none !important;
+
+    }
+
+}
+
+// =========================================================
+// INTRO CARD / FEATURE BLOCK
+// =========================================================
+
+.mission-pillars__intro-card {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 52px;
+    padding: 32px 36px;
+    box-sizing: border-box;
+
+    background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
+    border: 1px solid rgba(31, 74, 130, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(3, 34, 78, 0.05);
+    overflow: hidden;
+
+    // Accent line on the left edge
+    .intro-card__accent-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(180deg, #2b6e4f 0%, #1f4a82 100%);
+        border-radius: 20px 0 0 20px;
+    }
+
+    .intro-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .intro-card__text {
+        margin: 0;
+        font-size: 15.5px;
+        line-height: 1.7;
+        color: #3b526d;
+
+        strong {
+            color: $color-card-dark;
+            font-weight: 600;
+        }
+    }
+
+    // Callout highlight section inside the box
+    .intro-card__highlight {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 8px;
+        padding: 16px 20px;
+        background-color: #0B132B;
+        border-radius: 12px;
+        border-left: 3px solid $color-green;
+
+        .intro-card__icon {
+            font-size: 18px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .intro-card__highlight-text {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+            color: white;
+
+            span {
+                display: inline;
+                font-size: 24px;
+                font-weight: 700;
+                color: orange;
+            }
+        }
+    }
+}
+
+// Mobile responsiveness for the intro card
+@media (max-width: 640px) {
+    .mission-pillars__intro-card {
+        padding: 24px 20px;
+        margin-bottom: 36px;
+
+        .intro-card__text {
+            font-size: 14.5px;
+        }
+
+        .intro-card__highlight {
+            padding: 12px 14px;
+
+            .intro-card__highlight-text {
+                font-size: 14px;
+            }
+        }
+    }
+}

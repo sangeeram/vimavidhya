@@ -1,0 +1,1133 @@
+/* =========================================================
+   VIMAVIDYA — PREMIUM HOMEPAGE HERO SLIDER
+   REFERENCE STYLE
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+$hero-navy: #07152d;
+$hero-blue: #0d315f;
+$hero-teal: #19b7a5;
+$hero-orange: #f59a18;
+$hero-white: #ffffff;
+
+$hero-muted: rgba(255, 255, 255, 0.78);
+$hero-border: rgba(255, 255, 255, 0.20);
+
+$hero-container: 1380px;
+
+$hero-transition: 0.7s ease;
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.insurance-hero {
+font-family: Calibri, "Segoe UI", Arial, sans-serif;
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background: $hero-navy;
+
+
+    /* =====================================================
+       SLIDER CONTAINER
+    ===================================================== */
+
+    .hero-slider-container {
+
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       SLIDE
+    ===================================================== */
+
+    .hero-slide {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.8s ease,
+            visibility 0.8s ease;
+
+
+        &.active {
+
+            opacity: 1;
+            visibility: visible;
+
+            pointer-events: auto;
+
+
+            .slide-image-wrapper {
+
+                transform: scale(1);
+            }
+
+
+            .slide-content {
+
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+        }
+    }
+
+
+    /* =====================================================
+       BACKGROUND IMAGE
+    ===================================================== */
+
+    .slide-image-wrapper {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        transform: scale(1.08);
+
+        transition:
+            transform 7s cubic-bezier(.2, .6, .2, 1);
+    }
+
+
+    /* =====================================================
+       IMAGE OVERLAY
+
+       Strong left side for readability
+       Clean right side for image visibility
+    ===================================================== */
+
+    .slide-image-overlay {
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 1;
+
+        background:
+            linear-gradient(
+                90deg,
+
+                rgba(4, 18, 40, 0.96) 0%,
+
+                rgba(4, 18, 40, 0.88) 16%,
+
+                rgba(4, 18, 40, 0.68) 32%,
+
+                rgba(4, 18, 40, 0.38) 48%,
+
+                rgba(4, 18, 40, 0.12) 68%,
+
+                rgba(4, 18, 40, 0.02) 100%
+            );
+
+        pointer-events: none;
+    }
+
+
+    /* =====================================================
+       HERO INNER
+    ===================================================== */
+
+    .hero-inner {
+
+        position: relative;
+
+        z-index: 5;
+
+        width: min(88%, $hero-container);
+
+        height: 100%;
+
+        margin: 0 auto;
+
+        display: flex;
+
+        align-items: center;
+
+        padding-top: 50px;
+    }
+
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
+
+    .slide-content {
+
+        width: 56%;
+
+        max-width: 680px;
+
+        opacity: 0;
+
+        transform: translateY(25px);
+
+        transition:
+            opacity 0.8s ease 0.15s,
+            transform 0.8s ease 0.15s;
+    }
+
+
+    /* =====================================================
+       EYEBROW
+    ===================================================== */
+
+    .slide-eyebrow {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-bottom: 18px;
+
+        padding: 7px 13px;
+
+        border-radius: 999px;
+
+        background: rgba(255, 255, 255, 0.10);
+
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        color: $hero-white;
+
+        font-size: 11px;
+
+        font-weight: 600;
+
+        letter-spacing: 0.05em;
+
+        line-height: 1;
+
+        text-transform: uppercase;
+
+        backdrop-filter: blur(10px);
+
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+
+    /* =====================================================
+       EYEBROW DOT
+    ===================================================== */
+
+    .eyebrow-dot {
+
+        width: 7px;
+        height: 7px;
+
+        flex: 0 0 7px;
+
+        border-radius: 50%;
+
+        background: $hero-teal;
+
+        box-shadow:
+            0 0 0 4px rgba(25, 183, 165, 0.15);
+    }
+
+
+    /* =====================================================
+       SLIDE TAG
+    ===================================================== */
+
+    .slide-tag {
+
+        display: block;
+
+        margin-bottom: 10px;
+
+        color: rgba(255, 255, 255, 0.58);
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.14em;
+
+        line-height: 1.2;
+
+        text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+   .slide-title {
+
+    margin: 0 0 18px;
+
+    max-width: 650px;
+
+    color: $hero-white;
+
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    font-weight: 600;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.025em;
+
+
+    span {
+
+        display: block;
+
+        color: $hero-teal;
+
+        font-weight: 500;
+    }
+}
+
+
+    /* =====================================================
+       DESCRIPTION
+    ===================================================== */
+
+    .slide-desc {
+
+        max-width: 560px;
+
+        margin: 0 0 26px;
+
+        color: $hero-muted;
+
+        font-size: 15px;
+
+        font-weight: 400;
+
+        line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       ACTIONS
+    ===================================================== */
+
+    .hero-actions {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+    }
+
+
+    /* =====================================================
+       GENERIC BUTTON
+    ===================================================== */
+
+    .hero-btn {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        min-height: 44px;
+
+        padding: 0 20px;
+
+        border-radius: 8px;
+
+        text-decoration: none;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease;
+
+
+        /* ================================================
+           ARROW
+        ================================================ */
+
+        span {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 23px;
+            height: 23px;
+
+            border-radius: 50%;
+
+            background: $hero-white;
+
+            color: $hero-orange;
+
+            font-size: 13px;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        &:hover {
+
+            span {
+
+                transform: translate(2px, -2px);
+            }
+        }
+    }
+
+
+    /* =====================================================
+       PRIMARY BUTTON
+    ===================================================== */
+
+    .hero-btn--primary {
+
+        background: $hero-orange;
+
+        color: $hero-white;
+
+        border: 1px solid $hero-orange;
+
+        box-shadow:
+            0 10px 30px rgba(245, 154, 24, 0.25);
+
+
+        &:hover {
+
+            background: #ffad32;
+
+            border-color: #ffad32;
+
+            color: $hero-white;
+
+            transform: translateY(-2px);
+        }
+    }
+
+
+    /* =====================================================
+       SECONDARY BUTTON
+    ===================================================== */
+
+    .hero-btn--secondary {
+
+        background: rgba(255, 255, 255, 0.06);
+
+        border: 1px solid rgba(255, 255, 255, 0.35);
+
+        color: $hero-white;
+
+        backdrop-filter: blur(8px);
+
+        -webkit-backdrop-filter: blur(8px);
+
+
+        &:hover {
+
+            background: rgba(255, 255, 255, 0.14);
+
+            border-color: $hero-white;
+
+            color: $hero-white;
+
+            transform: translateY(-2px);
+        }
+    }
+
+
+    /* =====================================================
+       SLIDE NUMBER
+    ===================================================== */
+
+    .hero-slide-number {
+
+        position: absolute;
+
+        z-index: 15;
+
+        top: 105px;
+
+        right: 6%;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        color: rgba(255, 255, 255, 0.55);
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.12em;
+
+
+        span {
+
+            &:first-child {
+
+                color: $hero-orange;
+
+                font-size: 14px;
+            }
+        }
+
+
+        i {
+
+            display: block;
+
+            width: 30px;
+            height: 1px;
+
+            background: rgba(255, 255, 255, 0.35);
+        }
+    }
+
+
+    /* =====================================================
+       ARROWS
+    ===================================================== */
+
+    .hero-arrow {
+
+        position: absolute;
+
+        z-index: 20;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        border-radius: 50%;
+
+        background: rgba(4, 18, 40, 0.35);
+
+        color: $hero-white;
+
+        font-size: 17px;
+
+        cursor: pointer;
+
+        opacity: 0;
+
+        backdrop-filter: blur(8px);
+
+        -webkit-backdrop-filter: blur(8px);
+
+        transition:
+            opacity 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease;
+
+
+        &:hover {
+
+            background: $hero-orange;
+
+            border-color: $hero-orange;
+
+            color: $hero-white;
+        }
+    }
+
+
+    &:hover {
+
+        .hero-arrow {
+
+            opacity: 1;
+        }
+    }
+
+
+    .hero-arrow--prev {
+
+        left: 25px;
+    }
+
+
+    .hero-arrow--next {
+
+        right: 25px;
+    }
+
+
+    /* =====================================================
+       DOTS
+    ===================================================== */
+
+    .slider-dots {
+
+        position: absolute;
+
+        z-index: 20;
+
+        left: 50%;
+
+        bottom: 30px;
+
+        transform: translateX(-50%);
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+    }
+
+
+    .slider-dot {
+
+        display: block;
+
+        width: 7px;
+        height: 7px;
+
+        padding: 0;
+
+        border: 0;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.45);
+
+        cursor: pointer;
+
+        transition:
+            width 0.3s ease,
+            background 0.3s ease;
+
+
+        &.active {
+
+            width: 25px;
+
+            border-radius: 999px;
+
+            background: $hero-orange;
+        }
+
+
+        &:hover {
+
+            background: $hero-teal;
+        }
+    }
+}
+
+
+/* =========================================================
+   DESKTOP LARGE
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .insurance-hero {
+
+        .hero-inner {
+
+            width: min(88%, $hero-container);
+        }
+
+
+        .slide-content {
+
+            max-width: 700px;
+        }
+
+
+        .slide-title {
+
+            font-size: 60px;
+        }
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .insurance-hero {
+
+        .hero-inner {
+
+            width: 86%;
+        }
+
+
+        .slide-content {
+
+            width: 62%;
+        }
+
+
+        .slide-title {
+
+            font-size: 52px;
+        }
+
+
+        .slide-desc {
+
+            font-size: 14px;
+        }
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .insurance-hero {
+
+        min-height: 650px;
+
+
+        .hero-inner {
+
+            width: 88%;
+        }
+
+
+        .slide-content {
+
+            width: 70%;
+        }
+
+
+        .slide-title {
+
+            font-size: 44px;
+        }
+
+
+        .slide-desc {
+
+            font-size: 13px;
+        }
+
+
+        .hero-slide-number {
+
+            right: 5%;
+        }
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .insurance-hero {
+
+        height: 100svh;
+
+        min-height: 650px;
+
+
+        /* ================================================
+           MOBILE OVERLAY
+        ================================================ */
+
+        .slide-image-overlay {
+
+            background:
+                linear-gradient(
+                    180deg,
+
+                    rgba(4, 18, 40, 0.05) 0%,
+
+                    rgba(4, 18, 40, 0.20) 30%,
+
+                    rgba(4, 18, 40, 0.72) 65%,
+
+                    rgba(4, 18, 40, 0.98) 100%
+                );
+        }
+
+
+        /* ================================================
+           INNER
+        ================================================ */
+
+        .hero-inner {
+
+            width: calc(100% - 36px);
+
+            padding-top: 100px;
+
+            padding-bottom: 65px;
+
+            align-items: flex-end;
+        }
+
+
+        /* ================================================
+           CONTENT
+        ================================================ */
+
+        .slide-content {
+
+            width: 100%;
+
+            max-width: none;
+        }
+
+
+        /* ================================================
+           EYEBROW
+        ================================================ */
+
+        .slide-eyebrow {
+
+            margin-bottom: 12px;
+
+            padding: 7px 11px;
+
+            font-size: 10px;
+        }
+
+
+        /* ================================================
+           TITLE
+        ================================================ */
+
+        .slide-title {
+
+            margin-bottom: 15px;
+
+            font-size: 38px;
+
+            line-height: 1.02;
+
+            letter-spacing: -0.045em;
+        }
+
+
+        /* ================================================
+           DESCRIPTION
+        ================================================ */
+
+        .slide-desc {
+
+            max-width: 100%;
+
+            margin-bottom: 20px;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+        }
+
+
+        /* ================================================
+           BUTTON
+        ================================================ */
+
+        .hero-btn {
+
+            min-height: 42px;
+
+            padding: 0 17px;
+
+            font-size: 11px;
+        }
+
+
+        /* ================================================
+           SLIDE NUMBER
+        ================================================ */
+
+        .hero-slide-number {
+
+            top: 85px;
+
+            right: 20px;
+        }
+
+
+        /* ================================================
+           ARROWS
+        ================================================ */
+
+        .hero-arrow {
+
+            width: 36px;
+            height: 36px;
+
+            opacity: 1;
+
+            font-size: 14px;
+        }
+
+
+        .hero-arrow--prev {
+
+            left: 12px;
+        }
+
+
+        .hero-arrow--next {
+
+            right: 12px;
+        }
+
+
+        /* ================================================
+           DOTS
+        ================================================ */
+
+        .slider-dots {
+
+            bottom: 25px;
+        }
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .insurance-hero {
+
+        min-height: 620px;
+
+
+        .hero-inner {
+
+            width: calc(100% - 28px);
+        }
+
+
+        .slide-title {
+
+            font-size: 32px;
+        }
+
+
+        .slide-desc {
+
+            font-size: 11px;
+        }
+
+
+        .hero-btn {
+
+            min-height: 40px;
+
+            padding: 0 15px;
+
+            font-size: 10px;
+        }
+    }
+}
+
+/* =====================================================
+   HERO CATEGORY NAVIGATION
+===================================================== */
+
+.hero-categories {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 30px;
+
+
+    .hero-category {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        color: rgba(255, 255, 255, 0.45);
+
+        text-decoration: none;
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.13em;
+
+        transition:
+            color 0.3s ease,
+            transform 0.3s ease;
+
+
+        /* =============================================
+           ICON
+        ============================================= */
+
+        .category-icon {
+
+            width: 27px;
+            height: 27px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0.20);
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease;
+
+
+            svg {
+
+                width: 14px;
+                height: 14px;
+
+                stroke: currentColor;
+
+                stroke-width: 1.5;
+
+                stroke-linecap: round;
+
+                stroke-linejoin: round;
+            }
+        }
+
+
+        /* =============================================
+           HOVER
+        ============================================= */
+
+        &:hover {
+
+            color: $hero-white;
+
+            transform: translateY(-2px);
+
+
+            .category-icon {
+
+                background: rgba(25, 183, 165, 0.12);
+
+                border-color: $hero-teal;
+
+                color: $hero-teal;
+
+                transform: scale(1.05);
+            }
+        }
+
+
+        /* =============================================
+           ACTIVE
+        ============================================= */
+
+        &.active {
+
+            color: $hero-white;
+
+
+            .category-icon {
+
+                background: $hero-teal;
+
+                border-color: $hero-teal;
+
+                color: $hero-white;
+
+                box-shadow:
+                    0 5px 20px rgba(25, 183, 165, 0.20);
+            }
+        }
+    }
+}

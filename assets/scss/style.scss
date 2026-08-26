@@ -1,0 +1,41 @@
+@use "abstracts/variables";
+
+@use "base/reset";
+@use "base/global";
+@use "base/typography";
+
+@use "layout/header";
+@use "layout/navigation";
+@use "layout/footer";
+
+@use "components/buttons";
+@use "components/cards";
+
+
+@use "pages/home";
+
+// home page specific styles
+@use "pages/home/hero";
+
+@use "pages/home/pillars";  
+@use "pages/home/risk-management";
+@use "pages/home/life-journey";
+@use "pages/home/assessment";
+@use "pages/home/glossary";
+@use "pages/home/stories";
+
+
+// about page specific styles
+@use "pages/about/founder";
+@use "pages/about/mission";
+@use "pages/about/hero1";
+@use "pages/about/about-hero";
+@use "pages/about/who-we-are";
+
+// awareness page specific styles
+@use "pages/awareness/awarenesshome";
+@use "pages/awareness/explore";
+@use "pages/awareness/what-is-awareness";
+@use "pages/awareness/life-stages";
+@use "pages/awareness/cta";
+@use "pages/awareness/understand/intro"

@@ -1,0 +1,49 @@
+.vv-glossary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Horizontal Alphabet Bar */
+.vv-glossary-card__alphabet-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.vv-glossary-card__alphabet-nav a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.vv-glossary-card__alphabet-nav a.current-word,
+.vv-glossary-card__alphabet-nav a:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Content Area */
+.vv-glossary-card__word {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.vv-glossary-card__definition {
+  font-size: 1.125rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.5;
+}

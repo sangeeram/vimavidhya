@@ -1,0 +1,264 @@
+// Theme Variables
+$dark-bg: #0d1117;
+$glass-card-bg: rgba(22, 27, 34, 0.65);
+$glass-border: rgba(255, 255, 255, 0.12);
+$glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+$accent-blue: #38bdf8;
+$text-primary: #f3f4f6;
+$text-secondary: #9ca3af;
+
+.stories-section {
+    background-color: $dark-bg;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 40%);
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+
+    &__header {
+        margin-bottom: 50px;
+        
+        .header-badge {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 16px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            
+            img {
+                width: 24px;
+                height: 24px;
+                filter: invert(65%) sepia(85%) saturate(1000%) hue-rotate(170deg);
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: $text-primary;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: $text-secondary;
+            font-size: 1.05rem;
+        }
+    }
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-stage {
+    width: 100%;
+    height: 520px;
+    perspective: 1200px;
+    position: relative;
+}
+
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+// Glassmorphism Card Design
+.story-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 360px;
+    background: $glass-card-bg;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid $glass-border;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: $glass-glow;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, border-color 0.4s ease;
+    margin-left: -180px;
+    margin-top: -230px;
+
+    &__image-wrap {
+        position: relative;
+        height: 220px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        // Dark gradient overlay over card images
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(13, 17, 23, 0.8) 100%);
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        bottom: 14px;
+        left: 16px;
+        z-index: 2;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: $accent-blue;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        .badge-icon {
+            width: 14px;
+            height: 14px;
+            filter: invert(70%) sepia(90%) saturate(1000%) hue-rotate(170deg);
+        }
+    }
+
+    &__content {
+        padding: 24px 22px;
+        text-align: left;
+
+        h3 {
+            font-size: 1.25rem;
+            color: $text-primary;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: $text-secondary;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__link {
+        color: $accent-blue;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+            width: 16px;
+            height: 16px;
+            filter: invert(70%) sepia(90%) saturate(1000%) hue-rotate(170deg);
+            transition: transform 0.2s ease;
+        }
+
+        &:hover img {
+            transform: translateX(5px);
+        }
+    }
+
+    // 3D Rotations & Lighting Shifts
+    &.active {
+        transform: translate3d(0, 0, 0) rotateY(0deg);
+        z-index: 3;
+        opacity: 1;
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    &.prev-card {
+        transform: translate3d(-340px, 0, -150px) rotateY(25deg);
+        z-index: 2;
+        opacity: 0.65;
+    }
+
+    &.next-card {
+        transform: translate3d(340px, 0, -150px) rotateY(-25deg);
+        z-index: 2;
+        opacity: 0.65;
+    }
+
+    &.far-prev {
+        transform: translate3d(-580px, 0, -300px) rotateY(45deg);
+        z-index: 1;
+        opacity: 0.25;
+    }
+
+    &.far-next {
+        transform: translate3d(580px, 0, -300px) rotateY(-45deg);
+        z-index: 1;
+        opacity: 0.25;
+    }
+}
+
+// Nav Buttons
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(22, 27, 34, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid $glass-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+    img {
+        width: 18px;
+        height: 18px;
+        filter: invert(100%);
+    }
+
+    &:hover {
+        background: rgba(56, 189, 248, 0.2);
+        border-color: $accent-blue;
+    }
+
+    &.prev { left: -10px; }
+    &.next { right: -10px; }
+}
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 35px;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+}
