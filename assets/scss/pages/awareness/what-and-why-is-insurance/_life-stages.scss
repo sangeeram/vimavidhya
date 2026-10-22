@@ -1,0 +1,380 @@
+// ========================================
+// VIMA VIDYA DESIGN SYSTEM COMPONENT
+// ========================================
+@use "../../../abstracts/variables" as *;
+.life-stages-section {
+  font-family: $font-primary;
+  background-color: $color-cream;
+  padding: $space-section 0;
+  color: $color-text;
+
+  .ls-container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-element;
+  }
+
+  // --- Header ---
+  .ls-header {
+    text-align: center;
+    max-width:  $container-wide;
+    margin: 0 auto $space-content auto;
+
+    .ls-tag {
+      font-size: $text-xs;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: $color-blue;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: $space-small;
+    }
+
+    .ls-title {
+      font-size: 40px;
+      line-height: $line-heading;
+      font-weight: 700;
+      color: $color-navy;
+      margin-bottom: $space-small;
+    }
+
+    .ls-subtitle {
+      font-size: $text-base;
+      line-height: $line-body;
+      color: $color-text-body;
+    }
+  }
+
+  // --- Image 1 Grid Section ---
+  .ls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: $space-element;
+    margin-bottom: $space-content;
+  }
+
+  .ls-card {
+    position: relative;
+    border-radius: $radius-md;
+    overflow: hidden;
+    height: 380px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    transition: transform $transition, box-shadow $transition;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+      .ls-card-arrow {
+        background-color: $color-blue;
+        color: $color-white;
+      }
+    }
+
+    .ls-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform $transition-slow;
+    }
+
+    &:hover .ls-card-bg {
+      transform: scale(1.05);
+    }
+
+    .ls-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba($color-navy-dark, 0.2) 0%, rgba($color-navy-dark, 0.92) 100%);
+    }
+
+    .ls-card-content {
+      position: relative;
+      z-index: 2;
+      padding: $space-element;
+      color: $color-white;
+      width: 100%;
+
+      .ls-card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba($color-white, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $space-small;
+        backdrop-filter: blur(4px);
+      }
+
+      .ls-card-title {
+        font-size: $text-h3;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: $color-white;
+      }
+
+      .ls-card-desc {
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: $color-text-light;
+        margin-bottom: $space-element;
+      }
+
+      .ls-card-arrow {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        background-color: $color-white;
+        color: $color-navy;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color $transition-fast, color $transition-fast;
+      }
+    }
+  }
+
+  // --- Image 2 Details Section ---
+  .ls-details-container {
+    display: none;
+    margin-bottom: $space-content;
+  }
+
+  .ls-detail-card {
+    display: none;
+    background-color: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: $space-content;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+    &.active {
+      display: block;
+      animation: fadeIn $transition;
+    }
+
+    .ls-back-btn {
+      background: none;
+      border: none;
+      color: $color-blue;
+      font-size: $text-sm;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      margin-bottom: $space-element;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .ls-detail-header {
+      display: flex;
+      align-items: center;
+      gap: $space-small;
+      margin-bottom: $space-element;
+
+      .ls-detail-badge {
+        width: 44px;
+        height: 44px;
+        border-radius: $radius-sm;
+        background-color: #dcfce7; // Soft green tint from image
+        color: #047857;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ls-detail-title {
+        font-size: $text-h3;
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0;
+      }
+
+      .ls-detail-subtitle {
+        font-size: $text-xs;
+        color: $color-text-muted;
+      }
+    }
+
+    .ls-focus-label {
+      font-weight: 700;
+      font-size: $text-base;
+      color: $color-navy;
+      margin-bottom: 4px;
+    }
+
+    .ls-focus-text {
+      font-size: $text-sm;
+      line-height: $line-body;
+      color: $color-text-body;
+    }
+
+    .ls-divider {
+      border: 0;
+      border-top: 1px solid $color-border;
+      margin: $space-element 0;
+    }
+
+    .ls-block-heading {
+      font-size: $text-xs;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: $color-text-muted;
+      margin-bottom: $space-small;
+      text-transform: uppercase;
+    }
+
+    .ls-subheading {
+      display: block;
+      font-weight: 700;
+      font-size: $text-sm;
+      color: $color-navy;
+      margin-bottom: 8px;
+    }
+
+    .ls-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 18px;
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: $color-text-body;
+        margin-bottom: 8px;
+
+        &::before {
+          content: "■";
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-size: 8px;
+          color: $color-navy;
+        }
+      }
+    }
+
+    .ls-coverage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-element;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ls-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-small;
+
+      .ls-pill {
+        background-color: $color-navy;
+        color: $color-white;
+        padding: 8px 16px;
+        border-radius: $radius-pill;
+        text-decoration: none;
+        font-size: $text-xs;
+        font-weight: 600;
+        transition: background-color $transition-fast;
+
+        &:hover {
+          background-color: $color-blue;
+        }
+      }
+    }
+
+    .ls-picture-box {
+      background-color: #e6f4ea; // Matching green tint from design
+      border-left: 4px solid $color-success;
+      border-radius: $radius-sm;
+      padding: $space-element;
+      margin-top: $space-element;
+
+      .ls-pb-title {
+        display: block;
+        color: $color-navy;
+        font-size: $text-sm;
+        margin-bottom: 4px;
+      }
+
+      .ls-pb-text {
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: $color-text-body;
+        margin: 0;
+      }
+    }
+
+    .ls-detail-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: $space-element;
+      font-size: $text-xs;
+      font-style: italic;
+      color: $color-text-muted;
+
+      .ls-footer-badge {
+        background-color: $color-navy;
+        color: $color-white;
+        padding: 4px 12px;
+        border-radius: $radius-pill;
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // --- Bottom Global Banner ---
+  .ls-banner {
+    background-color: $color-light-gray;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: $space-element;
+    display: flex;
+    align-items: center;
+    gap: $space-element;
+
+    .ls-banner-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: $color-light-blue;
+      color: $color-blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    strong {
+      color: $color-navy;
+      font-size: $text-base;
+      display: block;
+    }
+
+    p {
+      margin: 0;
+      font-size: $text-sm;
+      color: $color-text-body;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

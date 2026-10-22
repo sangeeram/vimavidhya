@@ -1,137 +1,208 @@
-// ==========================================
-// Variables
-// ==========================================
-$hero-font-family:    'Segoe UI', system-ui, -apple-system, sans-serif;
-$hero-primary-accent: #0088ff;
-$hero-text-white:     #ffffff;
-$hero-text-muted:     #cbd5e1;
-$hero-text-subtle:    #94a3b8;
-$hero-overlay-dark:   rgba(15, 23, 42, 0.82);
+// Import your variables file here if needed
+// @import 'variables';
 
-// Adjustment for fixed header height
-$header-height:       110px; 
+@use "../../abstracts/variables" as *;
+// ========================================
+// HERO SECTION STYLES
+// ========================================
 
-// ==========================================
-// Hero Section Component
-// ==========================================
+.hero-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .c-hero {
   position: relative;
-  width: 100%;
-  min-height: 520px;
-  
-  /* Clears space beneath fixed navigation header */
-  padding-top: calc(#{$header-height} + 40px); 
-  padding-bottom: 60px;
-  
-  background-color: #0f172a; // Fallback background color
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  color: $hero-text-white;
-  font-family: $hero-font-family;
-  box-sizing: border-box;
+  font-family: $font-primary;
+  background-color: $color-navy-dark;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  color: $color-white;
+  padding-top: calc(#{$space-section-sm} + 80px); /* Adjust 80px to match your actual navbar height */
+  padding-bottom: $space-section-sm;
+  padding-left: 24px;
+  padding-right: 24px;
 
-  /* Gradient Overlay for Text Readability */
   &__overlay {
-    position: absolute;
+  position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right, 
-      $hero-overlay-dark 35%, 
-      rgba(15, 23, 42, 0.25) 100%
-    );
     z-index: 1;
+
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.92) 22%,
+      rgba($color-cream, 0.75) 42%,
+      rgba($color-cream, 0.35) 65%,
+      rgba($color-cream, 0.05) 100%
+    );
+
+    pointer-events: none;
   }
 
-  /* Content Wrapper */
   &__container {
     position: relative;
     z-index: 2;
-    padding-left: 8%;
-    padding-right: 5%;
-    max-width: 650px;
+    max-width: $container-width;
+    margin: 0 auto;
     width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Top Brand Header Badge */
-  &__brand-tag {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: $space-content;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
   }
 
-  &__brand-name {
-    font-size: 1.75rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 1;
+  /* Content Column */
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  &__brand-divider {
-    width: 2px;
-    height: 24px;
-    background-color: $hero-primary-accent;
-  }
-
-  &__brand-label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: lighten($hero-text-muted, 10%);
-    line-height: 1;
-  }
-
-  /* Main Title Styles */
-  &__title {
-    font-size: 2.75rem;
+  &__brand-tag {
+    font-size: $text-xs;
     font-weight: 700;
     letter-spacing: 2px;
-    margin: 0 0 12px 0;
+    color: $color-orange;
+    margin-bottom: $space-small;
     text-transform: uppercase;
-    line-height: 1.1;
   }
 
-  &__accent-line {
-    width: 42px;
-    height: 3px;
-    background-color: $hero-primary-accent;
-    margin-bottom: 20px;
+  &__title {
+   font-size: clamp(42px, 4vw, $text-h1);
+    font-weight: 700;
+    line-height: $line-tight;
+   
+   letter-spacing: -0.025em;
+    // margin-bottom: $space-element;
+
+    &-primary {
+    
+      color: $color-text;
+    }
+
+    &-secondary {
+      display: block;
+      font-weight: 600;
+      color: $color-blue;
+    }
   }
 
   &__subtitle {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: $hero-text-muted;
-    margin: 0 0 24px 0;
+    font-size: $text-base;
+    line-height: $line-body;
+    color: $color-text-muted;
+    max-width: $text-width-medium;
+    margin-bottom: $space-small;
   }
 
-  /* Breadcrumb Navigation */
   &__breadcrumb {
-    font-size: 0.9rem;
-    color: $hero-text-subtle;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $text-sm;
+    color: $color-text-muted;
+    margin-bottom: $space-content;
 
     &-link {
-      color: $hero-primary-accent;
+      color: $color-text-muted;
       text-decoration: none;
-      transition: color 0.2s ease-in-out;
+      transition: color $transition-fast;
 
       &:hover {
-        text-decoration: underline;
+        color: $color-white;
       }
     }
 
     &-separator {
-      margin: 0 6px;
+      color: rgba(black, 0.3);
     }
 
     &-current {
-      color: $hero-text-white;
+      color: $color-orange;
+      font-weight: 300px;
     }
+  }
+
+  /* Action Buttons Grid */
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-element;
+    flex-wrap: wrap;
+  }
+
+  /* Media / Image Column */
+  &__media {
+    display: flex;
+    justify-content: flex-end;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 4 / 5;
+    background-color: $color-white;
+    padding: 10px;
+    border-radius: $radius-sm;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      display: block;
+    }
+  }
+}
+
+// ========================================
+// UI COMPONENTS
+// ========================================
+
+.c-btn {
+  &--primary {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: $color-blue;
+    color: $color-white;
+    font-weight: 700;
+    font-size: $text-xs;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: $radius-sm;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: $color-blue-dark;
+    }
+  }
+}
+
+.c-tag {
+  &--orange {
+    background-color: $color-orange;
+    color: $color-navy-dark;
+    font-weight: 800;
+    font-size: $text-xs;
+    line-height: $line-heading;
+    padding: 12px 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: $radius-sm;
   }
 }

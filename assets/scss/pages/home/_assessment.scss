@@ -2,82 +2,113 @@
    VIMA VIDYA
    DYNAMIC ASSESSMENT FLIP CARDS
 ========================================================= */
+@use "../../abstracts/variables" as *;
+:root {
+    --navy: #{$color-navy};
+    --blue: #{$color-blue};
+    --cream: #{$color-cream};
+    --gray: #{$color-text-muted};
+    --radius: #{$radius-lg};
+    --container: #{$container-wide};
+    --transition: #{$transition-slow};
+}
+
+
+/* =========================================================
+   ASSESSMENT SECTION
+========================================================= */
 
 .vv-assessment-section {
-    background: #f8f8f8;
-    padding: 80px 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    padding: $space-section-sm 24px;
+
+    font-family: $font-primary;
+
 
     /* =====================================================
-       SECTION HEADER
+        SECTION HEADER
     ===================================================== */
 
     .vv-assessment-header {
-        max-width: 720px;
+        max-width: $text-width-wide;
         margin: 0 auto 52px;
         text-align: center;
 
         h2 {
-            margin: 0 0 12px;
-            color: #031629;
+            margin: 0 0 $space-small;
+
+            color: var(--navy);
+
             font-size: 36px;
-            line-height: 1.2;
+            line-height: $line-heading;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
 
         p {
             margin: 0;
-            color: #94a3b8;
-            font-size: 16px;
-            line-height: 1.6;
+
+            color: var(--blue);
+
+            font-size: $text-base;
+            line-height: $line-body;
         }
     }
 
+
     /* =====================================================
-       GRID
+        GRID
     ===================================================== */
 
     .vv-assessment-grid {
         width: 100%;
-        max-width: 1280px;
+        max-width: var(--container);
+
         margin: 0 auto;
 
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
+
         gap: 32px;
     }
 
+
     /* =====================================================
-       CARD CONTAINER
+        CARD CONTAINER
     ===================================================== */
 
-   .vv-assessment-card {
-    position: relative;
-    width: 100%;
-    height: 540px;
-    perspective: 1200px;
-}
+    .vv-assessment-card {
+        position: relative;
+
+        width: 100%;
+        height: 540px;
+
+        perspective: 1200px;
+    }
+
 
     /* =====================================================
-       HIDDEN CHECKBOX
+        HIDDEN CHECKBOX
     ===================================================== */
 
     .vv-flip-toggle {
         position: absolute;
+
         width: 1px;
         height: 1px;
+
         opacity: 0;
         pointer-events: none;
     }
 
+
     /* =====================================================
-       FLIP CARD
+        FLIP CARD
     ===================================================== */
 
     .vv-flip-card {
         position: relative;
+
         display: block;
 
         width: 100%;
@@ -87,15 +118,17 @@
 
         transform-style: preserve-3d;
 
-        transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        transition:
+            transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .vv-flip-toggle:checked + .vv-flip-card {
         transform: rotateY(180deg);
     }
 
+
     /* =====================================================
-       CARD FACES
+        CARD FACES
     ===================================================== */
 
     .vv-card-face {
@@ -107,7 +140,7 @@
 
         box-sizing: border-box;
 
-        border-radius: 22px;
+        border-radius: var(--radius);
         overflow: hidden;
 
         backface-visibility: hidden;
@@ -117,83 +150,46 @@
         flex-direction: column;
         justify-content: space-between;
 
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        box-shadow:
+            0 20px 45px
+            color-mix(in srgb, var(--navy) 20%, transparent);
     }
 
+
     /* =====================================================
-       FRONT
+        FRONT
+        SAME GRADIENT FOR ALL CARDS
     ===================================================== */
 
     .vv-card-front {
         padding: 32px;
+
+        background: linear-gradient(
+            135deg,
+            var(--navy) 0%,
+            var(--blue) 100%
+        );
+
+        color: var(--cream);
     }
+
 
     /* =====================================================
-       COLOUR SYSTEM
-
-       ROW 1:
-       Light Blue → Medium Blue → Dark Blue
-
-       ROW 2:
-       Light Teal → Medium Teal → Dark Teal
-    ===================================================== */
-
-    .blue-light {
-        .vv-card-front {
-            background: #dff3fa;
-            color: #0d3040;
-        }
-    }
-
-    .blue-medium {
-        .vv-card-front {
-            background: #b9e3f0;
-            color: #0c2d3c;
-        }
-    }
-
-    .blue-dark {
-        .vv-card-front {
-            background: #91cfdf;
-            color: #092938;
-        }
-    }
-
-    .teal-light {
-        .vv-card-front {
-            background: #e1f3ef;
-            color: #103a38;
-        }
-    }
-
-    .teal-medium {
-        .vv-card-front {
-            background: #b9dfd8;
-            color: #103734;
-        }
-    }
-
-    .teal-dark {
-        .vv-card-front {
-            background: #8dc7bd;
-            color: #0c302d;
-        }
-    }
-
-    /* =====================================================
-       FRONT CONTENT
+        FRONT CONTENT
     ===================================================== */
 
     .vv-front-content {
         width: 100%;
     }
 
+
     /* =====================================================
-       CARD NUMBER
+        CARD NUMBER
     ===================================================== */
 
     .vv-card-number {
         display: inline-flex;
+
         align-items: center;
         justify-content: center;
 
@@ -202,36 +198,37 @@
 
         margin-bottom: 20px;
 
-        border-radius: 12px;
+        border-radius: $radius-sm;
 
-        background: rgba(255, 255, 255, 0.45);
+        background: var(--cream);
+        color: var(--navy);
 
-        color: #12364a;
-
-        font-size: 18px;
+        font-size: $text-lg;
         font-weight: 800;
 
         letter-spacing: 0.02em;
     }
 
+
     /* =====================================================
-       TITLE
+        TITLE
     ===================================================== */
 
     .vv-card-title {
         margin: 0;
 
-        color: inherit;
+        color: var(--cream);
 
         font-size: 27px;
-        line-height: 1.2;
+        line-height: $line-heading;
         font-weight: 750;
 
         letter-spacing: -0.025em;
     }
 
+
     /* =====================================================
-       DIVIDER
+        DIVIDER
     ===================================================== */
 
     .vv-card-divider {
@@ -240,26 +237,31 @@
 
         margin: 18px 0;
 
-        background: rgba(10, 45, 60, 0.15);
+        background: color-mix(
+            in srgb,
+            var(--cream) 22%,
+            transparent
+        );
     }
 
+
     /* =====================================================
-       QUESTION
+        QUESTION
     ===================================================== */
 
     .vv-question {
         margin: 0;
 
-        color: inherit;
+        color: var(--cream);
 
         font-size: 15.5px;
-        line-height: 1.6;
+        line-height: $line-body;
 
-        opacity: 0.82;
+        opacity: 0.88;
     }
 
-    /* =====================================================
-       OPTIONS
+/* =====================================================
+        OPTIONS
     ===================================================== */
 
     .vv-options {
@@ -271,33 +273,58 @@
         margin-top: 22px;
     }
 
-    .vv-option {
+  .vv-option {
         display: flex;
-        align-items: flex-start;
 
-        gap: 12px;
+        align-items: center;
 
-        padding: 12px 14px;
+        gap: $space-small;
 
-        border: 1px solid rgba(10, 45, 60, 0.12);
-        border-radius: 11px;
+        padding: $space-small 14px;
 
-        background: rgba(255, 255, 255, 0.46);
+        border: 1px solid
+            color-mix(
+                in srgb,
+                var(--cream) 12%,
+                transparent
+            );
+
+        border-radius: $radius-pill;
+
+        /* Replaced linear-gradient with a solid semi-transparent background */
+        background: color-mix(
+            in srgb,
+            var(--cream) 10%,
+            transparent
+        );
+
+        color: var(--cream);
 
         transition:
-            background 0.2s ease,
-            transform 0.2s ease;
+            transform $transition,
+            filter $transition,
+            background-color $transition;
 
         &:hover {
-            background: rgba(255, 255, 255, 0.72);
             transform: translateY(-1px);
+
+            /* Enhanced hover state for solid background */
+            background: color-mix(
+                in srgb,
+                var(--cream) 18%,
+                transparent
+            );
         }
     }
+    /* =====================================================
+        OPTION KEY
+    ===================================================== */
 
     .vv-option-key {
         flex: 0 0 28px;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -306,29 +333,36 @@
 
         border-radius: 50%;
 
-        background: rgba(255, 255, 255, 0.65);
-
-        color: #0c3850;
+        background: var(--cream);
+        color: var(--navy);
 
         font-size: 13px;
         font-weight: 800;
     }
 
+
+   /* =====================================================
+        OPTION TEXT
+    ===================================================== */
+
     .vv-option-text {
         padding-top: 3px;
 
-        color: inherit;
+        /* Updated from $color-orange to white */
+        color: #ffffff;
 
-        font-size: 14px;
+        font-size: $text-sm;
         line-height: 1.45;
+        font-weight: 800;
     }
 
     /* =====================================================
-       CARD ACTION
+        CARD ACTION
     ===================================================== */
 
     .vv-card-action {
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -336,36 +370,43 @@
 
         padding-top: 18px;
 
-        color: inherit;
+        color: var(--cream);
 
         font-size: 13px;
         font-weight: 650;
 
-        opacity: 0.68;
+        opacity: 0.72;
     }
+
 
     .vv-flip-icon {
-        font-size: 18px;
+        font-size: $text-lg;
     }
 
+
     /* =====================================================
-       BACK
+        BACK
     ===================================================== */
 
     .vv-card-back {
         transform: rotateY(180deg);
-
+        justify-content: center;
         padding: 30px;
 
-        background: #ffffff;
+        background: var(--cream);
+        color: var(--navy);
 
-        color: #0b2233;
-
-        border: 1px solid #dce7ec;
+        border: 1px solid
+            color-mix(
+                in srgb,
+                var(--navy) 10%,
+                transparent
+            );
     }
 
+
     /* =====================================================
-       BACK CONTENT
+        BACK CONTENT
     ===================================================== */
 
     .vv-back-content {
@@ -373,45 +414,49 @@
 
         display: flex;
         flex-direction: column;
+
         align-items: center;
 
         text-align: center;
     }
 
+
     /* =====================================================
-       RECOMMENDED LABEL
+        RECOMMENDED LABEL
     ===================================================== */
 
     .vv-answer-label {
         margin-top: 4px;
 
-        color: #527182;
+        color: var(--gray);
 
-        font-size: 12px;
+        font-size: $text-xs;
         font-weight: 800;
 
         letter-spacing: 0.13em;
     }
 
+
     /* =====================================================
-       LARGE RECOMMENDED OPTION
+        LARGE RECOMMENDED OPTION
     ===================================================== */
 
     .vv-recommended-option {
         margin-top: 6px;
 
-        color: #092a43;
+        color: var(--navy);
 
-        font-size: 92px;
+        font-size: 70px;
         line-height: 0.95;
 
-        font-weight: 800;
+        font-weight: 600;
 
         letter-spacing: -0.05em;
     }
 
+
     /* =====================================================
-       RECOMMENDED OPTION TEXT
+        RECOMMENDED OPTION TEXT
     ===================================================== */
 
     .vv-recommended-text {
@@ -419,7 +464,7 @@
 
         margin-top: 8px;
 
-        color: #102f42;
+        color: var(--navy);
 
         font-size: 19px;
         line-height: 1.35;
@@ -427,62 +472,86 @@
         font-weight: 700;
     }
 
+
     /* =====================================================
-       ANSWER TITLE
+        ANSWER TITLE
     ===================================================== */
 
     .vv-answer-title {
         margin-top: 8px;
 
-        color: #174b63;
+        color: var(--blue);
 
-        font-size: 14px;
+        font-size: $text-h3;
         font-weight: 700;
 
         letter-spacing: 0.02em;
     }
 
+
     /* =====================================================
-       INFO BOXES
+        INFO BOXES
     ===================================================== */
 
     .vv-info-box,
     .vv-takeaway-box {
         width: 100%;
+
         box-sizing: border-box;
 
         text-align: left;
 
-        border-radius: 12px;
+        border-radius: var(--radius);
 
         padding: 15px 17px;
     }
 
+
     .vv-info-box {
         margin-top: 20px;
 
-        background: #f1f7fa;
+        background: color-mix(
+            in srgb,
+            var(--blue) 8%,
+            var(--cream)
+        );
 
-        border: 1px solid #d8e8ee;
+        border: 1px solid
+            color-mix(
+                in srgb,
+                var(--blue) 18%,
+                transparent
+            );
     }
+
 
     .vv-takeaway-box {
         margin-top: 10px;
 
-        background: #e8f2f6;
+        background: color-mix(
+            in srgb,
+            var(--blue) 12%,
+            var(--cream)
+        );
 
-        border: 1px solid #cfe2e9;
+        border: 1px solid
+            color-mix(
+                in srgb,
+                var(--blue) 20%,
+                transparent
+            );
     }
 
+
     /* =====================================================
-       INFO HEADINGS
+        INFO HEADINGS
     ===================================================== */
 
     .vv-info-heading,
     .vv-takeaway-heading {
         margin-bottom: 6px;
 
-        color: #174b63;
+        color: var(--blue);
 
         font-size: 11px;
         font-weight: 800;
@@ -490,13 +559,14 @@
         letter-spacing: 0.1em;
     }
 
+
     /* =====================================================
-       INFO CONTENT
+        INFO CONTENT
     ===================================================== */
 
     .vv-info-content,
     .vv-takeaway-content {
-        color: #415866;
+        color: var(--gray);
 
         font-size: 13px;
         line-height: 1.5;
@@ -506,35 +576,46 @@
         }
     }
 
+
     /* =====================================================
-       BACK ACTION
+        BACK ACTION
     ===================================================== */
 
     .vv-back-action {
-        color: #486674;
+        color: var(--gray);
 
-        border-top: 1px solid #e1eaee;
+        border-top: 1px solid
+            color-mix(
+                in srgb,
+                var(--navy) 10%,
+                transparent
+            );
 
         padding-top: 14px;
     }
 
+
     /* =====================================================
-       KEYBOARD ACCESSIBILITY
+        KEYBOARD ACCESSIBILITY
     ===================================================== */
 
     .vv-flip-toggle:focus-visible + .vv-flip-card {
-        outline: 3px solid #65b7d3;
+        outline: 3px solid var(--blue);
         outline-offset: 4px;
     }
 
+
     /* =====================================================
-       TABLET
+        TABLET
     ===================================================== */
 
     @media (max-width: 1050px) {
 
         .vv-assessment-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
         }
 
         .vv-assessment-card {
@@ -542,13 +623,14 @@
         }
     }
 
+
     /* =====================================================
-       MOBILE
+        MOBILE
     ===================================================== */
 
     @media (max-width: 700px) {
 
-        padding: 60px 18px;
+        padding: $space-section-sm 18px;
 
         .vv-assessment-header {
 
@@ -557,30 +639,37 @@
             }
         }
 
+
         .vv-assessment-grid {
             grid-template-columns: 1fr;
-            gap: 24px;
+
+            gap: $space-element;
         }
+
 
         .vv-assessment-card {
             height: 520px;
         }
+
 
         .vv-card-front,
         .vv-card-back {
             padding: 26px;
         }
 
+
         .vv-card-title {
             font-size: 24px;
         }
+
 
         .vv-recommended-option {
             font-size: 78px;
         }
 
+
         .vv-recommended-text {
-            font-size: 18px;
+            font-size: $text-lg;
         }
     }
 }

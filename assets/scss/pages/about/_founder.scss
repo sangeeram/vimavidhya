@@ -1,1012 +1,1258 @@
-/* =========================================================
-   VIMA VIDYA — FOUNDER SECTION
-========================================================= */
+// =========================================================
+// VIMAVIDYA — FOUNDER & CHAIRMAN
+// REDESIGNED EDITORIAL PROFILE
+// =========================================================
+
+@use "../../abstracts/variables" as *;
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-$founder-navy: #0b132b;
-
-$founder-teal: #0f766e;
-
-$founder-amber: #d97706;
-
-$founder-cream: #fdfbf7;
-
-$founder-white: #ffffff;
-
-$founder-gray: #64748b;
-
-$founder-muted: #475569;
-
-$founder-border: rgba(11, 19, 43, 0.12);
-
-$founder-white-border: rgba(255, 255, 255, 0.12);
-
-$founder-radius: 20px;
-
-$founder-container: 1400px;
-
-$founder-transition: 0.35s ease;
-
-$founder-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.20);
-
-
-/* =========================================================
-   MAIN FOUNDER SECTION
-========================================================= */
+// =========================================================
+// SECTION
+// =========================================================
 
 .founder-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: $color-cream;
+  padding: $space-section 0;
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+
+// =========================================================
+// CONTAINER
+// =========================================================
+
+.founder-container {
+  width: min(#{$container-wide}, calc(100% - #{$space-section-sm}));
+  margin: 0 auto;
+}
+
+
+// =========================================================
+// HERO
+// =========================================================
+
+.founder-hero {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(400px, 0.95fr)
+    minmax(220px, 0.48fr);
+
+  gap: $space-element;
+
+  align-items: end;
+}
+
+
+// =========================================================
+// INTRO CONTENT
+// =========================================================
+
+.founder-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 15px;
+}
+
+
+// EYEBROW
+// =========================================================
+
+.founder-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  font-size: $text-sm;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: $color-orange;
+
+  &::after {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 2px;
+
+    margin-top: 12px;
+
+    background: $color-orange;
+  }
+}
+
+
+// NAME
+// =========================================================
+
+.founder-name {
+  margin: 0;
+
+  font-family:
+    "Arial Narrow",
+    "Roboto Condensed",
+    $font-primary;
+
+  font-size: clamp(42px, 4vw, 72px);
+
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  color: $color-navy;
+}
+
+
+// ROLE
+// =========================================================
+
+.founder-role {
+  margin: 20px 0 0;
+
+  font-size: $text-sm;
+
+  line-height: $line-heading;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: $color-text-muted;
+}
+
+
+// =========================================================
+// ACCENT
+// =========================================================
+
+.founder-accent {
+  width: 65px;
+  height: 4px;
+
+  margin: 22px 0 25px;
+
+  background: $color-orange;
+}
+
+
+// =========================================================
+// BIO
+// =========================================================
+
+.founder-bio {
+  max-width: 650px;
+
+  p {
+    margin: 0 0 14px;
+
+    font-size: $text-base;
+
+    line-height: 1.7;
+
+    color: $color-text-body;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// =========================================================
+// PORTRAIT
+// =========================================================
+
+.founder-portrait {
+  position: relative;
+
+  min-height: 570px;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  background: $color-orange;
+
+  border-radius: 280px 0 0 0;
+}
+
+
+// ORANGE SHAPE
+// =========================================================
+
+.founder-portrait-bg {
+  position: absolute;
+
+  inset: 0;
+
+  background: $color-orange;
+
+  z-index: 0;
+}
+
+
+// IMAGE
+// =========================================================
+
+.founder-portrait img {
+  position: absolute;
+
+  bottom: 0;
+  left: 50%;
+
+  width: 100%;
+  height: 100%;
+
+  transform: translateX(-50%);
+
+  object-fit: cover;
+
+  object-position: center top;
+
+  z-index: 2;
+}
+
+
+// =========================================================
+// DECORATIVE DOTS
+// =========================================================
+
+.founder-dots {
+  position: absolute;
+
+  top: 10px;
+  right: -25px;
+
+  width: 95px;
+  height: 95px;
+
+  background-image: radial-gradient(
+    $color-orange 1.5px,
+    transparent 1.5px
+  );
+
+  background-size: 15px 15px;
+
+  z-index: 3;
+
+  opacity: 0.8;
+}
+
+
+// =========================================================
+// QUOTE
+// =========================================================
+
+.founder-quote {
+  position: relative;
+
+  align-self: start;
+
+  margin-top: 40px;
+
+  min-height: 265px;
+
+  padding: 55px 28px 35px;
+
+  background: $color-white;
+
+  border: 1px solid $color-border;
+
+  border-radius: 18px;
+
+  box-shadow: 0 15px 45px rgba(3, 34, 78, 0.06);
+
+  overflow: hidden;
+
+  p {
     position: relative;
 
+    margin: 0;
+
+    font-size: $text-lg;
+
+    line-height: 1.55;
+
+    font-weight: 600;
+
+    color: $color-navy;
+
+    z-index: 2;
+  }
+}
+
+
+// QUOTE MARKS
+// =========================================================
+
+.quote-open,
+.quote-close {
+  position: absolute;
+
+  font-family: Georgia, serif;
+
+  font-size: 75px;
+
+  line-height: 0.7;
+
+  font-weight: 700;
+
+  color: $color-orange;
+}
+
+.quote-open {
+  top: 25px;
+  left: 25px;
+}
+
+.quote-close {
+  right: 22px;
+  bottom: 10px;
+}
+
+
+// QUOTE LINE
+// =========================================================
+
+.quote-line {
+  display: block;
+
+  width: 100%;
+
+  height: 1px;
+
+  margin-top: 35px;
+
+  background: $color-orange;
+}
+
+
+// =========================================================
+// SNAPSHOT
+// =========================================================
+
+.founder-snapshot {
+  display: grid;
+
+  grid-template-columns:
+    1.05fr
+    0.9fr
+    0.85fr
+    1.15fr
+    0.9fr;
+
+  grid-template-rows:
+    145px
+    145px;
+
+  gap: 8px;
+
+  margin-top: $space-element;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: $color-white;
+
+  border: 1px solid $color-border;
+}
+
+
+// =========================================================
+// EXPERIENCE
+// =========================================================
+
+.snapshot-experience {
+  grid-column: 1;
+  grid-row: 1 / 3;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 35px;
+
+  background: $color-navy;
+
+  color: $color-white;
+
+  overflow: hidden;
+}
+
+
+.snapshot-number {
+  display: block;
+
+  font-family:
+    "Arial Narrow",
+    "Roboto Condensed",
+    $font-primary;
+
+  font-size: clamp(72px, 5vw, 100px);
+
+  line-height: 0.8;
+
+  font-weight: 300;
+
+  color: $color-white;
+
+  span {
+    color: $color-orange;
+  }
+}
+
+
+.snapshot-label {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-top: 25px;
+
+  gap: 2px;
+
+  strong {
+    font-size: $text-sm;
+
+    letter-spacing: 1.5px;
+
+    color: $color-orange;
+  }
+
+  span {
+    font-size: $text-xs;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.5px;
+
+    color: rgba($color-white, 0.75);
+  }
+}
+
+
+.snapshot-icon {
+  position: absolute;
+
+  right: 25px;
+  bottom: 20px;
+
+  width: 55px;
+  height: 55px;
+
+  svg {
     width: 100%;
+    height: 100%;
 
-    padding: 105px 0;
+    fill: none;
 
-    background: $founder-navy;
+    stroke: $color-orange;
 
-    color: $founder-white;
+    stroke-width: 2;
 
-    overflow: hidden;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
 
 
-    *,
-    *::before,
-    *::after {
+// =========================================================
+// SNAPSHOT CARDS
+// =========================================================
 
-        box-sizing: border-box;
+.snapshot-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 25px;
+
+  overflow: hidden;
+}
+
+
+.snapshot-card-icon {
+  flex: 0 0 55px;
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: $color-orange;
+
+  border-radius: 12px;
+
+  svg {
+    width: 32px;
+    height: 32px;
+
+    fill: none;
+
+    stroke: $color-white;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+
+// =========================================================
+// KNOWLEDGE
+// =========================================================
+
+.snapshot-knowledge {
+  grid-column: 2;
+  grid-row: 1;
+
+  background: $color-white;
+  border-right: 1px solid $color-border;
+
+  .snapshot-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    font-size: $text-xs;
+
+    line-height: 1.35;
+
+    color: $color-text-muted;
+  }
+
+  strong {
+    font-size: $text-base;
+
+    line-height: 1.25;
+
+    color: $color-navy;
+  }
+}
+
+
+// =========================================================
+// CITY IMAGE
+// =========================================================
+
+.snapshot-city {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+
+// =========================================================
+// EXPERTISE
+// =========================================================
+
+.snapshot-expertise {
+  grid-column: 3 / 5;
+  grid-row: 1;
+
+  background: $color-navy;
+
+  color: $color-white;
+
+  .snapshot-card-icon {
+    background: transparent;
+
+    border: 1px solid rgba($color-white, 0.3);
+  }
+
+  span {
+    display: block;
+
+    font-size: $text-xs;
+
+    line-height: 1.4;
+
+    color: rgba($color-white, 0.7);
+  }
+
+  strong {
+    display: block;
+
+    font-size: $text-base;
+
+    line-height: 1.3;
+
+    color: $color-white;
+  }
+}
+
+
+// =========================================================
+// BUSINESS IMAGE
+// =========================================================
+
+.snapshot-business {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+
+// =========================================================
+// POLICY
+// =========================================================
+
+.snapshot-policy {
+  grid-column: 4;
+  grid-row: 2;
+
+  background: rgba($color-orange, 0.12);
+
+  .snapshot-card-icon {
+    background: $color-orange;
+  }
+
+  span {
+    display: block;
+
+    font-size: $text-xs;
+
+    line-height: 1.4;
+
+    color: $color-text-muted;
+  }
+
+  strong {
+    display: block;
+
+    font-size: $text-base;
+
+    line-height: 1.3;
+
+    color: $color-navy;
+  }
+}
+
+
+// =========================================================
+// DOCUMENT
+// =========================================================
+
+.snapshot-document {
+  grid-column: 5;
+  grid-row: 1 / 3;
+}
+
+
+// =========================================================
+// ALL SNAPSHOT IMAGES
+// =========================================================
+
+.snapshot-image {
+  position: relative;
+
+  overflow: hidden;
+
+  background: $color-border;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter: grayscale(100%);
+
+    transition:
+      filter $transition,
+      transform $transition;
+  }
+
+  &:hover {
+    img {
+      filter: grayscale(0%);
+      transform: scale(1.04);
+    }
+  }
+}
+
+
+// =========================================================
+// CREDENTIALS
+// =========================================================
+
+.founder-credentials {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-top: 25px;
+
+  border: 1px solid $color-border;
+
+  background: $color-white;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+
+// =========================================================
+// CREDENTIAL ITEM
+// =========================================================
+
+.credential-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  min-height: 105px;
+
+  padding: 18px 22px;
+
+  border-right: 1px solid $color-border;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: $text-h3;
+
+    line-height: 1;
+
+    color: $color-navy;
+  }
+
+  span {
+    display: block;
+
+    font-size: $text-xs;
+
+    line-height: 1.45;
+
+    text-transform: uppercase;
+
+    color: $color-text-muted;
+  }
+}
+
+
+// =========================================================
+// CREDENTIAL ICON
+// =========================================================
+
+.credential-icon {
+  flex: 0 0 46px;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba($color-orange, 0.08);
+
+  svg {
+    width: 27px;
+    height: 27px;
+
+    fill: none;
+
+    stroke: $color-orange;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+
+// =========================================================
+// CLOSING STATEMENT
+// =========================================================
+
+.founder-closing {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 25px;
+
+  padding: 22px 30px;
+
+  background: $color-navy;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  p {
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 0;
+
+    font-size: $text-base;
+
+    line-height: 1.55;
+
+    color: $color-white;
+
+    z-index: 2;
+  }
+}
+
+
+// =========================================================
+// CLOSING ICON
+// =========================================================
+
+.closing-icon {
+  flex: 0 0 48px;
+
+  width: 48px;
+  height: 48px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    fill: none;
+
+    stroke: $color-orange;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+
+// =========================================================
+// CLOSING DOTS
+// =========================================================
+
+.closing-dots {
+  position: absolute;
+
+  right: 25px;
+  bottom: 15px;
+
+  width: 90px;
+  height: 60px;
+
+  background-image: radial-gradient(
+    $color-orange 1.5px,
+    transparent 1.5px
+  );
+
+  background-size: 13px 13px;
+
+  opacity: 0.65;
+}
+
+
+// =========================================================
+// RESPONSIVE — 1200px
+// =========================================================
+
+@media (max-width: 1200px) {
+
+  .founder-container {
+    width: min(
+      #{$container-width},
+      calc(100% - #{$space-element})
+    );
+  }
+
+
+  .founder-hero {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(360px, 0.85fr);
+
+    gap: 30px;
+  }
+
+
+  .founder-quote {
+    grid-column: 2;
+
+    grid-row: 1;
+
+    align-self: end;
+
+    margin-top: 0;
+  }
+
+
+  .founder-portrait {
+    grid-column: 2;
+
+    grid-row: 1;
+
+    margin-top: 360px;
+
+    min-height: 470px;
+  }
+
+
+  .founder-content {
+    grid-column: 1;
+
+    grid-row: 1;
+  }
+
+
+  .founder-snapshot {
+    grid-template-columns:
+      1fr
+      1fr
+      1fr;
+
+    grid-template-rows:
+      145px
+      145px
+      145px;
+  }
+
+
+  .snapshot-experience {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+
+  .snapshot-knowledge {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+
+  .snapshot-city {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+
+  .snapshot-expertise {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+
+  .snapshot-business {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+
+  .snapshot-policy {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+
+  .snapshot-document {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+
+  .founder-credentials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  .credential-item {
+    border-bottom: 1px solid $color-border;
+
+    &:nth-child(2) {
+      border-right: 0;
     }
 
-
-    /* =====================================================
-       DECORATIVE BACKGROUND CIRCLE
-    ===================================================== */
-
-    &::before {
-
-        content: "";
-
-        position: absolute;
-
-        width: 450px;
-
-        height: 450px;
-
-        top: -250px;
-
-        right: -180px;
-
-        border:
-            1px solid
-            rgba(255, 255, 255, 0.07);
-
-        border-radius: 50%;
-
-        pointer-events: none;
+    &:nth-child(3),
+    &:nth-child(4) {
+      border-bottom: 0;
     }
+  }
+}
 
 
-    &::after {
+// =========================================================
+// RESPONSIVE — 900px
+// =========================================================
 
-        content: "";
+@media (max-width: 900px) {
 
-        position: absolute;
+  .founder-section {
+    padding: $space-section-sm 0;
+  }
 
-        width: 300px;
 
-        height: 300px;
+  .founder-hero {
+    display: grid;
 
-        bottom: -180px;
+    grid-template-columns: 1fr;
 
-        left: -150px;
+    gap: 25px;
+  }
 
-        border:
-            1px solid
-            rgba(255, 255, 255, 0.05);
 
-        border-radius: 50%;
+  .founder-content {
+    grid-column: 1;
+    grid-row: 1;
+  }
 
-        pointer-events: none;
+
+  .founder-portrait {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin-top: 0;
+
+    min-height: 500px;
+
+    border-radius: 200px 0 0 0;
+  }
+
+
+  .founder-quote {
+    grid-column: 1;
+    grid-row: 3;
+
+    margin-top: 0;
+
+    min-height: auto;
+  }
+
+
+  .founder-snapshot {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-rows:
+      160px
+      160px
+      160px
+      160px;
+  }
+
+
+  .snapshot-experience {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+
+  .snapshot-knowledge {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+
+  .snapshot-city {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+
+  .snapshot-expertise {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+
+  .snapshot-business {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+
+  .snapshot-policy {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+
+  .snapshot-document {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+
+  .founder-credentials {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+// =========================================================
+// RESPONSIVE — 600px
+// =========================================================
+
+@media (max-width: 600px) {
+
+  .founder-container {
+    width: calc(100% - 30px);
+  }
+
+
+  .founder-name {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .founder-role {
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .founder-bio {
+
+    p {
+      font-size: 14px;
+
+      line-height: 1.7;
     }
+  }
 
 
-    /* =====================================================
-       MAIN CONTAINER
-    ===================================================== */
+  .founder-portrait {
+    min-height: 390px;
 
-    .founder-container {
+    border-radius: 130px 0 0 0;
+  }
 
-        position: relative;
 
-        z-index: 2;
+  .founder-quote {
+    padding: 45px 22px 28px;
 
-        width:
-            min(
-                calc(100% - 60px),
-                $founder-container
-            );
-
-        margin: 0 auto;
-
-        display: grid;
-
-        /*
-         * LEFT = LARGER
-         * RIGHT = SMALLER
-         */
-
-        grid-template-columns:
-            1.45fr
-            0.65fr;
-
-        gap: 45px;
-
-        align-items: start;
+    p {
+      font-size: 17px;
     }
+  }
 
 
-    /* =====================================================
-       LEFT COLUMN
-    ===================================================== */
+  // SNAPSHOT
 
-    .founder-left {
+  .founder-snapshot {
+    display: flex;
 
-        width: 100%;
+    flex-direction: column;
 
-        display: flex;
+    gap: 0;
+  }
 
-        flex-direction: column;
 
-        align-items: stretch;
+  .snapshot-experience {
+    min-height: 230px;
 
-        gap: 30px;
+    padding: 30px;
+  }
+
+
+  .snapshot-card {
+    min-height: 150px;
+
+    border-bottom: 1px solid $color-border;
+  }
+
+
+  .snapshot-image {
+    min-height: 180px;
+  }
+
+
+  // CREDENTIALS
+
+  .founder-credentials {
+    display: flex;
+
+    flex-direction: column;
+  }
+
+
+  .credential-item {
+    min-height: 90px;
+
+    border-right: 0;
+
+    border-bottom: 1px solid $color-border !important;
+
+    &:last-child {
+      border-bottom: 0 !important;
     }
+  }
 
 
-    /* =====================================================
-       FOUNDER CARD
-    ===================================================== */
+  // CLOSING
 
-    .founder-card {
+  .founder-closing {
+    align-items: flex-start;
 
-        position: relative;
+    padding: 22px;
 
-        width: 100%;
+    gap: 15px;
 
-        min-height: 650px;
-
-        padding:
-            65px
-            70px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        background: $founder-cream;
-
-        color: $founder-navy;
-
-        border-radius:
-            $founder-radius;
-
-        box-shadow:
-            $founder-shadow;
-
-        overflow: hidden;
-
-        z-index: 2;
+    p {
+      font-size: 14px;
     }
+  }
 
 
-    /* =====================================================
-       CARD DECORATIVE CIRCLE
-    ===================================================== */
+  .closing-icon {
+    flex: 0 0 40px;
 
-    .founder-card::before {
-
-        content: "";
-
-        position: absolute;
-
-        width: 280px;
-
-        height: 280px;
-
-        top: -160px;
-
-        right: -130px;
-
-        border:
-            1px solid
-            rgba(11, 19, 43, 0.08);
-
-        border-radius: 50%;
-
-        pointer-events: none;
-    }
-
-
-    .founder-card::after {
-
-        content: "";
-
-        position: absolute;
-
-        width: 190px;
-
-        height: 190px;
-
-        bottom: -110px;
-
-        left: -95px;
-
-        border:
-            1px solid
-            rgba(15, 118, 110, 0.10);
-
-        border-radius: 50%;
-
-        pointer-events: none;
-    }
-
-
-    /* =====================================================
-       EYEBROW
-    ===================================================== */
-
-    .founder-eyebrow {
-
-        position: relative;
-
-        z-index: 2;
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-        width: fit-content;
-
-        margin-bottom: 20px;
-
-        font-size: 12px;
-
-        font-weight: 700;
-
-        letter-spacing: 3px;
-
-        text-transform: uppercase;
-
-        color: $founder-amber;
-    }
-
-
-    /* =====================================================
-       EYEBROW LINE
-    ===================================================== */
-
-    .founder-eyebrow::before {
-
-        content: "";
-
-        width: 28px;
-
-        height: 2px;
-
-        background: $founder-amber;
-    }
-
-
-    /* =====================================================
-       FOUNDER NAME
-    ===================================================== */
-
-    .founder-heading {
-
-        position: relative;
-
-        z-index: 2;
-
-        max-width: 800px;
-
-        margin: 0;
-
-        font-family:
-            Georgia,
-            "Times New Roman",
-            serif;
-
-        font-size:
-            clamp(
-                48px,
-                4.5vw,
-                68px
-            );
-
-        font-weight: 500;
-
-        line-height: 1;
-
-        letter-spacing: -1.5px;
-
-        color: $founder-navy;
-
-
-        span {
-
-            color: $founder-teal;
-
-            font-style: italic;
-        }
-    }
-
-
-    /* =====================================================
-       FOUNDER POSITION
-    ===================================================== */
-
-    .founder-position {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin:
-            15px
-            0
-            0;
-
-        font-size: 13px;
-
-        font-weight: 700;
-
-        line-height: 1.5;
-
-        letter-spacing: 1.5px;
-
-        text-transform: uppercase;
-
-        color: $founder-teal;
-    }
-
-
-    /* =====================================================
-       FOUNDER MAIN TEXT
-    ===================================================== */
-
-    .founder-intro {
-
-        position: relative;
-
-        z-index: 2;
-
-        max-width: 820px;
-
-        margin:
-            21px
-            0
-            0;
-
-        font-size: 15px;
-
-        line-height: 1.75;
-
-        color: $founder-muted;
-    }
-
-
-    /* =====================================================
-       FOUNDER STATEMENT
-       
-       NO BOX
-       NO BORDER
-       NO BACKGROUND
-    ===================================================== */
-
-    .founder-statement {
-
-        width: 100%;
-
-        padding:
-            0
-            20px;
-
-        background: transparent;
-
-        border: none;
-
-        box-shadow: none;
-
-        color:
-            rgba(255, 255, 255, 0.85);
-
-        font-family:
-            Georgia,
-            "Times New Roman",
-            serif;
-
-        font-size:
-            clamp(
-                21px,
-                2.1vw,
-                30px
-            );
-
-        font-style: italic;
-
-        font-weight: 400;
-
-        line-height: 1.45;
-
-        letter-spacing: -0.3px;
-
-        text-align: left;
-    }
-
-
-    /* =====================================================
-       RIGHT COLUMN
-    ===================================================== */
-
-    .founder-right {
-
-        width: 100%;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 22px;
-    }
-
-
-    /* =====================================================
-       FOUNDER IMAGE
-    ===================================================== */
-
-    .founder-photo {
-
-        position: relative;
-
-        width: 100%;
-
-        /*
-         * SMALLER IMAGE
-         */
-
-        height: 360px;
-
-        overflow: hidden;
-
-        border-radius:
-            $founder-radius;
-
-        background: #17213a;
-
-        box-shadow:
-            0 20px 45px
-            rgba(0, 0, 0, 0.20);
-
-
-        img {
-
-            width: 100%;
-
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            object-position: center top;
-
-            transition:
-                transform
-                $founder-transition;
-        }
-
-
-        &:hover {
-
-            img {
-
-                transform:
-                    scale(1.04);
-            }
-        }
-    }
-
-
-    /* =====================================================
-       IMAGE OVERLAY
-    ===================================================== */
-
-    .founder-photo::after {
-
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(11, 19, 43, 0) 50%,
-                rgba(11, 19, 43, 0.22) 100%
-            );
-
-        pointer-events: none;
-    }
-
-
-    /* =====================================================
-       BIOGRAPHY
-    ===================================================== */
-
-    .founder-bio {
-
-        width: 100%;
-
-        padding:
-            28px
-            30px;
-
-        background:
-            rgba(255, 255, 255, 0.05);
-
-        border:
-            1px solid
-            $founder-white-border;
-
-        border-radius:
-            $founder-radius;
-    }
-
-
-    /* =====================================================
-       BIOGRAPHY TEXT
-    ===================================================== */
-
-    .founder-bio p {
-
-        margin:
-            0
-            0
-            18px;
-
-        font-size: 13px;
-
-        line-height: 1.75;
-
-        color:
-            rgba(255, 255, 255, 0.72);
-    }
-
-
-    .founder-bio p:last-child {
-
-        margin-bottom: 0;
-    }
-
-
-    /* =====================================================
-       TABLET — 1100PX
-    ===================================================== */
-
-    @media (max-width: 1100px) {
-
-        padding: 85px 0;
-
-
-        .founder-container {
-
-            width:
-                calc(100% - 50px);
-
-            grid-template-columns:
-                1.25fr
-                0.75fr;
-
-            gap: 35px;
-        }
-
-
-        /* ================================================
-           CARD
-        ================================================ */
-
-        .founder-card {
-
-            min-height: 620px;
-
-            padding:
-                55px
-                45px;
-        }
-
-
-        /* ================================================
-           HEADING
-        ================================================ */
-
-        .founder-heading {
-
-            font-size:
-                clamp(
-                    42px,
-                    5vw,
-                    58px
-                );
-        }
-
-
-        /* ================================================
-           TEXT
-        ================================================ */
-
-        .founder-intro {
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-
-        /* ================================================
-           IMAGE
-        ================================================ */
-
-        .founder-photo {
-
-            height: 330px;
-        }
-
-
-        /* ================================================
-           STATEMENT
-        ================================================ */
-
-        .founder-statement {
-
-            font-size: 24px;
-
-            line-height: 1.45;
-        }
-
-
-        /* ================================================
-           BIO
-        ================================================ */
-
-        .founder-bio {
-
-            padding:
-                25px
-                22px;
-        }
-
-
-        .founder-bio p {
-
-            font-size: 13px;
-
-            line-height: 1.7;
-        }
-    }
-
-
-    /* =====================================================
-       TABLET / MOBILE — 800PX
-    ===================================================== */
-
-    @media (max-width: 800px) {
-
-        padding: 70px 0;
-
-
-        /* ================================================
-           CONTAINER
-        ================================================ */
-
-        .founder-container {
-
-            width:
-                calc(100% - 40px);
-
-            grid-template-columns: 1fr;
-
-            gap: 30px;
-        }
-
-
-        /* ================================================
-           LEFT COLUMN
-        ================================================ */
-
-        .founder-left {
-
-            gap: 25px;
-        }
-
-
-        /* ================================================
-           CARD
-        ================================================ */
-
-        .founder-card {
-
-            min-height: auto;
-
-            padding:
-                55px
-                40px;
-        }
-
-
-        /* ================================================
-           STATEMENT
-        ================================================ */
-
-        .founder-statement {
-
-            padding:
-                0
-                10px;
-
-            font-size: 23px;
-
-            line-height: 1.45;
-        }
-
-
-        /* ================================================
-           RIGHT
-        ================================================ */
-
-        .founder-right {
-
-            gap: 20px;
-        }
-
-
-        /* ================================================
-           IMAGE
-        ================================================ */
-
-        .founder-photo {
-
-            height: 380px;
-        }
-
-
-        /* ================================================
-           BIO
-        ================================================ */
-
-        .founder-bio {
-
-            padding: 30px;
-        }
-
-
-        .founder-bio p {
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-    }
-
-
-    /* =====================================================
-       MOBILE — 600PX
-    ===================================================== */
-
-    @media (max-width: 600px) {
-
-        padding: 60px 0;
-
-
-        /* ================================================
-           CONTAINER
-        ================================================ */
-
-        .founder-container {
-
-            width:
-                calc(100% - 30px);
-
-            gap: 25px;
-        }
-
-
-        /* ================================================
-           LEFT
-        ================================================ */
-
-        .founder-left {
-
-            gap: 22px;
-        }
-
-
-        /* ================================================
-           CARD
-        ================================================ */
-
-        .founder-card {
-
-            padding:
-                45px
-                28px;
-
-            border-radius:
-                16px;
-        }
-
-
-        /* ================================================
-           EYEBROW
-        ================================================ */
-
-        .founder-eyebrow {
-
-            margin-bottom: 18px;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-        }
-
-
-        /* ================================================
-           NAME
-        ================================================ */
-
-        .founder-heading {
-
-            font-size: 40px;
-
-            line-height: 1.02;
-
-            letter-spacing: -1px;
-        }
-
-
-        /* ================================================
-           POSITION
-        ================================================ */
-
-        .founder-position {
-
-            margin-top: 12px;
-
-            font-size: 10px;
-
-            line-height: 1.5;
-
-            letter-spacing: 1px;
-        }
-
-
-        /* ================================================
-           MAIN TEXT
-        ================================================ */
-
-        .founder-intro {
-
-            margin-top: 18px;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-
-        /* ================================================
-           STATEMENT
-        ================================================ */
-
-        .founder-statement {
-
-            padding:
-                0
-                5px;
-
-            font-size: 20px;
-
-            line-height: 1.5;
-
-            text-align: left;
-        }
-
-
-        /* ================================================
-           IMAGE
-        ================================================ */
-
-        .founder-photo {
-
-            height: 320px;
-
-            border-radius:
-                16px;
-        }
-
-
-        /* ================================================
-           BIO
-        ================================================ */
-
-        .founder-bio {
-
-            padding:
-                26px
-                22px;
-
-            border-radius:
-                16px;
-        }
-
-
-        .founder-bio p {
-
-            margin-bottom: 18px;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-    }
-
-
-    /* =====================================================
-       SMALL MOBILE — 400PX
-    ===================================================== */
-
-    @media (max-width: 400px) {
-
-        .founder-card {
-
-            padding:
-                40px
-                24px;
-        }
-
-
-        .founder-heading {
-
-            font-size: 35px;
-        }
-
-
-        .founder-statement {
-
-            font-size: 19px;
-        }
-
-
-        .founder-photo {
-
-            height: 280px;
-        }
-
-
-        .founder-bio {
-
-            padding:
-                24px
-                20px;
-        }
-    }
-
+    width: 40px;
+    height: 40px;
+  }
 }

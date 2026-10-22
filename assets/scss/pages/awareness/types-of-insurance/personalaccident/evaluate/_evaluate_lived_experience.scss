@@ -1,0 +1,395 @@
+// ======================================================
+// VIMA VIDYA
+// PERSONAL ACCIDENT CASE STUDIES / LIVED EXPERIENCES
+// ======================================================
+
+@use "../../../../../abstracts/variables" as *;
+// Then access variables like: abstracts.$color-navy
+
+.vv-case-studies {
+    width: 100%;
+    padding: 60px 0;
+    background: $color-navy;
+
+    &__container {
+        width: $container-width;
+        margin: 0 auto;
+    }
+
+    &__header {
+        max-width: 1000px;
+        margin: 0 40px 30px 40px;
+        text-align: left;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        margin-bottom: $space-small;
+        color: $color-blue;
+        font-family: $font-primary;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        line-height: 1.4;
+        text-transform: uppercase;
+    }
+
+    &__header h2 {
+        margin: 0;
+        color: $color-white;
+        font-family: $font-primary;
+        font-size: 44px;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: $line-tight;
+    }
+
+    &__header p {
+        max-width: 1000px;
+        margin: 10px 0 0 0;
+        color: $color-text-light;
+        font-family: $font-primary;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.vv-case-study {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    gap: 36px;
+    padding: 24px;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    box-shadow: 0 4px 16px rgba(8, 39, 75, 0.045);
+    overflow: hidden;
+    transition: box-shadow $transition, transform $transition;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(8, 39, 75, 0.08);
+    }
+
+    &--reverse {
+        grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+
+        .vv-case-study__visual {
+            order: 2;
+        }
+
+        .vv-case-study__content {
+            order: 1;
+        }
+    }
+
+    &__footer {
+        margin: 16px 0 0 0;
+
+        .vv-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 20px;
+            background: $color-blue;
+            color: $color-white;
+            font-family: $font-primary;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: $radius-sm;
+            text-decoration: none;
+            transition: background $transition, transform $transition;
+
+            &:hover {
+                background: $color-navy;
+                transform: translateY(-1px);
+            }
+
+            .dashicons {
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+.vv-case-study__visual {
+    min-width: 0;
+}
+
+.vv-case-study__image-wrap {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: $color-light-gray;
+    border-radius: $radius-sm;
+}
+
+.vv-case-study__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transition-slow;
+}
+
+.vv-case-study:hover .vv-case-study__image {
+    transform: scale(1.025);
+}
+
+.vv-case-study__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.vv-case-study__stat {
+    min-width: 0;
+    min-height: 102px;
+    padding: 10px 8px;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    box-shadow: 0 2px 8px rgba(8, 39, 75, 0.035);
+}
+
+.vv-case-study__stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 5px;
+    color: $color-orange;
+    font-size: 14px;
+
+    .dashicons {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+    }
+}
+
+.vv-case-study__stat-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.vv-case-study__stat-label {
+    margin-bottom: 3px;
+    color: $color-blue;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.vv-case-study__stat-value {
+    color: $color-navy;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.vv-case-study__stat-sub {
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+.vv-case-study__takeaway {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 12px;
+    background: $color-light-blue;
+    border: 1px solid rgba($color-blue, 0.3);
+    border-radius: $radius-sm;
+}
+
+.vv-case-study__takeaway-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 23px;
+    height: 23px;
+    margin-top: 1px;
+    background: $color-orange;
+    border-radius: $radius-pill;
+    color: $color-white;
+
+    .dashicons {
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+    }
+}
+
+.vv-case-study__takeaway-content {
+    min-width: 0;
+}
+
+.vv-case-study__takeaway-label {
+    display: block;
+    margin-bottom: 3px;
+    color: $color-blue-dark;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+}
+
+.vv-case-study__takeaway p {
+    margin: 0;
+    color: $color-text-body;
+    font-size: $text-sm;
+    line-height: 1.5;
+}
+
+.vv-case-study__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 0;
+    padding: 4px 4px 10px;
+}
+
+.vv-case-study__meta {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    color: $color-blue;
+    font-size: $text-xs;
+    font-weight: 600;
+}
+
+.vv-case-study__separator {
+    color: $color-border;
+}
+
+.vv-case-study__location {
+    color: $color-blue;
+}
+
+.vv-case-study__title {
+    max-width: 620px;
+    margin: 0 0 20px 0;
+    color: $color-navy;
+    font-family: $font-primary;
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+}
+
+.vv-case-study__story {
+    max-width: $text-width-wide;
+
+    p {
+        margin: 0 0 16px 0;
+        color: $color-text-body;
+        font-family: $font-primary;
+        font-size: $text-base;
+        line-height: 1.7;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: $color-navy;
+            font-weight: 700;
+        }
+    }
+}
+
+// ======================================================
+// RESPONSIVE BREAKPOINTS
+// ======================================================
+
+@media (max-width: 1000px) {
+    .vv-case-study {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 24px;
+
+        &--reverse {
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        }
+    }
+
+    .vv-case-study__image-wrap {
+        height: 220px;
+    }
+
+    .vv-case-study__stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .vv-case-study__stat {
+        min-height: 84px;
+    }
+
+    .vv-case-study__title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 760px) {
+    .vv-case-studies {
+        padding: $space-section 0;
+    }
+
+    .vv-case-studies__container {
+        width: min(calc(100% - 28px), $container-width);
+    }
+
+    .vv-case-studies__header {
+        margin: 0 0 24px 0;
+
+        h2 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: $text-base;
+        }
+    }
+
+    .vv-case-study,
+    .vv-case-study--reverse {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 16px;
+    }
+
+    .vv-case-study__visual,
+    .vv-case-study__content {
+        order: initial;
+    }
+
+    .vv-case-study__image-wrap {
+        height: 200px;
+    }
+
+    .vv-case-study__stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

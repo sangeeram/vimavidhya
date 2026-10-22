@@ -2,7 +2,7 @@
 
 <main class="about-page">
 
-    <?php get_template_part('template-parts/about/hero'); ?>
+    <?php get_template_part('template-parts/about/abouthero'); ?>
 
     <?php get_template_part('template-parts/about/mission'); ?>
 

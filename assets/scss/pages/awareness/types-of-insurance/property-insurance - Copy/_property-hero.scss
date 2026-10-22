@@ -1,0 +1,1229 @@
+@use "../../../../abstracts/variables" as *;
+
+// =========================================================
+// VIMA VIDYA
+// PROPERTY INSURANCE HERO
+// HERO SLIDER — GLOBAL DESIGN SYSTEM
+// =========================================================
+
+
+// =========================================================
+// HERO CONTAINER
+// =========================================================
+
+.propertyinsurancehero {
+
+  font-family: $font-primary;
+
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 650px;
+
+  overflow: hidden;
+
+  background: $color-cream;
+
+
+  // =======================================================
+  // SLIDER CONTAINER
+  // =======================================================
+
+  .propertyinsurancehero-slider-container {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+  }
+
+
+  // =======================================================
+  // SLIDE
+  // =======================================================
+
+  .propertyinsurancehero-slide {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.8s ease,
+      visibility 0.8s ease;
+
+
+    &.active {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+
+
+      .propertyinsurancehero-slide-image-wrapper {
+
+        transform: scale(1);
+      }
+
+
+      .propertyinsurancehero-slide-content {
+
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    }
+  }
+
+
+  // =======================================================
+  // BACKGROUND IMAGE
+  // =======================================================
+
+  .propertyinsurancehero-slide-image-wrapper {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-position: center center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    transform: scale(1.08);
+
+    transition:
+      transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+
+  // =======================================================
+  // IMAGE OVERLAY
+  // =======================================================
+
+  .propertyinsurancehero-slide-image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.94) 18%,
+      rgba($color-cream, 0.82) 34%,
+      rgba($color-cream, 0.58) 49%,
+      rgba($color-cream, 0.28) 67%,
+      rgba($color-cream, 0.04) 100%
+    );
+
+    pointer-events: none;
+  }
+
+
+  // =======================================================
+  // HERO INNER
+  // =======================================================
+
+  .propertyinsurancehero-inner {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(88%, $container-wide);
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-top: 50px;
+  }
+
+
+  // =======================================================
+  // CONTENT
+  // =======================================================
+
+  .propertyinsurancehero-slide-content {
+
+    width: 56%;
+
+    max-width: 700px;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+      opacity 0.8s ease 0.15s,
+      transform 0.8s ease 0.15s;
+  }
+
+
+  // =======================================================
+  // EYEBROW
+  // =======================================================
+
+  .propertyinsurancehero-slide-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: $space-small;
+
+    padding: 7px 14px;
+
+    border-radius: $radius-pill;
+
+    background: rgba($color-white, 0.88);
+
+    border: 1px solid $color-border;
+
+    color: $color-navy;
+
+    font-size: $text-xs;
+
+    font-weight: 600;
+
+    letter-spacing: 0.05em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    box-shadow:
+      0 4px 12px rgba($color-navy, 0.05);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+
+  // =======================================================
+  // EYEBROW DOT
+  // =======================================================
+
+  .propertyinsurancehero-eyebrow-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background: $color-blue;
+
+    box-shadow:
+      0 0 0 4px rgba($color-blue, 0.15);
+  }
+
+
+  // =======================================================
+  // TAG
+  // =======================================================
+
+  .propertyinsurancehero-slide-tag {
+
+    display: block;
+
+    margin-bottom: $space-small;
+
+    color: $color-text-muted;
+
+    font-size: $text-xs;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    line-height: $line-heading;
+
+    text-transform: uppercase;
+  }
+
+
+  // =======================================================
+  // TITLE
+  // =======================================================
+
+  .propertyinsurancehero-slide-title {
+
+    margin: 0 0 $space-element;
+
+    max-width: 720px;
+
+    color: $color-text;
+
+    font-size: 44px;
+
+    font-weight: 700;
+
+    line-height: $line-tight;
+
+    letter-spacing: -0.035em;
+
+
+    span {
+
+      display: block;
+
+      color: $color-blue;
+
+      font-weight: 600;
+    }
+  }
+
+
+  // =======================================================
+  // DESCRIPTION
+  // =======================================================
+
+  .propertyinsurancehero-slide-desc {
+
+    max-width: $text-width-medium;
+
+    margin: 0 0 $space-element;
+
+    color: $color-text-body;
+
+    font-size: $text-sm;
+
+    font-weight: 400;
+
+    line-height: $line-body;
+  }
+
+
+  // =======================================================
+  // ACTIONS
+  // =======================================================
+
+  .propertyinsurancehero-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $space-small;
+
+    flex-wrap: wrap;
+  }
+
+
+  // =======================================================
+  // BUTTON
+  // =======================================================
+
+  .propertyinsurancehero-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 46px;
+
+    padding: 0 22px;
+
+    border-radius: $radius-pill;
+
+    text-decoration: none;
+
+    font-size: $text-sm;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    transition: $transition;
+
+
+    span {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 23px;
+
+      height: 23px;
+
+      border-radius: 50%;
+
+      background: $color-white;
+
+      color: $color-blue;
+
+      font-size: $text-sm;
+
+      transition:
+        transform $transition;
+    }
+
+
+    &:hover span {
+
+      transform: translate(2px, -2px);
+    }
+  }
+
+
+  // =======================================================
+  // PRIMARY BUTTON
+  // =======================================================
+
+  .propertyinsurancehero-btn--primary {
+
+    background: $color-orange;
+
+    color: $color-white;
+
+    border: 1px solid $color-orange;
+
+    box-shadow:
+      0 10px 25px rgba($color-orange, 0.25);
+
+
+    &:hover {
+
+      background: $color-orange;
+
+      border-color: $color-orange;
+
+      color: $color-white;
+
+      transform: translateY(-2px);
+    }
+  }
+
+
+  // =======================================================
+  // SECONDARY BUTTON
+  // =======================================================
+
+  .propertyinsurancehero-btn--secondary {
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+
+    color: $color-navy;
+
+    box-shadow:
+      0 4px 12px rgba($color-navy, 0.04);
+
+
+    span {
+
+      background: rgba($color-blue, 0.1);
+    }
+
+
+    &:hover {
+
+      background: $color-cream;
+
+      border-color: $color-navy;
+
+      color: $color-navy;
+
+      transform: translateY(-2px);
+    }
+  }
+
+
+  // =======================================================
+  // SLIDE NUMBER
+  // =======================================================
+
+  .propertyinsurancehero-slide-number {
+
+    position: absolute;
+
+    z-index: 15;
+
+    top: 105px;
+
+    right: 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: $color-text-muted;
+
+    font-size: $text-xs;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+
+    span:first-child {
+
+      color: $color-blue;
+
+      font-size: $text-sm;
+    }
+
+
+    i {
+
+      display: block;
+
+      width: 30px;
+
+      height: 1px;
+
+      background: $color-border;
+    }
+  }
+
+
+  // =======================================================
+  // ARROWS
+  // =======================================================
+
+  .propertyinsurancehero-arrow {
+
+    position: absolute;
+
+    z-index: 20;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid $color-border;
+
+    border-radius: 50%;
+
+    background: rgba($color-white, 0.88);
+
+    color: $color-navy;
+
+    font-size: $text-lg;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    box-shadow:
+      0 4px 15px rgba($color-navy, 0.08);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: $transition;
+
+
+    &:hover {
+
+      background: $color-blue;
+
+      border-color: $color-blue;
+
+      color: $color-white;
+    }
+
+
+    &:focus-visible {
+
+      opacity: 1;
+
+      outline: 2px solid $color-blue;
+
+      outline-offset: 3px;
+    }
+  }
+
+
+  &:hover .propertyinsurancehero-arrow {
+
+    opacity: 1;
+  }
+
+
+  .propertyinsurancehero-arrow--prev {
+
+    left: 25px;
+  }
+
+
+  .propertyinsurancehero-arrow--next {
+
+    right: 25px;
+  }
+
+
+  // =======================================================
+  // SLIDER DOTS
+  // =======================================================
+
+  .propertyinsurancehero-slider-dots {
+
+    position: absolute;
+
+    z-index: 20;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+  }
+
+
+  .propertyinsurancehero-slider-dot {
+
+    display: block;
+
+    width: 8px;
+
+    height: 8px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba($color-navy, 0.2);
+
+    cursor: pointer;
+
+    transition: $transition;
+
+
+    &.active {
+
+      width: 25px;
+
+      border-radius: $radius-pill;
+
+      background: $color-blue;
+    }
+
+
+    &:hover {
+
+      background: $color-navy;
+    }
+  }
+}
+
+
+
+// =========================================================
+// HERO CATEGORY NAVIGATION
+// =========================================================
+
+.propertyinsurancehero {
+
+  .propertyinsurancehero-categories {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $space-element;
+
+    margin-top: $space-element;
+
+
+    .propertyinsurancehero-category {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: $color-orange;
+
+      text-decoration: none;
+
+      font-size: $text-xs;
+
+      font-weight: 700;
+
+      letter-spacing: 0.1em;
+
+      transition: $transition;
+
+
+      .propertyinsurancehero-category-icon {
+
+        width: 30px;
+
+        height: 30px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border: 1px solid $color-border;
+
+        border-radius: 50%;
+
+        background: $color-white;
+
+        color: $color-orange;
+
+        box-shadow:
+          0 2px 6px rgba($color-navy, 0.04);
+
+        transition: $transition;
+
+
+        svg {
+
+          width: 14px;
+
+          height: 14px;
+
+          stroke: currentColor;
+
+          stroke-width: 1.5;
+
+          stroke-linecap: round;
+
+          stroke-linejoin: round;
+        }
+      }
+
+
+      &:hover {
+
+        color: $color-navy;
+
+        transform: translateY(-2px);
+
+
+        .propertyinsurancehero-category-icon {
+
+          background: rgba($color-blue, 0.1);
+
+          border-color: $color-orange;
+
+          color: $color-blue;
+
+          transform: scale(1.05);
+        }
+      }
+
+
+      &.active {
+
+        color: $color-navy;
+
+
+        .propertyinsurancehero-category-icon {
+
+          background: $color-orange;
+
+          border-color: $color-orange;
+
+          color: $color-white;
+
+          box-shadow:
+            0 4px 12px rgba($color-orange, 0.25);
+        }
+      }
+    }
+  }
+}
+
+
+
+// =========================================================
+// LARGE DESKTOP
+// =========================================================
+
+@media (min-width: 1400px) {
+
+  .propertyinsurancehero {
+
+    .propertyinsurancehero-inner {
+
+      width: min(88%, $container-wide);
+    }
+
+
+    .propertyinsurancehero-slide-content {
+
+      max-width: 700px;
+    }
+
+
+    .propertyinsurancehero-slide-title {
+
+      font-size: 60px;
+    }
+  }
+}
+
+
+
+// =========================================================
+// TABLET / SMALL DESKTOP
+// =========================================================
+
+@media (max-width: 1200px) {
+
+  .propertyinsurancehero {
+
+    .propertyinsurancehero-inner {
+
+      width: 86%;
+    }
+
+
+    .propertyinsurancehero-slide-content {
+
+      width: 62%;
+    }
+
+
+    .propertyinsurancehero-slide-title {
+
+      font-size: 52px;
+    }
+
+
+    .propertyinsurancehero-slide-desc {
+
+      font-size: $text-sm;
+    }
+  }
+}
+
+
+
+// =========================================================
+// TABLET
+// =========================================================
+
+@media (max-width: 900px) {
+
+  .propertyinsurancehero {
+
+    min-height: 650px;
+
+
+    .propertyinsurancehero-inner {
+
+      width: 88%;
+    }
+
+
+    .propertyinsurancehero-slide-content {
+
+      width: 70%;
+    }
+
+
+    .propertyinsurancehero-slide-title {
+
+      font-size: 44px;
+    }
+
+
+    .propertyinsurancehero-slide-desc {
+
+      font-size: $text-xs;
+    }
+
+
+    .propertyinsurancehero-slide-number {
+
+      right: 5%;
+    }
+  }
+}
+
+
+
+// =========================================================
+// MOBILE
+// =========================================================
+
+@media (max-width: 700px) {
+
+  .propertyinsurancehero {
+
+    height: 100svh;
+
+    min-height: 650px;
+
+
+    // -----------------------------------------------------
+    // MOBILE IMAGE
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-image-wrapper {
+
+      background-position: center center;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE OVERLAY
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-image-overlay {
+
+      background: linear-gradient(
+        180deg,
+        rgba($color-cream, 0.05) 0%,
+        rgba($color-cream, 0.28) 28%,
+        rgba($color-cream, 0.76) 60%,
+        rgba($color-cream, 0.97) 100%
+      );
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE INNER
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-inner {
+
+      width: calc(100% - 36px);
+
+      padding-top: 100px;
+
+      padding-bottom: 65px;
+
+      align-items: flex-end;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE CONTENT
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-content {
+
+      width: 100%;
+
+      max-width: none;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE EYEBROW
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-eyebrow {
+
+      margin-bottom: $space-small;
+
+      padding: 7px 11px;
+
+      font-size: 10px;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE TAG
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-tag {
+
+      margin-bottom: 8px;
+
+      font-size: 9px;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE TITLE
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-title {
+
+      margin-bottom: $space-small;
+
+      font-size: 38px;
+
+      line-height: $line-tight;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE DESCRIPTION
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-desc {
+
+      max-width: 100%;
+
+      margin-bottom: $space-element;
+
+      font-size: $text-xs;
+
+      line-height: 1.55;
+
+      display: -webkit-box;
+
+      -webkit-line-clamp: 5;
+
+      -webkit-box-orient: vertical;
+
+      overflow: hidden;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE BUTTON
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-actions {
+
+      gap: 8px;
+    }
+
+
+    .propertyinsurancehero-btn {
+
+      min-height: 42px;
+
+      padding: 0 17px;
+
+      font-size: $text-xs;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE CATEGORIES
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-categories {
+
+      gap: 12px;
+
+      margin-top: 18px;
+
+
+      .propertyinsurancehero-category {
+
+        font-size: 9px;
+
+        gap: 5px;
+
+
+        .propertyinsurancehero-category-icon {
+
+          width: 27px;
+
+          height: 27px;
+
+
+          svg {
+
+            width: 12px;
+
+            height: 12px;
+          }
+        }
+      }
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE NUMBER
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slide-number {
+
+      top: 85px;
+
+      right: 20px;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE ARROWS
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-arrow {
+
+      width: 36px;
+
+      height: 36px;
+
+      opacity: 1;
+
+      font-size: $text-sm;
+    }
+
+
+    .propertyinsurancehero-arrow--prev {
+
+      left: 12px;
+    }
+
+
+    .propertyinsurancehero-arrow--next {
+
+      right: 12px;
+    }
+
+
+    // -----------------------------------------------------
+    // MOBILE DOTS
+    // -----------------------------------------------------
+
+    .propertyinsurancehero-slider-dots {
+
+      bottom: 25px;
+    }
+  }
+}
+
+
+
+// =========================================================
+// SMALL MOBILE
+// =========================================================
+
+@media (max-width: 420px) {
+
+  .propertyinsurancehero {
+
+    min-height: 620px;
+
+
+    .propertyinsurancehero-inner {
+
+      width: calc(100% - 28px);
+    }
+
+
+    .propertyinsurancehero-slide-title {
+
+      font-size: 32px;
+    }
+
+
+    .propertyinsurancehero-slide-desc {
+
+      font-size: $text-xs;
+
+      -webkit-line-clamp: 4;
+    }
+
+
+    .propertyinsurancehero-btn {
+
+      min-height: 40px;
+
+      padding: 0 15px;
+
+      font-size: 10px;
+    }
+
+
+    .propertyinsurancehero-categories {
+
+      .propertyinsurancehero-category {
+
+        letter-spacing: 0.05em;
+
+
+        &:nth-child(2) {
+
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+// =========================================================
+// REDUCED MOTION
+// =========================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+  .propertyinsurancehero {
+
+    .propertyinsurancehero-slide,
+    .propertyinsurancehero-slide-content,
+    .propertyinsurancehero-slide-image-wrapper,
+    .propertyinsurancehero-btn,
+    .propertyinsurancehero-arrow,
+    .propertyinsurancehero-slider-dot,
+    .propertyinsurancehero-category,
+    .propertyinsurancehero-category-icon {
+
+      transition: none !important;
+    }
+  }
+}

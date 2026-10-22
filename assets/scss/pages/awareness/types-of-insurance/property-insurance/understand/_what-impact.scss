@@ -1,0 +1,506 @@
+// ========================================
+// 5-COLUMNS IN A ROW CARDS LAYOUT
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+// ========================================
+// SECTION & CONTAINER
+// ========================================
+
+.policy-impact-section {
+    padding: $space-section 0;
+    background-color: $color-light-gray;
+    font-family: $font-primary;
+    color: $color-text-body;
+}
+
+.policy-impact-compact-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.policy-impact-header {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+
+    .policy-impact-badge {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: $color-light-blue;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        border-radius: $radius-pill;
+        margin-bottom: $space-small;
+        text-transform: uppercase;
+    }
+
+    .policy-impact-title {
+        font-size: $text-h2;
+        line-height: $line-heading;
+        font-weight: 600;
+        color: $color-navy;
+        margin-bottom: $space-small;
+
+        @media (max-width: 768px) {
+            font-size: $text-h1-hero;
+        }
+    }
+
+    .policy-impact-subtitle {
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-muted;
+    }
+}
+
+// ========================================
+// 5 CARDS IN A ROW GRID
+// ========================================
+
+.policy-impact-5col-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: $space-section-sm;
+
+    @media (max-width: 1100px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.impact-card-5col {
+    display: flex;
+    height: 100%;
+
+    .card-inner {
+        background: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: rgba($color-blue, 0.4);
+            box-shadow: 0 10px 20px -5px rgba($color-navy, 0.08);
+
+            .card-image-wrap img {
+                transform: scale(1.06);
+            }
+        }
+    }
+
+    .card-image-wrap {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform $transition-slow;
+        }
+    }
+
+    .card-content {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .card-header-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 6px;
+
+        .card-icon {
+            font-size: $text-sm;
+        }
+
+        .card-title {
+            font-size:  $text-lg;
+            font-weight: 700;
+            color: $color-navy;
+            margin: 0;
+            line-height: 1.2;
+        }
+    }
+
+    .card-heading {
+        font-size: $text-base;
+        font-weight: 600;
+        color: $color-blue-dark;
+        margin-bottom: 6px;
+        line-height: $line-tight;
+    }
+
+    .card-desc {
+        font-size: 14px;
+        line-height: 1.4;
+        color: $color-text-body;
+        margin-bottom: 10px;
+        flex-grow: 1;
+    }
+
+    .card-action-btn {
+        background: transparent;
+        border: none;
+        padding: 0;
+        color: $color-blue;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $color-navy;
+        }
+    }
+}
+
+// ============================================================
+// CASE STORY
+// ============================================================
+
+.case-story-card {
+    background-color: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: $space-content;
+
+    // ==========================================================
+    // MAIN GRID
+    // ==========================================================
+
+    .case-story-main-grid {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: $space-content;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// ============================================================
+// CASE STORY LEFT
+// ============================================================
+
+.case-story-left-col {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    // ==========================================================
+    // HERO IMAGE
+    // ==========================================================
+
+    .case-story-image-wrap {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        border-radius: $radius-md;
+        overflow: hidden;
+        z-index: 1;
+
+        .case-story-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    // ==========================================================
+    // METRICS
+    // ==========================================================
+
+    .metrics-overlay-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        padding: 0 $space-small;
+        margin-top: -60px;
+        position: relative;
+        z-index: 2;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -30px;
+        }
+
+        // ========================================================
+        // METRIC ITEM
+        // ========================================================
+
+        .metric-item {
+            min-width: 0;
+            background-color: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-md;
+            padding: 12px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+            // ------------------------------------------------------
+            // ICON
+            // ------------------------------------------------------
+
+            .metric-icon-bg {
+                width: 28px;
+                height: 28px;
+                border-radius: $radius-pill;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: $text-sm;
+                margin-bottom: $space-small;
+                flex-shrink: 0;
+
+                &.icon-blue {
+                    background: #e0f2fe;
+                }
+
+                &.icon-red {
+                    background: #fee2e2;
+                }
+
+                &.icon-shield {
+                    background: #dbeafe;
+                }
+
+                &.icon-building {
+                    background: #e0e7ff;
+                }
+
+                &.icon-orange {
+                    background: #fef3c7;
+                }
+            }
+
+            // ------------------------------------------------------
+            // LABEL
+            // ------------------------------------------------------
+
+            .metric-label {
+                font-size: 14px;
+                color: $color-blue;
+                font-weight: 600;
+                line-height: $line-tight;
+                margin-bottom: 4px;
+
+                small {
+                    display: block;
+                    font-size: 9px;
+                }
+            }
+
+            // ------------------------------------------------------
+            // VALUE
+            // ------------------------------------------------------
+
+            .metric-value {
+                font-size: 13.5px;
+                font-weight: 700;
+                color: $color-navy;
+                line-height: 1.2;
+
+                &.highlight-red {
+                    color: #dc2626;
+                }
+
+                &.highlight-blue {
+                    color: black;
+                }
+
+                &.highlight-navy {
+                    color: $color-navy;
+                }
+            }
+
+            // ------------------------------------------------------
+            // SUB TEXT
+            // ------------------------------------------------------
+
+            .metric-sub {
+                font-size: 10px;
+                color: $color-text-muted;
+                line-height: $line-tight;
+                margin-top: 4px;
+            }
+        }
+    }
+
+    // ==========================================================
+    // FOOTER ROW
+    // ==========================================================
+
+    .case-story-footer-row {
+        margin-top: $space-element;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: $space-small;
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
+
+        // ========================================================
+        // TAKEAWAY
+        // ========================================================
+
+        .takeaway-banner {
+            background-color: #e0f2fe;
+            border-radius: $radius-md;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: $space-small;
+
+            .takeaway-badge-icon {
+                width: 32px;
+                height: 32px;
+                background-color: #f59e0b;
+                border-radius: $radius-pill;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                color: $color-white;
+                flex-shrink: 0;
+            }
+
+            .takeaway-text-group {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-navy;
+
+                .takeaway-title {
+                    font-weight: 700;
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        // ========================================================
+        // PREMIUM STAT
+        // ========================================================
+
+        .premium-stat-card {
+            background-color: #eff6ff;
+            border-radius: $radius-md;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: $space-small;
+
+            .premium-icon {
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+
+            .premium-details {
+                display: flex;
+                flex-direction: column;
+
+                .premium-label {
+                    font-size: 16px;
+                    color: $color-text-muted;
+                }
+
+                .premium-value {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $color-blue;
+                }
+            }
+        }
+    }
+}
+
+// ============================================================
+// CASE STORY RIGHT
+// ============================================================
+
+.case-story-right-col {
+    display: flex;
+    flex-direction: column;
+
+    // ==========================================================
+    // BADGE
+    // ==========================================================
+
+    .case-story-badge {
+        font-size: $text-xs;
+        font-weight: 700;
+        color: $color-blue;
+        letter-spacing: 0.08em;
+        margin-bottom: $space-small;
+    }
+
+    // ==========================================================
+    // TITLE
+    // ==========================================================
+
+    .case-story-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: $color-navy;
+        line-height: $line-heading;
+        margin-top: 0;
+        margin-bottom: $space-small;
+    }
+
+    // ==========================================================
+    // ACCENT
+    // ==========================================================
+
+    .accent-line {
+        width: 40px;
+        height: 3px;
+        background-color: $color-blue;
+        border-radius: 2px;
+        margin-bottom: $space-element;
+    }
+
+    // ==========================================================
+    // TEXT
+    // ==========================================================
+
+    .case-story-text {
+        p {
+            font-size: $text-base;
+            color: $color-text-body;
+            line-height: $line-body;
+            margin-top: 0;
+            margin-bottom: $space-small;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,425 @@
+@use "../../../../../abstracts/variables" as *;
+
+// =========================================================
+// PERSONAL ACCIDENT ACT HERO SECTION STYLES
+// =========================================================
+
+.paacthero {
+  font-family: $font-primary;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+  background: $color-cream;
+
+  .paacthero-slider-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paacthero-slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      .paacthero-slide-image-wrapper {
+        transform: scale(1);
+      }
+
+      .paacthero-slide-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // =======================================================
+  // BACKGROUND IMAGE & OVERLAY
+  // =======================================================
+
+  .paacthero-slide-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 0;
+  }
+
+  .paacthero-slide-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.95) 48%,
+      rgba($color-cream, 0.70) 72%,
+      rgba($color-cream, 0.15) 100%
+    );
+    pointer-events: none;
+  }
+
+  // =======================================================
+  // HERO INNER CONTENT
+  // =======================================================
+
+  .paacthero-inner {
+    position: relative;
+    z-index: 5;
+    width: min(92%, $container-wide);
+    margin: 0 auto;
+    padding: 120px 0 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .paacthero-slide-content {
+    width: 85%;
+    max-width: 1020px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+  }
+
+  // =======================================================
+  // TOP STAGE NAVIGATION
+  // =======================================================
+
+  .paacthero-top-nav-large {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    background: rgba($color-white, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 14px;
+    border-radius: $radius-pill;
+    border: 1px solid rgba($color-border, 0.85);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+    .paacthero-nav-large-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: rgba($color-navy, 0.75);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: $radius-pill;
+      transition: all $transition;
+
+      .paacthero-step-label {
+        font-size: 11px;
+        font-weight: 800;
+        opacity: 0.6;
+        letter-spacing: 0.03em;
+      }
+
+      &:hover {
+        color: $color-blue;
+        background: rgba($color-blue, 0.08);
+      }
+
+      &.active {
+        color: $color-white;
+        background: $color-navy;
+        box-shadow: 0 3px 10px rgba(10, 25, 47, 0.25);
+
+        .paacthero-step-label {
+          color: $color-blue;
+          opacity: 1;
+        }
+      }
+    }
+
+    .paacthero-nav-sep {
+      color: rgba($color-navy, 0.25);
+      font-size: 14px;
+      user-select: none;
+    }
+  }
+
+  // =======================================================
+  // HEADER ROW
+  // =======================================================
+
+  .paacthero-header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: $space-small;
+    flex-wrap: wrap;
+
+    .paacthero-slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0;
+      padding: 6px 14px;
+      border-radius: $radius-pill;
+      background: $color-white;
+      border: 1px solid $color-border;
+      color: $color-navy;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+      .paacthero-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $color-blue;
+      }
+    }
+
+    .paacthero-page-indicator {
+      display: inline-flex;
+      align-items: center;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      color: $color-navy;
+      margin: 0;
+
+      .paacthero-indicator-step {
+        color: $color-blue;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .paacthero-slide-title {
+    color: $color-navy;
+    font-size: clamp(34px, 3.8vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+
+    span {
+      display: inline-block;
+      color: $color-blue;
+    }
+  }
+
+  .paacthero-slide-desc {
+    margin: 0 0 ($space-element * 1.5);
+    color: rgba($color-navy, 0.9);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 1000px;
+  }
+
+  // =======================================================
+  // NAVY SUB-NAV BAR WRAPPER
+  // =======================================================
+
+  .paacthero-navy-wrapper {
+    position: relative;
+    z-index: 10;
+    width: min(92%, $container-wide);
+    margin: 24px auto 20px auto;
+  }
+
+  .paacthero-navy-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-navy;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .paacthero-navy-bar {
+    position: relative;
+    background: #0a192f;
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 10px 30px rgba(10, 25, 47, 0.2);
+    max-width: 1300px;
+
+    .paacthero-navy-button-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+      }
+    }
+
+    .paacthero-navy-btn {
+      flex: 1 1 0;
+      min-width: 145px;
+      text-align: center;
+      white-space: nowrap;
+      padding: 13px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #cbd5e1;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      transition: all $transition;
+
+      &:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.14);
+        border-color: $color-blue;
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        color: #ffffff;
+        background: $color-blue;
+        border-color: $color-blue;
+        box-shadow: 0 4px 16px rgba(0, 86, 214, 0.45);
+      }
+    }
+  }
+}
+
+// =========================================================
+// RESPONSIVE DESIGN
+// =========================================================
+
+@media (max-width: 1200px) {
+  .paacthero {
+    .paacthero-slide-content {
+      width: 90%;
+      max-width: 900px;
+    }
+
+    .paacthero-navy-bar {
+      .paacthero-navy-btn {
+        min-width: 135px;
+        padding: 12px 14px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .paacthero {
+    .paacthero-inner {
+      padding: 110px 0 50px;
+    }
+
+    .paacthero-slide-content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .paacthero-navy-bar {
+      .paacthero-navy-button-group {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .paacthero-navy-btn {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .paacthero {
+    .paacthero-inner {
+      padding: 100px 0 40px;
+    }
+
+    .paacthero-top-nav-large {
+      width: 100%;
+      gap: 6px;
+      padding: 4px 8px;
+
+      .paacthero-nav-large-item {
+        font-size: 13px;
+        padding: 5px 10px;
+      }
+    }
+
+    .paacthero-header-row {
+      gap: 10px;
+
+      .paacthero-page-indicator {
+        font-size: 24px;
+      }
+
+      .paacthero-slide-eyebrow {
+        font-size: 14px;
+        padding: 5px 12px;
+      }
+    }
+
+    .paacthero-slide-title {
+      font-size: 28px;
+    }
+
+    .paacthero-slide-desc {
+      font-size: 15px;
+    }
+
+    .paacthero-navy-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .paacthero-navy-bar {
+      padding: 10px;
+
+      .paacthero-navy-button-group {
+        gap: 8px;
+      }
+
+      .paacthero-navy-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        min-width: 120px;
+      }
+    }
+
+    .paacthero-slide-image-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba($color-cream, 0.88) 0%,
+        rgba($color-cream, 0.98) 100%
+      );
+    }
+  }
+}

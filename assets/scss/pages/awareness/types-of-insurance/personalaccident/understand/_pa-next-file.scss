@@ -1,0 +1,482 @@
+@use "../../../../../abstracts/variables" as *;
+
+
+// ========================================
+// VIMA VIDYA
+// PROPERTY INSURANCE
+// UNDERSTAND → EVALUATE TRANSITION
+// ========================================
+
+.property-transition {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        $space-section-lg
+        $space-content
+        48px;
+
+    // ========================================
+    // BACKGROUND
+    // ========================================
+
+    background: $color-light-blue;
+
+    color: $color-navy;
+
+    overflow: hidden;
+
+
+    // ========================================
+    // SUBTLE BACKGROUND SHAPE
+    // ========================================
+
+    &::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        top: -260px;
+        right: -180px;
+
+        border-radius: 50%;
+
+        background: rgba($color-blue, 0.05);
+
+        pointer-events: none;
+    }
+
+
+    &::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 360px;
+        height: 360px;
+
+        bottom: -260px;
+        left: -180px;
+
+        border-radius: 50%;
+
+        background: rgba($color-blue, 0.035);
+
+        pointer-events: none;
+    }
+
+
+    // ========================================
+    // CONTAINER
+    // ========================================
+
+    &__container {
+
+        position: relative;
+
+        z-index: 1;
+
+        width: 100%;
+
+        max-width: $container-width;
+
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    // ========================================
+    // EYEBROW
+    // ========================================
+
+    &__eyebrow {
+
+        margin-bottom: $space-element;
+
+        font-family: $font-primary;
+
+        font-size: $text-xs;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        letter-spacing: 0.22em;
+
+        text-transform: uppercase;
+
+        color: $color-blue;
+    }
+
+
+    // ========================================
+    // CONTENT
+    // ========================================
+
+    &__content {
+
+        width: 100%;
+
+        max-width: 760px;
+
+        margin: 0 auto;
+    }
+
+
+    // ========================================
+    // TITLE
+    // ========================================
+
+    &__title {
+
+        margin: 0;
+
+        font-family: $font-primary;
+
+        font-size: clamp(38px, 5vw, $text-h2);
+
+        font-weight: 700;
+
+        line-height: $line-tight;
+
+        letter-spacing: -0.025em;
+
+        color: $color-navy;
+    }
+
+
+    // ========================================
+    // DESCRIPTION
+    // ========================================
+
+    &__description {
+
+        max-width: $text-width-wide;
+
+        margin: 24px auto 0;
+
+        font-family: $font-primary;
+
+        font-size: $text-lg;
+
+        font-weight: 400;
+
+        line-height: $line-body;
+
+        color: $color-text-body;
+    }
+
+
+    // ========================================
+    // LARGE HEADING LINK (CONTINUE TO EVALUATE)
+    // ========================================
+
+    &__heading-large {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        margin: 32px 0 0;
+
+        font-family: $font-primary;
+
+        font-size: clamp(28px, 4vw, 36px);
+
+        font-weight: 700;
+
+        line-height: $line-tight;
+
+        color: $color-blue;
+
+        text-decoration: none;
+
+        transition: color $transition-fast, transform $transition-fast;
+
+        span {
+
+            display: inline-block;
+
+            transition: transform $transition-fast;
+        }
+
+        &:hover {
+
+            color: $color-blue-dark;
+
+            transform: translateY(-2px);
+
+            span {
+
+                transform: translateX(4px);
+            }
+        }
+
+        &:focus-visible {
+
+            outline: 2px solid $color-blue;
+
+            outline-offset: 4px;
+
+            border-radius: $radius-sm;
+        }
+    }
+
+
+    // ========================================
+    // JOURNEY
+    // ========================================
+
+    &__journey {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 100%;
+
+        margin-top: 56px;
+
+        flex-wrap: wrap;
+
+        gap: 8px 0;
+    }
+
+
+    // ========================================
+    // STEP
+    // ========================================
+
+    &__step {
+
+        min-height: 32px;
+
+        padding: 7px 13px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        border: 1px solid $color-border;
+
+        border-radius: $radius-pill;
+
+        background: $color-white;
+
+        color: $color-text-muted;
+
+        font-family: $font-primary;
+
+        font-size: $text-xs;
+
+        line-height: 1;
+
+        text-decoration: none;
+
+        white-space: nowrap;
+
+        transition:
+            background $transition-fast,
+            border-color $transition-fast,
+            color $transition-fast;
+
+        &:hover {
+
+            border-color: $color-blue;
+
+            color: $color-blue;
+        }
+    }
+
+
+    // ========================================
+    // ACTIVE STEP
+    // ========================================
+
+    &__step--active {
+
+        background: $color-light-blue;
+
+        border-color: rgba($color-blue, 0.25);
+
+        color: $color-blue-dark;
+
+        cursor: default;
+    }
+
+
+    // ========================================
+    // STEP NUMBER
+    // ========================================
+
+    &__step-number {
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.04em;
+
+        opacity: 0.75;
+    }
+
+
+    // ========================================
+    // STEP LABEL
+    // ========================================
+
+    &__step-label {
+
+        font-size: $text-xs;
+
+        font-weight: 600;
+
+        letter-spacing: 0.01em;
+    }
+
+
+    // ========================================
+    // CONNECTOR
+    // ========================================
+
+    &__line {
+
+        width: 20px;
+
+        height: 1px;
+
+        margin: 0 4px;
+
+        background: $color-border;
+    }
+
+
+    // ========================================
+    // TABLET
+    // ========================================
+
+    @media (max-width: 768px) {
+
+        padding:
+            80px
+            $space-content
+            40px;
+
+
+        &__title {
+
+            font-size: 38px;
+        }
+
+
+        &__description {
+
+            font-size: $text-base;
+        }
+
+
+        &__journey {
+
+            margin-top: 48px;
+        }
+    }
+
+
+    // ========================================
+    // MOBILE
+    // ========================================
+
+    @media (max-width: 480px) {
+
+        padding:
+            72px
+            18px
+            32px;
+
+
+        &__eyebrow {
+
+            margin-bottom: 18px;
+
+            font-size: 11px;
+        }
+
+
+        &__title {
+
+            font-size: 34px;
+
+            line-height: 1.12;
+        }
+
+
+        &__description {
+
+            margin-top: 20px;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        &__heading-large {
+
+            margin-top: 24px;
+        }
+
+
+        &__journey {
+
+            margin-top: 42px;
+        }
+
+
+        &__step {
+
+            padding: 7px 9px;
+
+            gap: 5px;
+        }
+
+
+        &__step-label {
+
+            font-size: 10px;
+        }
+
+
+        &__step-number {
+
+            font-size: 9px;
+        }
+
+
+        &__line {
+
+            width: 10px;
+
+            margin: 0 2px;
+        }
+    }
+}

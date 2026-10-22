@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Selector Mapping matching your VimaVidya structural markup
-    const heroSection = document.querySelector('.insurance-hero');
+    // 1. Selector Mapping updated to support both global and property heroes
+    const heroSection = document.querySelector('.insurance-hero, .property-insurance-hero');
     if (!heroSection) return;
 
     const slides = heroSection.querySelectorAll('.hero-slide');
@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSlider(targetIdx) {
         // Drop active states from the older frame
         slides[currentIdx].classList.remove('active');
-        dots[currentIdx].classList.remove('active');
+        if (dots[currentIdx]) dots[currentIdx].classList.remove('active');
 
-        // Cyclically calculate the boundary frame indexes (0 to 6 wrap-around loops)
+        // Cyclically calculate the boundary frame indexes
         currentIdx = (targetIdx + totalSlides) % totalSlides;
 
         // Apply active states to target elements
         slides[currentIdx].classList.add('active');
-        dots[currentIdx].classList.add('active');
+        if (dots[currentIdx]) dots[currentIdx].classList.add('active');
     }
 
     // 3. Side Arrow Control Event Triggers
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
             const goTo = parseInt(e.target.getAttribute('data-goto'), 10);
-            if (goTo === currentIdx) return; // Halt if index hasn't updated
+            if (goTo === currentIdx) return; 
             
             updateSlider(goTo);
             resetAutoPlay();
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Autoplay Engine Management Functions
     function startAutoPlay() {
-        if (totalSlides <= 1) return; // Prevent performance leaks if only 1 slide exists
+        if (totalSlides <= 1) return; 
         autoPlayInterval = setInterval(() => {
             updateSlider(currentIdx + 1);
         }, AUTOPLAY_DELAY);

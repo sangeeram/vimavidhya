@@ -1,0 +1,1151 @@
+@use "../../../abstracts/variables" as *;
+
+/* =========================================================
+   VIMA VIDYA
+   INSURANCE STORY HERO
+   7 SLIDE STORY SLIDER
+========================================================= */
+
+.insurance-story-hero {
+
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 92px);
+    min-height: 620px;
+    max-height: 780px;
+
+    overflow: hidden;
+
+    background: #f8f6f1;
+
+    font-family: $font-primary;
+
+
+    /* =====================================================
+       SLIDER
+    ===================================================== */
+
+    &__slider {
+
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* =====================================================
+       SLIDE
+    ===================================================== */
+
+    &__slide {
+
+        position: absolute;
+
+        inset: 0;
+
+        opacity: 0;
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.65s ease,
+            visibility 0.65s ease;
+
+        &.is-active {
+
+            opacity: 1;
+            visibility: visible;
+
+            pointer-events: auto;
+
+            z-index: 2;
+        }
+    }
+
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    &__image {
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 0;
+
+        background-size: cover;
+        background-position: center;
+
+        transform: scale(1.04);
+
+        transition:
+            transform 1.2s ease;
+
+    }
+
+
+    .is-active &__image {
+
+        transform: scale(1);
+    }
+
+
+    /* =====================================================
+       OVERLAY
+
+       White on left
+       Image visible on right
+    ===================================================== */
+
+    &__overlay {
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 1;
+
+        background:
+
+            linear-gradient(
+                90deg,
+
+                rgba(255, 255, 255, 0.98) 0%,
+
+                rgba(255, 255, 255, 0.96) 27%,
+
+                rgba(255, 255, 255, 0.87) 40%,
+
+                rgba(255, 255, 255, 0.55) 52%,
+
+                rgba(255, 255, 255, 0.14) 67%,
+
+                rgba(255, 255, 255, 0.02) 100%
+            );
+
+    }
+
+
+    /* =====================================================
+       CONTAINER
+    ===================================================== */
+
+    &__container {
+
+        position: relative;
+
+        z-index: 3;
+
+        width: min(
+            calc(100% - 160px),
+            1280px
+        );
+
+        height: 100%;
+
+        margin: 0 auto;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(480px, 0.95fr)
+            minmax(390px, 0.75fr);
+
+        align-items: center;
+
+        gap: 70px;
+    }
+
+
+    /* =====================================================
+       LEFT CONTENT
+    ===================================================== */
+
+    &__content {
+
+        max-width: 650px;
+
+        padding-top: 5px;
+    }
+
+
+    /* =====================================================
+       CATEGORY PILL
+    ===================================================== */
+
+    &__category {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-bottom: 22px;
+
+        padding: 7px 13px;
+
+        color: $color-navy;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+        border: 1px solid rgba(
+            3,
+            34,
+            78,
+            0.12
+        );
+
+        border-radius: 999px;
+
+        box-shadow:
+            0 5px 18px rgba(
+                3,
+                34,
+                78,
+                0.08
+            );
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.04em;
+
+        text-transform: uppercase;
+
+
+        span {
+
+            width: 8px;
+            height: 8px;
+
+            flex: 0 0 8px;
+
+            background: $color-blue;
+
+            border-radius: 50%;
+        }
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    &__title {
+
+        margin: 0;
+
+        max-width: 670px;
+
+        font-family: $font-primary;
+
+        font-size: clamp(
+            42px,
+            4.4vw,
+            64px
+        );
+
+        font-weight: 700;
+
+        line-height: 1.04;
+
+        letter-spacing: -0.045em;
+
+
+        .title-dark {
+
+            display: block;
+
+            color: $color-navy;
+        }
+
+
+        .title-blue {
+
+            display: block;
+
+            color: $color-blue;
+
+            font-weight: 500;
+        }
+    }
+
+
+    /* =====================================================
+       PERSON
+    ===================================================== */
+
+    &__person {
+
+        position: relative;
+
+        margin-top: 23px;
+
+        padding-left: 13px;
+
+        color: $color-navy;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        line-height: 1.4;
+
+
+        &::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            width: 3px;
+
+            height: 100%;
+
+            background: $color-blue;
+
+            border-radius: 3px;
+        }
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+    ===================================================== */
+
+    &__description {
+
+        max-width: 600px;
+
+        margin: 14px 0 0;
+
+        color: rgba(
+            3,
+            34,
+            78,
+            0.68
+        );
+
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    &__actions {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 14px;
+
+        margin-top: 26px;
+    }
+
+
+    &__button {
+
+        min-height: 48px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 12px;
+
+        padding: 0 22px;
+
+        border-radius: 999px;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        text-decoration: none;
+
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            color 0.25s ease,
+            box-shadow 0.25s ease;
+
+
+        &:hover {
+
+            transform: translateY(-2px);
+        }
+    }
+
+
+    /* =====================================================
+       PRIMARY
+    ===================================================== */
+
+    &__button--primary {
+
+        color: $color-white;
+
+        background: $color-blue;
+
+        box-shadow:
+            0 10px 25px rgba(
+                0,
+                122,
+                255,
+                0.20
+            );
+
+
+        span {
+
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: $color-blue;
+
+            background: $color-white;
+
+            border-radius: 50%;
+
+            font-size: 14px;
+        }
+
+
+        &:hover {
+
+            background: $color-blue-dark;
+
+            box-shadow:
+                0 14px 30px rgba(
+                    0,
+                    122,
+                    255,
+                    0.28
+                );
+        }
+    }
+
+
+    /* =====================================================
+       SECONDARY
+    ===================================================== */
+
+    &__button--secondary {
+
+        color: $color-navy;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+        border: 1px solid rgba(
+            3,
+            34,
+            78,
+            0.10
+        );
+
+
+        &:hover {
+
+            color: $color-blue;
+
+            background: $color-white;
+        }
+    }
+
+
+    /* =====================================================
+       RIGHT PANEL
+    ===================================================== */
+
+    &__panel {
+
+        width: 100%;
+
+        max-width: 470px;
+
+        justify-self: end;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+        padding-top: 55px;
+    }
+
+
+    /* =====================================================
+       PANEL CARD
+    ===================================================== */
+
+    &__panel-card {
+
+        padding: 20px 22px;
+
+        background: rgba(
+            3,
+            34,
+            78,
+            0.88
+        );
+
+        border: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 12px 30px rgba(
+                3,
+                34,
+                78,
+                0.16
+            );
+
+        backdrop-filter: blur(8px);
+
+
+        .panel-label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: $color-blue;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+        }
+
+
+        h2 {
+
+            margin: 0;
+
+            color: $color-white;
+
+            font-size: 18px;
+
+            line-height: 1.35;
+
+            font-weight: 600;
+        }
+
+
+        p {
+
+            margin: 8px 0 0;
+
+            color: rgba(
+                255,
+                255,
+                255,
+                0.62
+            );
+
+            font-size: 12px;
+
+            line-height: 1.55;
+        }
+    }
+
+
+    /* =====================================================
+       STAT CARD
+    ===================================================== */
+
+    &__panel-card--stat {
+
+        strong {
+
+            display: block;
+
+            color: $color-blue;
+
+            font-size: 28px;
+
+            line-height: 1;
+
+            font-weight: 600;
+        }
+    }
+
+
+    /* =====================================================
+       BOTTOM NOTE
+    ===================================================== */
+
+    &__panel-note {
+
+        padding: 17px 21px;
+
+        color: rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+        background: rgba(
+            3,
+            34,
+            78,
+            0.76
+        );
+
+        border-radius: 10px;
+
+        font-size: 12px;
+
+        line-height: 1.55;
+
+        border: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+    }
+
+
+    /* =====================================================
+       ARROWS
+    ===================================================== */
+
+    &__arrow {
+
+        position: absolute;
+
+        top: 50%;
+
+        z-index: 10;
+
+        width: 46px;
+        height: 46px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        color: $color-navy;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.94
+        );
+
+        border: 1px solid rgba(
+            3,
+            34,
+            78,
+            0.10
+        );
+
+        border-radius: 50%;
+
+        box-shadow:
+            0 8px 25px rgba(
+                3,
+                34,
+                78,
+                0.12
+            );
+
+        transform: translateY(-50%);
+
+        cursor: pointer;
+
+        font-size: 20px;
+
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            color 0.25s ease;
+
+
+        &:hover {
+
+            color: $color-white;
+
+            background: $color-blue;
+
+            transform:
+                translateY(-50%)
+                scale(1.05);
+        }
+    }
+
+
+    &__arrow--prev {
+
+        left: 24px;
+    }
+
+
+    &__arrow--next {
+
+        right: 24px;
+    }
+
+
+    /* =====================================================
+       TOP COUNTER
+    ===================================================== */
+
+    &__counter {
+
+        position: absolute;
+
+        top: 38px;
+
+        right: 8%;
+
+        z-index: 10;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        color: $color-navy;
+
+        font-size: 12px;
+
+
+        strong {
+
+            color: $color-blue;
+
+            font-size: 13px;
+        }
+
+
+        em {
+
+            color: rgba(
+                3,
+                34,
+                78,
+                0.45
+            );
+
+            font-style: normal;
+        }
+
+
+        span {
+
+            width: 30px;
+            height: 1px;
+
+            background: rgba(
+                3,
+                34,
+                78,
+                0.35
+            );
+        }
+    }
+
+
+    /* =====================================================
+       BOTTOM DOTS
+    ===================================================== */
+
+    &__dots {
+
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 20px;
+
+        z-index: 10;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        transform: translateX(-50%);
+    }
+
+
+    &__dot {
+
+        width: 7px;
+        height: 7px;
+
+        padding: 0;
+
+        background: rgba(
+            3,
+            34,
+            78,
+            0.25
+        );
+
+        border: 0;
+
+        border-radius: 50%;
+
+        cursor: pointer;
+
+        transition:
+            width 0.25s ease,
+            background 0.25s ease;
+
+
+        &.is-active {
+
+            width: 24px;
+
+            background: $color-blue;
+
+            border-radius: 999px;
+        }
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 1100px) {
+
+        height: auto;
+
+        min-height: 680px;
+
+        max-height: none;
+
+
+        &__container {
+
+            width: calc(100% - 100px);
+
+            grid-template-columns:
+                1fr 0.72fr;
+
+            gap: 40px;
+        }
+
+
+        &__title {
+
+            font-size: clamp(
+                40px,
+                5vw,
+                55px
+            );
+        }
+
+
+        &__panel {
+
+            max-width: 390px;
+        }
+
+
+        &__arrow--prev {
+
+            left: 15px;
+        }
+
+
+        &__arrow--next {
+
+            right: 15px;
+        }
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 768px) {
+
+        height: auto;
+
+        min-height: 850px;
+
+
+        &__slide {
+
+            min-height: 850px;
+        }
+
+
+        &__image {
+
+            background-position: 65% center;
+        }
+
+
+        &__overlay {
+
+            background:
+
+                linear-gradient(
+                    180deg,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.96
+                    ) 0%,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.90
+                    ) 42%,
+
+                    rgba(
+                        3,
+                        34,
+                        78,
+                        0.60
+                    ) 100%
+                );
+        }
+
+
+        &__container {
+
+            width: calc(100% - 40px);
+
+            height: auto;
+
+            min-height: 850px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: stretch;
+
+            justify-content: center;
+
+            gap: 28px;
+        }
+
+
+        &__content {
+
+            max-width: none;
+
+            padding-top: 35px;
+        }
+
+
+        &__category {
+
+            margin-bottom: 17px;
+
+            font-size: 10px;
+        }
+
+
+        &__title {
+
+            font-size: 39px;
+
+            line-height: 1.05;
+        }
+
+
+        &__person {
+
+            margin-top: 18px;
+        }
+
+
+        &__description {
+
+            font-size: 14px;
+
+            line-height: 1.55;
+
+            color: $color-navy;
+        }
+
+
+        &__actions {
+
+            flex-wrap: wrap;
+
+            margin-top: 20px;
+        }
+
+
+        &__button {
+
+            min-height: 45px;
+
+            padding: 0 18px;
+        }
+
+
+        &__panel {
+
+            max-width: none;
+
+            padding-top: 0;
+        }
+
+
+        &__panel-card {
+
+            padding: 16px 18px;
+        }
+
+
+        &__panel-note {
+
+            display: none;
+        }
+
+
+        &__arrow {
+
+            top: auto;
+
+            bottom: 52px;
+
+            width: 40px;
+            height: 40px;
+
+            transform: none;
+
+
+            &:hover {
+
+                transform: scale(1.05);
+            }
+        }
+
+
+        &__arrow--prev {
+
+            left: 20px;
+        }
+
+
+        &__arrow--next {
+
+            right: 20px;
+        }
+
+
+        &__counter {
+
+            top: 22px;
+
+            right: 20px;
+        }
+
+
+        &__dots {
+
+            bottom: 20px;
+        }
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 480px) {
+
+        min-height: 900px;
+
+
+        &__slide {
+
+            min-height: 900px;
+        }
+
+
+        &__container {
+
+            min-height: 900px;
+
+            width: calc(100% - 30px);
+        }
+
+
+        &__title {
+
+            font-size: 34px;
+        }
+
+
+        &__description {
+
+            font-size: 13px;
+        }
+
+
+        &__panel-card {
+
+            h2 {
+
+                font-size: 16px;
+            }
+        }
+    }
+}

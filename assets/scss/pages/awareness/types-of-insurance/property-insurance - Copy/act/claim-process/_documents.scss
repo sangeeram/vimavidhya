@@ -1,0 +1,337 @@
+// ========================================================
+// CLAIM DOCUMENTS SECTION (3-4 GRID + JS ACCORDION)
+// Uses Vima Vidya Global Design System Variables
+// ========================================================
+@use "../../../../../../abstracts/variables" as *;
+
+.claim-docs {
+    background-color: $color-white;
+    padding: $space-content 0;
+    font-family: $font-primary;
+
+    @media (min-width: 768px) {
+        padding: $space-section-lg 0;
+    }
+
+    &__container {
+        max-width: 1200px; // 1400px for comfortable 4-card alignment
+        margin: 0 auto;
+        padding: 0 $space-element;
+    }
+
+
+    /* Section Header */
+    &__header {
+        margin-bottom: $space-section-sm;
+        text-align: left;
+    }
+
+    &__badge {
+        display: inline-block;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: $color-blue;
+        margin-bottom: $space-element;
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: $line-heading;
+        color: $color-navy;
+        margin: 0 0 $space-small 0;
+
+        @media (min-width: 768px) {
+            font-size: 36px; // 44px
+        }
+    }
+
+    &__subtitle {
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+        max-width: $container-width;
+        margin: 0;
+    }
+
+    /* Common Documents Banner Card */
+    &__common {
+        background-color: $color-light-blue;
+        border: 1px solid mix($color-blue, $color-border, 25%);
+        border-radius: $radius-md;
+        padding: $space-element;
+        margin-bottom: $space-section-sm;
+    }
+
+    &__common-header {
+        display: flex;
+        align-items: center;
+        gap: $text-xs;
+        margin-bottom: $space-element;
+    }
+
+    &__common-icon {
+        font-size: $text-lg;
+    }
+
+    &__common-title {
+        font-size: $text-lg;
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0;
+    }
+
+    &__common-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $text-xs;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &__common-item {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small;
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: $color-text-body;
+    }
+
+    /* Section Sub-Divider */
+    &__section-divider {
+        margin-bottom: $space-element;
+    }
+
+    &__section-title {
+        font-size: $text-h3;
+        font-weight: 600;
+        color: $color-navy;
+        margin: 0 0 $space-small 0;
+    }
+
+    &__section-subtitle {
+        font-size: $text-base;
+        color: $color-text-muted;
+        margin: 0;
+    }
+
+    /* 3 to 4 Column Grid Layout */
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-element; // 24px gap
+        align-items: start;
+
+        // 2 Cards per row on Tablets
+        @media (min-width: 640px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        // 3 Cards per row on Small Desktops / Laptops
+        @media (min-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        // 4 Cards per row on Large Displays
+        @media (min-width: 1280px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    /* Accordion Card Container */
+    &__card {
+        position: relative;
+        background-color: $color-light-blue;
+        border: 1px solid mix($color-blue, $color-border, 15%);
+        border-radius: $radius-md;
+        overflow: hidden;
+        transition: border-color $transition, box-shadow $transition;
+
+        &:hover {
+            border-color: mix($color-blue, $color-border, 40%);
+            box-shadow: 0 4px 16px mix($color-navy, transparent, 8%);
+        }
+
+        // Open State Styling
+        &[open] {
+            border-color: $color-blue;
+            box-shadow: 0 8px 24px mix($color-blue, transparent, 12%);
+
+            .claim-docs__chevron svg {
+                transform: rotate(180deg);
+                color: $color-blue;
+            }
+
+            .claim-docs__card-header {
+                border-bottom: 1px solid mix($color-blue, $color-border, 20%);
+            }
+        }
+
+        // Hide collapsible body when closed
+        &:not([open]) .claim-docs__body {
+            display: none;
+        }
+    }
+
+    /* Accordion Header (Summary) */
+    &__card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $space-element;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-blue;
+            outline-offset: -2px;
+        }
+    }
+
+    &__card-meta {
+        display: flex;
+        align-items: center;
+        gap: $text-xs;
+    }
+
+    &__card-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: $radius-pill;
+        background-color: $color-white;
+        color: $color-blue;
+        font-size: $text-base;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 2px 6px mix($color-blue, transparent, 8%);
+    }
+
+    &__card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__card-title {
+        font-size: $text-base;
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0;
+        line-height: $line-tight;
+    }
+
+    &__card-subtitle {
+        font-size: $text-xs;
+        color: $color-text-muted;
+        font-weight: 500;
+    }
+
+    &__chevron {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-text-muted;
+        flex-shrink: 0;
+
+        svg {
+            width: $text-lg;
+            height: $text-lg;
+            fill: none;
+            transition: transform $transition, color $transition;
+        }
+    }
+
+    /* Expandable Body Content */
+    &__body {
+        padding: $space-element;
+        background-color: $color-white;
+        overflow: hidden;
+        will-change: max-height, opacity;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__list-item {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small;
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+    }
+
+    &__check-icon {
+        width: $text-base;
+        height: $text-base;
+        fill: none;
+        color: $color-success;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    /* Notice Callout Box */
+    &__notice {
+        margin-top: $space-section-sm;
+        padding: $space-element;
+        background-color: $color-cream;
+        border: 1px solid mix($color-orange, $color-border, 40%);
+        border-radius: $radius-md;
+        display: flex;
+        gap: $space-element;
+        align-items: flex-start;
+    }
+
+    &__notice-icon {
+        font-size: $text-h3;
+        flex-shrink: 0;
+    }
+
+    &__notice-content {
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: $color-text-body;
+
+        h4 {
+            font-size: $text-base;
+            font-weight: 700;
+            color: $color-navy;
+            margin: 0 0 $space-small 0;
+        }
+
+        p {
+            margin: 0 0 $space-small 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+        }
+    }
+}

@@ -1,0 +1,452 @@
+/* =========================================================
+   VIMA VIDYA
+   INTERACTIVE EXPANDABLE CARD CAROUSEL (CLEAN CIRCULAR EDGE BUTTONS)
+========================================================= */
+@use "../../../../../abstracts/variables" as *;
+
+.vv-interactive-carousel {
+    position: relative;
+    padding: $space-section 0;
+    background: $color-light-gray;
+    font-family: $font-primary;
+
+    &__container {
+        width: min(calc(100% - 48px), $container-width);
+        margin: 0 auto;
+    }
+
+    /* HEADER */
+    &__header {
+        margin-bottom: $space-content;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        margin-bottom: $space-small;
+        font-size: $text-xs;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        color: $color-blue;
+    }
+
+    &__title {
+        margin: 0 0 $space-small;
+        font-size: clamp(32px, 4vw, $text-h2);
+        line-height: $line-heading;
+        font-weight: 600;
+        color: $color-navy;
+    }
+
+    &__intro {
+        margin: 0;
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+
+        strong {
+            color: $color-navy;
+        }
+    }
+
+    /* OUTER WRAPPER FOR EDGE ARROWS */
+    .vv-ic-outer-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+
+    /* CLEAN CIRCULAR EDGE BUTTONS MATCHING REFERENCE IMAGE */
+    .vv-ic-edge-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 48px;
+        height: 48px;
+        border-radius: $radius-pill;
+        border: none;
+        background: $color-navy;
+        color:$color-white ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(8, 39, 75, 0.1);
+        transition: transform $transition-fast, box-shadow $transition-fast, background $transition-fast, color $transition-fast;
+
+        svg {
+            stroke: $color-white;
+            transition: stroke $transition-fast;
+        }
+
+        &:hover {
+            background: $color-white;
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 6px 20px rgba(8, 39, 75, 0.16);
+            svg {
+                stroke: $color-blue;
+            }
+        }
+
+        &--prev {
+            left: -24px;
+        }
+
+        &--next {
+            right: -24px;
+        }
+    }
+
+    /* CAROUSEL TRACK */
+    .vv-ic-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 6px 2px 14px;
+    }
+
+    .vv-ic-track {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    /* EXPANDABLE CARD STYLES */
+    .vv-ic-card {
+        flex: 0 0 280px;
+        height: 410px;
+        background: $color-light-blue;
+        border: 1px solid rgba($color-blue, 0.25);
+        border-radius: $radius-lg;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(8, 39, 75, 0.04);
+        transition: flex 0.4s cubic-bezier(0.16, 1, 0.3, 1), background $transition, border-color $transition;
+
+        /* COLLAPSED DEFAULT STATE */
+        &__collapsed-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            opacity: 1;
+            transition: opacity $transition-fast;
+
+            .card-badge {
+                display: inline-block;
+                width: max-content;
+                font-size: $text-xs;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: $color-blue;
+                background: $color-white;
+                padding: 4px 10px;
+                border-radius: $radius-pill;
+                margin-bottom: $space-small;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            }
+
+            .card-title {
+                margin: 0;
+                font-size: 26px;
+                line-height: $line-heading;
+                font-weight: 700;
+                color: $color-navy;
+            }
+
+            .card-toggle-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                font-family: $font-primary;
+                font-size: $text-sm;
+                font-weight: 600;
+                color: $color-navy;
+
+                .btn-icon {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: $radius-pill;
+                    background: $color-blue;
+                    color: $color-white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: $text-sm;
+                    transition: transform $transition-fast;
+                }
+
+                &:hover .btn-icon {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        /* EXPANDED STATE */
+        &__expanded-content {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            opacity: 0;
+            background: $color-white;
+            position: absolute;
+            inset: 0;
+            padding: 24px;
+            border-radius: $radius-lg;
+            box-shadow: 0 14px 40px rgba(8, 39, 75, 0.1);
+            transition: opacity $transition;
+
+            .expanded-inner-top {
+                margin-bottom: 6px;
+
+                .card-badge {
+                    display: inline-block;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: $color-blue;
+                    background: $color-light-blue;
+                    padding: 3px 8px;
+                    border-radius: $radius-pill;
+                    margin-bottom: 4px;
+                }
+
+                .card-title {
+                    margin: 0;
+                    font-size: 19px;
+                    font-weight: 700;
+                    color: $color-navy;
+                    line-height: $line-heading;
+                }
+            }
+
+            .expanded-body-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                flex-grow: 1;
+
+                .card-details-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    border-top: 1px solid $color-border;
+                    border-bottom: 1px solid $color-border;
+                    padding: 5px 0;
+
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 4px 0;
+                        font-size: $text-sm;
+
+                        .label { 
+                            color: $color-text-muted; 
+                            font-weight: 400; 
+                        }
+                        .value { 
+                            color: $color-navy; 
+                            font-weight: 600; 
+                            text-align: right; 
+                        }
+                    }
+                }
+
+                .card-image-box {
+                    width: 100%;
+                    height: 100px;
+                    border-radius: $radius-sm;
+                    overflow: hidden;
+                    background: $color-navy-dark;
+
+                    img { 
+                        width: 100%; 
+                        height: 100%; 
+                        object-fit: cover; 
+                        display: block; 
+                    }
+                }
+            }
+
+            .expanded-footer-area {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-top: 4px;
+            }
+
+            .card-footer-price {
+                background: $color-light-gray;
+                padding: 8px 12px;
+                border-radius: $radius-sm;
+                border: 1px solid $color-border;
+
+                .price-title { 
+                    display: block; 
+                    font-size: 10px; 
+                    font-weight: 700; 
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase; 
+                    color: $color-text-muted; 
+                    margin-bottom: 1px;
+                }
+                .price-amount { 
+                    font-size: 15px; 
+                    font-weight: 700; 
+                    color: $color-blue; 
+                }
+            }
+
+            .card-collapse-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                width: 100%;
+                background: $color-light-blue;
+                border: 1px solid rgba($color-blue, 0.3);
+                color: $color-blue;
+                font-size: 12px;
+                font-weight: 700;
+                padding: 8px 12px;
+                border-radius: $radius-sm;
+                cursor: pointer;
+                transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
+
+                .collapse-icon {
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+
+                &:hover {
+                    background: $color-blue;
+                    border-color: $color-blue;
+                    color: $color-white;
+                }
+            }
+        }
+
+        /* WHEN ACTIVE/EXPANDED */
+        &.is-expanded {
+            flex: 0 0 380px;
+            background: $color-white;
+            border-color: rgba($color-blue, 0.4);
+
+            .vv-ic-card__collapsed-content {
+                display: none;
+            }
+
+            .vv-ic-card__expanded-content {
+                display: flex;
+                opacity: 1;
+            }
+        }
+    }
+
+    /* CALCULATION TAKEAWAY BOX */
+    .vv-pa-calc-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        background: $color-light-blue;
+        border: 1px solid #bfdbfe;
+        border-radius: $radius-md;
+        padding: 32px;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.04);
+
+        &__icon {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $color-white;
+            border: 1px solid #bfdbfe;
+            border-radius: $radius-sm;
+            font-size: 20px;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__title {
+            margin: 0 0 8px;
+            font-size: $text-lg;
+            font-weight: 700;
+            color: $color-navy;
+        }
+
+        &__text {
+            margin: 0;
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-body;
+
+            strong {
+                color: $color-navy;
+            }
+        }
+    }
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1280px) {
+    .vv-interactive-carousel {
+        .vv-ic-edge-btn--prev { left: -10px; }
+        .vv-ic-edge-btn--next { right: -10px; }
+    }
+}
+
+@media (max-width: 767px) {
+    .vv-interactive-carousel {
+        padding: $space-section-sm 0;
+
+        &__container {
+            width: min(calc(100% - 32px), $container-width);
+        }
+
+        .vv-ic-edge-btn {
+            display: none;
+        }
+
+        .vv-ic-card {
+            flex: 0 0 260px;
+            height: 380px;
+
+            &.is-expanded {
+                flex: 0 0 310px;
+            }
+        }
+
+        .vv-pa-calc-box {
+            flex-direction: column;
+            padding: 24px 20px;
+            gap: 14px;
+        }
+    }
+}

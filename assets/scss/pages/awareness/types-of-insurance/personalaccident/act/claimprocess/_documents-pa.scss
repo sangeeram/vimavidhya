@@ -1,0 +1,910 @@
+
+// ========================================================
+// VIMA VIDYA — CLAIM DOCUMENTS
+// GLOBAL DESIGN SYSTEM VARIABLES ONLY
+// Navy Connected Tabs + Integrated Content Panel
+// ========================================================
+
+@use "../../../../../../abstracts/variables" as *;
+
+// ========================================================
+// MAIN SECTION
+// ========================================================
+
+.claim-docs {
+    background-color: $color-light-blue;
+    padding: $space-section-sm 0;
+    font-family: $font-primary;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    &__container {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $space-element;
+    }
+
+    // ====================================================
+    // SECTION HEADER
+    // ====================================================
+
+    &__header {
+        margin-bottom: $space-element;
+    }
+
+    &__eyebrow {
+        display: block;
+        margin-bottom: $space-small;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        margin: 0 0 $space-small;
+        color: $color-navy;
+        font-size: clamp(28px, 3.5vw, $text-h2);
+        font-weight: 700;
+        line-height: $line-heading;
+    }
+
+    &__subtitle {
+        max-width: $text-width-wide;
+        margin: 0;
+        color: $color-text-body;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+    // ====================================================
+    // COMMON DOCUMENTS CARD
+    // ====================================================
+
+    &__common {
+        margin-bottom: $space-section-sm;
+        padding: $space-content;
+        background-color: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-lg;
+        box-shadow: 0 5px 20px rgba(8, 39, 75, 0.04);
+    }
+
+    &__common-heading {
+        display: flex;
+        align-items: center;
+        gap: $space-small;
+        margin-bottom: $space-element;
+
+        h3 {
+            margin: 0 0 5px;
+            color: $color-navy;
+            font-size: $text-h3;
+            font-weight: 700;
+            line-height: $line-heading;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: $line-body;
+        }
+    }
+
+    &__common-icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+        place-items: center;
+        background-color: $color-light-blue;
+        border-radius: $radius-md;
+        font-size: 22px;
+    }
+
+    &__common-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 $space-element;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__common-item {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small;
+        padding: 14px 0;
+        border-top: 1px solid $color-border;
+        color: $color-text-body;
+        font-size: $text-sm;
+        line-height: $line-body;
+
+        &:last-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__common-number {
+        flex: 0 0 auto;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+
+    // ====================================================
+    // CHECKLIST SECTION HEADING
+    // ====================================================
+
+    &__section {
+        margin-bottom: $space-section-sm;
+    }
+
+    &__section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: $space-element;
+        margin-bottom: $space-element;
+
+        h3 {
+            margin: 0 0 $space-small;
+            color: $color-navy;
+            font-size: clamp(22px, 2.5vw, $text-h3);
+            font-weight: 700;
+            line-height: $line-heading;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: $line-body;
+        }
+    }
+
+    // ====================================================
+    // COMPLETION COUNTER
+    // ====================================================
+
+    &__counter {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-small;
+        flex: 0 0 auto;
+        padding: 10px 14px;
+        background-color: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        color: $color-navy;
+        font-size: $text-sm;
+        font-weight: 600;
+        white-space: nowrap;
+
+        #claim-completed-count {
+            color: $color-blue;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        #claim-total-count {
+            color: $color-text-muted;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    &__counter-icon {
+        display: grid;
+        width: 20px;
+        height: 20px;
+        flex: 0 0 20px;
+        place-items: center;
+        background-color: rgba(16, 185, 129, 0.12);
+        border-radius: $radius-pill;
+        color: $color-success;
+        font-size: $text-xs;
+        font-weight: 700;
+    }
+
+    // ====================================================
+    // NAVY CONNECTED TAB INTERFACE
+    // ====================================================
+
+    &__interface {
+        overflow: hidden;
+        background-color: $color-navy;
+        border: 1px solid $color-navy;
+        border-radius: $radius-lg;
+        box-shadow: 0 16px 36px rgba(3, 21, 46, 0.16);
+    }
+
+    // Continuous navy tab bar
+    &__tabs {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0;
+        align-items: stretch;
+        padding: 10px 10px 0;
+        background-color: $color-navy;
+    }
+
+    // Inactive tabs
+    &__tab {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: $space-small;
+        min-width: 0;
+        min-height: 64px;
+        padding: 14px 12px;
+        margin: 0;
+
+        background-color: transparent;
+        border: 1px solid white;
+        border-bottom: 0;
+        border-radius: $radius-sm $radius-sm 0 0;
+
+        color: rgba(255, 255, 255, 0.78);
+        font-family: inherit;
+        font-size: $text-sm;
+        font-weight: 600;
+        line-height: $line-body;
+        text-align: left;
+        cursor: pointer;
+
+        transition:
+            background-color $transition-fast,
+            color $transition-fast,
+            border-color $transition-fast;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: $color-white;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-orange;
+            outline-offset: -3px;
+        }
+
+        // Active tab connects directly to the white panel
+        &.is-active {
+            z-index: 2;
+            background-color: $color-white;
+            border-color: $color-white;
+            border-top: 3px solid $color-blue;
+            border-radius: $radius-sm $radius-sm 0 0;
+            color: $color-navy;
+            box-shadow: none;
+        }
+
+        // Removes the seam between active tab and panel
+        &.is-active::after {
+            position: absolute;
+            z-index: 3;
+            right: 0;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            background-color: $color-white;
+            content: "";
+        }
+    }
+
+    // Tab icon
+    &__tab-icon {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        flex: 0 0 30px;
+        place-items: center;
+        background-color: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: $radius-sm;
+        font-size: 16px;
+        transition: background-color $transition-fast;
+    }
+
+    &__tab.is-active &__tab-icon {
+        background-color: $color-light-blue;
+        border-color: $color-border;
+    }
+
+    &__tab-text {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    &__tab-arrow {
+        flex: 0 0 auto;
+        margin-left: auto;
+        color: $color-blue;
+        font-size: $text-sm;
+        opacity: 0;
+        transform: translateY(3px);
+        transition:
+            opacity $transition-fast,
+            transform $transition-fast;
+    }
+
+    &__tab:hover &__tab-arrow,
+    &__tab.is-active &__tab-arrow {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // ====================================================
+    // INTEGRATED WHITE CONTENT PANEL
+    // ====================================================
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        background-color: $color-white;
+        border-radius: 0;
+    }
+
+    &__panel {
+        padding: $space-section-sm / 2;
+
+        &[hidden] {
+            display: none !important;
+        }
+
+        &.is-active {
+            display: block;
+            animation: claimPanelIn $transition-fast both;
+        }
+    }
+
+    // Panel heading
+    &__panel-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-element;
+        margin-bottom: $space-content;
+    }
+
+    &__panel-symbol {
+        display: grid;
+        width: 56px;
+        height: 56px;
+        flex: 0 0 56px;
+        place-items: center;
+        background-color: $color-light-blue;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        font-size: 26px;
+    }
+
+    &__panel-intro {
+        min-width: 0;
+        padding-top: 2px;
+    }
+
+    &__panel-kicker {
+        display: block;
+        margin-bottom: $space-small;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+    }
+
+    &__panel-title {
+        margin: 0 0 $space-small;
+        color: $color-navy;
+        font-size: clamp(21px, 2.4vw, $text-h3);
+        font-weight: 700;
+        line-height: $line-heading;
+    }
+
+    &__panel-desc {
+        max-width: $text-width-wide;
+        margin: 0;
+        color: black;
+        font-size: $text-base;
+        line-height: 1.7;
+    }
+
+    // ====================================================
+    // INDIVIDUAL PANEL PROGRESS
+    // ====================================================
+
+    &__progress {
+        display: flex;
+        align-items: center;
+        gap: $space-element;
+        margin-bottom: $space-element;
+    }
+
+    &__progress-track {
+        overflow: hidden;
+        width: 100%;
+        max-width: 220px;
+        height: 5px;
+        background-color: $color-light-blue;
+        border-radius: $radius-pill;
+    }
+
+    &__progress-fill {
+        display: block;
+        width: 0;
+        height: 100%;
+        background-color: $color-success;
+        border-radius: inherit;
+        transition: width $transition;
+    }
+
+    &__panel-progress-text {
+        flex: 0 0 auto;
+        color: $color-text-muted;
+        font-size: $text-xs;
+        font-weight: 600;
+    }
+
+    // ====================================================
+    // CHECKLIST GRID
+    // ====================================================
+
+    &__checklist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: $space-small + 5px;
+    }
+
+    &__checkbox-label {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small + 5px;
+        min-width: 0;
+        padding: 17px;
+        background-color: $color-light-blue;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        cursor: pointer;
+        user-select: none;
+
+        transition:
+            background-color $transition-fast,
+            border-color $transition-fast,
+            box-shadow $transition-fast;
+
+        &:hover {
+            background-color: $color-light-blue;
+            border-color: $color-blue;
+        }
+
+        &:focus-within {
+            outline: 2px solid rgba(0, 122, 255, 0.35);
+            outline-offset: 2px;
+        }
+
+        &.is-checked {
+            background-color: rgba(16, 185, 129, 0.06);
+            border-color: $color-success;
+
+            .claim-docs__item-text {
+                color: $color-text-muted;
+            }
+
+            .claim-docs__item-status {
+                color: $color-success;
+            }
+
+            .claim-docs__custom-check {
+                background-color: $color-success;
+                border-color: $color-success;
+                color: $color-white;
+            }
+        }
+    }
+
+    // Accessible visually hidden checkbox
+    &__checkbox {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    // Custom checkbox
+    &__custom-check {
+        display: grid;
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        place-items: center;
+        background-color: $color-white;
+        border: 1.5px solid $color-border;
+        border-radius: $radius-sm;
+        color: transparent;
+
+        transition:
+            background-color $transition-fast,
+            border-color $transition-fast;
+
+        svg {
+            display: block;
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    &__checkbox:checked + &__custom-check {
+        background-color: $color-success;
+        border-color: $color-success;
+        color: $color-white;
+    }
+
+    &__checkbox:focus-visible + &__custom-check {
+        outline: 2px solid $color-blue;
+        outline-offset: 3px;
+    }
+
+    &__item-text {
+        flex: 1;
+        min-width: 0;
+        color: black;
+        font-size: $text-base;
+        font-weight: 500;
+        line-height: 1.65;
+        overflow-wrap: anywhere;
+        transition: color $transition-fast;
+    }
+
+    &__item-status {
+        flex: 0 0 auto;
+        padding-top: 3px;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 600;
+        transition: color $transition-fast;
+    }
+
+    // ====================================================
+    // PANEL FOOTER
+    // ====================================================
+
+    &__panel-footer {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small;
+        margin-top: $space-content;
+        padding-top: $space-content;
+        border-top: 1px solid $color-border;
+
+        p {
+            margin: 0;
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: 1.7;
+        }
+    }
+
+    &__footer-icon {
+        display: grid;
+        width: 20px;
+        height: 20px;
+        flex: 0 0 20px;
+        place-items: center;
+        border: 1px solid $color-text-muted;
+        border-radius: $radius-pill;
+        color: $color-text-muted;
+        font-size: $text-xs;
+        font-weight: 700;
+    }
+
+    // ====================================================
+    // IMPORTANT NOTICE
+    // ====================================================
+
+    &__notice {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-element;
+        padding: $space-content;
+        background-color: $color-cream;
+        border: 1px solid $color-border;
+        border-radius: $radius-lg;
+    }
+
+    &__notice-icon {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        place-items: center;
+        background-color: rgba(245, 154, 24, 0.12);
+        border: 1px solid $color-orange;
+        border-radius: $radius-pill;
+        color: $color-navy;
+        font-size: $text-base;
+        font-weight: 700;
+    }
+
+    &__notice-content {
+        min-width: 0;
+
+        h3 {
+            margin: 0 0 $space-small;
+            color: $color-navy;
+            font-size: $text-lg;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 $space-small;
+            color: $color-text-body;
+            font-size: $text-sm;
+            line-height: 1.75;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+        }
+    }
+
+    // ====================================================
+    // TABLET
+    // ====================================================
+
+    @media (max-width: 991px) {
+        padding: $space-section-sm 0;
+
+        &__container {
+            padding-right: $space-element;
+            padding-left: $space-element;
+        }
+
+        &__tabs {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding: $space-small $space-small 0;
+        }
+
+        &__tab {
+            min-height: 59px;
+            padding: 12px 10px;
+            font-size: $text-xs;
+        }
+
+        &__tab-icon {
+            width: 27px;
+            height: 27px;
+            flex-basis: 27px;
+            font-size: $text-sm;
+        }
+
+        &__panel {
+            padding: $space-content;
+        }
+
+        &__checklist {
+            gap: $space-small + 3px;
+        }
+
+        &__checkbox-label {
+            padding: 14px;
+        }
+
+        &__item-status {
+            display: none;
+        }
+    }
+
+    // ====================================================
+    // MOBILE
+    // ====================================================
+
+    @media (max-width: 600px) {
+        padding: 38px 0;
+
+        &__container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        &__header {
+            margin-bottom: $space-element;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__subtitle {
+            font-size: $text-sm;
+        }
+
+        &__common {
+            padding: $space-element;
+            margin-bottom: $space-section-sm / 2;
+        }
+
+        &__common-heading {
+            align-items: flex-start;
+            gap: $space-small + 3px;
+
+            h3 {
+                font-size: $text-lg;
+            }
+        }
+
+        &__common-icon {
+            width: 40px;
+            height: 40px;
+            flex-basis: 40px;
+            font-size: 19px;
+        }
+
+        &__common-list {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        &__common-item:last-child {
+            grid-column: auto;
+        }
+
+        &__section-heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: $space-element;
+
+            h3 {
+                font-size: $text-h3;
+            }
+        }
+
+        &__counter {
+            padding: 9px 12px;
+        }
+
+        &__interface {
+            border-radius: $radius-md;
+        }
+
+        // Two-column tab bar on small screens
+        &__tabs {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: $space-small $space-small 0;
+        }
+
+        &__tab {
+            min-height: 54px;
+            gap: 6px;
+            padding: 10px 8px;
+            font-size: 11px;
+        }
+
+        &__tab-icon {
+            width: 24px;
+            height: 24px;
+            flex-basis: 24px;
+            font-size: $text-xs;
+        }
+
+        &__tab-arrow {
+            display: none;
+        }
+
+        &__panel {
+            padding: $space-element $space-element - 8px;
+        }
+
+        &__panel-heading {
+            gap: $space-small + 5px;
+            margin-bottom: $space-content;
+        }
+
+        &__panel-symbol {
+            width: 43px;
+            height: 43px;
+            flex-basis: 43px;
+            font-size: 21px;
+        }
+
+        &__panel-title {
+            font-size: $text-lg;
+        }
+
+        &__panel-desc {
+            font-size: $text-sm;
+        }
+
+        &__progress {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: $space-small;
+        }
+
+        &__progress-track {
+            max-width: none;
+        }
+
+        &__checklist {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        &__checkbox-label {
+            padding: 14px 12px;
+        }
+
+        &__item-text {
+            font-size: $text-sm;
+        }
+
+        &__panel-footer {
+            margin-top: $space-content;
+            padding-top: $space-element;
+        }
+
+        &__panel-footer p {
+            font-size: $text-xs;
+        }
+
+        &__notice {
+            gap: $space-small + 5px;
+            padding: $space-element;
+        }
+
+        &__notice-content {
+            h3 {
+                font-size: $text-base;
+            }
+
+            p {
+                font-size: $text-xs;
+            }
+        }
+    }
+}
+
+// ========================================================
+// PANEL TRANSITION
+// ========================================================
+
+@keyframes claimPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .claim-docs__panel {
+        animation: none !important;
+    }
+
+    .claim-docs__tab,
+    .claim-docs__checkbox-label,
+    .claim-docs__progress-fill {
+        transition: none !important;
+    }
+}

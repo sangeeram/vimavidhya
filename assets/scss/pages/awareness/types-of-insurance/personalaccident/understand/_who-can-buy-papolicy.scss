@@ -1,0 +1,183 @@
+// ============================================================
+// VIMA VIDYA
+// PERSONAL ACCIDENT PROPERTY REFERENCE STYLE
+// ============================================================
+
+@use "../../../../../abstracts/variables" as *;
+
+.pa-reference-style-section {
+    position: relative;
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: 40px 20px;
+    font-family: $font-primary;
+
+    .master-container {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+    }
+
+    .whocanbuy-section-header {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        margin: 0 0 14px;
+        color: $color-text-light;
+        font-size: 44px;
+        line-height: $line-tight;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+
+    .section-lead {
+        max-width: 1200px;
+        margin: 0;
+        color: $color-text-light;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+    // ========================================================
+    // WHITE BOX CONTAINER
+    // ========================================================
+    .master-content-grid {
+        width: 100%;
+        background: $color-white;
+        border-radius: $radius-lg;
+        padding: 30px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        color: $color-blue-dark;
+
+        @media (max-width: 768px) {
+            padding: 20px;
+        }
+    }
+
+    // ========================================================
+    // TABS
+    // ========================================================
+    .category-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: $space-element;
+        border-bottom: 1px solid $color-border;
+    }
+
+    .tab-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: $color-light-gray;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        color: $color-blue-dark;
+        font-family: $font-primary;
+        font-size: $text-sm;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background $transition-fast, border-color $transition-fast, color $transition-fast, transform $transition-fast;
+
+        .tab-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+        }
+
+        .tab-name {
+            white-space: nowrap;
+        }
+
+        &:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        &.is-active {
+            background: #1e3a8a;
+            border-color: #3b82f6;
+            color: $color-white;
+            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.22);
+        }
+    }
+
+    // ========================================================
+    // CONTENT PANELS
+    // ========================================================
+    .property-content-panel {
+        display: none;
+        animation: propertyPanelIn 0.3s ease both;
+
+        &.is-active {
+            display: block;
+        }
+    }
+
+    .info-pane {
+        width: 100%;
+        padding: 24px 0 0;
+    }
+
+    .pane-badge {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: $color-orange;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+    }
+
+    .pane-title {
+        max-width: 1100px;
+        margin: 0 0 16px;
+        color: $color-blue-dark;
+        font-size: clamp(1.65rem, 3vw, 2.15rem);
+        line-height: $line-heading;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    .pane-body-text {
+        max-width: 1150px;
+        color: $color-text-body;
+        font-size: 16px;
+        line-height: 1.5;
+
+        p {
+            margin: 0 0 12px;
+            color: $color-text-body;
+        }
+    }
+
+    // RESPONSIVE STAT CARDS GRIDS
+    .case-study-stats {
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+        @media (max-width: 520px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+}
+
+@keyframes propertyPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,199 @@
+// Import or define your variables here if using external imports
+// @import 'variables';
+@use "../../../abstracts/variables" as *;
+.misconceptions {
+  background-color: $color-white;
+  padding: $space-section 0;
+  font-family: $font-primary;
+  color: $color-navy; // Primary text color on white background
+
+  &__container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-element;
+  }
+
+  /* Header */
+  &__header {
+    margin-bottom: $space-content;
+  }
+
+  &__subheading {
+    color: $color-orange;
+    font-size: $text-xs;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: $space-small;
+  }
+
+  &__title {
+    font-size: $text-h2;
+    line-height: $line-heading;
+    font-weight: 700;
+    // text-transform: uppercase;
+    color: $color-navy-dark;
+
+    span {
+      font-weight: 800;
+    }
+  }
+
+  /* Grid Wrapper */
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-content;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Controls & Badges */
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: $space-small;
+    margin-top: $space-content;
+  }
+
+  &__nav {
+    background: transparent;
+    border: 1px solid $color-border;
+    color: $color-white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color $transition, color $transition;
+
+    &:hover {
+      border-color: $color-blue;
+      color: $color-blue;
+    }
+  }
+
+  &__counter {
+    font-size: $text-xs;
+    color: $color-text-muted;
+    margin-left: $space-small;
+  }
+
+  /* Dots */
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: $space-content;
+  }
+
+  &__dot {
+    width: 32px;
+    height: 3px;
+    background-color: $color-border;
+    border-radius: $radius-pill;
+    cursor: pointer;
+    transition: background-color $transition;
+
+    &--active {
+      background-color: $color-orange;
+    }
+  }
+}
+
+/* Left Myth Card */
+.misconception-card {
+  position: relative;
+  height: 420px;
+  border-radius: $radius-md;
+  background-size: cover;
+  background-position: center;
+  background-color: $color-navy-dark;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: $space-content $space-element;
+  transition: background-image $transition;
+  color: $color-white;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba($color-navy, 0.2) 0%, rgba($color-navy-dark, 0.9) 100%);
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  &__myth-text {
+    font-size: $text-h3;
+    font-weight: 700;
+    line-height: $line-heading;
+    margin: $space-small 0 $space-element;
+    text-transform: uppercase;
+    color: $color-white;
+  }
+
+  &__btn-reveal {
+    background-color: $color-orange;
+    color: $color-navy-dark;
+    border: none;
+    padding: $space-small $space-element;
+    font-size: $text-xs;
+    font-weight: 700;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: transform $transition, opacity $transition;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: $text-xs;
+    font-weight: 700;
+    border-radius: $radius-sm;
+    letter-spacing: 0.5px;
+
+    &--myth {
+      background-color: rgba($color-white, 0.2);
+      color: $color-white;
+    }
+
+    &--fact {
+      background-color: $color-blue;
+      color: $color-white;
+    }
+  }
+}
+
+/* Right Fact Panel */
+.misconception-fact {
+  border: 1px solid $color-border-dark;
+  border-radius: $radius-md;
+  padding: $space-content;
+  background-color: $color-navy;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__text {
+    font-size: $text-lg;
+    line-height: $line-body;
+    color: $color-text-light;
+    margin-top: $space-element;
+  }
+}

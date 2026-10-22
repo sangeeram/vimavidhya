@@ -1,0 +1,578 @@
+// ========================================
+// INSURANCE REFERENCE CARDS COMPONENT
+// ========================================
+
+@use "../../../../../abstracts/variables" as *;
+
+
+// ========================================
+// MAIN SECTION
+// ========================================
+
+.insurance-reference-section {
+    padding: $space-section 0;
+    background-color: $color-navy;
+    font-family: $font-primary;
+
+
+    // ========================================
+    // CONTAINER
+    // ========================================
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+
+
+    // ========================================
+    // SECTION HEADER
+    // ========================================
+
+    .section-header {
+        margin-bottom: $space-content;
+        text-align: left;
+
+
+        .section-tag {
+            font-size: $text-xs;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: $color-blue;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: $space-small;
+        }
+
+
+        .section-title {
+            font-size: $text-h2;
+            color: $color-white;
+            line-height: $line-heading;
+            margin-bottom: $space-small;
+            font-weight: 600;
+
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+
+        .section-subtitle {
+            font-size: $text-base;
+            color: $color-text-light;
+            line-height: $line-body;
+        }
+    }
+
+
+
+    // ========================================
+    // INSURANCE CARDS GRID
+    // ========================================
+
+    .insurance-cards-grid {
+        display: grid !important;
+
+        /*
+         * IMPORTANT:
+         * 5 CARDS PER ROW ON DESKTOP
+         */
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+
+        /*
+         * Cards touch each other like your screenshot.
+         * Change to 10px if you want spacing.
+         */
+        gap: 0;
+
+        width: 100%;
+        margin: 0 auto $space-section-sm;
+
+        box-sizing: border-box;
+
+
+        // ====================================
+        // INSURANCE CARD
+        // ====================================
+
+        .insurance-card {
+            /*
+             * IMPORTANT:
+             * Do NOT use width: 250px here.
+             * Grid controls the card width.
+             */
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: none !important;
+
+            box-sizing: border-box;
+
+            background: $color-white;
+
+            border: 2px solid $color-blue;
+            border-radius: $radius-md;
+
+            padding: 20px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition: $transition-fast;
+
+            /*
+             * Prevent long content from making
+             * the card wider than its grid column.
+             */
+            overflow: hidden;
+
+
+            // ==================================
+            // HOVER
+            // ==================================
+
+            &:hover {
+                transform: translateY(-4px);
+
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+
+
+            // ==================================
+            // HIGHLIGHT CARD
+            // ==================================
+
+            &.card-highlight {
+                background-color: $color-light-blue;
+
+                border-color: rgba($color-blue, 0.3);
+
+
+                .card-title {
+                    color: $color-blue;
+                }
+
+
+                .card-premium {
+                    color: $color-blue;
+                }
+            }
+
+
+            // ==================================
+            // CARD HEADER
+            // ==================================
+
+            .card-header-tag {
+                margin-bottom: 12px;
+                padding-bottom: 12px;
+
+                border-bottom: 1px solid $color-border;
+
+
+                .card-title {
+                    font-size: 15px;
+
+                    color: $color-blue;
+
+                    font-weight: 700;
+
+                    line-height: 1.3;
+
+                    margin: 0;
+
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                }
+            }
+
+
+            // ==================================
+            // CARD BODY
+            // ==================================
+
+            .card-body {
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                margin-bottom: 16px;
+
+
+                .card-info-row {
+                    font-size: 13px;
+
+                    line-height: $line-body;
+
+
+                    // ==========================
+                    // LABEL
+                    // ==========================
+
+                    .info-label {
+                        display: block;
+
+                        font-size: 10px;
+
+                        font-weight: 600;
+
+                        color: $color-orange;
+
+                        text-transform: uppercase;
+
+                        letter-spacing: 0.03em;
+
+                        margin-bottom: 2px;
+                    }
+
+
+                    // ==========================
+                    // VALUE
+                    // ==========================
+
+                    .info-value {
+                        color: $color-text-body;
+
+                        font-weight: 500;
+
+                        overflow-wrap: break-word;
+
+                        word-wrap: break-word;
+                    }
+                }
+            }
+
+
+            // ==================================
+            // CARD FOOTER
+            // ==================================
+
+            .card-footer {
+                padding-top: 10px;
+
+                border-top: 1px dashed $color-border;
+
+                display: flex;
+
+                flex-direction: column;
+
+
+                .footer-label {
+                    font-size: 9px;
+
+                    font-weight: 700;
+
+                    color: $color-blue;
+
+                    letter-spacing: 0.05em;
+
+                    margin-bottom: 4px;
+                }
+
+
+                .card-premium {
+                    font-size: 18px;
+
+                    font-weight: 800;
+
+                    color: $color-navy;
+
+                    line-height: 1.2;
+
+                    overflow-wrap: break-word;
+                }
+            }
+        }
+    }
+
+
+
+    // ========================================
+    // PLANNING GUIDANCE SECTION
+    // ========================================
+
+    .planning-guidance-wrapper {
+        margin-top: $space-section-sm;
+
+        text-align: left;
+
+
+        // ====================================
+        // PLANNING HEADER
+        // ====================================
+
+        .planning-header {
+            margin-bottom: $space-content;
+
+
+            .section-tag {
+                font-size: $text-xs;
+
+                font-weight: 700;
+
+                letter-spacing: 0.05em;
+
+                color: $color-blue;
+
+                text-transform: uppercase;
+
+                display: block;
+
+                margin-bottom: $space-small;
+            }
+
+
+            .section-title {
+                font-size: 24px;
+
+                color: $color-white;
+
+                margin-bottom: $space-small;
+
+                font-weight: 500;
+
+
+                @media (max-width: 768px) {
+                    font-size: 32px;
+                }
+            }
+
+
+            .section-subtitle {
+                font-size: $text-base;
+
+                color: $color-text-light;
+            }
+        }
+
+
+
+        // ====================================
+        // PLANNING CARDS GRID
+        // ====================================
+
+        .planning-cards-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: $space-element;
+
+            margin-bottom: $space-element;
+
+            text-align: left;
+
+
+            // ==================================
+            // PLANNING CARD
+            // ==================================
+
+            .planning-card {
+                background-color: white;
+
+                border: 1px solid $color-border-dark;
+
+                border-radius: $radius-lg;
+
+                padding: $space-content;
+
+                box-shadow:
+                    0 10px 30px rgba(0, 0, 0, 0.20);
+
+
+                // ==============================
+                // ICON + CATEGORY
+                // ==============================
+
+                .card-icon-title {
+                    display: flex;
+
+                    align-items: center;
+
+                    gap: $space-small;
+
+                    margin-bottom: $space-small;
+
+
+                    .card-icon {
+                        font-size: 20px;
+                    }
+
+
+                    .card-category {
+                        font-size: $text-xs;
+
+                        font-weight: 700;
+
+                        letter-spacing: 0.05em;
+
+                        color: $color-blue;
+                    }
+                }
+
+
+                // ==============================
+                // METRIC TITLE
+                // ==============================
+
+                .card-metric-title {
+                    font-size: $text-lg;
+
+                    color: $color-orange;
+
+                    font-weight: 600;
+
+                    margin-bottom: $space-element;
+                }
+
+
+                // ==============================
+                // METRIC BOX
+                // ==============================
+
+                .card-metric-box {
+                    background-color:
+                        rgba($color-blue, 0.15);
+
+                    border:
+                        1px solid rgba($color-blue, 0.30);
+
+                    border-radius: $radius-md;
+
+                    padding: $space-element;
+
+
+                    .metric-value {
+                        font-size: 28px;
+
+                        font-weight: 800;
+
+                        color: $color-blue;
+
+                        margin-bottom: 4px;
+                    }
+
+
+                    .metric-desc {
+                        font-size: $text-sm;
+
+                        color: black;
+                    }
+                }
+            }
+        }
+
+
+
+        // ====================================
+        // FOOTER NOTE
+        // ====================================
+
+        .table-footer-note {
+            font-size: $text-xs;
+
+            color: $color-text-light;
+
+            opacity: 0.7;
+
+            text-align: center;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            line-height: $line-body;
+        }
+    }
+
+
+
+    // ========================================
+    // TABLET
+    // ========================================
+
+    @media (max-width: 900px) {
+
+        .container {
+            padding: 0 20px;
+        }
+
+
+        .insurance-cards-grid {
+
+            /*
+             * 2 CARDS PER ROW
+             */
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr)) !important;
+
+
+            .insurance-card {
+                padding: 18px;
+            }
+        }
+    }
+
+
+
+    // ========================================
+    // MOBILE
+    // ========================================
+
+    @media (max-width: 600px) {
+
+        .container {
+            padding: 0 15px;
+        }
+
+
+        .insurance-cards-grid {
+
+            /*
+             * 1 CARD PER ROW
+             */
+            grid-template-columns:
+                1fr !important;
+
+
+            .insurance-card {
+                padding: 18px;
+
+
+                .card-header-tag {
+
+                    .card-title {
+                        font-size: 15px;
+                    }
+                }
+
+
+                .card-body {
+
+                    .card-info-row {
+                        font-size: 13px;
+                    }
+                }
+
+
+                .card-footer {
+
+                    .card-premium {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

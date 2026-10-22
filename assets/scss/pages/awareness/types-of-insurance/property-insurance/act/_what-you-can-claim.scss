@@ -1,0 +1,312 @@
+@use "../../../../../abstracts/variables" as *;
+
+.coverage-section {
+  font-family: $font-primary;
+  position: relative;
+  width: 100%;
+  background-color: $color-navy;
+  padding: 40px 0 60px 0;
+  color: $color-white;
+  overflow: hidden;
+
+  .coverage-container {
+    position: relative;
+    z-index: 5;
+    width: min(92%, $container-wide);
+    margin: 0 auto;
+    padding: 0 $space-content;
+  }
+
+  .coverage-header {
+    margin-bottom: 24px;
+    max-width: 1100px;
+.sec-title {
+      font-size: 44px;
+      line-height: $line-heading;
+      color: $color-white;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .coverage-title {
+      font-size: 36px;
+      line-height: $line-heading;
+      color: $color-white;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .coverage-description {
+      font-size: $text-base;
+      line-height: $line-body;
+      color: rgba($color-white, 0.85);
+    }
+  }
+
+  // =======================================================
+  // CAROUSEL WRAPPER & FLOATING ARROWS
+  // =======================================================
+
+  .carousel-wrapper {
+    position: relative;
+    width: min(90%, 1100px);
+    margin: 0 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .carousel-track-container {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 20px; // Slightly tightened gap to help fit smaller cards
+    width: max-content;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $color-white;
+    color: $color-navy;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+    transition: background-color $transition, transform $transition, color $transition; // Fixed typo
+
+    &.prev-arrow {
+      left: -22px;
+    }
+
+    &.next-arrow {
+      right: -22px;
+    }
+
+    &:hover {
+      background-color: $color-blue;
+      color: $color-white;
+      transform: translateY(-50%) scale(1.08);
+    }
+  }
+
+  // =======================================================
+  // FLIP CARD ITEM STYLING (Reduced Width for 3 in a Row)
+  // =======================================================
+
+  .flip-card-item {
+    position: relative;
+    // Exactly 3 items fit in view, with reduced individual card width (e.g., max 240px or customized via calc)
+    width: calc((min(80vw, 1000px) - 40px) / 3); 
+    max-width: 250px; // <-- Adjust this max-width value smaller (e.g., 220px or 240px) to make cards narrower
+    min-width: 220px;
+    height: 340px;
+    flex-shrink: 0;
+    perspective: 1000px;
+    cursor: pointer;
+    outline: none;
+    transition: transform $transition-slow;
+
+    &:hover,
+    &:focus {
+      z-index: 100;
+      transform: translateY(-8px);
+
+      .flip-card-inner {
+        transform: rotateY(180deg);
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow $transition;
+    transform-style: preserve-3d;
+    border-radius: $radius-lg;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: $radius-lg;
+    padding: $space-element;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .flip-card-front {
+    background-color: $color-white;
+    border: 1px solid $color-border;
+    color: $color-text;
+    overflow: hidden;
+
+    .card-image-wrapper {
+      width: 100%;
+      height: 140px; // Slightly scaled down to match narrower width
+      border-radius: calc($radius-lg - 4px);
+      overflow: hidden;
+      margin-bottom: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+    }
+
+    .card-title {
+      font-size: 0.95rem; // Slightly adjusted font scale for narrow cards
+      line-height: 1.3;
+      font-weight: 700;
+      color: $color-navy;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .flip-hint {
+      font-size: $text-xs;
+      color: $color-blue;
+      font-weight: 600;
+      display: block;
+      margin-top: auto;
+    }
+  }
+
+  .flip-card-item:hover {
+    .card-image-wrapper img {
+      transform: scale(1.05);
+    }
+  }
+
+  .flip-card-back {
+    background-color: $color-white;
+    border: 1px solid $color-border;
+    color: $color-text-body;
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-y: auto;
+
+    .detail-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: $color-orange;
+      font-weight: 700;
+    }
+
+    .detail-value {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $color-navy;
+
+      &.highlight {
+        color: $color-blue;
+      }
+
+      &.accent {
+        color: $color-blue-dark;
+      }
+    }
+
+    .detail-notes {
+      font-size: 0.78rem;
+      line-height: 1.3;
+      color: black;
+      margin: 0;
+    }
+  }
+
+  // =======================================================
+  // DOTS NAVIGATION INDICATORS
+  // =======================================================
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba($color-white, 0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color $transition, transform $transition; // Fixed typo
+
+      &.active {
+        background-color: $color-blue;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+// =========================================================
+// RESPONSIVE ADJUSTMENTS
+// =========================================================
+
+@media (max-width: 1024px) {
+  .coverage-section .flip-card-item {
+    width: calc((100vw - 40px) / 2);
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .coverage-section {
+    .carousel-arrow {
+      display: none;
+    }
+    .carousel-track-container {
+      overflow-x: auto;
+    }
+    .carousel-track {
+      width: max-content;
+      transform: none !important;
+    }
+    .flip-card-item {
+      width: 240px;
+      max-width: none;
+      height: 320px;
+    }
+  }
+}

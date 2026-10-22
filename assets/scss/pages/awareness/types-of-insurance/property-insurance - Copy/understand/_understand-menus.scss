@@ -1,0 +1,154 @@
+// ========================================
+// PROCESS STEPS SECTION
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+
+.vv-process-section {
+  padding: $space-section 0;
+  background-color: $color-navy;
+  font-family: $font-primary;
+
+  &__subheading {
+    text-align: center;
+    color: $color-text-muted;
+    font-size: $text-base;
+    line-height: $line-body;
+    max-width: $text-width-wide;
+    margin: 0 auto $space-content;
+  }
+}
+
+.vv-container {
+  max-width: $container-wide;
+  margin: 0 auto;
+  padding: 0 $space-element;
+}
+
+.vv-process-grid {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-element;
+  padding: $space-element 0;
+
+  // Horizontal connecting line
+  &__line {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background-color: $color-border;
+    z-index: 1;
+    transform: translateY(-50%);
+  }
+}
+
+.vv-process-card {
+  position: relative;
+  z-index: 2;
+  width: 140px;
+  height: 140px;
+  background-color: $color-cream;
+  border-radius: $radius-lg;
+  transform: rotate(45deg);
+  box-shadow: 0 10px 25px rgba(8, 39, 75, 0.05);
+  transition: transform $transition, box-shadow $transition;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  // Counter-rotate internal content so it stays upright
+  &__inner {
+    transform: rotate(-45deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: $space-small;
+    width: 100%;
+  }
+
+  &__number {
+    font-size: $text-xs;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 4px;
+  }
+
+  &__icon {
+    font-size: 22px;
+    color: $color-text;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dashicons {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 800;
+    line-height: $line-tight;
+    color: $color-navy;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  // Colored bottom corner tab
+  &__corner-accent {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 22px 22px;
+    border-color: transparent transparent var(--card-accent) transparent;
+    border-bottom-right-radius: 4px;
+    z-index: 3;
+  }
+
+  &:hover {
+    transform: rotate(45deg) scale(1.05);
+    box-shadow: 0 14px 30px rgba(8, 39, 75, 0.1);
+  }
+
+  // Active state styling (First card blue filled state)
+  &--active {
+    background-color: $color-blue;
+    box-shadow: 0 12px 28px rgba(0, 122, 255, 0.35);
+
+    .vv-process-card__number,
+    .vv-process-card__icon,
+    .vv-process-card__title {
+      color: $color-white;
+    }
+
+    .vv-process-card__corner-accent {
+      display: none;
+    }
+  }
+}
+
+// Responsive behavior for tablets and mobile devices
+@media (max-width: 1024px) {
+  .vv-process-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px $space-content;
+
+    &__line {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,817 @@
+@use "../../../../../../abstracts/variables" as *;
+
+
+// ======================================================
+// VIMA VIDYA
+// CASE STUDIES / STORIES THAT MATTER
+// ======================================================
+
+
+.vv-case-studies {
+
+    width: 100%;
+    padding: 40px 0;
+    background: $color-light-blue;
+
+    // ==================================================
+    // CONTAINER
+    // ==================================================
+
+    &__container {
+
+        width: min(
+            calc(100% - 48px),
+            $container-wide
+        );
+
+        margin: 0 auto;
+    }
+
+
+    // ==================================================
+    // SECTION HEADER
+    // ==================================================
+
+    &__header {
+
+        max-width: 1000px;
+        margin: 0 40px;
+
+        text-align: left;
+    }
+
+
+    &__eyebrow {
+
+        display: inline-block;
+
+        margin-bottom: $space-small;
+
+        color: $color-blue;
+
+        font-family: $font-primary;
+        font-size: $text-xs;
+        font-weight: 700;
+
+        letter-spacing: 0.16em;
+        line-height: 1.4;
+
+        text-transform: uppercase;
+    }
+
+
+    &__header h2 {
+
+        margin: 0;
+
+        color: $color-navy;
+
+        font-family: $font-primary;
+        font-size: 36px;
+        font-weight: 600;
+
+        letter-spacing: -0.035em;
+        line-height: $line-tight;
+    }
+
+
+    &__header p {
+
+        max-width: 1000px;
+
+        margin: 10px auto 10px;
+
+        color: $color-text-body;
+
+        font-family: $font-primary;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+
+    // ==================================================
+    // CASE STUDY LIST
+    // ==================================================
+
+    &__list {
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 40px;
+    }
+}
+
+
+
+// ======================================================
+// CASE STUDY CARD
+// ======================================================
+
+.vv-case-study {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.96fr)
+        minmax(0, 1.04fr);
+
+    gap: 36px;
+
+    padding: 20px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-md;
+
+    box-shadow:
+        0 4px 16px rgba(8, 39, 75, 0.045);
+
+    overflow: hidden;
+
+    transition:
+        box-shadow $transition,
+        transform $transition;
+
+
+    &:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 12px 32px rgba(8, 39, 75, 0.08);
+    }
+
+
+    // ==================================================
+    // REVERSE LAYOUT
+    // ==================================================
+
+    &--reverse {
+
+        grid-template-columns:
+            minmax(0, 1.04fr)
+            minmax(0, 0.96fr);
+
+
+        .vv-case-study__visual {
+            order: 2;
+        }
+
+
+        .vv-case-study__content {
+            order: 1;
+        }
+    }
+
+
+    // ==================================================
+    // CARD FOOTER / BUTTON INSIDE VISUAL COLUMN
+    // ==================================================
+
+    &__footer {
+        margin: 16px 10px 0;
+
+        .vv-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 20px;
+            background: $color-blue;
+            color: $color-white;
+            font-family: $font-primary;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: $radius-sm;
+            text-decoration: none;
+            transition: background $transition, transform $transition;
+
+            &:hover {
+                background: $color-navy;
+                transform: translateY(-1px);
+            }
+
+            .dashicons {
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+
+
+// ======================================================
+// VISUAL COLUMN
+// ======================================================
+
+.vv-case-study__visual {
+
+    min-width: 0;
+}
+
+
+
+// ======================================================
+// IMAGE
+// ======================================================
+
+.vv-case-study__image-wrap {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 250px;
+
+    overflow: hidden;
+
+    background: $color-light-gray;
+
+    border-radius: $radius-sm;
+}
+
+
+.vv-case-study__image {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform $transition-slow;
+}
+
+
+.vv-case-study:hover
+.vv-case-study__image {
+
+    transform: scale(1.025);
+}
+
+
+
+// ======================================================
+// STAT CARDS
+// ======================================================
+
+.vv-case-study__stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 6px;
+
+    margin-top: 8px;
+}
+
+
+.vv-case-study__stat {
+
+    min-width: 0;
+
+    min-height: 102px;
+
+    padding: 10px 8px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-sm;
+
+    box-shadow:
+        0 2px 8px rgba(8, 39, 75, 0.035);
+}
+
+
+.vv-case-study__stat-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    margin-bottom: 5px;
+
+    color: $color-orange;
+
+    font-size: 14px;
+}
+
+
+.vv-case-study__stat-icon .dashicons {
+
+    width: 16px;
+    height: 16px;
+
+    font-size: 16px;
+}
+
+
+.vv-case-study__stat-content {
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.vv-case-study__stat-label {
+
+    margin-bottom: 3px;
+
+    color: $color-blue;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1.25;
+}
+
+
+.vv-case-study__stat-value {
+
+    color: $color-orange;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+.vv-case-study__stat-sub {
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: 9px;
+
+    line-height: 1.35;
+}
+
+
+
+// ======================================================
+// TAKEAWAY
+// ======================================================
+
+.vv-case-study__takeaway {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin: 16px 10px 0;
+
+    padding: 10px 12px;
+
+    background: $color-light-blue;
+
+    border: 1px solid $color-blue;
+
+    border-radius: $radius-sm;
+}
+
+
+.vv-case-study__takeaway-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 23px;
+    height: 23px;
+
+    margin-top: 1px;
+
+    background: $color-orange;
+
+    border-radius: $radius-pill;
+
+    color: $color-white;
+}
+
+
+.vv-case-study__takeaway-icon .dashicons {
+
+    width: 14px;
+    height: 14px;
+
+    font-size: 14px;
+}
+
+
+.vv-case-study__takeaway-content {
+
+    min-width: 0;
+}
+
+
+.vv-case-study__takeaway-label {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: $color-blue-dark;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.3;
+}
+
+
+.vv-case-study__takeaway p {
+
+    margin: 0;
+
+    color: $color-text-body;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+}
+
+
+
+// ======================================================
+// CONTENT COLUMN
+// ======================================================
+
+.vv-case-study__content {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    min-width: 0;
+
+    padding: 4px 4px 10px;
+}
+
+
+
+// ======================================================
+// META
+// ======================================================
+
+.vv-case-study__meta {
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    color: $color-blue;
+
+    font-size: $text-xs;
+
+    font-weight: 600;
+}
+
+
+.vv-case-study__separator {
+
+    color: $color-border;
+}
+
+
+.vv-case-study__location {
+
+    color: $color-blue;
+}
+
+
+
+// ======================================================
+// TITLE
+// ======================================================
+
+.vv-case-study__title {
+
+    max-width: 620px;
+
+    margin: 0 0 26px;
+
+    color: $color-navy;
+
+    font-family: $font-primary;
+
+    font-size: clamp(
+        25px,
+        2.4vw,
+        34px
+    );
+
+    font-weight: 700;
+
+    letter-spacing: -0.035em;
+
+    line-height: 1.12;
+}
+
+
+
+// ======================================================
+// STORY
+// ======================================================
+
+.vv-case-study__story {
+
+    max-width: $text-width-wide;
+}
+
+
+.vv-case-study__story p {
+
+    margin: 0 0 17px;
+
+    color: $color-text-body;
+
+    font-family: $font-primary;
+
+    font-size: 16px;
+
+    line-height: 1.72;
+
+
+    &:last-child {
+
+        margin-bottom: 0;
+    }
+
+
+    strong {
+
+        color: $color-navy;
+
+        font-weight: 700;
+    }
+}
+
+
+
+// ======================================================
+// TABLET
+// ======================================================
+
+@media (max-width: 1000px) {
+
+    .vv-case-study {
+
+        grid-template-columns:
+            minmax(0, 0.9fr)
+            minmax(0, 1.1fr);
+
+        gap: 24px;
+
+
+        &--reverse {
+
+            grid-template-columns:
+                minmax(0, 1.1fr)
+                minmax(0, 0.9fr);
+        }
+    }
+
+
+    .vv-case-study__image-wrap {
+
+        height: 220px;
+    }
+
+
+    .vv-case-study__stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+    }
+
+
+    .vv-case-study__stat {
+
+        min-height: 84px;
+    }
+
+
+    .vv-case-study__title {
+
+        margin-bottom: 20px;
+
+        font-size: 26px;
+    }
+
+
+    .vv-case-study__story p {
+
+        font-size: 13px;
+    }
+}
+
+
+
+// ======================================================
+// MOBILE
+// ======================================================
+
+@media (max-width: 760px) {
+
+    .vv-case-studies {
+
+        padding: $space-section 0;
+    }
+
+
+    .vv-case-studies__container {
+
+        width: min(
+            calc(100% - 28px),
+            $container-width
+        );
+    }
+
+
+    .vv-case-studies__header {
+
+        margin-bottom: 34px;
+    }
+
+
+    .vv-case-studies__header h2 {
+
+        font-size: 30px;
+    }
+
+
+    .vv-case-studies__header p {
+
+        font-size: 16px;
+    }
+
+
+    // ----------------------------------------------
+    // CARD
+    // ----------------------------------------------
+
+    .vv-case-study,
+    .vv-case-study--reverse {
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 24px;
+
+        padding: 14px;
+    }
+
+
+    .vv-case-study__visual,
+    .vv-case-study__content {
+
+        order: initial;
+    }
+
+
+    // ----------------------------------------------
+    // IMAGE
+    // ----------------------------------------------
+
+    .vv-case-study__image-wrap {
+
+        height: 220px;
+    }
+
+
+    // ----------------------------------------------
+    // STATS
+    // ----------------------------------------------
+
+    .vv-case-study__stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+    }
+
+
+    .vv-case-study__stat {
+
+        min-height: 90px;
+
+        padding: 9px;
+    }
+
+
+    // ----------------------------------------------
+    // TAKEAWAY
+    // ----------------------------------------------
+
+    .vv-case-study__takeaway {
+
+        margin-right: 0;
+        margin-left: 0;
+
+        padding: 11px;
+    }
+
+
+    // ----------------------------------------------
+    // CONTENT
+    // ----------------------------------------------
+
+    .vv-case-study__content {
+
+        padding: 0 4px 8px;
+    }
+
+
+    .vv-case-study__title {
+
+        margin-bottom: 18px;
+
+        font-size: 25px;
+    }
+
+
+    .vv-case-study__story p {
+
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+}
+
+
+
+// ======================================================
+// SMALL MOBILE
+// ======================================================
+
+@media (max-width: 420px) {
+
+    .vv-case-study__image-wrap {
+
+        height: 190px;
+    }
+
+
+    .vv-case-study__stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .vv-case-study__stat {
+
+        min-height: 88px;
+    }
+
+
+    .vv-case-study__stat-value {
+
+        font-size: 11px;
+    }
+
+
+    .vv-case-study__stat-sub {
+
+        font-size: 8px;
+    }
+
+
+    .vv-case-study__story p {
+
+        font-size: 13px;
+    }
+}

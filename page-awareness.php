@@ -15,8 +15,8 @@ get_header();
 
     <?php get_template_part('template-parts/awareness/explore'); ?>
     <?php get_template_part('template-parts/awareness/what-is-insurance'); ?>
-    <?php get_template_part('template-parts/awareness/life-stages'); ?>
-    <?php get_template_part('template-parts/awareness/cta'); ?>
+  
+   
 
 </main>
 

@@ -118,153 +118,110 @@ if ($assessment_query->have_posts()) :
             }
         ?>
 
-            <div class="vv-assessment-card <?php echo esc_attr($color_class); ?>">
+        <div class="vv-assessment-card <?php echo esc_attr($color_class); ?>">
 
-                <!-- Hidden checkbox controls the flip -->
-                <input
-                    type="checkbox"
-                    class="vv-flip-toggle"
-                    id="<?php echo esc_attr($card_id); ?>"
-                >
+            <!-- Hidden checkbox controls the flip -->
+            <input type="checkbox" class="vv-flip-toggle" id="<?php echo esc_attr($card_id); ?>">
 
-                <label
-                    class="vv-flip-card"
-                    for="<?php echo esc_attr($card_id); ?>"
-                >
+            <label class="vv-flip-card" for="<?php echo esc_attr($card_id); ?>">
 
-                    <!-- =========================================
+                <!-- =========================================
                          FRONT
                     ========================================== -->
-                    <div class="vv-card-face vv-card-front">
+                <div class="vv-card-face vv-card-front">
 
-                        <div class="vv-front-content">
+                    <div class="vv-front-content">
 
-                            <div class="vv-card-number">
-                                <?php echo esc_html($scenario_number); ?>
-                            </div>
-
-                            <h3 class="vv-card-title">
-                                <?php echo esc_html(get_the_title()); ?>
-                            </h3>
-
-                            <div class="vv-card-divider"></div>
-
-                            <p class="vv-question">
-                                <?php echo esc_html($question); ?>
-                            </p>
-
-                            <div class="vv-options">
-
-                                <div class="vv-option">
-                                    <span class="vv-option-key">A</span>
-                                    <span class="vv-option-text">
-                                        <?php echo esc_html($option_a); ?>
-                                    </span>
-                                </div>
-
-                                <div class="vv-option">
-                                    <span class="vv-option-key">B</span>
-                                    <span class="vv-option-text">
-                                        <?php echo esc_html($option_b); ?>
-                                    </span>
-                                </div>
-
-                                <div class="vv-option">
-                                    <span class="vv-option-key">C</span>
-                                    <span class="vv-option-text">
-                                        <?php echo esc_html($option_c); ?>
-                                    </span>
-                                </div>
-
-                            </div>
-
+                        <div class="vv-card-number">
+                            <?php echo esc_html($scenario_number); ?>
                         </div>
 
-                        <div class="vv-card-action">
-                            <span>Tap / Click to reveal</span>
-                            <span class="vv-flip-icon">↻</span>
+                        <h3 class="vv-card-title">
+                            <?php echo esc_html(get_the_title()); ?>
+                        </h3>
+
+                        <div class="vv-card-divider"></div>
+
+                        <p class="vv-question">
+                            <?php echo esc_html($question); ?>
+                        </p>
+
+                        <div class="vv-options">
+
+                            <div class="vv-option">
+                                <span class="vv-option-key">A</span>
+                                <span class="vv-option-text">
+                                    <?php echo esc_html($option_a); ?>
+                                </span>
+                            </div>
+
+                            <div class="vv-option">
+                                <span class="vv-option-key">B</span>
+                                <span class="vv-option-text">
+                                    <?php echo esc_html($option_b); ?>
+                                </span>
+                            </div>
+
+                            <div class="vv-option">
+                                <span class="vv-option-key">C</span>
+                                <span class="vv-option-text">
+                                    <?php echo esc_html($option_c); ?>
+                                </span>
+                            </div>
+
                         </div>
 
                     </div>
 
+                    <div class="vv-card-action">
+                        <span>Tap / Click to reveal</span>
+                        <span class="vv-flip-icon">↻</span>
+                    </div>
 
-                    <!-- =========================================
-                         BACK
-                    ========================================== -->
-                    <div class="vv-card-face vv-card-back">
-
-                        <div class="vv-back-content">
-
-                            <div class="vv-answer-label">
-                                RECOMMENDED OPTION
-                            </div>
-
-                            <div class="vv-recommended-option">
-                                <?php echo esc_html($recommended); ?>
-                            </div>
-
-                            <?php if ($recommended_text) : ?>
-                                <div class="vv-recommended-text">
-                                    <?php echo esc_html($recommended_text); ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ($answer_title) : ?>
-                                <div class="vv-answer-title">
-                                    <?php echo esc_html($answer_title); ?>
-                                </div>
-                            <?php endif; ?>
+                </div>
 
 
-                            <?php if ($why_this_matters) : ?>
-                                <div class="vv-info-box">
+                <!-- =========================================
+     BACK
+========================================== -->
+                <div class="vv-card-face vv-card-back">
 
-                                    <div class="vv-info-heading">
-                                        WHY THIS MATTERS
-                                    </div>
+                    <div class="vv-back-content">
 
-                                    <div class="vv-info-content">
-                                        <?php
-                                        echo wp_kses_post(
-                                            wpautop($why_this_matters)
-                                        );
-                                        ?>
-                                    </div>
-
-                                </div>
-                            <?php endif; ?>
-
-
-                            <?php if ($key_takeaway) : ?>
-                                <div class="vv-takeaway-box">
-
-                                    <div class="vv-takeaway-heading">
-                                        KEY TAKEAWAY
-                                    </div>
-
-                                    <div class="vv-takeaway-content">
-                                        <?php
-                                        echo wp_kses_post(
-                                            wpautop($key_takeaway)
-                                        );
-                                        ?>
-                                    </div>
-
-                                </div>
-                            <?php endif; ?>
-
+                        <div class="vv-answer-label">
+                            ANSWER OPTION
                         </div>
 
-                        <div class="vv-card-action vv-back-action">
-                            <span>Tap / Click to flip back</span>
-                            <span class="vv-flip-icon">↻</span>
+                        <div class="vv-recommended-option">
+                            <?php echo esc_html($recommended); ?>
                         </div>
+
+                        <?php if ($answer_title) : ?>
+                        <div class="vv-answer-title">
+                            <?php echo esc_html($answer_title); ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if ($why_this_matters) : ?>
+                        <div class="vv-recommended-text">
+                            <?php echo wp_kses_post($why_this_matters); ?>
+                        </div>
+                        <?php endif; ?>
 
                     </div>
 
-                </label>
+                    <div class="vv-card-action vv-back-action">
 
-            </div>
+                        <span>Tap / Click to flip back</span>
+
+                        <span class="vv-flip-icon">↻</span>
+
+                    </div>
+
+                </div>
+            </label>
+
+        </div>
 
         <?php
             $card_index++;

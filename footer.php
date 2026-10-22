@@ -190,20 +190,29 @@
 
 </footer>
 
-<?php wp_footer(); ?>
+<!-- AOS Animation JS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
     AOS.init({
-        duration: 800,
+        duration: 900,
         easing: 'ease-out-cubic',
+        offset: 80,
+        delay: 0,
         once: true,
-        offset: 80
+        mirror: false,
+        anchorPlacement: 'top-bottom'
     });
-    
+
 });
 </script>
+
+
+
+<?php wp_footer(); ?>
+
 
 </body>
 </html>

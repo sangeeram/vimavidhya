@@ -1,0 +1,230 @@
+// Import or include your variables file here
+@use "../../abstracts/variables" as *;
+.vv-glossary-section {
+  padding: $space-section 0;
+  background-color: $color-light-gray;
+  font-family: $font-primary;
+
+  .vv-container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-element;
+  }
+}
+
+.vv-glossary-header {
+  text-align: center;
+  margin-bottom: $space-content;
+
+  &__title {
+    font-size: $text-h2;
+    line-height: $line-heading;
+    color: $color-navy;
+    margin-bottom: $space-small;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: $text-lg;
+    line-height: $line-body;
+    color: $color-text-muted;
+    max-width: $text-width-medium;
+    margin: 0 auto;
+  }
+}
+
+.vv-glossary-card {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  overflow: hidden;
+
+  // Horizontal Alphabet Strip
+  &__alphabet-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-cream;
+    border-bottom: 1px solid $color-border;
+    padding: $space-small $space-element;
+
+    a {
+      color: $color-text-muted;
+      text-decoration: none;
+      font-size: $text-sm;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      &:hover,
+      &.current-word {
+        color: $color-white;
+        background-color: $color-navy;
+      }
+    }
+  }
+
+  // Two-Column Main Layout
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-content;
+    padding: $space-content;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1.2fr;
+    }
+  }
+
+  // Left Column Styling
+  &__left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title-group {
+    margin-bottom: $space-element;
+
+    .vv-badge {
+      display: inline-block;
+      font-size: $text-xs;
+      font-weight: 600;
+      color: $color-orange;
+      background-color: rgba($color-orange, 0.1);
+      padding: 6px 14px;
+      border-radius: $radius-pill;
+      margin-bottom: $space-small;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__word {
+    font-size: $text-h1;
+    line-height: $line-tight;
+    color: $color-navy;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: $text-base;
+    line-height: $line-body;
+    color: $color-text-body;
+    margin-bottom: $space-content;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-small;
+
+    .vv-btn--theme {
+      background-color: $color-blue;
+      color: $color-white;
+      padding: 12px 24px;
+      border-radius: $radius-sm;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: $text-sm;
+      transition: background-color $transition-fast;
+
+      &:hover {
+        background-color: $color-blue-dark;
+      }
+    }
+
+    .vv-btn--outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: $color-text;
+      border: 1px solid $color-border;
+      padding: 12px 24px;
+      border-radius: $radius-sm;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: $text-sm;
+      transition: all $transition-fast;
+
+      &:hover {
+        background-color: $color-light-gray;
+        border-color: $color-text-muted;
+      }
+    }
+  }
+
+  // Right Column Styling
+  &__right-col {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Tab Navigation
+.vv-glossary-tabs {
+  display: flex;
+  border-bottom: 2px solid $color-border;
+  background-color: $color-light-gray;
+  border-radius: $radius-sm $radius-sm 0 0;
+  overflow: hidden;
+
+  .vv-tab-btn {
+    flex: 1;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    color: $color-text-muted;
+    font-size: $text-base;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-navy;
+    }
+
+    &.active {
+      background-color: $color-navy;
+      color: $color-white;
+    }
+  }
+}
+
+// Tab Content Block
+.vv-tab-content-container {
+  background-color: $color-light-blue;
+  padding: $space-element;
+  border-radius: 0 0 $radius-md $radius-md;
+  flex-grow: 1;
+
+  .vv-tab-pane {
+    display: none;
+    flex-direction: column;
+    gap: $space-element;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  .vv-detail-group {
+    .vv-detail-label {
+      font-size: $text-base;
+      font-weight: 700;
+      color: $color-blue;
+      margin: 0 0 4px 0;
+    }
+
+    .vv-detail-text {
+      font-size: $text-base;
+      line-height: $line-body;
+      color: $color-navy-dark;
+      margin: 0;
+    }
+  }
+}

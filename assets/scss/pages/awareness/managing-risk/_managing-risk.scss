@@ -1,0 +1,837 @@
+// =========================================================
+// VIMA VIDYA
+// RISK MANAGEMENT CARDS
+// =========================================================
+
+@use "../../../abstracts/variables" as *;
+
+
+// =========================================================
+// SECTION
+// =========================================================
+
+.vv-risk-cards {
+
+    width: 100%;
+
+    padding:
+        $space-section
+        24px
+        $space-section-lg;
+
+    background: $color-white; // Section remains white
+
+    font-family: $font-primary;
+
+    color: $color-text;
+
+
+    // =====================================================
+    // CONTAINER
+    // =====================================================
+
+    &__container {
+
+        width: 100%;
+
+        max-width: $container-width;
+
+        margin: 0 auto;
+    }
+
+
+    // =====================================================
+    // INTRO
+    // =====================================================
+
+    &__intro {
+
+        max-width: $text-width-wide;
+
+        margin:
+            0 auto
+            $space-content;
+
+        text-align: center;
+    }
+
+
+    // =====================================================
+    // EYEBROW
+    // =====================================================
+
+    &__eyebrow {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-bottom: $space-small;
+
+        color: $color-orange;
+
+        font-size: $text-xs;
+
+        font-weight: 700;
+
+        letter-spacing: .14em;
+
+        text-transform: uppercase;
+
+
+        &::before,
+        &::after {
+
+            content: "";
+
+            width: 28px;
+
+            height: 1px;
+
+            background: $color-orange;
+        }
+    }
+
+
+    // =====================================================
+    // TITLE
+    // =====================================================
+
+    &__intro h2 {
+
+        margin: 0;
+
+        color: $color-navy;
+
+        font-size: 36px;
+            
+        line-height: $line-tight;
+
+        font-weight: 700;
+
+        letter-spacing: -0.03em;
+
+
+        span {
+
+            color: $color-blue;
+        }
+    }
+
+
+    // =====================================================
+    // DESCRIPTION
+    // =====================================================
+
+    &__intro p {
+
+        max-width: $text-width-medium;
+
+        margin:
+            $space-small
+            auto
+            0;
+
+        color: $color-text-body;
+
+        font-size: $text-base;
+
+        line-height: $line-body;
+    }
+
+
+    // =====================================================
+    // CARD LIST
+    // =====================================================
+
+    &__list {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: $space-element;
+    }
+}
+
+
+
+// =========================================================
+// CARD
+// =========================================================
+
+.vv-risk-card {
+
+    --risk-accent: #{$color-blue};
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 38%)
+        minmax(0, 62%);
+
+    min-height: 340px;
+
+    border: 1px solid rgba($color-white, 0.1);
+
+    border-radius: $radius-md;
+
+    background: $color-navy; // Card background set to Navy
+
+    overflow: hidden;
+ scroll-margin-top: 180px;
+    box-shadow:
+        0 8px 24px rgba(
+            0,
+            0,
+            0,
+            .15
+        );
+
+    transition:
+        transform $transition,
+        box-shadow $transition;
+
+
+    &:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 14px 32px rgba(
+                0,
+                0,
+                0,
+                .25
+            );
+    }
+
+
+    // =====================================================
+    // ALTERNATE
+    // =====================================================
+
+    &--reverse {
+
+        grid-template-columns:
+            minmax(0, 62%)
+            minmax(300px, 38%);
+
+
+        .vv-risk-card__image {
+
+            order: 2;
+        }
+
+
+        .vv-risk-card__body {
+
+            order: 1;
+        }
+    }
+
+
+    // =====================================================
+    // ACCENT VARIATIONS
+    // =====================================================
+
+    &--blue {
+
+        --risk-accent: #{$color-blue};
+    }
+
+
+    &--orange {
+
+        --risk-accent: #{$color-orange};
+    }
+
+
+    &--purple {
+
+        --risk-accent: #{$color-blue-dark};
+    }
+
+
+    &--pink {
+
+        --risk-accent: #{$color-orange};
+    }
+
+
+    &--green {
+
+        --risk-accent: #{$color-success};
+    }
+}
+
+
+
+// =========================================================
+// IMAGE
+// =========================================================
+
+.vv-risk-card__image {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 340px;
+
+    overflow: hidden;
+
+    background: rgba($color-white, 0.05);
+
+
+    img {
+
+        display: block;
+
+        width: 100%;
+
+        height: 400px;
+
+        object-fit: cover;
+
+        transition:
+            transform $transition-slow;
+    }
+}
+
+
+.vv-risk-card:hover {
+
+    .vv-risk-card__image img {
+
+        transform: scale(1.035);
+    }
+}
+
+
+
+// =========================================================
+// BODY
+// =========================================================
+
+.vv-risk-card__body {
+
+    min-width: 0;
+
+    padding:
+        24px
+        28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    color: $color-white;
+}
+
+
+
+// =========================================================
+// TOP
+// =========================================================
+
+.vv-risk-card__top {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+
+// =========================================================
+// NUMBER
+// =========================================================
+
+.vv-risk-card__number {
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--risk-accent);
+    color: $color-white;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+
+// =========================================================
+// TITLE
+// =========================================================
+
+.vv-risk-card__heading {
+
+    min-width: 0;
+
+
+    h3 {
+
+        margin: 0;
+
+        color: $color-white; // High contrast text over navy
+
+        font-size: $text-h2;
+
+        line-height: $line-heading;
+
+        font-weight: 600;
+    }
+
+
+    p {
+
+        margin: 3px 0 0;
+
+        color: rgba($color-white, 0.7);
+
+        font-size: $text-sm;
+
+        line-height: 1.5;
+    }
+}
+
+
+
+// =========================================================
+// ACCORDIONS
+// =========================================================
+
+.vv-risk-card__accordions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 100%;
+}
+
+
+
+// =========================================================
+// ACCORDION
+// =========================================================
+
+.vv-risk-accordion {
+
+    width: 100%;
+
+    border: 1px solid rgba($color-white, 0.15);
+
+    border-radius: $radius-sm;
+
+    overflow: hidden;
+
+    background: rgba($color-white, 0.05); // Translucent surface inside navy card
+
+    transition:
+        border-color $transition-fast,
+        background $transition-fast;
+
+
+    &.is-open {
+
+        border-color: var(--risk-accent);
+
+        background: rgba($color-white, 0.1);
+    }
+}
+
+
+
+// =========================================================
+// BUTTON
+// =========================================================
+
+.vv-risk-accordion__button {
+
+    width: 100%;
+
+    min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding:
+        7px
+        12px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: $color-white;
+
+    font-family: $font-primary;
+
+    font-size: $text-base;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background $transition-fast;
+
+
+    &:hover {
+
+        background: rgba($color-white, 0.08);
+    }
+}
+
+
+
+// =========================================================
+// LEFT SIDE
+// =========================================================
+
+.vv-risk-accordion__left {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+
+// =========================================================
+// ICON
+// =========================================================
+
+.vv-risk-accordion__icon {
+
+    flex: 0 0 21px;
+
+    width: 21px;
+
+    height: 21px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: var(--risk-accent);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+
+// =========================================================
+// PLUS
+// =========================================================
+
+.vv-risk-accordion__plus {
+
+    flex: 0 0 18px;
+
+    width: 18px;
+
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: rgba($color-white, 0.6);
+
+    font-size: 17px;
+
+    line-height: 1;
+
+    transition:
+        transform $transition-fast,
+        color $transition-fast;
+}
+
+
+.vv-risk-accordion.is-open {
+
+    .vv-risk-accordion__plus {
+
+        color: var(--risk-accent);
+
+        transform: rotate(45deg);
+    }
+}
+
+
+
+// =========================================================
+// CONTENT
+// =========================================================
+
+.vv-risk-accordion__content {
+
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    transition:
+        grid-template-rows $transition;
+}
+
+
+.vv-risk-accordion.is-open {
+
+    .vv-risk-accordion__content {
+
+        grid-template-rows: 1fr;
+    }
+}
+
+
+
+// =========================================================
+// CONTENT INNER
+// =========================================================
+
+.vv-risk-accordion__content p,
+.vv-risk-accordion__content ul {
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    margin: 0;
+
+    padding:
+        0
+        16px
+        0
+        43px;
+
+    color: rgba($color-white, 0.85);
+
+    font-size: $text-sm;
+
+    line-height: 1.55;
+}
+
+
+.vv-risk-accordion.is-open {
+
+    .vv-risk-accordion__content p,
+    .vv-risk-accordion__content ul {
+
+        padding-bottom: 12px;
+    }
+}
+
+
+.vv-risk-accordion__content ul {
+
+    padding-left: 58px;
+
+    margin: 0;
+
+
+    li {
+
+        margin-bottom: 10px;
+
+
+        &::marker {
+
+            color: var(--risk-accent);
+        }
+
+
+        &:last-child {
+
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+// =========================================================
+// TABLET
+// =========================================================
+
+@media (max-width: 900px) {
+
+    .vv-risk-card {
+
+        grid-template-columns:
+            42%
+            58%;
+
+
+        &--reverse {
+
+            grid-template-columns:
+                58%
+                42%;
+        }
+    }
+
+
+    .vv-risk-card__body {
+
+        padding: 20px;
+    }
+}
+
+
+
+// =========================================================
+// MOBILE
+// =========================================================
+
+@media (max-width: 700px) {
+
+    .vv-risk-cards {
+
+        padding:
+            $space-section-sm
+            16px;
+    }
+
+
+    .vv-risk-cards__intro {
+
+        margin-bottom: $space-element;
+    }
+
+
+    .vv-risk-cards__intro h2 {
+
+        font-size: 34px;
+    }
+
+
+    .vv-risk-cards__intro p {
+
+        font-size: $text-sm;
+    }
+
+
+    // -----------------------------------------------------
+    // SINGLE COLUMN
+    // -----------------------------------------------------
+
+    .vv-risk-card,
+    .vv-risk-card--reverse {
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .vv-risk-card__image,
+    .vv-risk-card--reverse .vv-risk-card__image {
+
+        order: 1;
+
+        width: 100%;
+
+        height: 230px;
+
+        min-height: 230px;
+    }
+
+
+    .vv-risk-card__body,
+    .vv-risk-card--reverse .vv-risk-card__body {
+
+        order: 2;
+
+        width: 100%;
+
+        padding: 18px;
+    }
+}
+
+
+
+// =========================================================
+// SMALL MOBILE
+// =========================================================
+
+@media (max-width: 480px) {
+
+    .vv-risk-cards {
+
+        padding:
+            $space-section-sm
+            12px;
+    }
+
+
+    .vv-risk-card__image {
+
+        height: 200px;
+
+        min-height: 200px;
+    }
+
+
+    .vv-risk-card__heading h3 {
+
+        font-size: 19px;
+    }
+
+
+    .vv-risk-accordion__button {
+
+        min-height: 42px;
+
+        padding:
+            7px
+            9px;
+    }
+}

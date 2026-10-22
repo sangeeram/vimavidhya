@@ -1,15 +1,127 @@
-:root{
+        // ========================================
+        // VIMA VIDYA
+        // GLOBAL DESIGN SYSTEM — VARIABLES
+        // ========================================
 
---navy:#0B132B;
---teal:#0F766E;
---amber:#D97706;
---cream:#FDFBF7;
---gray:#64748B;
 
---radius:18px;
 
---container:1400px;
+        // ========================================
+        // TYPOGRAPHY
+        // ========================================
 
---transition:.35s ease;
+        $font-primary: "Inter",
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
 
-}
+            
+
+        // ========================================
+        // BRAND COLORS
+        // ========================================
+
+        $color-navy: #08274b;
+        $color-navy-dark: #03152e;
+
+        $color-blue: #007aff;
+        $color-blue-dark: #062b66;
+
+        $color-orange: #f59a18;
+
+        $color-cream: #fdfbf7;
+        $color-white: #ffffff;
+
+
+        // ========================================
+        // TEXT COLORS
+        // ========================================
+
+        $color-text: #08274b;
+        $color-text-body: #475569;
+        $color-text-muted: #64748b;
+        $color-text-light: #f5f7f8;
+
+
+        // ========================================
+        // FUNCTIONAL COLORS
+        // ========================================
+
+        $color-success: #10b981;
+
+        $color-light-blue: #eff6ff;
+        $color-light-gray: #f8fafc;
+
+        $color-border: #e2e8f0;
+        $color-border-dark: rgba(255, 255, 255, 0.15);
+
+
+        // ========================================
+        // TYPOGRAPHY SCALE
+        // ========================================
+
+        $text-xs: 12px;
+        $text-sm: 14px;
+        $text-base: 16px;
+        $text-lg: 18px;
+
+        $text-h3: 22px;
+        $text-h2: 44px;
+        $text-h1: 56px;
+
+        $text-h1-hero:40px;
+
+
+        // ========================================
+        // LINE HEIGHT
+        // ========================================
+
+        $line-tight: 1.1;
+        $line-heading: 1.2;
+        $line-body: 1.5;
+
+
+        // ========================================
+        // SPACING
+        // ========================================
+
+        $space-section-sm: 64px;
+        $space-section: 65px;
+        $space-section-lg: 100px;
+
+        $space-content: 26px;
+        $space-element: 24px;
+        $space-small: 7px;
+
+
+        // ========================================
+        // CONTAINERS
+        // ========================================
+
+        $container-width: 1200px;
+        $container-wide: 1400px;
+
+        $text-width-narrow: 430px;
+        $text-width-medium: 580px;
+        $text-width-wide: 680px;
+
+
+
+        // ========================================
+        // BORDER RADIUS
+        // ========================================
+
+        $radius-sm: 8px;
+        $radius-md: 16px;
+        $radius-lg: 20px;
+        $radius-pill: 999px;
+
+
+        // ========================================
+        // TRANSITIONS
+        // ========================================
+
+        $transition-fast: 0.2s ease;
+        $transition: 0.3s ease;
+        $transition-slow: 0.5s ease;
+        

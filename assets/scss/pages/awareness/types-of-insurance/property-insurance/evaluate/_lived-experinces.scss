@@ -1,0 +1,434 @@
+// ============================================================
+// VIMA VIDYA
+// UNDERSTAND PROPERTY INSURANCE THROUGH LIVED EXPERIENCES
+// CASE STUDY SECTION
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.lived-experiences {
+    width: 100%;
+    padding: 60px $space-content;
+    background: $color-navy; // Section background set to Navy
+    font-family: $font-primary;
+    box-sizing: border-box;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    // ========================================================
+    // SECTION HEADER
+    // ========================================================
+
+    .lived-experiences-header {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        text-align: left;
+
+        h2 {
+            margin: 0;
+            color: $color-white; // White heading for contrast against navy bg
+            font-family: $font-primary;
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            max-width: 1200px;
+            margin: 12px auto 0;
+            color: rgba($color-white, 0.75); // Muted white for secondary description text
+            font-family: $font-primary;
+            font-size: $text-base;
+            line-height: $line-body;
+            text-transform: none;
+            font-weight: 400;
+        }
+    }
+
+    // ========================================================
+    // CASE STUDY OUTER CARD (Solid White Card on Navy BG)
+    // ========================================================
+
+    .lived-case-study {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: $space-content;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: $space-content;
+        background: $color-white; // Solid white card body
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-md;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    // ========================================================
+    // LEFT SIDE
+    // ========================================================
+
+    .lived-case-study__left {
+        min-width: 0;
+    }
+
+    // ========================================================
+    // IMAGE + STATS WRAPPER
+    // ========================================================
+
+    .lived-case-study__visual {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56px;
+    }
+
+    // ========================================================
+    // MAIN IMAGE
+    // ========================================================
+
+    .lived-case-study__image {
+        position: relative;
+        width: 100%;
+        height: 315px;
+        overflow: hidden;
+        background: $color-light-gray;
+        border-radius: $radius-sm;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    // ========================================================
+    // STAT CARDS
+    // ========================================================
+
+    .lived-case-study__stats {
+        position: absolute;
+        z-index: 2;
+        left: $space-small;
+        right: $space-small;
+        bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: $space-small;
+    }
+
+    // ========================================================
+    // INDIVIDUAL STAT
+    // ========================================================
+
+    .lived-stat {
+        min-width: 0;
+        min-height: 115px;
+        padding: $space-small;
+        background: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        box-shadow: 0 5px 14px rgba(8, 39, 75, 0.12);
+        transition: transform $transition-fast, box-shadow $transition-fast;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(8, 39, 75, 0.15);
+        }
+    }
+
+    // ========================================================
+    // STAT ICON
+    // ========================================================
+
+    .lived-stat__icon {
+        width: 22px;
+        height: 22px;
+        margin-bottom: $space-small;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: $color-blue;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    .lived-stat--location {
+        .lived-stat__icon svg { stroke: $color-blue; }
+    }
+
+    .lived-stat--value {
+        .lived-stat__icon svg { stroke: $color-orange; }
+    }
+
+    .lived-stat--damage {
+        .lived-stat__icon svg { stroke: $color-orange; }
+    }
+
+    .lived-stat--policy {
+        .lived-stat__icon svg { stroke: $color-success; }
+    }
+
+    // ========================================================
+    // STAT LABEL & VALUE
+    // ========================================================
+
+    .lived-stat__label {
+        display: block;
+        margin-bottom: $space-small;
+        color: $color-blue;
+        font-size: $text-base;
+        line-height: $line-heading;
+        font-weight: 600;
+    }
+
+    .lived-stat__value {
+        display: block;
+        color: $color-navy;
+        font-size: $text-sm;
+        line-height: $line-heading;
+        font-weight: 700;
+    }
+
+    .lived-stat__detail {
+        display: block;
+        margin-top: $space-small;
+        color: $color-text-muted;
+        font-size: 11px;
+        line-height: $line-heading;
+    }
+
+    // ========================================================
+    // TAKEAWAY
+    // ========================================================
+
+    .lived-takeaway {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-small;
+        margin: 20px 0 0;
+        padding: $space-small;
+        background: $color-light-blue;
+        border: 1px solid $color-blue;
+        border-radius: $radius-sm;
+    }
+
+    .lived-takeaway__icon {
+        flex: 0 0 28px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-orange;
+        border-radius: $radius-pill;
+
+        svg {
+            width: $text-base;
+            height: $text-base;
+            fill: none;
+            stroke: $color-white;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    .lived-takeaway__content {
+        min-width: 0;
+    }
+
+    .lived-takeaway__title {
+        display: inline;
+        margin-right: $space-small;
+        color: $color-navy;
+        font-size: $text-xs;
+        line-height: 1.3;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .lived-takeaway__content p {
+        display: inline;
+        margin: 0;
+        color: $color-text-body;
+        font-size: $text-base;
+    }
+
+    // ========================================================
+    // RIGHT SIDE — STORY
+    // ========================================================
+
+    .lived-case-study__right {
+        min-width: 0;
+        padding: 0;
+
+        h3 {
+            margin: 0 0 $space-small;
+            color: $color-navy;
+            font-size: $text-h3;
+            line-height: $line-heading;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+    }
+
+    .lived-story-meta {
+        display: block;
+        margin-bottom: $space-element;
+        color: $color-blue;
+        font-size: $text-base;
+        line-height: $line-heading;
+        font-weight: 600;
+    }
+
+    .lived-story-content {
+        p {
+            margin: 0 0 $space-small;
+            color: $color-text-body;
+            font-size: $text-base;
+            line-height: $line-body;
+            font-weight: 400;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+            font-weight: 700;
+        }
+    }
+
+    // ========================================================
+    // RESPONSIVE BREAKPOINTS
+    // ========================================================
+
+    @media (max-width: 1050px) {
+        padding: $space-section $space-content;
+
+        .lived-case-study {
+            grid-template-columns: 1fr;
+        }
+
+        .lived-case-study__image {
+            height: 360px;
+        }
+    }
+
+    @media (max-width: 750px) {
+        padding: $space-section-sm $space-content;
+
+        .lived-experiences-header {
+            margin-bottom: $space-section-sm;
+        }
+
+        .lived-case-study {
+            padding: $space-element;
+            gap: $space-element;
+        }
+
+        .lived-case-study__image {
+            height: 320px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        padding: $space-section-sm $space-small;
+
+        .lived-experiences-header {
+            margin-bottom: $space-element;
+
+            h2 {
+                font-size: $text-h3;
+                line-height: $line-heading;
+            }
+
+            p {
+                margin-top: $space-small;
+                font-size: $text-xs;
+                line-height: $line-body;
+            }
+        }
+
+        .lived-case-study {
+            padding: $space-small;
+            gap: $space-element;
+            border-radius: $radius-sm;
+        }
+
+        .lived-case-study__visual {
+            padding-bottom: 100px;
+        }
+
+        .lived-case-study__image {
+            height: 235px;
+            border-radius: $radius-sm;
+        }
+
+        .lived-case-study__stats {
+            left: 0;
+            right: 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: $space-small;
+        }
+
+        .lived-stat {
+            min-height: 96px;
+            padding: $space-small;
+        }
+
+        .lived-takeaway {
+            margin: 0;
+            gap: $space-small;
+            padding: $space-small;
+        }
+
+        .lived-case-study__right h3 {
+            font-size: $text-lg;
+            line-height: $line-heading;
+        }
+
+        .lived-story-meta {
+            margin-bottom: $space-small;
+            font-size: $text-xs;
+        }
+
+        .lived-story-content p {
+            margin-bottom: $space-small;
+            font-size: $text-xs;
+            line-height: $line-body;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .lived-experiences-header h2 {
+            font-size: $text-lg;
+        }
+
+        .lived-case-study__image {
+            height: 210px;
+        }
+
+        .lived-case-study__visual {
+            padding-bottom: 190px;
+        }
+
+        .lived-case-study__stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}

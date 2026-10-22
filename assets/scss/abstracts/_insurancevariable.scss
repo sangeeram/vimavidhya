@@ -1,0 +1,90 @@
+// ========================================
+// VIMA VIDYA GLOBAL DESIGN SYSTEM
+// INSURANCE LINE OF BUSINESS (LOB) — VARIABLES
+// ========================================
+
+// ----------------------------------------
+// 1. Typography & Font Metrics
+// ----------------------------------------
+$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+// Font Size Scale
+$text-xs:            12px;
+$text-sm:            14px;
+$text-base:          16px;
+$text-lg:            18px;
+$text-h3:            22px;
+$text-h2:            44px;
+$text-h1:            56px;
+$text-h1-hero:       40px;
+
+// Line Heights
+$line-tight:         1.1;
+$line-heading:       1.2;
+$line-body:          1.5;
+
+
+// ----------------------------------------
+// 2. Brand Colors
+// ----------------------------------------
+$color-navy:         #08274b;
+$color-navy-dark:    #03152e;
+$color-blue:         #007aff;
+$color-blue-dark:    #062b66;
+$color-orange:       #f59a18;
+$color-cream:        #fdfbf7;
+$color-white:        #ffffff;
+
+
+// ----------------------------------------
+// 3. Text Colors
+// ----------------------------------------
+$color-text:         #08274b;
+$color-text-body:    #475569;
+$color-text-muted:   #64748b;
+$color-text-light:   #f5f7f8;
+
+
+// ----------------------------------------
+// 4. Functional & UI Colors
+// ----------------------------------------
+$color-success:      #10b981;
+$color-light-blue:   #eff6ff;
+$color-light-gray:   #f8fafc;
+$color-border:       #e2e8f0;
+$color-border-dark:  rgba(255, 255, 255, 0.15);
+
+
+// ----------------------------------------
+// 5. Spacing & Layout Metrics
+// ----------------------------------------
+$space-small:        7px;
+$space-element:      24px;
+$space-content:      26px;
+$space-section-sm:   64px;
+$space-section:      65px;
+$space-section-lg:   100px;
+
+// Container & Text Widths
+$container-width:    1200px;
+$container-wide:     1400px;
+$text-width-narrow:  430px;
+$text-width-medium:  580px;
+$text-width-wide:    680px;
+
+
+// ----------------------------------------
+// 6. Border Radius
+// ----------------------------------------
+$radius-sm:          8px;
+$radius-md:          16px;
+$radius-lg:          20px;
+$radius-pill:        999px;
+
+
+// ----------------------------------------
+// 7. Transitions
+// ----------------------------------------
+$transition-fast:    0.2s ease;
+$transition:         0.3s ease;
+$transition-slow:    0.5s ease;

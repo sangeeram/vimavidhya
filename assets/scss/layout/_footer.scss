@@ -1,12 +1,12 @@
 /* =========================================================
    VIMA VIDYA FOOTER (DARK THEME)
 ========================================================= */
-
+@use "../abstracts/variables" as *;
 .site-footer {
     width: 100%;
     font-family: inherit;
     overflow: hidden;
-    background-color: #03224e;
+    background-color: var(--navy, #08274b);
 }
 
 /* =========================================================
@@ -14,9 +14,9 @@
 ========================================================= */
 
 .site-footer__main {
-    background: #03224e;
+    background: var(--navy, #08274b);
     padding: 60px 0 58px;
-    border-top: 1px solid #2e2e2e;
+    border-top: 1px solid var(--border-dark, #2e2e2e);
 }
 
 /* =========================================================
@@ -25,7 +25,7 @@
 
 .site-footer__container {
     width: calc(100% - 128px);
-    max-width: 1280px;
+    max-width: var(--container-wide, 1280px);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.35fr 1fr 1.05fr;
@@ -37,7 +37,7 @@
 ========================================================= */
 
 .site-footer__brand {
-    max-width: 430px;
+    max-width: var(--text-width-narrow, 430px);
 }
 
 /* =========================================================
@@ -50,9 +50,9 @@
     justify-content: center;
     text-decoration: none;
     margin-bottom: 20px;
-    background-color: #ffffff;
+    background-color: var(--white, #ffffff);
     padding: 12px 20px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm, 8px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -68,9 +68,9 @@
 
 .site-footer__heading {
     margin: 0 0 10px;
-    color: #ffffff;
-    font-size: 16px;
-    line-height: 1.4;
+    color: var(--orange, #f59a18);
+    font-size: var(--text-base, 16px);
+    line-height: var(--line-heading, 1.4);
     font-weight: 600;
 }
 
@@ -80,8 +80,8 @@
 
 .site-footer__description {
     margin: 0;
-    color: #878787;
-    font-size: 14px;
+    color: var(--white, #ffffff);
+    font-size: var(--text-sm, 14px);
     line-height: 1.5;
     text-align: justify;
 }
@@ -93,11 +93,11 @@
 .site-footer__read-more {
     display: inline-block;
     margin-top: 5px;
-    color: #ffffff;
-    font-size: 14px;
+    color: var(--orange, #f59a18);
+    font-size: var(--text-sm, 14px);
     font-weight: 500;
     text-decoration: none;
-    transition: color 180ms ease;
+    transition: color var(--transition-fast, 180ms ease);
 }
 
 .site-footer__read-more:hover {
@@ -115,9 +115,9 @@
 
 .site-footer__title {
     margin: 0 0 30px;
-    color: #ffffff;
+    color: var(--white, #ffffff);
     font-size: 24px;
-    line-height: 1.2;
+    line-height: var(--line-heading, 1.2);
     font-weight: 500;
     position: relative;
 }
@@ -129,7 +129,7 @@
     bottom: -10px;
     height: 2px;
     width: 50px;
-    background: #ffffff;
+    background: var(--orange, #f59a18);
 }
 
 /* =========================================================
@@ -149,15 +149,15 @@
 }
 
 .site-footer__link-column a {
-    color: #878787;
-    font-size: 14px;
+    color: var(--white, #ffffff);
+    font-size: var(--text-sm, 14px);
     line-height: 1.5;
     text-decoration: none;
-    transition: color 180ms ease, transform 180ms ease;
+    transition: color var(--transition-fast, 180ms ease), transform var(--transition-fast, 180ms ease);
 }
 
 .site-footer__link-column a:hover {
-    color: #ffffff;
+    color: var(--white, #ffffff);
     transform: translateX(3px);
 }
 
@@ -181,19 +181,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #202020;
+    background: var(--orange, #f59a18);
     border-radius: 50%;
-    color: #ffffff;
+    color: var(--white, #ffffff);
     text-decoration: none;
-    font-size: 18px;
+    font-size: var(--text-lg, 18px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    transition: transform var(--transition-fast, 180ms ease), box-shadow var(--transition-fast, 180ms ease), background var(--transition-fast, 180ms ease);
 }
 
 .site-footer__social-item:hover {
     transform: translateY(-3px);
-    background: #ffffff;
-    color: #03224e;
+    background: var(--white, #ffffff);
+    color: var(--navy-dark, #03224e);
     box-shadow: 0 7px 16px rgba(255, 255, 255, 0.2);
 }
 
@@ -202,8 +202,8 @@
 ========================================================= */
 
 .site-footer__legal {
-    background: #021735;
-    color: #ffffff;
+    background: var(--navy-dark, #021735);
+    color: var(--white, #ffffff);
     border-top: 1px solid #222222;
 }
 
@@ -232,7 +232,7 @@
 .site-footer__disclaimer {
     max-width: 1160px;
     margin: 0 0 17px;
-    color: #7e7e7e;
+    color: var(--text-muted, #7e7e7e);
     font-size: 13px;
     line-height: 1.55;
     text-align: center;
@@ -244,7 +244,7 @@
 
 .site-footer__copyright {
     margin: 0;
-    color: #7e7e7e;
+    color: var(--text-muted, #7e7e7e);
     font-size: 13px;
     line-height: 1.5;
     text-align: center;
@@ -265,14 +265,14 @@
     gap: 8px;
     min-width: 170px;
     padding: 13px 22px;
-    border-radius: 30px;
-    background: #ffffff;
-    color: #03224e;
-    font-size: 14px;
+    border-radius: var(--radius-pill, 30px);
+    background: var(--white, #ffffff);
+    color: var(--navy-dark, #03224e);
+    font-size: var(--text-sm, 14px);
     font-weight: 600;
     text-decoration: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    transition: transform var(--transition-fast, 180ms ease), box-shadow var(--transition-fast, 180ms ease), background var(--transition-fast, 180ms ease);
 }
 
 .site-footer__feedback:hover {
@@ -282,7 +282,7 @@
 }
 
 .site-footer__feedback-icon {
-    font-size: 16px;
+    font-size: var(--text-base, 16px);
     line-height: 1;
 }
 
@@ -344,7 +344,7 @@
     }
 
     .site-footer__disclaimer {
-        font-size: 12px;
+        font-size: var(--text-xs, 12px);
         text-align: center;
     }
 

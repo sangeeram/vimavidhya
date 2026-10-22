@@ -4,25 +4,8 @@
  * VIMAVIDYA — DYNAMIC HOMEPAGE HERO SLIDER
  * =========================================================
  *
- * Data source:
- * Hero Slide CPT + ACF fields
- *
- * ACF fields required:
- *
- * category
- * eyebrow
- * title
- * description
- * hero_image
- * primary_button_text
- * primary_button_link
- * secondary_button_text
- * secondary_button_link
- * slide_order
- *
- * =========================================================
+ * Data source: Hero Slide CPT + ACF fields
  */
-
 
 /* =========================================================
    FETCH HERO SLIDES
@@ -32,23 +15,12 @@ $slides = array();
 
 $hero_query = new WP_Query(
     array(
-
         'post_type'      => 'hero_slide',
-
         'post_status'    => 'publish',
-
         'posts_per_page' => -1,
-
-        /*
-         * Sort slides according to
-         * ACF Slide Order field.
-         */
         'meta_key'       => 'slide_order',
-
         'orderby'        => 'meta_value_num',
-
         'order'          => 'ASC',
-
     )
 );
 
@@ -63,92 +35,37 @@ if ( $hero_query->have_posts() ) {
 
         $hero_query->the_post();
 
-
-        /* -------------------------------------------------
-           ACF FIELDS
-        ------------------------------------------------- */
-
-        $category = get_field( 'category' );
-
-        $eyebrow = get_field( 'eyebrow' );
-
-        $title = get_field( 'title' );
-
-        $description = get_field( 'description' );
-
-        $image = get_field( 'hero_image' );
-
-        $primary_button = get_field( 'primary_button_text' );
-
-        $primary_link = get_field( 'primary_button_link' );
-
-        $secondary_button = get_field( 'secondary_button_text' );
-
-        $secondary_link = get_field( 'secondary_button_link' );
-
-
-        /* -------------------------------------------------
-           IMAGE
-        ------------------------------------------------- */
-
+        $image     = get_field( 'hero_image' );
         $image_url = '';
 
-        /*
-         * Recommended ACF Image Return Format:
-         * Image URL
-         */
+        if ( is_array( $image ) && ! empty( $image['url'] ) ) {
 
-        if ( ! empty( $image ) && is_string( $image ) ) {
+            $image_url = $image['url'];
+
+        } elseif ( is_string( $image ) ) {
 
             $image_url = $image;
 
         }
 
-
-        /*
-         * Extra safety:
-         * If ACF is configured as Image Array,
-         * this will still work.
-         */
-
-        elseif ( ! empty( $image ) && is_array( $image ) && ! empty( $image['url'] ) ) {
-
-            $image_url = $image['url'];
-
-        }
-
-
-        /* -------------------------------------------------
-           STORE SLIDE
-        ------------------------------------------------- */
-
         $slides[] = array(
 
-            'category' => $category,
+            'category'         => get_field( 'category' ),
+            'eyebrow'          => get_field( 'eyebrow' ),
+            'title'            => get_field( 'title' ),
+            'desc'             => get_field( 'description' ),
+            'img'              => $image_url,
 
-            'eyebrow' => $eyebrow,
+            'primary_button'   => get_field( 'primary_button_text' ),
+            'primary_link'     => get_field( 'primary_button_link' ),
 
-            'title' => $title,
-
-            'desc' => $description,
-
-            'img' => $image_url,
-
-            'primary_button' => $primary_button,
-
-            'primary_link' => $primary_link,
-
-            'secondary_button' => $secondary_button,
-
-            'secondary_link' => $secondary_link,
+            'secondary_button' => get_field( 'secondary_button_text' ),
+            'secondary_link'   => get_field( 'secondary_button_link' ),
 
         );
-
     }
 
-
     wp_reset_postdata();
-
 }
 
 
@@ -158,16 +75,14 @@ if ( $hero_query->have_posts() ) {
 
 ?>
 
-<section class="insurance-hero" id="home-hero">
+<section
+    class="insurance-hero"
+    id="home-hero"
+>
 
     <?php if ( ! empty( $slides ) ) : ?>
 
         <div class="hero-slider-container">
-
-
-            <!-- =================================================
-                 SLIDES
-            ================================================== -->
 
             <?php foreach ( $slides as $index => $slide ) : ?>
 
@@ -176,27 +91,17 @@ if ( $hero_query->have_posts() ) {
                     data-slide="<?php echo esc_attr( $index ); ?>"
                 >
 
-
                     <!-- =================================================
                          BACKGROUND IMAGE
                     ================================================== -->
 
-                    <?php if ( ! empty( $slide['img'] ) ) : ?>
-
-                        <div
-                            class="slide-image-wrapper"
+                    <div
+                        class="slide-image-wrapper"
+                        <?php if ( ! empty( $slide['img'] ) ) : ?>
                             style="background-image: url('<?php echo esc_url( $slide['img'] ); ?>');"
-                            aria-hidden="true"
-                        ></div>
-
-                    <?php else : ?>
-
-                        <div
-                            class="slide-image-wrapper"
-                            aria-hidden="true"
-                        ></div>
-
-                    <?php endif; ?>
+                        <?php endif; ?>
+                        aria-hidden="true"
+                    ></div>
 
 
                     <!-- =================================================
@@ -224,7 +129,12 @@ if ( $hero_query->have_posts() ) {
 
                             <?php if ( ! empty( $slide['eyebrow'] ) ) : ?>
 
-                                <span class="slide-eyebrow">
+                                <span
+                                    class="slide-eyebrow"
+                                    data-aos="fade-down"
+                                    data-aos-duration="700"
+                                    data-aos-delay="100"
+                                >
 
                                     <span
                                         class="eyebrow-dot"
@@ -244,20 +154,32 @@ if ( $hero_query->have_posts() ) {
 
                             <?php if ( ! empty( $slide['title'] ) ) : ?>
 
-                                <h1 class="slide-title">
+                                <h1
+                                    class="slide-title"
+                                    data-aos="fade-up"
+                                    data-aos-duration="900"
+                                    data-aos-delay="200"
+                                >
 
                                     <?php
+
                                     echo wp_kses(
                                         $slide['title'],
                                         array(
+
                                             'br' => array(),
+
                                             'span' => array(
-                                                'class' => array(),
+                                                'class' => array()
                                             ),
+
                                             'strong' => array(),
+
                                             'em' => array(),
+
                                         )
                                     );
+
                                     ?>
 
                                 </h1>
@@ -271,7 +193,12 @@ if ( $hero_query->have_posts() ) {
 
                             <?php if ( ! empty( $slide['desc'] ) ) : ?>
 
-                                <p class="slide-desc">
+                                <p
+                                    class="slide-desc"
+                                    data-aos="fade-up"
+                                    data-aos-duration="850"
+                                    data-aos-delay="350"
+                                >
 
                                     <?php echo esc_html( $slide['desc'] ); ?>
 
@@ -284,14 +211,17 @@ if ( $hero_query->have_posts() ) {
                                  BUTTONS
                             ================================================== -->
 
-                            <?php
-                            if (
+                            <?php if (
                                 ! empty( $slide['primary_button'] ) ||
                                 ! empty( $slide['secondary_button'] )
-                            ) :
-                            ?>
+                            ) : ?>
 
-                                <div class="hero-actions">
+                                <div
+                                    class="hero-actions"
+                                    data-aos="fade-up"
+                                    data-aos-duration="850"
+                                    data-aos-delay="450"
+                                >
 
 
                                     <!-- PRIMARY BUTTON -->
@@ -299,13 +229,19 @@ if ( $hero_query->have_posts() ) {
                                     <?php if ( ! empty( $slide['primary_button'] ) ) : ?>
 
                                         <a
-                                            href="<?php echo esc_url( $slide['primary_link'] ); ?>"
+                                            href="<?php echo ! empty( $slide['primary_link'] )
+                                                ? esc_url( $slide['primary_link'] )
+                                                : '#'; ?>"
                                             class="hero-btn hero-btn--primary"
                                         >
 
-                                            <?php echo esc_html( $slide['primary_button'] ); ?>
+                                            <?php echo esc_html(
+                                                $slide['primary_button']
+                                            ); ?>
 
-                                            <span aria-hidden="true">↗</span>
+                                            <span aria-hidden="true">
+                                                ↗
+                                            </span>
 
                                         </a>
 
@@ -317,11 +253,15 @@ if ( $hero_query->have_posts() ) {
                                     <?php if ( ! empty( $slide['secondary_button'] ) ) : ?>
 
                                         <a
-                                            href="<?php echo esc_url( $slide['secondary_link'] ); ?>"
+                                            href="<?php echo ! empty( $slide['secondary_link'] )
+                                                ? esc_url( $slide['secondary_link'] )
+                                                : '#'; ?>"
                                             class="hero-btn hero-btn--secondary"
                                         >
 
-                                            <?php echo esc_html( $slide['secondary_button'] ); ?>
+                                            <?php echo esc_html(
+                                                $slide['secondary_button']
+                                            ); ?>
 
                                         </a>
 
@@ -337,7 +277,12 @@ if ( $hero_query->have_posts() ) {
                                  HERO CATEGORY NAVIGATION
                             ================================================== -->
 
-                            <div class="hero-categories">
+                            <div
+                                class="hero-categories"
+                                data-aos="fade-up"
+                                data-aos-duration="850"
+                                data-aos-delay="550"
+                            >
 
 
                                 <!-- =================================================
@@ -345,8 +290,12 @@ if ( $hero_query->have_posts() ) {
                                 ================================================== -->
 
                                 <a
-                                    href="<?php echo esc_url( home_url( '/awareness/' ) ); ?>"
-                                    class="hero-category <?php echo ( $slide['category'] === 'AWARENESS' ) ? 'active' : ''; ?>"
+                                    href="<?php echo esc_url(
+                                        home_url( '/awareness/' )
+                                    ); ?>"
+                                    class="hero-category <?php echo (
+                                        $slide['category'] === 'AWARENESS'
+                                    ) ? 'active' : ''; ?>"
                                 >
 
                                     <span
@@ -373,11 +322,8 @@ if ( $hero_query->have_posts() ) {
 
                                     </span>
 
-
                                     <span class="category-name">
-
                                         AWARENESS
-
                                     </span>
 
                                 </a>
@@ -388,8 +334,12 @@ if ( $hero_query->have_posts() ) {
                                 ================================================== -->
 
                                 <a
-                                    href="<?php echo esc_url( home_url( '/education/' ) ); ?>"
-                                    class="hero-category <?php echo ( $slide['category'] === 'EDUCATION' ) ? 'active' : ''; ?>"
+                                    href="<?php echo esc_url(
+                                        home_url( '/education/' )
+                                    ); ?>"
+                                    class="hero-category <?php echo (
+                                        $slide['category'] === 'EDUCATION'
+                                    ) ? 'active' : ''; ?>"
                                 >
 
                                     <span
@@ -418,11 +368,8 @@ if ( $hero_query->have_posts() ) {
 
                                     </span>
 
-
                                     <span class="category-name">
-
                                         EDUCATION
-
                                     </span>
 
                                 </a>
@@ -433,8 +380,12 @@ if ( $hero_query->have_posts() ) {
                                 ================================================== -->
 
                                 <a
-                                    href="<?php echo esc_url( home_url( '/expertise/' ) ); ?>"
-                                    class="hero-category <?php echo ( $slide['category'] === 'EXPERTISE' ) ? 'active' : ''; ?>"
+                                    href="<?php echo esc_url(
+                                        home_url( '/expertise/' )
+                                    ); ?>"
+                                    class="hero-category <?php echo (
+                                        $slide['category'] === 'EXPERTISE'
+                                    ) ? 'active' : ''; ?>"
                                 >
 
                                     <span
@@ -459,18 +410,14 @@ if ( $hero_query->have_posts() ) {
 
                                     </span>
 
-
                                     <span class="category-name">
-
                                         EXPERTISE
-
                                     </span>
 
                                 </a>
 
 
                             </div>
-
 
                         </div>
 
@@ -481,32 +428,31 @@ if ( $hero_query->have_posts() ) {
                          SLIDE NUMBER
                     ================================================== -->
 
-                    <div class="hero-slide-number">
+                    <div
+                        class="hero-slide-number"
+                        data-aos="fade-left"
+                        data-aos-duration="800"
+                        data-aos-delay="500"
+                    >
 
                         <span>
-
-                            <?php
-                            echo sprintf(
-                                '%02d',
-                                $index + 1
-                            );
-                            ?>
-
+                            <?php echo esc_html(
+                                sprintf(
+                                    '%02d',
+                                    $index + 1
+                                )
+                            ); ?>
                         </span>
-
 
                         <i></i>
 
-
                         <span>
-
-                            <?php
-                            echo sprintf(
-                                '%02d',
-                                count( $slides )
-                            );
-                            ?>
-
+                            <?php echo esc_html(
+                                sprintf(
+                                    '%02d',
+                                    count( $slides )
+                                )
+                            ); ?>
                         </span>
 
                     </div>
@@ -518,7 +464,7 @@ if ( $hero_query->have_posts() ) {
 
 
             <!-- =================================================
-                 PREVIOUS
+                 SLIDER ARROWS
             ================================================== -->
 
             <button
@@ -528,11 +474,6 @@ if ( $hero_query->have_posts() ) {
             >
                 ←
             </button>
-
-
-            <!-- =================================================
-                 NEXT
-            ================================================== -->
 
             <button
                 class="hero-arrow hero-arrow--next"
@@ -558,7 +499,9 @@ if ( $hero_query->have_posts() ) {
                         class="slider-dot <?php echo $index === 0 ? 'active' : ''; ?>"
                         type="button"
                         data-goto="<?php echo esc_attr( $index ); ?>"
-                        aria-label="<?php echo esc_attr( 'Go to slide ' . ( $index + 1 ) ); ?>"
+                        aria-label="<?php echo esc_attr(
+                            'Go to slide ' . ( $index + 1 )
+                        ); ?>"
                         aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
                     ></button>
 

@@ -1,0 +1,302 @@
+@use "../../../../../abstracts/variables" as *;
+
+.mandatory-section {
+  font-family: $font-primary;
+  padding: $space-section-sm 20px;
+  background-color: $color-light-gray;
+  color: $color-text;
+
+  .container {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  /* Header & Tabs */
+  .section-number {
+    display: block;
+    color: $color-blue;
+    font-weight: 600;
+    font-size: $text-sm;
+    margin-bottom: $space-small;
+  }
+
+  .section-title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: $line-heading;
+    margin: 0 0 $space-small 0;
+  }
+
+  .section-subtitle {
+    font-size: $text-base;
+    color: $color-text-body;
+    line-height: $line-body;
+    margin: 0 0 $space-element 0;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: $space-element;
+
+    .info-card {
+      padding: $space-element;
+      border-radius: $radius-sm;
+      background: $color-white;
+      border: 1px solid $color-border;
+
+      &.card-info { 
+        background-color: $color-light-blue; 
+        border-color: rgba($color-blue, 0.2); 
+      }
+      &.card-warning { 
+        background-color: #fffdf5; 
+        border-color: rgba($color-orange, 0.3); 
+      }
+
+      .card-icon { font-size: 20px; margin-bottom: 8px; }
+      .card-title { font-size: $text-base; font-weight: 600; margin-bottom: 8px; color: $color-navy; }
+      .card-text { font-size: $text-base; color: $color-text-body; line-height: $line-body; margin: 0; }
+    }
+  }
+
+  /* Realisation Box */
+  .realisation-box {
+    background-color: #fffbf0;
+    border: 1px solid rgba($color-orange, 0.3);
+    border-radius: $radius-sm;
+    padding: $space-element;
+    margin-bottom: 32px;
+
+    .realisation-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+
+      .realisation-icon { font-size: 18px; }
+      .realisation-title { font-size: $text-base; font-weight: 700; color: $color-navy; margin: 0; }
+    }
+
+    .realisation-text {
+      font-size: $text-base;
+      color: $color-text-body;
+      line-height: $line-body;
+      margin: 0;
+    }
+  }
+
+  /* Case Story Block Layout */
+  .case-story-block {
+    background: $color-white;
+    border-radius: $radius-md;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1.4fr 0.85fr;
+    gap: 36px;
+    align-items: start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+
+    /* Left Column */
+    .case-left-col {
+      display: flex;
+      flex-direction: column;
+
+      /* Relative parent container to anchor image-overlay stats */
+      .case-media-container {
+        position: relative;
+        margin-bottom: 50px; /* Reserves layout space for overlapping cards */
+
+        .case-image-wrapper {
+          width: 100%;
+          height: 320px;
+          border-radius: $radius-sm;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+        }
+
+        /* Overlaid Stats Cards */
+        .stats-grid-overlay {
+          position: absolute;
+          bottom: -35px;
+          left: $space-small;
+          right: $space-small;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+          z-index: 2;
+
+          @media (max-width: 600px) {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: $space-small;
+          }
+
+          .stat-card {
+            background: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-sm;
+            padding: 10px 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            min-height: 95px;
+
+            .stat-icon {
+              font-size: 13px;
+              margin-bottom: 4px;
+            }
+
+            .stat-label {
+              font-size: 14px;
+              color: $color-blue;
+              line-height: $line-heading;
+              margin-bottom: 4px;
+            }
+
+            .stat-value {
+              font-size: 13px;
+              font-weight: 700;
+              color: $color-navy;
+              margin-top: auto;
+
+              &.text-red { color: #d92d20; }
+              &.text-blue { color: $color-blue; }
+            }
+
+            .stat-sub {
+              font-size: 8.5px;
+              color: $color-text-muted;
+              margin-top: 2px;
+              line-height: $line-tight;
+            }
+          }
+        }
+      }
+
+      /* Dual Takeaway Split Layout */
+      .takeaway-split-wrapper {
+        display: grid;
+        // grid-template-columns: 2.2fr 1.2fr;
+        gap: 16px;
+        align-items: stretch;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        .takeaway-card-main {
+          display: flex;
+          align-items: flex-start;
+          background: $color-light-blue;
+          border: 1px solid rgba($color-blue, 0.2);
+          border-radius: $radius-sm;
+          padding: 16px;
+          gap: 12px;
+
+          .takeaway-icon-bubble {
+            background: $color-orange;
+            color: $color-white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba($color-orange, 0.3);
+          }
+
+          .takeaway-text-content {
+            p {
+              font-size: 16px;
+              color: $color-navy;
+              line-height: 1.45;
+              margin: 0;
+            }
+          }
+        }
+
+        .takeaway-card-side {
+          display: flex;
+          align-items: center;
+          background: $color-white;
+          border: 1px solid $color-border;
+          border-radius: $radius-sm;
+          padding: 16px;
+          gap: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+
+          .side-card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+          }
+
+          .side-card-content {
+            display: flex;
+            flex-direction: column;
+
+            .pill-label {
+              font-size: 10px;
+              color: $color-text-muted;
+              line-height: 1.2;
+              margin-bottom: 2px;
+            }
+
+            .pill-value {
+              font-size: 13px;
+              font-weight: 700;
+              color: $color-blue;
+              line-height: 1.3;
+            }
+          }
+        }
+      }
+    }
+
+    /* Right Column Narrative */
+    .case-right-col {
+      .case-tag {
+        font-size: 11px;
+        font-weight: 700;
+        color: $color-blue;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .case-main-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0 0 16px 0;
+        line-height: $line-heading;
+      }
+
+      .case-text-body p {
+        font-size: $text-base;
+        color: $color-text-body;
+        line-height: $line-body;
+        margin-bottom: $space-small;
+
+        &:last-child { margin-bottom: 0; }
+      }
+    }
+  }
+}

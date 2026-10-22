@@ -6,72 +6,85 @@
  */
 
 $risk_cards = array(
+
     array(
+        'id'          => 'risk-avoidance',
         'number'      => '01',
         'type'        => 'AVOIDANCE',
         'title'       => 'Risk Avoidance',
         'description' => 'Eliminating activities or situations that expose one to risk. For example, not driving to avoid accidents.',
         'image'       => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
         'alt'         => 'Risk Avoidance Strategy',
-        'bg_color'    => '#0B132B', // Ice Blue
-        'accent'      => '#0284c7', // Sky Blue Accent
+        'bg_color'    => '#0B132B',
+        'accent'      => '#0284c7',
         'icon'        => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
     ),
+
     array(
+        'id'          => 'risk-prevention',
         'number'      => '02',
         'type'        => 'PREVENTION',
         'title'       => 'Risk Prevention',
         'description' => 'Implementing measures to stop risk events from occurring, like installing fire alarms.',
         'image'       => 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
         'alt'         => 'Risk Prevention Strategy',
-        'bg_color'    => '#0B132B', // Soft Sky Blue
-        'accent'      => '#0369a1', // Medium Blue Accent
+        'bg_color'    => '#0B132B',
+        'accent'      => '#0369a1',
         'icon'        => '<circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>',
     ),
+
     array(
+        'id'          => 'risk-reduction',
         'number'      => '03',
-        'type'        => 'TRANSFER',
-        'title'       => 'Risk Transfer',
-        'description' => 'Taking steps to reduce the likelihood or impact of loss, such as wearing a helmet or seatbelt.',
-        'image'       => 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
-        'alt'         => 'Risk Transfer Strategy',
-        'bg_color'    => '#0B132B', // Slate Tint Blue
-        'accent'      => '#0284c7', // Ocean Blue Accent
-        'icon'        => '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
-    ),
-    array(
-        'number'      => '04',
-        'type'        => 'RETENTION',
-        'title'       => 'Risk Retention',
-        'description' => 'Shifting the financial burden of risk to another party, such as buying insurance to cover potential losses.',
-        'image'       => 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-        'alt'         => 'Risk Retention Strategy',
-        'bg_color'    => '#0B132B', // Powder Blue
-        'accent'      => '#1d4ed8', // Royal Blue Accent
-        'icon'        => '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
-    ),
-    array(
-        'number'      => '05',
         'type'        => 'REDUCTION',
         'title'       => 'Risk Reduction',
-        'description' => 'Accepting and budgeting for certain risks, such as bearing small medical costs yourself.',
-        'image'       => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80',
+        'description' => 'Taking steps to reduce the likelihood or impact of loss, such as wearing a helmet or seatbelt.',
+        'image'       => 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
         'alt'         => 'Risk Reduction Strategy',
-        'bg_color'    => '#0B132B', // Indigo Pastel
-        'accent'      => '#4338ca', // Indigo Accent
+        'bg_color'    => '#0B132B',
+        'accent'      => '#0284c7',
         'icon'        => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
     ),
+
     array(
+        'id'          => 'risk-transfer',
+        'number'      => '04',
+        'type'        => 'TRANSFER',
+        'title'       => 'Risk Transfer',
+        'description' => 'Shifting the financial burden of risk to another party, such as buying insurance to cover potential losses.',
+        'image'       => 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
+        'alt'         => 'Risk Transfer Strategy',
+        'bg_color'    => '#0B132B',
+        'accent'      => '#1d4ed8',
+        'icon'        => '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+    ),
+
+    array(
+        'id'          => 'risk-retention',
+        'number'      => '05',
+        'type'        => 'RETENTION',
+        'title'       => 'Risk Retention',
+        'description' => 'Accepting and budgeting for certain risks, such as bearing small medical costs yourself.',
+        'image'       => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80',
+        'alt'         => 'Risk Retention Strategy',
+        'bg_color'    => '#0B132B',
+        'accent'      => '#4338ca',
+        'icon'        => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    ),
+
+    array(
+        'id'          => 'risk-control',
         'number'      => '06',
-        'type'        => 'RECOVERY',
-        'title'       => 'Risk Recovery',
+        'type'        => 'CONTROL',
+        'title'       => 'Risk Control',
         'description' => 'Applying policies and procedures to manage and minimize risks, like enforcing workplace safety rules.',
         'image'       => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-        'alt'         => 'Risk Recovery Strategy',
-        'bg_color'    => '#0B132B', // Cyan Soft
-        'accent'      => '#0891b2', // Deep Cyan Accent
+        'alt'         => 'Risk Control Strategy',
+        'bg_color'    => '#0B132B',
+        'accent'      => '#0891b2',
         'icon'        => '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>',
     ),
+
 );
 ?>
 
@@ -81,8 +94,9 @@ $risk_cards = array(
 
         <header class="risk-management__header">
             <div class="risk-management__heading">
-                <span class="risk-management__eyebrow">Strategic Framework</span>
-                <h2 id="risk-management-title" class="risk-management__title">
+                <span class="risk-management__eyebrow" data-aos="fade-up">Strategic Framework</span>
+                <h2 id="risk-management-title" class="risk-management__title" data-aos="fade-up"
+                    data-aos-duration="800">
                     Risk Management
                 </h2>
             </div>
@@ -91,7 +105,7 @@ $risk_cards = array(
         <!-- OVERVIEW GRID -->
         <div class="risk-management__overview">
 
-            <article class="risk-management__overview-card">
+            <article class="risk-management__overview-card" data-aos="fade-right" data-aos-duration="1500">
                 <span class="risk-management__card-eyebrow">UNDERSTANDING RISK</span>
                 <h3 class="risk-management__overview-title">What Are Risks?</h3>
 
@@ -108,7 +122,7 @@ $risk_cards = array(
                 </blockquote>
             </article>
 
-            <article class="risk-management__overview-card">
+            <article class="risk-management__overview-card" data-aos="fade-left" data-aos-duration="1500">
                 <span class="risk-management__card-eyebrow">STRATEGIC IMPORTANCE</span>
                 <h3 class="risk-management__overview-title">Why Is Risk Management Important?</h3>
 
@@ -134,11 +148,11 @@ $risk_cards = array(
 
     <!-- SECTION HEADING -->
     <div class="risk-management__intro">
-        <h2 class="risk-management__heading">
+        <h2 class="risk-management__heading" data-aos="fade-up" data-aos-duration="800">
             The six ways to <span>manage risk</span>
         </h2>
 
-        <p class="risk-management__subheading">
+        <p class="risk-management__subheading" data-aos="fade-up" data-aos-duration="1000">
             Every risk you face can be handled in one of six ways.
             Click on any card to learn more.
         </p>
@@ -160,15 +174,9 @@ $risk_cards = array(
 
                     <!-- Content Box -->
                     <div class="risk-card__box">
-                        <div class="risk-card__icon"
-                            style="color: <?php echo esc_attr($card['accent']); ?>;">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                        <div class="risk-card__icon" style="color: <?php echo esc_attr($card['accent']); ?>;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <?php echo $card['icon']; ?>
                             </svg>
                         </div>
@@ -182,7 +190,8 @@ $risk_cards = array(
                         </p>
                     </div>
 
-                    <a href="#explore" class="risk-card__btn">
+                    <a href="<?php echo esc_url(home_url('/managing-risks/#' . $card['id'])); ?>"
+                        class="risk-card__btn">
                         Explore &rarr;
                     </a>
 
@@ -193,8 +202,7 @@ $risk_cards = array(
             <!-- DUPLICATE FOR INFINITE LOOP -->
             <div class="risk-management__group" aria-hidden="true">
                 <?php foreach ($risk_cards as $card) : ?>
-                <article class="risk-card"
-                    style="background-color: <?php echo esc_attr($card['bg_color']); ?>;">
+                <article class="risk-card" style="background-color: <?php echo esc_attr($card['bg_color']); ?>;">
 
                     <!-- Background Image Layer -->
                     <div class="risk-card__bg-image"
@@ -202,15 +210,9 @@ $risk_cards = array(
                     </div>
 
                     <div class="risk-card__box">
-                        <div class="risk-card__icon"
-                            style="color: <?php echo esc_attr($card['accent']); ?>;">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                        <div class="risk-card__icon" style="color: <?php echo esc_attr($card['accent']); ?>;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <?php echo $card['icon']; ?>
                             </svg>
                         </div>
@@ -236,7 +238,7 @@ $risk_cards = array(
     </div>
 
     <!-- KEY TAKEAWAY CARD -->
-    <div class="risk-management__container">
+    <div class="risk-management__container" data-aos="fade-up" data-aos-duration="1700">
         <div class="risk-management__takeaway">
             <span class="risk-management__card-eyebrow">KEY TAKEAWAY</span>
             <h3 class="risk-management__takeaway-title">Protecting What Matters Most</h3>
@@ -247,7 +249,8 @@ $risk_cards = array(
                 keeping your long-term plans on track even when the unexpected happens.
             </p>
             <p class="risk-management__takeaway-body">
-                <strong>Risk management isn't just about reacting when things go wrong — it's about being prepared</strong> so that
+                <strong>Risk management isn't just about reacting when things go wrong — it's about being
+                    prepared</strong> so that
                 nothing that matters most to you derails. With the right cover in place, you can face life's
                 uncertainties with clarity and confidence.
             </p>

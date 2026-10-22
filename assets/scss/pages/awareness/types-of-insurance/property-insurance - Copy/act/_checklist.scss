@@ -1,0 +1,753 @@
+@use "../../../../../abstracts/variables" as *;
+
+
+// =====================================================
+// VIMA VIDYA — PROPERTY INSURANCE CHECKLIST
+// =====================================================
+
+.binder-wrapper {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  padding: clamp(24px, 4vw, 64px) clamp(16px, 4vw, 48px);
+
+  font-family: $font-primary;
+
+  box-sizing: border-box;
+
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+
+  // ===================================================
+  // HEADER
+  // ===================================================
+
+  .binder-header {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 32px;
+
+    padding: 28px 32px;
+
+    background-color: $color-navy-dark;
+
+    border-radius: $radius-md $radius-md 0 0;
+
+
+    .header-content {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+
+    .binder-tag {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: $color-orange;
+
+      font-size: $text-xs;
+      font-weight: 700;
+
+      line-height: 1.2;
+
+      letter-spacing: 0.1em;
+
+      text-transform: uppercase;
+    }
+
+
+    h2 {
+      margin: 0;
+
+      color: $color-white;
+
+      font-size: 44px;
+
+      font-weight: 600;
+
+      line-height: $line-heading;
+    }
+
+
+    .section-subtitle {
+      max-width: 900px;
+
+      margin: 10px 0 0;
+
+      color: $color-text-light;
+
+      font-size: $text-base;
+
+      line-height: $line-body;
+    }
+
+
+    .total-progress-badge {
+      flex: 0 0 auto;
+
+      min-width: 110px;
+
+      padding: 10px 16px;
+
+      background-color: $color-navy;
+
+      border: 1px solid $color-border-dark;
+
+      border-radius: $radius-sm;
+
+      color: $color-white;
+
+      font-size: $text-lg;
+
+      font-weight: 700;
+
+      text-align: center;
+
+
+      span {
+        display: block;
+
+        margin-top: 3px;
+
+        color: $color-text-light;
+
+        font-size: $text-xs;
+
+        font-weight: 400;
+      }
+    }
+  }
+
+
+
+  // ===================================================
+  // BINDER
+  // ===================================================
+
+  .binder-container {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 1000px;
+
+    padding: 65px 32px 32px;
+
+    background-color: $color-light-gray;
+
+    border: 1px solid $color-border;
+
+    border-top: none;
+
+    border-radius: 0 0 $radius-lg $radius-lg;
+
+    overflow: visible;
+  }
+
+
+  // ===================================================
+  // FOLDER
+  // ===================================================
+
+  .folder-divider {
+    position: absolute;
+
+    top: 65px;
+
+    left: 32px;
+    right: 32px;
+
+    width: auto;
+
+    z-index: 1;
+
+    transition:
+      transform $transition,
+      opacity $transition;
+
+
+    // =================================================
+    // THEMES
+    // =================================================
+&.folder-theme-1 {
+  --folder-bg: #{$color-navy};    // #03152e
+  --folder-btn: #{$color-blue};        // #007aff
+}
+
+&.folder-theme-2 {
+  --folder-bg: #{ lighten($color-navy, 15%)};         // #08274b
+  --folder-btn: #{$color-navy-dark};   // #03152e
+}
+
+&.folder-theme-3 {
+  --folder-bg: #{mix($color-navy, $color-light-blue, 30%)};    // #062b66
+  --folder-btn: #{$color-navy-dark};   // #03152e
+}
+
+&.folder-theme-4 {
+  --folder-bg: #{$color-blue};         // #007aff
+  --folder-btn: #{$color-navy-dark};   // #03152e
+}
+
+&.folder-theme-5 {
+  --folder-bg: #{$color-orange};       // #f59a18
+  --folder-btn: #{$color-navy-dark};   // #03152e
+}
+
+&.folder-theme-6 {
+  --folder-bg: #{$color-success};      // #10b981
+  --folder-btn: #{$color-navy-dark};   // #03152e
+}
+    // =================================================
+    // TABS
+    // =================================================
+
+    .binder-tab {
+      position: absolute;
+
+      top: -40px;
+
+      left: var(--tab-left);
+
+      width: 18%;
+      min-width: 150px;
+
+      height: 40px;
+
+      padding: 8px 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 8px;
+
+      background-color: var(--folder-bg);
+
+      border: 0;
+
+      border-radius: $radius-sm $radius-sm 0 0;
+
+      color: $color-white;
+
+      cursor: pointer;
+
+      font-family: $font-primary;
+
+      transition:
+        transform $transition-fast,
+        box-shadow $transition-fast;
+
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+
+      .tab-title {
+        min-width: 0;
+
+        overflow: hidden;
+
+        color: $color-white;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.03em;
+
+        text-transform: uppercase;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
+      }
+
+
+      .tab-count {
+        flex: 0 0 auto;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        min-width: 24px;
+        height: 24px;
+
+        padding: 3px 7px;
+
+        background-color: var(--folder-btn);
+
+        border-radius: $radius-pill;
+
+        color: $color-white;
+
+        font-size: $text-xs;
+
+        font-weight: 700;
+      }
+    }
+
+
+    // =================================================
+    // FOLDER BODY
+    // =================================================
+
+    .folder-body {
+      width: 100%;
+
+      padding: 24px;
+
+      background-color: var(--folder-bg);
+
+      border-radius: 0 $radius-md $radius-md $radius-md;
+
+      box-shadow:
+        0 10px 20px rgba(3, 21, 46, 0.08);
+    }
+
+
+    // =================================================
+    // FOLDER HEADER
+    // =================================================
+
+    .folder-sleeve-header {
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 24px;
+
+      margin-bottom: 20px;
+
+
+      .folder-heading-content {
+        flex: 1;
+
+        min-width: 0;
+      }
+
+
+      .folder-title {
+        margin: 0;
+
+        color: $color-white;
+
+        font-size: $text-lg;
+
+        font-weight: 600;
+
+        line-height: $line-heading;
+      }
+
+
+      .folder-intro {
+        max-width: 900px;
+
+        margin: 8px 0 0;
+
+        color: rgba(255, 255, 255, 0.82);
+
+        font-size: $text-base;
+
+        line-height: $line-body;
+      }
+
+
+      .folder-status-badge {
+        flex: 0 0 auto;
+
+        padding: 8px 12px;
+
+        background-color: rgba(255, 255, 255, 0.15);
+
+        border-radius: $radius-pill;
+
+        color: $color-white;
+
+        font-size: $text-xs;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+      }
+    }
+
+
+    // =================================================
+    // WHITE PAPER
+    // =================================================
+
+    .document-sheet {
+      width: 100%;
+
+      padding: 20px;
+
+      background-color: $color-white;
+
+      border: 1px solid $color-border;
+
+      border-radius: $radius-sm;
+    }
+
+
+    // =================================================
+    // CHECKLIST GRID
+    // =================================================
+
+    .checklist-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding: 0;
+
+      list-style: none;
+    }
+
+
+    // =================================================
+    // CHECKLIST ITEM
+    // =================================================
+
+    .checklist-row {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      width: 100%;
+
+      min-height: 72px;
+
+      padding: 14px;
+
+      background-color: $color-light-gray;
+
+      border: 1px solid $color-border;
+
+      border-radius: $radius-sm;
+
+      transition:
+        background-color $transition-fast,
+        border-color $transition-fast,
+        transform $transition-fast;
+
+
+      &:hover {
+        background-color: $color-light-blue;
+
+        border-color: rgba(0, 122, 255, 0.2);
+
+        transform: translateY(-1px);
+      }
+
+
+      .binder-checkbox {
+        appearance: none;
+
+        position: relative;
+
+        flex: 0 0 auto;
+
+        width: 19px;
+        height: 19px;
+
+        margin: 2px 0 0;
+
+        background-color: $color-white;
+
+        border: 2px solid $color-text-muted;
+
+        border-radius: 4px;
+
+        cursor: pointer;
+
+
+        &:checked {
+          background-color: $color-success;
+
+          border-color: $color-success;
+
+
+          &::after {
+            content: '';
+
+            position: absolute;
+
+            left: 5px;
+            top: 1px;
+
+            width: 5px;
+            height: 10px;
+
+            border: solid $color-white;
+
+            border-width: 0 2px 2px 0;
+
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+
+      label {
+        flex: 1;
+
+        min-width: 0;
+
+        margin: 0;
+
+        color: $color-text;
+
+        font-size: $text-base;
+
+        line-height: 1.6;
+
+        cursor: pointer;
+      }
+
+
+      .binder-checkbox:checked + label {
+        color: $color-text-muted;
+
+        text-decoration: line-through;
+      }
+    }
+
+
+    // =================================================
+    // ACTIVE
+    // =================================================
+
+    &.active {
+      z-index: 10;
+
+      transform: translateY(0);
+
+      opacity: 1;
+
+
+      .document-sheet {
+        display: block;
+      }
+    }
+
+
+    // =================================================
+    // INACTIVE
+    // =================================================
+
+    &:not(.active) {
+      opacity: 0.96;
+
+      transform: translateY(8px);
+
+
+      .document-sheet {
+        display: none;
+      }
+    }
+  }
+
+
+  // ===================================================
+  // LARGE DESKTOP
+  // ===================================================
+
+  @media (min-width: 1200px) {
+
+    .checklist-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+
+  // ===================================================
+  // TABLET
+  // ===================================================
+
+  @media (max-width: 900px) {
+
+    .binder-header {
+      flex-direction: column;
+    }
+
+
+    .total-progress-badge {
+      align-self: flex-start;
+    }
+
+
+    .checklist-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+  // ===================================================
+  // MOBILE
+  // ===================================================
+
+  @media (max-width: 767px) {
+
+    padding: 20px 12px;
+
+
+    .binder-header {
+      padding: 20px;
+
+      gap: 18px;
+
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+
+
+    .binder-container {
+      min-height: 600px;
+
+      padding: 55px 12px 20px;
+    }
+
+
+    .folder-divider {
+      top: 55px;
+
+      left: 12px;
+      right: 12px;
+
+
+      .binder-tab {
+        top: -36px;
+
+        width: auto;
+
+        min-width: 125px;
+
+        height: 36px;
+      }
+
+
+      .folder-body {
+        padding: 14px;
+      }
+
+
+      .folder-sleeve-header {
+        flex-direction: column;
+
+        gap: 10px;
+
+
+        .folder-status-badge {
+          align-self: flex-start;
+        }
+      }
+
+
+      .document-sheet {
+        padding: 10px;
+      }
+
+
+      .checklist-grid {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+      }
+
+
+      .checklist-row {
+        min-height: auto;
+
+        padding: 11px;
+
+
+        label {
+          font-size: $text-xs;
+
+          line-height: 1.55;
+        }
+      }
+    }
+  }
+
+
+  // ===================================================
+  // SMALL MOBILE
+  // ===================================================
+
+  @media (max-width: 480px) {
+
+    padding: 12px 8px;
+
+
+    .binder-header {
+      padding: 16px;
+
+
+      h2 {
+        font-size: 20px;
+      }
+
+
+      .section-subtitle {
+        font-size: $text-xs;
+      }
+    }
+
+
+    .binder-container {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+
+    .folder-divider {
+      left: 8px;
+      right: 8px;
+
+
+      .binder-tab {
+        min-width: 105px;
+
+        padding-left: 8px;
+        padding-right: 8px;
+
+
+        .tab-title {
+          max-width: 72px;
+
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}

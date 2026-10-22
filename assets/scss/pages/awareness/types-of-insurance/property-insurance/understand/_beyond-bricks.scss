@@ -1,0 +1,456 @@
+// ============================================================
+// BEYOND BRICKS & WALLS — SECTION STYLES
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.asset-tabs-section {
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: $space-section-lg 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    // ========================================================
+    // HEADER
+    // ========================================================
+    .section-header {
+        .badge-pill {
+            display: inline-block;
+            color: $color-blue;
+            font-size: $text-xs;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: $space-small;
+        }
+
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-white;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-light;
+            max-width: 1000px;
+        }
+    }
+// ========================================================
+    // CATEGORY TABS (WHITE ACTIVE / PILL STYLE)
+    // ========================================================
+    .asset-category-tabs {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+
+        .asset-tab {
+            background: $color-white;
+            border: 1px solid $color-white;
+            color: $color-navy-dark;
+            padding: 10px 22px;
+            border-radius: $radius-pill;
+            cursor: pointer;
+            font-size: $text-base;
+            font-weight: 500;
+            font-family: $font-primary;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: $transition-fast;
+
+            .tab-icon {
+                color: $color-navy-dark;
+                display: flex;
+                align-items: center;
+                transition: $transition-fast;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.9);
+                border-color: $color-white;
+                color: $color-navy;
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                color: $color-white;
+
+                .tab-icon {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    // ========================================================
+    // TAB CONTENT & PANELS (WHITE CARD STYLE)
+    // ========================================================
+    .asset-tab-content {
+        margin-top: $space-element;
+
+        .asset-tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn $transition;
+            }
+        }
+
+        // ========================================================
+        // MAIN ASSET CONTENT CARD (WHITE VARIANT)
+        // ========================================================
+        .asset-content-card {
+            background: $color-white;
+            border: 1px solid $color-border-dark;
+            border-radius: $radius-md;
+            padding: 36px 40px;
+            margin-top: $space-element;
+            color: $color-navy-dark;
+
+            @media (max-width: 768px) {
+                padding: 24px 20px;
+            }
+
+            .asset-content-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 16px;
+
+                .asset-content-label {
+                    color: $color-orange;
+                    font-size: $text-xs;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+
+                h3 {
+                    color: $color-navy;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-top: 6px;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .asset-policy-note {
+                    background: rgba(0, 0, 0, 0.05);
+                    color: $color-navy-dark;
+                    padding: 6px 14px;
+                    border-radius: $radius-sm;
+                    font-size: $text-xs;
+                    font-weight: 500;
+                }
+            }
+
+            .asset-card-description {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-navy-dark;
+                margin-bottom: 24px;
+            }
+
+            .asset-items-container {
+                .asset-bullet-list {
+                    list-style-type: disc;
+                    padding-left: 20px;
+                    color: $color-navy-dark;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                    li {
+                        line-height: $line-body;
+                        font-size: $text-base;
+                        color: $color-navy-dark;
+
+                        strong {
+                            color: $color-navy;
+                            font-weight: 700;
+                        }
+
+                        span {
+                            color: $color-navy-dark;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+        // ========================================================
+        // ASSET STORY BLOCK LAYOUT (UNIQUE NAMESPACES)
+        // ========================================================
+        .asset-story-block {
+            background: white;
+            border: 1px solid $color-border-dark;
+            border-radius: $radius-md;
+            padding: 36px;
+            display: grid;
+            grid-template-columns: 1.4fr 0.85fr;
+            gap: 36px;
+            align-items: start;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 32px;
+
+            @media (max-width: 992px) {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+
+            /* Left Column */
+            .story-left-col {
+                display: flex;
+                flex-direction: column;
+
+                .story-media-container {
+                    position: relative;
+                    margin-bottom: 50px;
+
+                    .story-image-wrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 320px;
+                        border-radius: $radius-sm;
+                        overflow: hidden;
+                        border: 1px solid $color-border-dark;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            display: block;
+                        }
+
+                        .story-img-label {
+                            position: absolute;
+                            bottom: 12px;
+                            left: 12px;
+                            background: rgba(3, 21, 46, 0.85);
+                            backdrop-filter: blur(4px);
+                            color: $color-white;
+                            font-size: $text-xs;
+                            font-weight: 600;
+                            padding: 6px 12px;
+                            border-radius: $radius-sm;
+                        }
+                    }
+
+                    /* Overlaid Stats Cards */
+                    .stats-grid-overlay {
+                        position: absolute;
+                        bottom: -35px;
+                        left: $space-small;
+                        right: $space-small;
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 8px;
+                        z-index: 2;
+
+                        @media (max-width: 600px) {
+                            position: relative;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            grid-template-columns: repeat(2, 1fr);
+                            margin-top: $space-small;
+                        }
+
+                        .stat-card {
+                            background: $color-white;
+                            border: 1px solid $color-border-dark;
+                            border-radius: $radius-sm;
+                            padding: 10px 8px;
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                            display: flex;
+                            flex-direction: column;
+                            min-height: 95px;
+
+                            .stat-icon {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 10px;
+                                font-weight: 700;
+                                margin-bottom: 4px;
+
+                                &.success {
+                                    background: rgba(16, 185, 129, 0.15);
+                                    color: $color-success;
+                                }
+
+                                &:not(.success) {
+                                    background: rgba(245, 154, 24, 0.15);
+                                    color: $color-orange;
+                                }
+                            }
+
+                            .stat-label {
+                                font-size: 14px;
+                                font-weight: 600;
+                                color: $color-blue;
+                                line-height: 1.2;
+                                margin-bottom: 4px;
+                            }
+
+                            .stat-value {
+                                font-size: 12px;
+                                font-weight: 700;
+                                color:#d92d20;
+                                margin-top: auto;
+                            }
+                        }
+                    }
+                }
+
+                /* Takeaway Banner underneath left column */
+                .story-takeaway-card {
+                    display: flex;
+                    align-items: flex-start;
+                    background: $color-light-blue;
+                    border: 1px solid rgba(0, 122, 255, 0.2);
+                    border-radius: $radius-sm;
+                    padding: 16px;
+                    gap: 12px;
+                    margin-top: 12px;
+
+                    .takeaway-icon-bubble {
+                        background: $color-orange;
+                        color: $color-white;
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 14px;
+                        flex-shrink: 0;
+                        font-weight: 700;
+                        box-shadow: 0 2px 6px rgba($color-orange, 0.3);
+                    }
+
+                    .takeaway-text-content {
+                        strong {
+                            color: $color-blue-dark;
+                            font-size: $text-xs;
+                            font-weight: 700;
+                            letter-spacing: 0.05em;
+                            display: block;
+                            margin-bottom: 4px;
+                        }
+
+                        p {
+                            font-size: $text-base;
+                            color: $color-navy-dark;
+                            line-height: 1.45;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            /* Right Column Narrative */
+            .story-right-col {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                .case-tag {
+                    font-size: $text-xs;
+                    font-weight: 700;
+                    color: $color-orange;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                }
+
+                .case-main-title {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: $color-navy;
+                    margin: 0;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .case-subtitle {
+                    font-size: $text-base;
+                    font-weight: 600;
+                    color: $color-blue;
+                    margin: 0;
+                }
+
+                .case-text-body {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    margin-top: 4px;
+
+                    p {
+                        font-size: $text-base;
+                        color: black;
+                        line-height: $line-body;
+                        margin: 0;
+                    }
+                }
+
+                .story-tags-row {
+                    display: flex;
+                    gap: 8px;
+                    margin-top: 8px;
+                    
+
+                    .meta-tag {
+                        background: rgba(22, 1, 1, 0.05);
+                        border: 1px solid $color-border-dark;
+                        color: black;
+                        font-size: $text-xs;
+                        padding: 4px 10px;
+                        border-radius: $radius-sm;
+                    }
+                }
+            }
+        }
+    }
+
+
+// Fade-in keyframes
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

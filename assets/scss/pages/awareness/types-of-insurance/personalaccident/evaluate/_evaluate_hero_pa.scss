@@ -1,0 +1,392 @@
+@use "../../../../../abstracts/insurancevariable" as *;
+
+// =========================================================
+// PERSONAL ACCIDENT EVALUATE HERO SECTION
+// =========================================================
+
+.paevaluatehero {
+  font-family: $font-primary;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+  background: $color-cream;
+
+  .paevaluatehero-slider-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paevaluatehero-slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity $transition-slow, visibility $transition-slow;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      .paevaluatehero-slide-image-wrapper {
+        transform: scale(1);
+      }
+
+      .paevaluatehero-slide-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // =======================================================
+  // BACKGROUND IMAGE & OVERLAY
+  // =======================================================
+
+  .paevaluatehero-slide-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 0;
+  }
+
+  .paevaluatehero-slide-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.95) 48%,
+      rgba($color-cream, 0.70) 72%,
+      rgba($color-cream, 0.15) 100%
+    );
+    pointer-events: none;
+  }
+
+  // =======================================================
+  // HERO INNER CONTENT
+  // =======================================================
+
+  .paevaluatehero-inner {
+    position: relative;
+    z-index: 5;
+    width: min(92%, $container-wide);
+    margin: 0 auto;
+    padding: 120px 0 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .paevaluatehero-slide-content {
+    width: 85%;
+    max-width: 1020px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity $transition-slow 0.15s, transform $transition-slow 0.15s;
+  }
+
+  // =======================================================
+  // TOP STAGE NAVIGATION (HOME / UNDERSTAND / EVALUATE / ACT)
+  // =======================================================
+
+  .paevaluatehero-top-nav-large {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    background: rgba($color-white, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 14px;
+    border-radius: $radius-pill;
+    border: 1px solid rgba($color-border, 0.85);
+    box-shadow: 0 4px 16px rgba($color-navy, 0.05);
+
+    .paevaluatehero-nav-large-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: $text-sm;
+      font-weight: 700;
+      color: rgba($color-navy, 0.75);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: $radius-pill;
+      transition: all $transition;
+
+      .paevaluatehero-step-label {
+        font-size: $text-xs;
+        font-weight: 800;
+        opacity: 0.6;
+        letter-spacing: 0.03em;
+      }
+
+      &:hover {
+        color: $color-blue;
+        background: rgba($color-blue, 0.08);
+      }
+
+      &.active {
+        color: $color-white;
+        background: $color-navy;
+        box-shadow: 0 3px 10px rgba($color-navy, 0.25);
+
+        .paevaluatehero-step-label {
+          color: $color-blue;
+          opacity: 1;
+        }
+      }
+    }
+
+    .paevaluatehero-nav-sep {
+      color: rgba($color-navy, 0.25);
+      font-size: $text-sm;
+      user-select: none;
+    }
+  }
+
+  // =======================================================
+  // LOCATION / SECTION INDICATOR & EYEBROW
+  // =======================================================
+
+  .paevaluatehero-page-indicator {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 700;
+    line-height: $line-body;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: $color-navy;
+
+    .paevaluatehero-indicator-step {
+      color: $color-blue;
+      margin-left: 4px;
+    }
+  }
+
+  .paevaluatehero-slide-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    padding: 6px 14px;
+    border-radius: $radius-pill;
+    background: $color-white;
+    border: 1px solid $color-border;
+    color: $color-navy;
+    font-size: $text-base;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    box-shadow: 0 2px 8px rgba($color-navy, 0.04);
+
+    .paevaluatehero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $color-blue;
+    }
+  }
+
+  // Main Title
+  .paevaluatehero-slide-title {
+    margin: 0 0 5px;
+    color: $color-navy;
+    font-size: $text-h1-hero;
+    font-weight: 700;
+    line-height: $line-body;
+    letter-spacing: -0.02em;
+
+    span {
+      display: inline-block;
+      color: $color-blue;
+    }
+  }
+
+  // Description Text
+  .paevaluatehero-slide-desc {
+    margin: 0 0 ($space-element * 1.5);
+    color: rgba($color-navy, 0.9);
+    font-size: $text-base;
+    font-weight: 400;
+    line-height: $line-body;
+    max-width: 1000px;
+  }
+
+  // =======================================================
+  // NAVY SUB-NAV BAR (WITH CHAPTER BUTTONS)
+  // =======================================================
+
+  .paevaluatehero-navy-bar {
+    position: relative;
+    z-index: 10;
+    margin-top: 24px;
+    margin-bottom: 20px;
+    background: $color-navy;
+    border-radius: $radius-sm;
+    padding: 12px 14px;
+    box-shadow: 0 10px 30px rgba($color-navy, 0.2);
+    max-width: 1300px;
+
+    .paevaluatehero-navy-button-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba($color-white, 0.2);
+        border-radius: 4px;
+      }
+    }
+
+    .paevaluatehero-navy-btn {
+      flex: 1 1 0;
+      min-width: 145px;
+      text-align: center;
+      white-space: nowrap;
+      padding: 13px 18px;
+      font-size: $text-sm;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: $color-text-light;
+      text-decoration: none;
+      background: rgba($color-white, 0.06);
+      border: 1px solid rgba($color-white, 0.12);
+      border-radius: $radius-sm;
+      transition: all $transition;
+
+      &:hover {
+        color: $color-white;
+        background: rgba($color-white, 0.14);
+        border-color: $color-blue;
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        color: $color-white;
+        background: $color-blue;
+        border-color: $color-blue;
+        box-shadow: 0 4px 16px rgba($color-blue, 0.45);
+      }
+    }
+  }
+}
+
+// =========================================================
+// RESPONSIVE DESIGN
+// =========================================================
+
+@media (max-width: 1200px) {
+  .paevaluatehero {
+    .paevaluatehero-slide-content {
+      width: 90%;
+      max-width: 900px;
+    }
+
+    .paevaluatehero-navy-bar {
+      .paevaluatehero-navy-btn {
+        min-width: 135px;
+        padding: 12px 14px;
+        font-size: $text-sm;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .paevaluatehero {
+    .paevaluatehero-inner {
+      padding: 110px 0 50px;
+    }
+
+    .paevaluatehero-slide-content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .paevaluatehero-navy-bar {
+      .paevaluatehero-navy-button-group {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .paevaluatehero-navy-btn {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .paevaluatehero {
+    .paevaluatehero-inner {
+      padding: 100px 0 40px;
+    }
+
+    .paevaluatehero-top-nav-large {
+      width: 100%;
+      gap: 6px;
+      padding: 4px 8px;
+
+      .paevaluatehero-nav-large-item {
+        font-size: $text-sm;
+        padding: 5px 10px;
+      }
+    }
+
+    .paevaluatehero-page-indicator {
+      font-size: 24px;
+    }
+
+    .paevaluatehero-slide-title {
+      font-size: 28px;
+    }
+
+    .paevaluatehero-slide-desc {
+      font-size: $text-sm;
+    }
+
+    .paevaluatehero-navy-bar {
+      padding: 10px;
+
+      .paevaluatehero-navy-button-group {
+        gap: 8px;
+      }
+
+      .paevaluatehero-navy-btn {
+        padding: 10px 14px;
+        font-size: $text-sm;
+        min-width: 120px;
+      }
+    }
+
+    .paevaluatehero-slide-image-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba($color-cream, 0.88) 0%,
+        rgba($color-cream, 0.98) 100%
+      );
+    }
+  }
+}

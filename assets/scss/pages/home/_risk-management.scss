@@ -1,188 +1,318 @@
-/* =========================================================
-   RISK MANAGEMENT — LIGHT THEME WITH DARK CARDS
-========================================================= */
+
+// =========================================================
+// VIMA VIDYA
+// RISK MANAGEMENT
+// LIGHT THEME WITH DARK CARDS
+// =========================================================
+
+@use "../../abstracts/variables" as *;
+
+
+// =========================================================
+// RISK MANAGEMENT SECTION
+// =========================================================
 
 .risk-management {
-    /* Light System Palette */
-    --risk-bg: #f8fafc;
-    --risk-panel: #ffffff;
-    --risk-border: #e2e8f0;
-    --risk-border-hover: #cbd5e1;
-    --risk-heading: #0f172a;
-    --risk-body: #475569;
-    --risk-muted: #64748b;
-    --risk-brand: #2563eb;
-    --risk-brand-light: #eff6ff;
-    --risk-amber: #d97706;
-    --risk-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    background: $color-light-gray;
+    color: $color-text;
 
-    background: var(--risk-bg);
-    color: var(--risk-heading);
-    padding: 95px 0 85px;
+    padding: $space-section-lg 0;
     overflow: hidden;
 
+
+    // =====================================================
+    // CONTAINER
+    // =====================================================
+
     &__container {
-        width: min(1280px, calc(100% - 100px));
+        width: min(100% - 160px, $container-wide);
         margin-inline: auto;
     }
 
-    /* Intro Header */
+
+    // =====================================================
+    // INTRO
+    // =====================================================
+
     &__intro {
-        max-width: 900px;
-        margin: 0 auto 55px;
+        max-width: 800px;
+
+        margin: 0 auto $space-content;
+
         text-align: center;
-        padding: 0 24px;
+        padding: 0 $space-element;
     }
 
+
     &__heading {
-        margin: 0 0 16px;
-        font-size: clamp(36px, 4vw, 58px);
-        line-height: 1.08;
+        margin: 0 0 $space-small;
+
+        color: $color-blue-dark;
+
+        font-size: clamp(36px, 4vw, $text-h1);
         font-weight: 700;
+
+        line-height: $line-tight;
         letter-spacing: -0.03em;
-        color: #062b66;
 
         span {
-            color: #d2ab67;
+            color: $color-blue;
         }
     }
 
+
     &__subheading {
-        max-width: 850px;
+        max-width: $text-width-wide;
+
         margin: 0 auto;
-        font-size: 18px;
-        line-height: 1.7;
-        color: #5d6675;
+
+        color: $color-text-body;
+
+        font-size: $text-lg;
+        line-height: $line-body;
     }
 
-    /* Section Header */
+
+    // =====================================================
+    // SECTION HEADER
+    // =====================================================
+
     &__header {
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        gap: 80px;
-        margin-bottom: 48px;
+
+        gap: $space-content;
+
+        margin-bottom: $space-content;
     }
+
 
     &__eyebrow {
         display: block;
-        margin-bottom: 12px;
-        color: var(--risk-brand);
-        font-size: 12px;
+
+        margin-bottom: $space-small;
+
+        color: $color-orange;
+
+        font-size: $text-xs;
         font-weight: 800;
+
         line-height: 1;
         letter-spacing: 0.14em;
+
         text-transform: uppercase;
     }
 
+
     &__title {
         margin: 0;
-        color: var(--risk-heading);
-        font-size: clamp(38px, 4vw, 52px);
+
+        color: $color-text;
+
+        font-size: clamp(38px, 4vw, $text-h2);
         font-weight: 700;
-        line-height: 1.05;
+
+        line-height: $line-tight;
         letter-spacing: -0.035em;
     }
 
+
     &__instruction {
-        width: 430px;
+        width: $text-width-narrow;
+
         margin: 0;
-        color: var(--risk-muted);
-        font-size: 14px;
-        line-height: 1.65;
+
+        color: $color-text-muted;
+
+        font-size: $text-sm;
+        line-height: $line-body;
     }
 
-    /* Overview Grid */
+
+    // =====================================================
+    // OVERVIEW GRID
+    // =====================================================
+
     &__overview {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-        margin-bottom: 42px;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: $space-element;
+
+        margin-bottom: $space-element;
     }
+
+
+    // =====================================================
+    // OVERVIEW CARD
+    // =====================================================
 
     &__overview-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 40px;
-        background: var(--risk-panel);
-        border: 1px solid var(--risk-border);
-        border-radius: 16px;
-        box-shadow: var(--risk-shadow);
-        transition: border-color 300ms ease, box-shadow 300ms ease;
+
+        padding: $space-content;
+
+        background: $color-white;
+
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+
+        box-shadow:
+            0 10px 30px rgba($color-navy, 0.05);
+
+        transition:
+            border-color $transition,
+            box-shadow $transition;
 
         &:hover {
-            border-color: var(--risk-border-hover);
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+            border-color: rgba($color-navy, 0.2);
+
+            box-shadow:
+                0 15px 35px rgba($color-navy, 0.08);
         }
     }
 
+
+    // =====================================================
+    // CARD EYEBROW
+    // =====================================================
+
     &__card-eyebrow {
         display: block;
-        margin-bottom: 14px;
-        color: var(--risk-amber);
-        font-size: 11px;
+
+        margin-bottom: $space-small;
+
+        color: $color-orange;
+
+        font-size: $text-xs;
         font-weight: 800;
+
         letter-spacing: 0.12em;
+
         text-transform: uppercase;
     }
 
+
+    // =====================================================
+    // OVERVIEW TITLE
+    // =====================================================
+
     &__overview-title {
-        margin: 0 0 20px;
-        color: var(--risk-heading);
-        font-size: 26px;
+        margin: 0 0 $space-small;
+
+        color: $color-text;
+
+        font-size: $text-h3;
         font-weight: 700;
-        line-height: 1.2;
+
+        line-height: $line-heading;
     }
 
+
+    // =====================================================
+    // OVERVIEW BODY
+    // =====================================================
+
     &__overview-body {
-        margin: 0 0 20px;
-        color: var(--risk-body);
-        font-size: 15px;
-        line-height: 1.7;
+        margin: 0 0 $space-small;
+
+        color: $color-text-body;
+
+        font-size: $text-sm;
+        line-height: $line-body;
     }
+
+
+    // =====================================================
+    // HIGHLIGHT
+    // =====================================================
 
     &__highlight {
         margin: auto 0 0;
-        padding: 14px 18px;
-        background: var(--risk-brand-light);
-        border-left: 3px solid var(--risk-brand);
-        border-radius: 4px;
-        color: #1e40af;
-        font-size: 13px;
+
+        padding: $space-small $space-element;
+
+        background: $color-light-blue;
+
+        border-left: 3px solid $color-orange;
+        border-radius: $radius-sm;
+
+        color: $color-navy;
+
+        font-size: $text-sm;
         font-weight: 600;
-        line-height: 1.6;
+
+        line-height: $line-body;
+
+        strong {
+            color: $color-orange;
+            font-weight: 700;
+        }
     }
 
+
+    // =====================================================
+    // QUOTE
+    // =====================================================
+
     &__quote {
-        margin: 0 0 20px;
-        padding-left: 16px;
-        border-left: 3px solid var(--risk-amber);
-        color: #334155;
-        font-size: 15px;
+        margin: 0 0 $space-small;
+
+        padding-left: $space-small;
+
+        border-left: 3px solid $color-orange;
+
+        color: $color-text-body;
+
+        font-size: $text-sm;
         font-style: italic;
-        line-height: 1.6;
+
+        line-height: $line-body;
     }
+
+
+    // =====================================================
+    // TAG
+    // =====================================================
 
     &__tag {
         display: inline-block;
+
         margin-top: auto;
-        padding: 10px 16px;
-        background: #f1f5f9;
-        border: 1px solid var(--risk-border);
-        border-radius: 6px;
-        color: var(--risk-muted);
-        font-size: 11px;
+
+        padding: $space-small $space-element;
+
+        background: $color-light-gray;
+
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+
+        color: $color-text-muted;
+
+        font-size: $text-xs;
         font-weight: 700;
+
         letter-spacing: 0.08em;
     }
 
-    /* Slider Rail & Track */
+
+    // =====================================================
+    // SLIDER RAIL
+    // =====================================================
+
     &__rail {
         position: relative;
+
         width: 100%;
+
         overflow: hidden;
-        padding: 20px 0;
+
+        padding: $space-small 0;
+
         cursor: grab;
 
         &:active {
@@ -194,129 +324,225 @@
         }
     }
 
+
+    // =====================================================
+    // SLIDER TRACK
+    // =====================================================
+
     &__track {
         display: flex;
+
         width: max-content;
+
         animation: risk-card-scroll 45s linear infinite;
+
         will-change: transform;
     }
 
+
+    // =====================================================
+    // SLIDER GROUP
+    // =====================================================
+
     &__group {
         display: flex;
+
         flex-shrink: 0;
-        gap: 24px;
-        padding-inline: 12px;
+
+        gap: $space-element;
+
+        padding-inline: $space-small;
     }
 
-    /* Key Takeaway Card Styling */
+
+    // =====================================================
+    // KEY TAKEAWAY
+    // =====================================================
+
     &__takeaway {
         position: relative;
-        margin-top: 48px;
-        padding: 36px 40px;
-        background: var(--risk-panel);
-        border: 1px solid var(--risk-border);
-        border-left: 4px solid #d97706;
-        border-radius: 16px;
-        box-shadow: var(--risk-shadow);
-        transition: border-color 300ms ease, box-shadow 300ms ease;
+
+        margin-top: $space-content;
+
+        padding: $space-element $space-content;
+
+        background: $color-white;
+
+        border: 1px solid $color-border;
+        border-left: 4px solid $color-blue;
+
+        border-radius: $radius-md;
+
+        box-shadow:
+            0 10px 30px rgba($color-navy, 0.05);
+
+        transition:
+            border-color $transition,
+            box-shadow $transition;
 
         &:hover {
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+            box-shadow:
+                0 15px 35px rgba($color-navy, 0.08);
         }
 
+
+        // -------------------------------------------------
+        // TITLE
+        // -------------------------------------------------
+
         &-title {
-            margin: 0 0 18px;
-            color: var(--risk-heading);
-            font-size: 24px;
+            margin: 0 0 $space-small;
+
+            color: $color-text;
+
+            font-size: $text-h3;
             font-weight: 700;
-            line-height: 1.25;
+
+            line-height: $line-heading;
             letter-spacing: -0.02em;
         }
 
+
+        // -------------------------------------------------
+        // BODY
+        // -------------------------------------------------
+
         &-body {
-            margin: 0 0 14px;
-            color: var(--risk-body);
-            font-size: 15px;
-            line-height: 1.7;
+            margin: 0 0 $space-small;
+
+            color: $color-text-body;
+
+            font-size: $text-sm;
+            line-height: $line-body;
 
             &:last-child {
                 margin-bottom: 0;
             }
 
             strong {
-                color: #b45309;
+                color: $color-orange;
                 font-weight: 700;
             }
         }
     }
 }
 
-/* =========================================================
-   DARK THEME RISK CARDS (SINGLE COLOR)
-========================================================= */
+
+// =========================================================
+// DARK RISK CARDS
+// =========================================================
 
 .risk-card {
     position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
     width: 360px;
     height: 420px;
-    padding: 30px 24px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+
+    padding: $space-element;
+
+    background: $color-navy;
+
+    border: 1px solid rgba($color-white, 0.08);
+    border-radius: $radius-lg;
+
+    box-shadow:
+        0 10px 30px rgba($color-navy-dark, 0.12);
+
     overflow: hidden;
-    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 
-    /* Single Dark Slate Color */
-    background: #0f172a;
+    transition:
+        transform $transition,
+        box-shadow $transition,
+        border-color $transition;
 
-    /* Background Image Overlay */
+
+    // =====================================================
+    // BACKGROUND IMAGE
+    // =====================================================
+
     &__bg-image {
         position: absolute;
         inset: 0;
+
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+
         opacity: 0.25;
+
         mix-blend-mode: overlay;
-        transition: opacity 300ms ease, transform 500ms ease;
+
+        transition:
+            opacity $transition,
+            transform $transition-slow;
     }
+
+
+    // =====================================================
+    // CARD HOVER
+    // =====================================================
 
     &:hover {
         transform: translateY(-6px);
-        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
-        border-color: rgba(255, 255, 255, 0.18);
+
+        box-shadow:
+            0 18px 40px rgba($color-navy-dark, 0.25);
+
+        border-color:
+            rgba($color-white, 0.18);
 
         .risk-card__bg-image {
             opacity: 0.4;
+
             transform: scale(1.05);
         }
     }
 
-    /* Content Box */
+
+    // =====================================================
+    // CONTENT BOX
+    // =====================================================
+
     &__box {
         position: relative;
         z-index: 2;
+
         width: 100%;
-        padding: 32px 20px;
-        background: #ffffff;
-        border-radius: 16px;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+        padding: $space-content $space-element;
+
         margin-top: auto;
         margin-bottom: auto;
+
+        background: $color-white;
+
+        border-radius: $radius-md;
+
+        text-align: center;
+
+        box-shadow:
+            0 4px 20px rgba(0, 0, 0, 0.15);
     }
+
+
+    // =====================================================
+    // ICON
+    // =====================================================
 
     &__icon {
         display: flex;
         align-items: center;
         justify-content: center;
+
         width: 40px;
         height: 40px;
-        margin: 0 auto 14px;
+
+        margin: 0 auto $space-small;
 
         svg {
             width: 100%;
@@ -324,83 +550,134 @@
         }
     }
 
+
+    // =====================================================
+    // TITLE
+    // =====================================================
+
     &__title {
-        margin: 0 0 10px;
-        color: #0f172a;
-        font-size: 20px;
+        margin: 0 0 $space-small;
+
+        color: $color-navy;
+
+        font-size: $text-lg;
         font-weight: 800;
-        line-height: 1.2;
+
+        line-height: $line-heading;
     }
+
+
+    // =====================================================
+    // DESCRIPTION
+    // =====================================================
 
     &__description {
         margin: 0;
-        color: #64748b;
-        font-size: 13px;
-        line-height: 1.6;
+
+        color: $color-text-muted;
+
+        font-size: $text-sm;
+
+        line-height: $line-body;
     }
+
+
+    // =====================================================
+    // BUTTON
+    // =====================================================
 
     &__btn {
         position: relative;
         z-index: 2;
+
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 10px 24px;
-        background: #2563eb;
-        border-radius: 10px;
-        color: #ffffff;
-        font-size: 13px;
+
+        padding: $space-small $space-element;
+
+        background: $color-blue;
+
+        border: 1px solid $color-blue;
+        border-radius: $radius-sm;
+
+        color: $color-white;
+
+        font-size: $text-sm;
         font-weight: 700;
+
         text-decoration: none;
-        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-        transition: transform 200ms ease, background-color 200ms ease;
+
+        box-shadow:
+            0 4px 14px rgba($color-blue, 0.35);
+
+        transition:
+            transform $transition-fast,
+            background $transition-fast;
 
         &:hover {
-            background: #1d4ed8;
+            background: $color-blue-dark;
+
             transform: scale(1.03);
         }
     }
 }
 
-/* =========================================================
-   KEYFRAME ANIMATIONS
-========================================================= */
+
+// =========================================================
+// KEYFRAME ANIMATION
+// =========================================================
 
 @keyframes risk-card-scroll {
+
     from {
         transform: translateX(0);
     }
+
     to {
-        transform: translateX(calc(-50% - 12px));
+        transform: translateX(calc(-50% - #{$space-small}));
     }
 }
 
-/* =========================================================
-   RESPONSIVE MEDIA QUERIES
-========================================================= */
+
+// =========================================================
+// RESPONSIVE — 1100px
+// =========================================================
 
 @media (max-width: 1100px) {
+
     .risk-management {
+
         &__container {
             width: calc(100% - 60px);
         }
+
         &__header {
-            gap: 40px;
+            gap: $space-element;
         }
+
         &__instruction {
             width: 350px;
-            font-size: 13px;
+            font-size: $text-xs;
         }
+
         &__overview-card {
             padding: 30px;
         }
     }
 }
 
+
+// =========================================================
+// RESPONSIVE — 768px
+// =========================================================
+
 @media (max-width: 768px) {
+
     .risk-management {
+
         &__intro {
-            margin-bottom: 35px;
+            margin-bottom: $space-element;
         }
 
         &__heading {
@@ -408,15 +685,21 @@
         }
 
         &__subheading {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: $text-base;
+            line-height: $line-body;
         }
     }
 }
 
+
+// =========================================================
+// RESPONSIVE — 700px
+// =========================================================
+
 @media (max-width: 700px) {
+
     .risk-management {
-        padding: 65px 0 55px;
+        padding: $space-section-sm 0;
 
         &__container {
             width: calc(100% - 32px);
@@ -425,8 +708,10 @@
         &__header {
             flex-direction: column;
             align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 35px;
+
+            gap: $space-element;
+
+            margin-bottom: $space-element;
         }
 
         &__instruction {
@@ -435,43 +720,57 @@
 
         &__overview {
             grid-template-columns: 1fr;
-            gap: 20px;
+
+            gap: $space-element;
         }
 
         &__takeaway {
-            margin-top: 32px;
-            padding: 24px 20px;
+            margin-top: $space-element;
+
+            padding: $space-element;
 
             &-title {
-                font-size: 20px;
+                font-size: $text-lg;
             }
 
             &-body {
-                font-size: 14px;
+                font-size: $text-sm;
             }
         }
     }
+
+
+    // -------------------------------------------------------
+    // MOBILE RISK CARD
+    // -------------------------------------------------------
 
     .risk-card {
         width: 300px;
         height: 380px;
 
         &__box {
-            padding: 24px 16px;
+            padding: $space-element $space-small;
         }
 
         &__title {
-            font-size: 18px;
+            font-size: $text-lg;
         }
 
         &__description {
-            font-size: 12px;
+            font-size: $text-sm;
         }
     }
 }
 
+
+// =========================================================
+// ACCESSIBILITY
+// =========================================================
+
 @media (prefers-reduced-motion: reduce) {
+
     .risk-management__track {
         animation: none;
     }
 }
+

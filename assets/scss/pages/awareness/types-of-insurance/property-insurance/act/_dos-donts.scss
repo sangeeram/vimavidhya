@@ -1,0 +1,151 @@
+@use "../../../../../abstracts/variables" as *;
+
+// Local section colors
+$color-do-border: rgba(#10b981, 0.4);
+$color-do-bg: rgba(#10b981, 0.08);
+$color-dont-border: rgba(#ef4444, 0.3);
+$color-dont-bg: rgba(#ef4444, 0.06);
+$color-dont-red: #dc2626;
+
+// New variable for light blue card background
+$color-card-blue: #f0f4f8; 
+
+.guidance-section--dark {
+  padding: $space-section 0;
+  font-family: $font-primary;
+  background-color: $color-white; // Changed from $color-navy to white
+
+  .guidance-container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-element;
+  }
+
+  .guidance-header {
+    margin-bottom: 30px;
+    max-width: 1100px;
+
+    .guidance-subtitle {
+      display: block;
+      font-size: $text-xs;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: $color-orange;
+      margin-bottom: $space-small;
+    }
+
+    .guidance-title {
+      font-size: 36px;
+      line-height: $line-heading;
+      color: $color-navy; // Updated title color to navy for contrast on white background
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  .guidance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-element;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .guidance-card {
+    border-radius: $radius-md;
+    overflow: hidden;
+    background-color: $color-card-blue; // Changed from $color-white to light blue
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); // Softened shadow for lighter background
+    transition: $transition;
+
+    .card-header {
+      padding: 14px $space-element;
+      font-size: $text-sm;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .icon {
+        font-size: $text-xs;
+      }
+    }
+
+    &.do-card {
+      border: 1px solid $color-do-border;
+
+      .card-header {
+        background-color: $color-do-bg;
+        color: $color-navy;
+
+        .icon {
+          color: $color-success;
+        }
+      }
+
+      .list-icon {
+        border-color: rgba($color-success, 0.5);
+        color: $color-success;
+      }
+    }
+
+    &.dont-card {
+      border: 1px solid $color-dont-border;
+
+      .card-header {
+        background-color: $color-dont-bg;
+        color: $color-dont-red;
+
+        .icon {
+          color: $color-dont-red;
+        }
+      }
+
+      .list-icon {
+        border-color: rgba($color-dont-red, 0.4);
+        color: $color-dont-red;
+      }
+    }
+  }
+
+  .guidance-list {
+    list-style: none;
+    padding: $space-element;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .list-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        border: 1px solid;
+        border-radius: 50%;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 2px;
+      }
+
+      .list-text {
+        font-size: 16px;
+        line-height: $line-body;
+        color: black;
+      }
+    }
+  }
+}

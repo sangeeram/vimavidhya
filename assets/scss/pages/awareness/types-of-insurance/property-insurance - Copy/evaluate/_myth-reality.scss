@@ -1,0 +1,183 @@
+// ========================================
+// MYTHS VS REALITY SECTION STYLES
+// ========================================
+
+@use "../../../../../abstracts/variables" as *;
+
+// ========================================
+// MYTHS VS REALITY SECTION STYLES
+// ========================================
+
+.vv-myths-section {
+    padding: 40px 0;
+    background-color: $color-light-gray;
+    font-family: $font-primary;
+
+    .vv-container {
+        max-width: $container-width;
+       margin: 0 auto;
+        padding: 0 $space-element;
+    }
+
+    // Section Header
+    .vv-section-header {
+        margin-bottom: 30px;
+
+        .vv-tagline {
+            display: inline-block;
+            font-size: $text-xs;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: $color-blue;
+            margin-bottom: $space-small;
+        }
+
+        .vv-title {
+            font-size: 44px;
+            font-weight: 600;
+            color: $color-navy;
+            line-height: $line-heading;
+            margin: 0 0 $space-small 0;
+
+            @media (max-width: 768px) {
+                font-size: $text-h3;
+            }
+        }
+
+        .vv-subtitle {
+            font-size: $text-base;
+            color: $color-text-body;
+            line-height: $line-body;
+            max-width: 1000px;
+            margin: 0;
+        }
+    }
+
+    // Grid Layout (2 items per row, aligned to top so heights fit content naturally)
+    .vv-myths-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: start;
+
+        @media (max-width: 991px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // Compact Card Component
+    .vv-myth-card {
+        background-color: $color-light-blue;
+        border: 1px solid lighten($color-blue, 38%);
+        border-radius: $radius-md;
+        overflow: hidden;
+        transition: border-color $transition-fast, box-shadow $transition-fast;
+
+        &:hover {
+            border-color: rgba($color-blue, 0.4);
+        }
+
+        // Active expanded state styling
+        &.is-open {
+            border-color: rgba($color-blue, 0.5);
+            box-shadow: 0 6px 18px rgba($color-navy, 0.05);
+
+            .vv-toggle-icon {
+                transform: rotate(180deg);
+                color: $color-blue;
+            }
+        }
+    }
+
+    // Trigger Header Button (Fully wraps the card content when closed)
+    .vv-myth-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px 24px;
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        text-align: left;
+
+        .vv-myth-content {
+            flex: 1;
+            padding-right: 16px;
+        }
+
+        .vv-myth-text {
+            margin: 0;
+            font-size: $text-base;
+            font-weight: 600;
+            font-style: italic;
+            color: $color-navy;
+            line-height: 1.45;
+        }
+
+        .vv-toggle-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            color: $color-text-muted;
+            transition: transform $transition, color $transition-fast;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+    }
+
+    // Labels
+    .vv-label {
+        display: block;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+
+        &--myth {
+            color: $color-blue;
+        }
+
+        &--reality {
+            color: $color-orange;
+        }
+    }
+
+    // Reality Dropdown Body (Hides completely when closed to remove extra height)
+    .vv-reality-body {
+        border-top: 1px solid rgba($color-blue, 0.15);
+        background-color: $color-white;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows $transition;
+
+        &[hidden] {
+            display: none !important;
+        }
+
+        &.is-visible {
+            grid-template-rows: 1fr;
+        }
+
+        .vv-reality-inner {
+            overflow: hidden;
+            padding: 0 24px;
+            transition: padding $transition;
+        }
+
+        &.is-visible .vv-reality-inner {
+            padding: 20px 24px;
+        }
+
+        .vv-reality-text {
+            font-size: $text-base;
+            color: $color-text-body;
+            line-height: $line-body;
+        }
+    }
+}

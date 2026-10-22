@@ -1,0 +1,138 @@
+// ========================================
+// CASE FOR COVER SECTION - PERSONAL ACCIDENT (PA)
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+
+.case-for-cover--pa {
+  position: relative;
+  display: block;
+  width: 100%;
+  clear: both;
+  z-index: 1;
+  padding: $space-section 0;
+  background-color: #eff6ff;
+  font-family: $font-primary;
+  color: $color-text-light;
+
+  .case-for-cover__container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 12px;
+  }
+
+  // --- Section Header ---
+  .case-for-cover__header {
+    margin-bottom: 24px;
+  }
+
+  .case-for-cover__title {
+    font-size: $text-h2;
+    font-weight: 600;
+    line-height: $line-heading;
+    color: $color-navy;
+    margin: 0 0 $space-small;
+    letter-spacing: -0.02em;
+  }
+
+  .case-for-cover__subtitle {
+    font-size: $text-base;
+    color: #475569;
+    line-height: $line-body;
+    margin: 0;
+  }
+
+  // --- Dual Grid Layout (Side by Side Contents) ---
+  .case-for-cover__dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  .case-for-cover__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .case-for-cover__highlight-box {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: $radius-md;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .case-for-cover__text--lead {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: $color-navy;
+
+      strong {
+        color: #dc2626; // Highlight red for alarming road accident statistics
+        font-weight: 700;
+      }
+    }
+  }
+
+  // --- Sub-content for Two-Wheeler Commuters ---
+  .case-for-cover__sub-content {
+    background: #ffffff;
+    border-left: 4px solid #3b82f6;
+    padding: 28px;
+    border-radius: 0 $radius-md $radius-md 0;
+    border-top: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+    flex-grow: 1;
+  }
+
+  .case-for-cover__sub-heading-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .case-for-cover__icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    border: 1px solid #dbeafe;
+  }
+
+  .case-for-cover__sub-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-navy;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .case-for-cover__text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #334155;
+    margin: 0;
+
+    strong {
+      color: $color-navy;
+      font-weight: 700;
+    }
+  }
+}

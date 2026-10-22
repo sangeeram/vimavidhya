@@ -1,0 +1,1012 @@
+// =========================================================
+// VIMA VIDYA
+// RISK MANAGEMENT — HERO
+// =========================================================
+
+@use "../../../abstracts/variables" as *;
+
+
+// =========================================================
+// HERO
+// =========================================================
+
+.risk-hero {
+
+    position: relative;
+
+    min-height: 690px;
+
+    overflow: hidden;
+
+    background: $color-cream;
+
+
+    // =====================================================
+    // BACKGROUND
+    // =====================================================
+
+    &__bg {
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 0;
+
+        background-image: var(--risk-bg);
+
+        background-size: cover;
+
+        background-position: 65% center;
+
+        background-repeat: no-repeat;
+    }
+
+
+    // =====================================================
+    // OVERLAY
+    // =====================================================
+
+    &__overlay {
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 1;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(253, 251, 247, 0.98) 0%,
+                rgba(253, 251, 247, 0.95) 22%,
+                rgba(253, 251, 247, 0.82) 42%,
+                rgba(253, 251, 247, 0.42) 60%,
+                rgba(253, 251, 247, 0.08) 100%
+            );
+    }
+
+
+    // =====================================================
+    // MAIN CONTAINER
+    // =====================================================
+
+    &__container {
+
+        position: relative;
+
+        z-index: 3;
+
+        width: min(
+            calc(100% - 48px),
+            $container-width
+        );
+
+        min-height: 610px;
+
+        margin: 0 auto;
+
+        padding-top: 68px;
+
+        display: flex;
+
+        align-items: flex-start;
+    }
+
+
+    // =====================================================
+    // LEFT CONTENT
+    // =====================================================
+
+    &__content {
+
+        width: 62%;
+
+        max-width: 700px;
+
+        padding-top: 12px;
+    }
+
+
+    // =====================================================
+    // EYEBROW
+    // =====================================================
+
+    &__eyebrow {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        margin-bottom: 16px;
+
+        color: $color-orange;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        font-weight: 700;
+
+        letter-spacing: 0.16em;
+
+        text-transform: uppercase;
+
+
+        &::before,
+        &::after {
+
+            content: "";
+
+            width: 30px;
+
+            height: 2px;
+
+            background: $color-orange;
+        }
+    }
+
+
+    // =====================================================
+    // TITLE
+    // =====================================================
+
+    &__title {
+
+        margin: 0;
+
+        max-width: 680px;
+
+        font-family: $font-primary;
+
+        font-size: clamp(
+            42px,
+            4vw,
+            $text-h1
+        );
+
+        font-weight: 700;
+
+        line-height: $line-tight;
+
+        letter-spacing: -0.025em;
+
+
+        .title-dark {
+
+            color: $color-navy;
+        }
+
+
+        .title-blue {
+
+            display: block;
+
+            color: $color-blue;
+
+            font-weight: 600;
+        }
+    }
+
+
+    // =====================================================
+    // DESCRIPTION
+    // =====================================================
+
+    &__description {
+
+        max-width: $text-width-medium;
+
+        margin: 20px 0 0;
+
+        color: $color-text-body;
+
+        font-family: $font-primary;
+
+        font-size: $text-lg;
+
+        line-height: 1.55;
+    }
+
+
+    // =====================================================
+    // BREADCRUMB
+    // =====================================================
+
+    &__breadcrumb {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        margin-top: 14px;
+
+        color: $color-text-muted;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+
+        a {
+
+            color: $color-text-muted;
+
+            text-decoration: none;
+
+            transition: color $transition-fast;
+
+
+            &:hover {
+
+                color: $color-blue;
+            }
+        }
+
+
+        span:last-child {
+
+            color: $color-orange;
+
+            font-weight: 500;
+        }
+    }
+
+
+    // =====================================================
+    // ACTIONS
+    // =====================================================
+
+    &__actions {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        margin-top: 22px;
+    }
+
+
+    // =====================================================
+    // BUTTON
+    // =====================================================
+
+    &__button {
+
+        min-height: 50px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 12px;
+
+        padding: 0 21px;
+
+        border-radius: $radius-sm;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        font-weight: 700;
+
+        text-decoration: none;
+
+        transition:
+            transform $transition,
+            background $transition,
+            box-shadow $transition;
+
+
+        span {
+
+            font-size: 17px;
+
+            transition: transform $transition-fast;
+        }
+
+
+        &:hover {
+
+            transform: translateY(-2px);
+
+
+            span {
+
+                transform: translate(3px, -2px);
+            }
+        }
+    }
+
+
+    // =====================================================
+    // PRIMARY BUTTON
+    // =====================================================
+
+    &__button--primary {
+
+        color: $color-white;
+
+        background: $color-blue;
+
+        box-shadow:
+            0 8px 20px rgba(
+                0,
+                122,
+                255,
+                0.18
+            );
+
+
+        &:hover {
+
+            background: $color-blue-dark;
+        }
+    }
+
+
+    // =====================================================
+    // OUTLINE BUTTON
+    // =====================================================
+
+    &__button--outline {
+
+        color: $color-navy;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+        border: 1px solid $color-blue;
+
+        backdrop-filter: blur(8px);
+
+
+        &:hover {
+
+            color: $color-white;
+
+            background: $color-navy;
+
+            border-color: $color-navy;
+        }
+    }
+
+
+    // =====================================================
+    // FLOATING RISK CARD
+    // =====================================================
+
+    &__risk-card {
+
+        position: absolute;
+
+        top: 180px;
+
+        right: 10px;
+
+        z-index: 5;
+
+        width: 350px;
+
+        display: flex;
+
+        gap: 18px;
+
+        padding: 23px;
+
+        background: $color-navy;
+
+        border-radius: $radius-lg;
+
+        box-shadow:
+            0 20px 50px rgba(
+                3,
+                21,
+                46,
+                0.22
+            );
+    }
+
+
+    // =====================================================
+    // CARD ICON
+    // =====================================================
+
+    &__risk-icon {
+
+        flex: 0 0 52px;
+
+        width: 52px;
+
+        height: 52px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: $color-orange;
+
+        background: rgba(
+            245,
+            154,
+            24,
+            0.10
+        );
+
+        border: 1px solid rgba(
+            245,
+            154,
+            24,
+            0.25
+        );
+
+        border-radius: 50%;
+
+
+        svg {
+
+            width: 30px;
+
+            height: 30px;
+        }
+    }
+
+
+    // =====================================================
+    // CARD CONTENT
+    // =====================================================
+
+    &__risk-content {
+
+
+        .risk-label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: $color-orange;
+
+            font-family: $font-primary;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.12em;
+        }
+
+
+        h2 {
+
+            margin: 0;
+
+            color: $color-white;
+
+            font-family: $font-primary;
+
+            font-size: $text-h3;
+
+            line-height: $line-heading;
+
+            font-weight: 700;
+        }
+
+
+        p {
+
+            margin: 9px 0 13px;
+
+            color: rgba(
+                255,
+                255,
+                255,
+                0.72
+            );
+
+            font-family: $font-primary;
+
+            font-size: $text-sm;
+
+            line-height: 1.5;
+        }
+
+
+        a {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: $color-white;
+
+            font-family: $font-primary;
+
+            font-size: $text-sm;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+
+            span {
+
+                color: $color-orange;
+            }
+
+
+            &:hover {
+
+                color: $color-orange;
+            }
+        }
+    }
+
+
+    // =====================================================
+    // STATISTICS WRAPPER
+    // =====================================================
+
+    &__stats-wrapper {
+
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 28px;
+
+        z-index: 6;
+
+        width: min(
+            calc(100% - 48px),
+            $container-width
+        );
+
+        transform: translateX(-50%);
+    }
+
+
+    // =====================================================
+    // STATISTICS
+    // =====================================================
+
+    &__stats {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        min-height: 128px;
+
+        background: $color-navy;
+
+        border: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+        border-radius: $radius-md;
+
+        box-shadow:
+            0 18px 40px rgba(
+                3,
+                21,
+                46,
+                0.25
+            );
+
+        overflow: hidden;
+    }
+
+
+    // =====================================================
+    // INDIVIDUAL STAT
+    // =====================================================
+
+    &__stat {
+
+        min-height: 128px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        padding: 18px 22px;
+
+        border-right: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+
+        &:last-child {
+
+            border-right: 0;
+        }
+    }
+
+
+    // =====================================================
+    // STAT ICON
+    // =====================================================
+
+    &__stat-icon {
+
+        flex: 0 0 60px;
+
+        width: 60px;
+
+        height: 60px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: $color-orange;
+
+        background: rgba(
+            245,
+            154,
+            24,
+            0.10
+        );
+
+        border: 1px solid rgba(
+            245,
+            154,
+            24,
+            0.25
+        );
+
+        border-radius: 50%;
+
+
+        svg {
+
+            width: 34px;
+
+            height: 34px;
+        }
+    }
+
+
+    // =====================================================
+    // STAT CONTENT
+    // =====================================================
+
+    &__stat-content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+
+        strong {
+
+            color: $color-white;
+
+            font-family: $font-primary;
+
+            font-size: 38px;
+
+            line-height: 1;
+
+            font-weight: 700;
+
+            letter-spacing: -0.03em;
+
+            white-space: nowrap;
+        }
+
+
+        span {
+
+            max-width: 165px;
+
+            color: rgba(
+                255,
+                255,
+                255,
+                0.75
+            );
+
+            font-family: $font-primary;
+
+            font-size: $text-sm;
+
+            line-height: 1.4;
+        }
+    }
+
+
+    // =====================================================
+    // TABLET
+    // =====================================================
+
+    @media (max-width: 1100px) {
+
+        min-height: 700px;
+
+
+        &__container {
+
+            min-height: 610px;
+
+            padding-top: 60px;
+        }
+
+
+        &__content {
+
+            width: 58%;
+        }
+
+
+        &__risk-card {
+
+            top: 175px;
+
+            right: 0;
+
+            width: 310px;
+        }
+
+
+        &__stat {
+
+            padding: 18px 14px;
+
+            gap: 10px;
+        }
+
+
+        &__stat-icon {
+
+            flex-basis: 52px;
+
+            width: 52px;
+
+            height: 52px;
+
+
+            svg {
+
+                width: 30px;
+
+                height: 30px;
+            }
+        }
+
+
+        &__stat-content {
+
+            strong {
+
+                font-size: 32px;
+            }
+
+
+            span {
+
+                font-size: $text-xs;
+            }
+        }
+    }
+
+
+    // =====================================================
+    // MOBILE
+    // =====================================================
+
+    @media (max-width: 768px) {
+
+        min-height: auto;
+
+        padding-bottom: 30px;
+
+
+        &__bg {
+
+            height: 560px;
+
+            background-position: 65% center;
+        }
+
+
+        &__overlay {
+
+            height: 620px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.90
+                    ) 0%,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.80
+                    ) 40%,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.95
+                    ) 75%,
+
+                    $color-cream 100%
+                );
+        }
+
+
+        &__container {
+
+            width: calc(100% - 32px);
+
+            min-height: auto;
+
+            padding-top: 65px;
+
+            display: block;
+        }
+
+
+        &__content {
+
+            width: 100%;
+
+            padding-top: 10px;
+        }
+
+
+        &__title {
+
+            font-size: 40px;
+        }
+
+
+        &__description {
+
+            font-size: $text-base;
+        }
+
+
+        &__actions {
+
+            flex-direction: column;
+
+            align-items: stretch;
+        }
+
+
+        &__button {
+
+            width: 100%;
+        }
+
+
+        // =============================================
+        // MOBILE CARD
+        // =============================================
+
+        &__risk-card {
+
+            position: relative;
+
+            top: auto;
+
+            right: auto;
+
+            width: 100%;
+
+            margin-top: 30px;
+        }
+
+
+        // =============================================
+        // MOBILE STATS
+        // =============================================
+
+        &__stats-wrapper {
+
+            position: relative;
+
+            left: auto;
+
+            bottom: auto;
+
+            width: calc(100% - 32px);
+
+            margin: 25px auto 0;
+
+            transform: none;
+        }
+
+
+        &__stats {
+
+            grid-template-columns: 1fr;
+
+            min-height: auto;
+        }
+
+
+        &__stat {
+
+            min-height: 100px;
+
+            border-right: 0;
+
+            border-bottom: 1px solid $color-border;
+
+
+            &:last-child {
+
+                border-bottom: 0;
+            }
+        }
+    }
+
+
+    // =====================================================
+    // SMALL MOBILE
+    // =====================================================
+
+    @media (max-width: 480px) {
+
+        &__title {
+
+            font-size: 34px;
+        }
+
+
+        &__risk-card {
+
+            padding: 18px;
+        }
+
+
+        &__stat-content {
+
+            strong {
+
+                font-size: 30px;
+            }
+        }
+    }
+}

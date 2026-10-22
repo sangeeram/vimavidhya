@@ -82,6 +82,7 @@ function vimavidya_scripts() {
     );
 
 
+    
     // -----------------------------------------------------
     // MAIN JS
     // AOS IS A DEPENDENCY
@@ -315,3 +316,45 @@ function vv_register_assessment_cpt() {
 }
 
 add_action('init', 'vv_register_assessment_cpt');
+
+
+// stories that matter cpt
+/**
+ * Vima Vidya Stories CPT
+ */
+function vimavidya_register_story_cpt() {
+
+    register_post_type('vima_story', [
+
+        'labels' => [
+            'name'          => 'Vima Stories',
+            'singular_name' => 'Vima Story',
+            'add_new'       => 'Add Story',
+            'add_new_item'  => 'Add New Story',
+            'edit_item'     => 'Edit Story',
+            'new_item'      => 'New Story',
+            'view_item'     => 'View Story',
+            'search_items'  => 'Search Stories',
+            'not_found'     => 'No stories found',
+        ],
+
+        'public'       => false,
+        'show_ui'      => true,
+        'show_in_menu' => true,
+
+        'menu_icon' => 'dashicons-book-alt',
+
+        'supports' => [
+            'title',
+            'page-attributes',
+        ],
+
+        'show_in_rest' => true,
+    ]);
+}
+
+add_action(
+    'init',
+    'vimavidya_register_story_cpt'
+);
+

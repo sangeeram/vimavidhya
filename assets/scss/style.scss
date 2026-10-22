@@ -21,21 +21,139 @@
 @use "pages/home/risk-management";
 @use "pages/home/life-journey";
 @use "pages/home/assessment";
-@use "pages/home/glossary";
+@use "pages/home/home-glossary";
 @use "pages/home/stories";
 
 
 // about page specific styles
 @use "pages/about/founder";
 @use "pages/about/mission";
-@use "pages/about/hero1";
+// @use "pages/about/hero1";
 @use "pages/about/about-hero";
 @use "pages/about/who-we-are";
 
 // awareness page specific styles
 @use "pages/awareness/awarenesshome";
 @use "pages/awareness/explore";
-@use "pages/awareness/what-is-awareness";
-@use "pages/awareness/life-stages";
-@use "pages/awareness/cta";
-@use "pages/awareness/understand/intro"
+@use "pages/awareness/typeofinsurances";
+
+@use "pages/awareness/what-and-why-is-insurance/whathero";
+@use "pages/awareness/what-and-why-is-insurance/what-is-insurance";
+@use "pages/awareness/what-and-why-is-insurance/why-insurance";
+@use "pages/awareness/what-and-why-is-insurance/life-stages";
+@use "pages/awareness/what-and-why-is-insurance/when-insurance";
+@use "pages/awareness/what-and-why-is-insurance/myth-fact";
+
+@use "pages/awareness/managing-risk/risk-hero";
+@use "pages/awareness/managing-risk/managing-risk";
+@use "pages/awareness/stories-that-matter/storieshero";
+@use "pages/awareness/stories-that-matter/stories-that-matter";
+
+
+// property insurance 
+@use "pages/awareness/types-of-insurance/property-insurance/property-hero";
+@use "pages/awareness/types-of-insurance/property-insurance/layer";
+
+
+
+// property insurance - understand
+@use "pages/awareness/types-of-insurance/property-insurance/understand/property-understand-hero";
+
+@use "pages/awareness/types-of-insurance/property-insurance/understand/what-it-is";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/why-it-matters";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/typesofinsurance";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/who-can-buy";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/what-impact";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/the-impact";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/mandatory";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/types";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/mythfact";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/beyond-bricks";
+@use "pages/awareness/types-of-insurance/property-insurance/understand/next-file";
+
+
+
+// property insurance- evaluate
+
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/evaluate-hero";
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/premium-logic";
+
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/suitability";
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/fine-print";
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/myth-reality";
+@use "pages/awareness/types-of-insurance/property-insurance/evaluate/lived-experinces";
+
+
+// property insurance--act
+
+@use "pages/awareness/types-of-insurance/property-insurance/act/act-hero";
+@use "pages/awareness/types-of-insurance/property-insurance/act/how-to-apply";
+@use "pages/awareness/types-of-insurance/property-insurance/act/what-you-can-claim";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process";
+@use "pages/awareness/types-of-insurance/property-insurance/act/dos-donts";
+@use "pages/awareness/types-of-insurance/property-insurance/act/checklist";
+@use "pages/awareness/types-of-insurance/property-insurance/act/faq";
+
+
+// property-insurance-act-claimprocess
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/who-can";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/where-to";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/claim";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/claim-timeline";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/documents";
+@use "pages/awareness/types-of-insurance/property-insurance/act/claim-process/case-study";
+
+
+//Personal Accident 
+@use "pages/awareness/types-of-insurance/personalaccident/personal_hero";
+@use "pages/awareness/types-of-insurance/personalaccident/personal_layers";
+
+
+// personal accident - understand
+@use "pages/awareness/types-of-insurance/personalaccident/understand/personal-understand-hero";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/what";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/why";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/pa-types";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/who-can-buy-papolicy";
+
+@use "pages/awareness/types-of-insurance/personalaccident/understand/personal-what-impact";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/pa-the-impact";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/painsurance-vs-other";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/pa-7things-to-know";
+@use "pages/awareness/types-of-insurance/personalaccident/understand/pa-next-file";
+
+
+
+// personal accident evaluate
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_hero_pa";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_premium_logic";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_what_pa_insurance_cost";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_suitability";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/when_choose_policy";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_myth_fact";
+@use "pages/awareness/types-of-insurance/personalaccident/evaluate/evaluate_lived_experience";
+
+
+// personal accident -- act
+
+@use "pages/awareness/types-of-insurance/personalaccident/act/pa-act-hero";
+@use "pages/awareness/types-of-insurance/personalaccident/act/how-to-apply-pa";
+@use "pages/awareness/types-of-insurance/personalaccident/act/dos-donts-pa";
+
+// property-insurance-act-claimprocess
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/what-can-claim";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/who-can-claim";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/where-to-apply";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/claim-pa";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/claim-timeline-pa";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/documents-pa";
+@use "pages/awareness/types-of-insurance/personalaccident/act/claimprocess/network";
+
+@use "pages/awareness/types-of-insurance/personalaccident/act/checklist-pa";
+
+
+
+
+
+@use "pages/glossary";
+

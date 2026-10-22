@@ -1,23 +1,30 @@
-// Scoped Theme Variables (Dark Mode)
-$journey-bg-dark: #0F172A;
-$journey-card-dark: #ffffff;
-$journey-text-light: #f5f7f8;
-$journey-text-dark: #021425;
-$journey-text-muted: #94A3B8;
-$journey-green-accent: #10B981;
-$journey-border-dark: #334155;
-$journey-radius: 20px;
+
+@use "../../abstracts/variables" as *;
+// =========================================================
+// VIMA VIDYA
+// LIFE JOURNEY SECTION (REFACTORED)
+// =========================================================
+
+// Local variable aliases referencing Global Design System
+$journey-bg-dark: $color-navy;
+$journey-card-dark: $color-white;
+$journey-text-light: $color-text-light;
+$journey-text-dark: $color-navy;
+$journey-text-muted: $color-text-muted;
+$journey-green-accent: $color-success;
+$journey-border-dark: $color-navy;
+$journey-radius: $radius-lg;
 
 .section-life-journey {
     background-color: $journey-bg-dark;
-    padding: 100px 0;
+    padding: $space-section-lg 0;
     color: $journey-text-light;
     width: 100%;
     border: 5px solid $journey-text-dark;
-
+    font-family: $font-primary;
 
     .roadmap-container {
-        max-width: 1140px;
+        max-width: $container-width;
         margin: 0 auto;
         padding: 0 20px;
     }
@@ -28,26 +35,26 @@ $journey-radius: 20px;
 
         .subtitle {
             display: block;
-            font-size: 0.85rem;
+            font-size: $text-xs + 1.5px;
             font-weight: 700;
             letter-spacing: 2px;
             color: $journey-green-accent;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: $space-small;
         }
 
         .title {
-            font-size: 2.75rem;
+            font-size: $text-h2;
             color: $journey-text-light;
             margin: 0 0 14px 0;
             font-weight: 800;
-            line-height: 1.25;
+            line-height: $line-heading;
         }
 
         .description {
-            font-size: 1.05rem;
-            color: $journey-text-muted;
-            max-width: 580px;
+            font-size: $text-base + 1px;
+            color: $color-blue;
+            max-width: $text-width-medium;
             margin: 0 auto;
         }
     }
@@ -87,17 +94,17 @@ $journey-radius: 20px;
             width: 48px;
             height: 58px;
             clip-path: polygon(50% 100%, 0% 38%, 0% 0%, 100% 0%, 100% 38%);
-            border-radius: 24px 24px 24px 24px;
-            background-color: var(--node-color, $journey-green-accent);
+            border-radius: calc(#{$radius-lg} + 4px);
+            background-color: var(--node-color, #{$journey-green-accent});
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
+            color: $color-white;
             font-weight: 800;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            font-size: $text-lg;
+            box-shadow: 0 8px 20px rgba(#000000, 0.4);
             z-index: 3;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform $transition, box-shadow $transition;
 
             span {
                 margin-top: -8px;
@@ -108,20 +115,20 @@ $journey-radius: 20px;
             background: $journey-card-dark;
             padding: 32px;
             border-radius: $journey-radius;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(#000000, 0.3);
             border: 1px solid $journey-border-dark;
 
             .stage-label {
                 display: block;
-                font-size: 0.75rem;
+                font-size: $text-xs;
                 font-weight: 800;
                 letter-spacing: 1.5px;
-                color: var(--node-color, $journey-green-accent);
+                color: var(--node-color, #{$journey-green-accent});
                 margin-bottom: 6px;
             }
 
             .stage-title {
-                font-size: 1.5rem;
+                font-size: $text-h3 + 2px;
                 font-weight: 800;
                 color: $journey-text-dark;
                 margin: 0 0 10px 0;
@@ -129,17 +136,17 @@ $journey-radius: 20px;
 
             .stage-tag {
                 display: inline-block;
-                font-size: 0.8rem;
+                font-size: $text-xs + 1px;
                 font-weight: 700;
-                padding: 4px 12px;
-                border-radius: 20px;
+                padding: 4px $space-small;
+                border-radius: $radius-lg;
                 margin-bottom: 14px;
             }
 
             .stage-desc {
-                font-size: 0.95rem;
+                font-size: $text-sm + 1px;
                 color: $journey-text-muted;
-                line-height: 1.6;
+                line-height: $line-body;
                 margin: 0;
             }
         }
@@ -149,7 +156,7 @@ $journey-radius: 20px;
                 display: block;
                 border-radius: $journey-radius;
                 overflow: hidden;
-                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 12px 35px rgba(#000000, 0.4);
                 aspect-ratio: 16 / 10;
                 border: 1px solid $journey-border-dark;
 
@@ -157,7 +164,7 @@ $journey-radius: 20px;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    transition: transform 0.5s ease;
+                    transition: transform $transition-slow;
                 }
             }
         }
@@ -175,7 +182,7 @@ $journey-radius: 20px;
         &:hover {
             .map-pin {
                 transform: scale(1.15) translateY(-4px);
-                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 12px 25px rgba(#000000, 0.5);
             }
 
             .image-card .image-wrapper img {
@@ -184,6 +191,10 @@ $journey-radius: 20px;
         }
     }
 }
+
+// =========================================================
+// MEDIA QUERIES
+// =========================================================
 
 @media (max-width: 768px) {
     .section-life-journey {
@@ -207,7 +218,8 @@ $journey-radius: 20px;
                 justify-self: flex-start;
             }
 
-            &.is-left, &.is-right {
+            &.is-left, 
+            &.is-right {
                 .info-card { grid-column: 1; }
                 .image-card { grid-column: 1; grid-row: auto; }
             }

@@ -1,0 +1,223 @@
+// ========================================
+// CLAIMS PROCESS SECTION
+// Uses Vima Vidya Design System Variables
+// ========================================
+@use "../../../../../../abstracts/variables" as *;
+
+.claims-section {
+    background-color: $color-white; // Main background is now WHITE
+    padding: 30px 0;
+    font-family: $font-primary;
+
+    @media (min-width: 768px) {
+        padding: 30px 0;
+    }
+
+    &__container {
+        max-width: $container-width; // 1200px
+        margin: 0 auto;
+        padding: 0 $space-element;
+    }
+
+    &__header {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    &__subtitle {
+        display: inline-block;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: $color-blue;
+        margin-bottom: 20px;
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: $line-heading;
+        color: $color-navy;
+        margin: 0 0 $space-small 0;
+
+        @media (min-width: 768px) {
+            font-size: 36px; // 44px
+        }
+    }
+
+    &__description {
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+        max-width: 1000px;
+        margin: 0;
+    }
+}
+
+// Vertical Accordion System
+.claims-accordion {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $space-element; // 24px gap between cards
+
+    // Continuous Connecting Line running down behind the badges
+    &__line {
+        position: absolute;
+        top: 40px;
+        bottom: 40px;
+        left: 40px; // Centers through the badge (20px horizontal padding + 20px badge center)
+        width: 2px;
+        background-color: mix($color-blue, $color-border, 30%);
+        z-index: 1;
+        pointer-events: none;
+
+        @media (max-width: 640px) {
+            display: none;
+        }
+    }
+
+    &__item {
+        position: relative;
+        z-index: 2;
+        background-color: $color-light-blue; // #eff6ff (Cards are now light blue)
+        border: 1px solid mix($color-blue, $color-border, 15%); // Soft matching border
+        border-radius: $radius-md; // 16px
+        overflow: hidden;
+        transition: border-color $transition, box-shadow $transition;
+
+        &:hover {
+            border-color: mix($color-blue, $color-border, 40%);
+            box-shadow: 0 4px 16px rgba(8, 39, 75, 0.05);
+        }
+
+        &.is-active {
+            border-color: $color-blue;
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.12);
+
+            .claims-accordion__icon {
+                transform: rotate(180deg);
+                color: $color-blue;
+            }
+
+            .claims-accordion__badge {
+                background-color: $color-blue;
+                color: $color-white;
+                box-shadow: 0 0 0 4px mix($color-blue, $color-white, 20%);
+            }
+        }
+    }
+
+    &__header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color $transition-fast;
+
+        &:focus-visible {
+            outline: 2px solid $color-blue;
+            outline-offset: -2px;
+        }
+
+        &-content {
+            display: flex;
+            align-items: center;
+            gap: $space-element;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+    }
+
+    &__badge {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: $radius-pill;
+        background-color: $color-white; // White badge circle to pop against light blue card
+        color: $color-blue;
+        font-size: $text-sm;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color $transition, color $transition, box-shadow $transition;
+    }
+
+    &__title {
+        font-size: $text-lg; // 18px
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0;
+        line-height: $line-tight;
+    }
+
+    &__summary {
+        font-size: $text-base;
+        color: $color-text-muted;
+        margin: 0;
+        line-height: $line-body;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        color: $color-text-muted;
+        transition: transform $transition, color $transition;
+    }
+
+    // Expandable Body Content
+    &__body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height $transition-slow ease-in-out;
+    }
+
+    &__inner {
+        padding: 0 $space-content 24px (40px + $space-element + 20px); // Aligns text cleanly with step title
+        
+        @media (max-width: 640px) {
+            padding-left: 20px;
+        }
+    }
+
+    &__callout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: $color-white; // White pill badge for sharp contrast
+        border: 1px solid mix($color-blue, $color-border, 25%);
+        border-radius: $radius-sm;
+        padding: 8px 14px;
+        font-size: $text-xs;
+        font-weight: 700;
+        color: $color-blue-dark;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+
+        svg {
+            color: $color-blue;
+            flex-shrink: 0;
+        }
+    }
+
+    &__text {
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+        margin: 0;
+    }
+}

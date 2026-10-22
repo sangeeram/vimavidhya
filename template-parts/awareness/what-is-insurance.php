@@ -1,237 +1,333 @@
 <?php
+/**
+ * =========================================================
+ * VIMA VIDYA
+ * INSURANCE AWARENESS — TYPES OF INSURANCE
+ * =========================================================
+ */
+
+$section_tagline = 'INSURANCE AWARENESS';
+$section_title   = 'Insurance — A risk management tool to protect you through the unexpected';
+$section_text    = 'Insurance is a great risk management tool. It is an agreement between an insurer and an individual that helps to compensate for the economic loss suffered. Insurance policies cover various types of risks — when these risks occur, the insurer financially compensates for the loss suffered depending on the agreed terms. A quick look at various types of insurance policies for an individual and what they mean.';
+
 $insurance_items = [
-    'life' => [
-        'id' => '01',
-        'title' => 'Life Insurance',
-        'side_desc' => 'Secure your family\'s future and financial stability.',
-        'icon' => '💙',
-        'subtitle' => 'Financial security for your dependents — parents, spouse, children — when the primary earner is no longer around.',
-        'why_matters' => [
-            'Income replacement' => 'Replaces lost income so family commitments continue uninterrupted.',
-            'Long-term goals' => 'Protects children\'s education and retirement savings.',
-            'Debt protection' => 'Covers outstanding loans so debts don\'t become a burden on your family.'
+    [
+        'number'      => '01',
+        'slug'        => 'life',
+        'title'       => 'Life Insurance',
+        'short_title' => 'Life',
+        'icon'        => '❤️',
+        'url'         => get_permalink(get_page_by_path('life-insurance')),
+        'image'       => 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Financial security for your dependents — parents, spouse, children — when the primary earner is no longer around.',
+        'why'         => [
+            '<strong>Income replacement</strong> — Replaces lost income so family commitments — EMIs, school fees — can continue uninterrupted.',
+            '<strong>Long-term goals</strong> — Protects children\'s education and retirement savings from being derailed by an untimely loss.',
+            '<strong>Debt protection</strong> — Covers outstanding loans so debts don\'t become a burden on your family.'
         ],
-        'key_benefits' => [
-            'Low cost, high cover' => 'High coverage at very low premiums, especially when purchased young.',
-            'Tax benefit' => 'Deductions under Section 80C on premiums paid annually.',
-            'Lock in early' => 'The younger you buy, the lower the premium for life — rates only rise with age.'
+        'benefits'    => [
+            '<strong>Low cost, high cover</strong> — High coverage at very low premiums, especially when purchased young.',
+            '<strong>Tax benefit</strong> — Deductions under Section 80C on premiums paid annually.',
+            '<strong>Lock in early</strong> — The younger you buy, the lower the premium for life — rates only rise with age.'
         ],
-        'bigger_picture' => 'Life insurance isn\'t just about death cover — it\'s about ensuring the people who depend on you can continue to live, grow, and thrive, no matter what happens.',
-        'banner' => 'Mandatory in India? No — but essential if you have dependents. Term plan recommended.'
+        'footer'      => 'Mandatory in India? No — but essential if you have dependents. Term plan recommended.'
     ],
-    'health' => [
-        'id' => '02',
-        'title' => 'Health Insurance',
-        'side_desc' => 'Protect yourself from rising medical expenses.',
-        'icon' => '🏥',
-        'subtitle' => 'Rising medical costs can derail household budgets. Family floater policies cover all members under one plan.',
-        'why_matters' => [
-            'Medical inflation' => 'Healthcare costs in India rise at 14–15% annually — a single hospitalisation can wipe out savings.',
-            'Employer cover isn\'t enough' => 'Group cover ends with your job and rarely covers your full family post-retirement.',
-            'Buy early' => 'Pre-existing disease waiting periods begin only when you buy — the earlier you start, the sooner you\'re covered.'
+    [
+        'number'      => '02',
+        'slug'        => 'health',
+        'title'       => 'Health Insurance',
+        'short_title' => 'Health',
+        'icon'        => '🏥',
+        'url'         => get_permalink(get_page_by_path('health-insurance')),
+        'image'       => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Protect yourself and your family from the rising cost of medical treatment.',
+        'why'         => [
+            '<strong>Hospital expenses</strong> — Helps manage large medical bills.',
+            '<strong>Family protection</strong> — Provides financial support during medical emergencies.',
+            '<strong>Cashless treatment</strong> — Eligible treatments can be covered through network hospitals.'
         ],
-        'key_benefits' => [
-            'Comprehensive cover' => 'Covers hospitalisation, day-care treatments, pre and post hospital expenses.',
-            'Cashless treatment' => 'At network hospitals — no upfront payment needed at admission.',
-            'Tax benefit' => 'Section 80D deductions up to Rs. 25,000 (Rs. 50,000 for senior citizens).'
+        'benefits'    => [
+            '<strong>Hospitalisation cover</strong> — Coverage for eligible hospitalisation expenses.',
+            '<strong>Pre and post treatment</strong> — Certain plans cover related medical expenses.',
+            '<strong>Tax benefit</strong> — Eligible premiums may qualify for tax deductions.'
         ],
-        'bigger_picture' => 'A health insurance policy that you own and renew every year is the only cover that truly stays with you through job changes, life stages, and the unexpected.',
-        'banner' => 'Mandatory in India? No — but critical for every household. Family floater recommended.'
+        'footer'      => 'Not mandatory for everyone, but strongly recommended for financial protection.'
     ],
-    'accident' => [
-        'id' => '03',
-        'title' => 'Accident Insurance',
-        'side_desc' => 'Financial support during accidental injuries.',
-        'icon' => '🛡️',
-        'subtitle' => 'Commuting, travel, and active lifestyles increase accident risk. This cover steps in when health insurance does not.',
-        'why_matters' => [
-            'Income protection' => 'Accidents can cause temporary or permanent disability — stopping your income without warning.',
-            'Fills the gap' => 'Health insurance covers medical bills; personal accident covers lost income during recovery.',
-            'Highly affordable' => 'Premiums are among the lowest of all insurance types relative to protection provided.'
+    [
+        'number'      => '03',
+        'slug'        => 'accident',
+        'title'       => 'Accident Insurance',
+        'short_title' => 'Accident',
+        'icon'        => '🚨',
+        'url'         => home_url('/personal-accident/'),
+        'image'       => 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Financial protection against the unexpected impact of accidental injuries.',
+        'why'         => [
+            '<strong>Accidental injury</strong> — Provides financial support following covered accidents.',
+            '<strong>Income protection</strong> — Helps manage financial disruption caused by injury.',
+            '<strong>Family support</strong> — Can provide benefits in case of accidental death.'
         ],
-        'key_benefits' => [
-            'Disablement cover' => 'Temporary and permanent total/partial disablement benefits replace lost earnings.',
-            'Accidental death' => 'Lump sum payout to the family in the event of accidental death.',
-            'Worldwide cover' => '24x7 protection whether you are at home, commuting, or travelling abroad.'
+        'benefits'    => [
+            '<strong>Accidental death benefit</strong> — Financial benefit to nominees under covered conditions.',
+            '<strong>Disability benefit</strong> — Support for eligible permanent disabilities.',
+            '<strong>Affordable protection</strong> — Accident cover can be relatively inexpensive.'
         ],
-        'bigger_picture' => 'Personal accident cover is one of the most affordable and most overlooked forms of financial protection available today.',
-        'banner' => 'Mandatory in India? No — highly recommended for all earners. Low cost, high impact.'
+        'footer'      => 'Useful additional protection against unexpected accidents.'
     ],
-    'motor' => [
-        'id' => '04',
-        'title' => 'Motor Insurance',
-        'side_desc' => 'Protection for your vehicle and third party.',
-        'icon' => '🚗',
-        'subtitle' => 'Vehicles are legally required to be insured. Third-party motor insurance is mandatory across India.',
-        'why_matters' => [
-            'Legal requirement' => 'Driving without valid third-party insurance is a legal offence — fines and licence suspension apply.',
-            'Accident exposure' => 'A road accident can result in significant vehicle damage, injury, or third-party liability claims.',
-            'Your vehicle too' => 'Comprehensive cover protects your own vehicle from damage, not just third-party liability.'
+    [
+        'number'      => '04',
+        'slug'        => 'motor',
+        'title'       => 'Motor Insurance',
+        'short_title' => 'Motor',
+        'icon'        => '🚗',
+        'url'         => get_permalink(get_page_by_path('motor-insurance')),
+        'image'       => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Protection for your vehicle against covered accidents, damage and third-party liabilities.',
+        'why'         => [
+            '<strong>Vehicle protection</strong> — Helps cover eligible repair or replacement costs.',
+            '<strong>Third-party liability</strong> — Provides protection against covered third-party liabilities.',
+            '<strong>Accident support</strong> — Helps reduce the financial impact of road accidents.'
         ],
-        'key_benefits' => [
-            'Own damage cover' => 'Covers vehicle damage from accidents, theft, fire, and natural calamities.',
-            'Third-party liability' => 'Covers property damage and personal injury caused to others in an accident.',
-            'Add-on options' => 'Zero depreciation, engine protection, and roadside assistance available as riders.'
+        'benefits'    => [
+            '<strong>Own damage cover</strong> — Available under relevant comprehensive policies.',
+            '<strong>Third-party cover</strong> — Protects against eligible third-party liabilities.',
+            '<strong>Roadside assistance</strong> — Available as an add-on in some policies.'
         ],
-        'bigger_picture' => 'A single accident claim can recover many years of premium in one go. Comprehensive cover is a genuine financial safeguard.',
-        'banner' => 'Mandatory in India — third-party cover is legally required. Comprehensive cover recommended.'
+        'footer'      => 'Third-party motor insurance is mandatory for vehicles on Indian roads.'
     ],
-    'property' => [
-        'id' => '05',
-        'title' => 'Property Insurance',
-        'side_desc' => 'Safeguard your home and assets.',
-        'icon' => '🏠',
-        'subtitle' => 'Protects rented or owned homes and household belongings — gadgets, furniture, jewellery — from the unexpected.',
-        'why_matters' => [
-            'Your biggest asset' => 'For most Indians, a home is the single largest asset they will ever own — and the most underinsured.',
-            'Real risks' => 'Fire, flood, earthquake, and burglary can cause losses that take years to recover from without cover.',
-            'Renters too' => 'A landlord\'s policy protects the building structure — not your belongings inside the home.'
+
+    [
+        'number'      => '05',
+        'slug'        => 'property',
+        'title'       => 'Property Insurance',
+        'short_title' => 'Property',
+        'icon'        => '🏠',
+        'url'         =>  home_url('/property-insurance/'),
+        'image'       => 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Protection for your home and property against covered risks and unexpected damage.',
+        'why'         => [
+            '<strong>Home protection</strong> — Helps protect against covered property losses.',
+            '<strong>Asset protection</strong> — Provides financial support for eligible damage.',
+            '<strong>Peace of mind</strong> — Reduces the financial burden of unexpected property events.'
         ],
-        'key_benefits' => [
-            'Structure and contents' => 'Compensation for fire, theft, natural disasters, and accidental damage to both.',
-            'Valuables covered' => 'Electronics, jewellery, and furniture can be specifically insured within the policy.',
-            'Low premium' => 'Premiums are very low relative to the value of the asset and contents being protected.'
+        'benefits'    => [
+            '<strong>Building cover</strong> — Protection for eligible structural damage.',
+            '<strong>Contents cover</strong> — Can protect eligible household belongings.',
+            '<strong>Optional extensions</strong> — Additional protection may be available depending on the policy.'
         ],
-        'bigger_picture' => 'A comprehensive home insurance policy costs a fraction of your annual car insurance premium yet protects an asset that took a lifetime to build.',
-        'banner' => 'Mandatory in India? No — but grossly underutilised by homeowners. Most underinsured category.'
+        'footer'      => 'Home insurance is generally not mandatory, but can protect a major financial asset.'
     ]
 ];
-$keys = array_keys($insurance_items);
 ?>
 
-<section class="theme-section">
-    <!-- Outer Full-Width Card Container -->
-    <div class="homepage-card-container">
-        
-        <!-- Header -->
-        <header class="homepage-header">
-            <span class="pill-category">START HERE — YOUR AWARENESS JOURNEY</span>
-            <h2 class="section-heading">
-                Insurance — <span class="highlight">A risk management tool</span> to protect you through the unexpected
-            </h2>
-            <p class="section-lead">
-                Insurance is a great risk management tool. It is an agreement between an insurer and an individual that helps to compensate for the economic loss suffered. Insurance policies cover various types of risks — when these risks occur, the insurer financially compensates for the loss suffered depending on the agreed terms. A quick look at various types of insurance policies for an individual and what they mean.
-            </p>
+<section class="insurance-showcase" id="insurance-showcase">
+    <div class="insurance-showcase-container">
+
+        <!-- SECTION HEADER -->
+        <header class="insurance-section-header">
+            <span class="insurance-section-tagline"><?php echo esc_html($section_tagline); ?></span>
+            <h2><?php echo esc_html($section_title); ?></h2>
+            <p><?php echo esc_html($section_text); ?></p>
         </header>
 
-        <!-- Inner Interactive Tab Box -->
-        <div class="theme-tab-box">
-            <!-- Sidebar with Icon Tabs -->
-            <aside class="sidebar">
-                <h3 class="sidebar-title">Insurance<br>Coverage Options</h3>
-                <ul class="sidebar-nav">
-                    <?php foreach ($insurance_items as $key => $item): ?>
-                        <li class="sidebar-item <?php echo $key === 'life' ? 'active' : ''; ?>" data-key="<?php echo $key; ?>">
-                            <span class="sidebar-icon"><?php echo $item['icon']; ?></span>
-                            <div class="step-info">
-                                <strong><?php echo $item['title']; ?></strong>
-                                <p><?php echo $item['side_desc']; ?></p>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-                <div class="sidebar-footer">
-                    <span class="icon">🛡️</span>
-                    <p>Choose a coverage type to learn more about its benefits and features.</p>
-                </div>
-            </aside>
+        <!-- CARDS GRID -->
+        <div class="insurance-cards">
+            <?php foreach ($insurance_items as $index => $item) : ?>
+            <article class="insurance-card" data-insurance="<?php echo esc_attr($item['slug']); ?>"
+                data-number="<?php echo esc_attr($item['number']); ?>"
+                data-title="<?php echo esc_attr($item['title']); ?>"
+                data-description="<?php echo esc_attr($item['description']); ?>"
+                data-image="<?php echo esc_url($item['image']); ?>"
+                data-footer="<?php echo esc_attr($item['footer']); ?>" data-url="<?php echo esc_url($item['url']); ?>"
+                data-why="<?php echo esc_attr(wp_json_encode($item['why'])); ?>"
+                data-benefits="<?php echo esc_attr(wp_json_encode($item['benefits'])); ?>" tabindex="0" role="button"
+                aria-label="Learn more about <?php echo esc_attr($item['title']); ?>">
 
-            <!-- Main Content Area -->
-            <main class="content-area">
-                <div class="panes-container">
-                    <?php foreach ($insurance_items as $key => $item): ?>
-                        <div class="pane-item <?php echo $key === 'life' ? 'active' : ''; ?>" id="pane-<?php echo $key; ?>">
-                            <h3 class="pane-title"><?php echo $item['title']; ?></h3>
-                            <p class="pane-subtitle"><?php echo $item['subtitle']; ?></p>
-
-                            <div class="cards-grid">
-                                <div class="info-card">
-                                    <div class="card-badge">
-                                        <span class="icon">👥</span> Why it matters
-                                    </div>
-                                    <ul class="card-list">
-                                        <?php foreach ($item['why_matters'] as $heading => $desc): ?>
-                                            <li><strong><?php echo $heading; ?></strong> — <?php echo $desc; ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-
-                                <div class="info-card">
-                                    <div class="card-badge">
-                                        <span class="icon">🛡️</span> Key benefits
-                                    </div>
-                                    <ul class="card-list">
-                                        <?php foreach ($item['key_benefits'] as $heading => $desc): ?>
-                                            <li><strong><?php echo $heading; ?></strong> — <?php echo $desc; ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="bigger-picture">
-                                <strong>The Bigger Picture:</strong> <?php echo $item['bigger_picture']; ?>
-                            </div>
-
-                            <div class="bottom-banner">
-                                <div class="banner-left">
-                                    <span class="shield">🛡️</span>
-                                    <p><?php echo $item['banner']; ?></p>
-                                </div>
-                                <a href="#" class="btn-know-more">Know More &rarr;</a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                <div class="insurance-image-wrap">
+                    <img src="<?php echo esc_url($item['image']); ?>" alt="<?php echo esc_attr($item['title']); ?>"
+                        loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
+                    <div class="insurance-image-overlay"></div>
                 </div>
 
-                <!-- Footer Navigation -->
-                <div class="progress-footer">
-                    <button class="btn-nav btn-prev" disabled>&larr; Previous</button>
-                    <button class="btn-nav btn-next">Next &rarr;</button>
+                <div class="insurance-floating-icon">
+                    <span><?php echo esc_html($item['icon']); ?></span>
                 </div>
-            </main>
+
+                <div class="insurance-card-content">
+                    <span class="insurance-number"><?php echo esc_html($item['number']); ?></span>
+                    <span class="insurance-blue-line"></span>
+                    <h3><?php echo esc_html($item['title']); ?></h3>
+                    <p><?php echo esc_html($item['description']); ?></p>
+                    <span class="insurance-explore">
+                        Explore <span class="insurance-explore-arrow">→</span>
+                    </span>
+                </div>
+            </article>
+            <?php endforeach; ?>
         </div>
+    </div>
 
+    <!-- MODAL POPUP -->
+    <!-- =====================================================
+     MODAL (SLIM VERTICAL TEXT STRIP — NO IMAGE)
+====================================================== -->
+    <div class="insurance-modal" id="insuranceModal" aria-hidden="true">
+        <div class="insurance-modal-overlay"></div>
+
+        <div class="insurance-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="insuranceModalTitle">
+            <!-- CLOSE BUTTON -->
+            <button type="button" class="insurance-modal-close" aria-label="Close modal">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <!-- SLIM TEXT-ONLY SIDEBAR (NO PHOTO) -->
+            <div class="insurance-modal-side-bar">
+                <span class="insurance-modal-vertical-title" id="insuranceModalVerticalTitle"></span>
+            </div>
+
+            <!-- EXPANDED CONTENT PANE (NO SCROLL) -->
+            <div class="insurance-modal-content">
+                <div class="insurance-modal-heading">
+                    <span class="insurance-modal-number" id="insuranceModalNumber"></span>
+                    <h2 id="insuranceModalTitle"></h2>
+                    <p id="insuranceModalDescription"></p>
+                </div>
+
+                <div class="insurance-modal-grid">
+                    <div class="insurance-modal-box">
+                        <span class="insurance-modal-pill">Why it matters</span>
+                        <ul id="insuranceModalWhy"></ul>
+                    </div>
+
+                    <div class="insurance-modal-box">
+                        <span class="insurance-modal-pill">Key benefits</span>
+                        <ul id="insuranceModalBenefits"></ul>
+                    </div>
+
+                    <div class="insurance-modal-bigger-picture">
+                        <strong>The Bigger Picture</strong>
+                        <p>Insurance isn't simply about paying for unexpected events — it's about protecting the people,
+                            assets and plans that matter to you.</p>
+                    </div>
+                </div>
+
+                <div class="insurance-modal-footer">
+                    <div class="insurance-modal-footer-text">
+                        <span class="footer-check">&#10003;</span>
+                        <p id="insuranceModalFooter"></p>
+                    </div>
+
+                    <div class="insurance-modal-actions">
+                        <button type="button" class="insurance-modal-know-more" id="insuranceModalKnowMore">
+                            Know More <span>&rarr;</span>
+                        </button>
+                        <button type="button" class="insurance-modal-done">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const keys = <?php echo json_encode($keys); ?>;
-    let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.insurance-card');
+    const modal = document.getElementById('insuranceModal');
 
-    const sidebarItems = document.querySelectorAll(".sidebar-item");
-    const panes = document.querySelectorAll(".pane-item");
-    const prevBtn = document.querySelector(".btn-prev");
-    const nextBtn = document.querySelector(".btn-next");
+    if (!cards.length || !modal) return;
 
-    function updateActiveState(index) {
-        currentIndex = index;
-        const currentKey = keys[currentIndex];
+    const modalVerticalTitle = document.getElementById('insuranceModalVerticalTitle');
+    const modalNumber        = document.getElementById('insuranceModalNumber');
+    const modalTitle         = document.getElementById('insuranceModalTitle');
+    const modalDescription   = document.getElementById('insuranceModalDescription');
+    const modalWhy           = document.getElementById('insuranceModalWhy');
+    const modalBenefits      = document.getElementById('insuranceModalBenefits');
+    const modalFooter        = document.getElementById('insuranceModalFooter');
+    const modalKnowMore      = document.getElementById('insuranceModalKnowMore');
+    const closeButton        = modal.querySelector('.insurance-modal-close');
+    const doneButton         = modal.querySelector('.insurance-modal-done');
+    const overlay            = modal.querySelector('.insurance-modal-overlay');
 
-        sidebarItems.forEach(item => {
-            item.classList.toggle("active", item.getAttribute("data-key") === currentKey);
+    function openModal(card) {
+        const title       = card.dataset.title || '';
+        const number      = card.dataset.number || '';
+        const description = card.dataset.description || '';
+        const footer      = card.dataset.footer || '';
+        const url         = card.dataset.url || '';
+
+        let why = [];
+        let benefits = [];
+
+        try {
+            why = JSON.parse(card.dataset.why);
+            benefits = JSON.parse(card.dataset.benefits);
+        } catch (error) {
+            console.error('Insurance modal JSON parse error:', error);
+        }
+
+        if (modalVerticalTitle) {
+           modalVerticalTitle.textContent = title;
+        }
+
+        modalNumber.textContent      = number;
+        modalTitle.textContent       = title;
+        modalDescription.textContent = description;
+        modalFooter.textContent      = footer;
+
+        modalKnowMore.onclick = function() {
+            if (url) window.location.href = url;
+        };
+
+        modalWhy.innerHTML = '';
+        why.forEach(function(item) {
+            const li = document.createElement('li');
+            li.innerHTML = item;
+            modalWhy.appendChild(li);
         });
 
-        panes.forEach(pane => {
-            pane.classList.toggle("active", pane.id === `pane-${currentKey}`);
+        modalBenefits.innerHTML = '';
+        benefits.forEach(function(item) {
+            const li = document.createElement('li');
+            li.innerHTML = item;
+            modalBenefits.appendChild(li);
         });
 
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === keys.length - 1;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('insurance-modal-open');
+
+        setTimeout(function() {
+            closeButton.focus();
+        }, 100);
     }
 
-    sidebarItems.forEach(item => {
-        item.addEventListener("click", () => {
-            updateActiveState(keys.indexOf(item.getAttribute("data-key")));
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('insurance-modal-open');
+    }
+
+    cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+            openModal(this);
+        });
+
+        card.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openModal(this);
+            }
         });
     });
 
-    prevBtn.addEventListener("click", () => {
-        if (currentIndex > 0) updateActiveState(currentIndex - 1);
-    });
+    closeButton.addEventListener('click', closeModal);
+    doneButton.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
 
-    nextBtn.addEventListener("click", () => {
-        if (currentIndex < keys.length - 1) updateActiveState(currentIndex + 1);
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
     });
 });
 </script>

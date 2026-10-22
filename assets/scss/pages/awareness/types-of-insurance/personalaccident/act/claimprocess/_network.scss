@@ -1,0 +1,48 @@
+@use "../../../../../../abstracts/variables" as *;
+
+.network-section {
+  // Inherits all styles from .coverage-section automatically
+  // Add any custom overrides if necessary below:
+  .flip-card-back {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+.key-takeaway-box {
+  display: flex;
+  gap: 16px;
+  background-color:$color-white;
+  border: 1px solid rgba($color-white, 0.12);
+  border-left: 4px solid $color-orange;
+  border-radius: $radius-lg;
+  padding: 20px 24px;
+  margin-top: 40px;
+  align-items: flex-start;
+
+  .takeaway-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .takeaway-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .takeaway-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: $color-navy;
+      margin: 0;
+    }
+
+    .takeaway-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: $color-navy;
+      margin: 0;
+    }
+  }
+}

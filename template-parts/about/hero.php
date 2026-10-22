@@ -47,10 +47,10 @@ $features = [
         </div>
 
         <!-- Right Media Block (Deep Curved Background) -->
-        <div class="hero-media">
+        <!-- <div class="hero-media">
             <div class="curved-blue-bg">
                 <img src="<?php echo htmlspecialchars($heroImage); ?>" alt="Books and Pencils" class="hero-img" />
             </div>
-        </div>
+        </div> -->
     </div>
 </section>

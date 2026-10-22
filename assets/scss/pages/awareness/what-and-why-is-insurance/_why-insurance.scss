@@ -1,0 +1,166 @@
+// ========================================
+// VIMA VIDYA DESIGN SYSTEM INTEGRATION
+// ========================================
+@use "../../../abstracts/variables" as *;
+
+.insurance-section {
+  background-color: $color-navy; // Updated section background to Navy
+  color: $color-white;
+  font-family: $font-primary;
+  padding: $space-section 0;
+
+  .container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-element;
+  }
+
+  .subtitle {
+    display: block;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: $color-orange;
+    text-transform: none;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-size: $text-h2;
+    line-height: $line-heading;
+    font-weight: 700;
+    color: $color-white; // Changed from $color-navy to white for high contrast
+    margin: 8px 0 $space-content;
+    letter-spacing: -0.5px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    gap: $space-content;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  /* Navigation Tabs */
+  .tab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .tab-item {
+      padding: 14px $space-small;
+      border-bottom: 1px solid rgba($color-white, 0.15); // Translucent border against navy
+      cursor: pointer;
+      transition: all $transition-fast;
+      position: relative;
+
+      .category {
+        display: block;
+        font-size: $text-xs;
+        color: rgba($color-white, 0.6); // Muted light text
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+        transition: color $transition-fast;
+      }
+
+      .item-title {
+        font-size: $text-sm;
+        font-weight: 600;
+        color: rgba($color-white, 0.85); // High contrast light text
+        transition: color $transition-fast;
+      }
+
+      &.active, &:hover {
+        .category, .item-title {
+          color: $color-orange;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 4px;
+          height: 16px;
+          background-color: $color-orange;
+          border-radius: $radius-pill;
+        }
+      }
+    }
+  }
+
+  /* Display Panel */
+  .display-card {
+    width: 65%;
+    background-color: $color-white; // Styled as a white card
+    padding: $space-element;
+    border-radius: $radius-md;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%; // Expanded to fit container bounds
+      height: 280px;
+      border-radius: $radius-sm;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity $transition;
+      }
+
+      .card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px;
+        background: linear-gradient(transparent, rgba($color-navy-dark, 0.85));
+        color: $color-white;
+
+        .tag {
+          background-color: $color-orange;
+          font-size: $text-xs;
+          font-weight: 700;
+          padding: 2px 6px;
+          border-radius: $radius-sm;
+          text-transform: uppercase;
+        }
+
+        h3 {
+          margin: 6px 0 0;
+          font-size: $text-lg;
+          line-height: $line-tight;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .description {
+      margin-top: 14px;
+      font-size: $text-lg;
+      line-height: $line-body;
+      color: $color-text-body; // Readable dark text inside the white card
+      max-width: 100%;
+    }
+  }
+}

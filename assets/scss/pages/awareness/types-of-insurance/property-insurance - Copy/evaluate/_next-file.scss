@@ -1,0 +1,608 @@
+@use "../../../../../abstracts/variables" as *;
+
+
+// ========================================
+// VIMA VIDYA
+// PROPERTY INSURANCE
+// UNDERSTAND → EVALUATE TRANSITION
+// ========================================
+
+.property-transition {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        $space-section-lg
+        $space-content
+        48px;
+
+    // ========================================
+    // BACKGROUND
+    // ========================================
+
+    background: #eff6ff;
+
+    color: $color-navy;
+
+    overflow: hidden;
+
+
+    // ========================================
+    // SUBTLE BACKGROUND SHAPE
+    // ========================================
+
+    &::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        top: -260px;
+        right: -180px;
+
+        border-radius: 50%;
+
+        background: rgba($color-blue, 0.035);
+
+        pointer-events: none;
+    }
+
+
+    &::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 360px;
+        height: 360px;
+
+        bottom: -260px;
+        left: -180px;
+
+        border-radius: 50%;
+
+        background: rgba($color-blue, 0.025);
+
+        pointer-events: none;
+    }
+
+
+    // ========================================
+    // CONTAINER
+    // ========================================
+
+    &__container {
+
+        position: relative;
+
+        z-index: 1;
+
+        width: 100%;
+
+        max-width: $container-width;
+
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    // ========================================
+    // EYEBROW
+    // ========================================
+
+    &__eyebrow {
+
+        margin-bottom: $space-element;
+
+        font-family: $font-primary;
+
+        font-size: $text-xs;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        letter-spacing: 0.22em;
+
+        text-transform: uppercase;
+
+        color: $color-blue;
+    }
+
+
+    // ========================================
+    // CONTENT
+    // ========================================
+
+    &__content {
+
+        width: 100%;
+
+        max-width: 760px;
+
+        margin: 0 auto;
+    }
+
+
+    // ========================================
+    // TITLE
+    // ========================================
+
+    &__title {
+
+        margin: 0;
+
+        font-family: $font-primary;
+
+        font-size: clamp(38px, 5vw, $text-h2);
+
+        font-weight: 700;
+
+        line-height: $line-tight;
+
+        letter-spacing: -0.025em;
+
+        color: $color-navy;
+    }
+
+
+    // ========================================
+    // DESCRIPTION
+    // ========================================
+
+    &__description {
+
+        max-width: $text-width-wide;
+
+        margin: 24px auto 0;
+
+        font-family: $font-primary;
+
+        font-size: $text-lg;
+
+        font-weight: 400;
+
+        line-height: $line-body;
+
+        color: $color-text-body;
+    }
+
+
+    // ========================================
+    // ACTIONS
+    // ========================================
+
+    &__actions {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 16px;
+
+        margin-top: 40px;
+
+        flex-wrap: wrap;
+    }
+
+
+    // ========================================
+    // BUTTON BASE
+    // ========================================
+
+    &__button {
+
+        min-height: 56px;
+
+        padding: 0 30px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        border-radius: $radius-md;
+
+        font-family: $font-primary;
+
+        font-size: $text-base;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        text-decoration: none;
+
+        transition:
+            background $transition,
+            border-color $transition,
+            color $transition,
+            transform $transition;
+
+        &:focus-visible {
+
+            outline: 2px solid $color-blue;
+
+            outline-offset: 4px;
+        }
+    }
+
+
+    // ========================================
+    // PRIMARY BUTTON
+    // ========================================
+
+    &__button--primary {
+
+        background: $color-blue;
+
+        border: 1px solid $color-blue;
+
+        color: $color-white;
+
+        &:hover {
+
+            background: $color-blue-dark;
+
+            border-color: $color-blue-dark;
+
+            color: $color-white;
+
+            transform: translateY(-2px);
+        }
+    }
+
+
+    // ========================================
+    // SECONDARY BUTTON
+    // ========================================
+
+    &__button--secondary {
+
+        min-width: 230px;
+
+        background: $color-white;
+
+        border: 1px solid $color-border;
+
+        color: $color-navy;
+
+        &:hover {
+
+            background: $color-light-blue;
+
+            border-color: $color-blue;
+
+            color: $color-blue-dark;
+
+            transform: translateY(-2px);
+        }
+    }
+
+
+    // ========================================
+    // ARROW
+    // ========================================
+
+    &__button--secondary span {
+
+        display: inline-block;
+
+        font-size: 18px;
+
+        transition: transform $transition-fast;
+    }
+
+
+    &__button--secondary:hover span {
+
+        transform: translateX(4px);
+    }
+
+
+    // ========================================
+    // JOURNEY
+    // ========================================
+
+    &__journey {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 100%;
+
+        margin-top: 56px;
+    }
+
+
+    // ========================================
+    // STEP
+    // ========================================
+
+    &__step {
+
+        min-height: 32px;
+
+        padding: 7px 13px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        border: 1px solid $color-border;
+
+        border-radius: $radius-pill;
+
+        background: $color-white;
+
+        color: $color-text-muted;
+
+        font-family: $font-primary;
+
+        font-size: $text-xs;
+
+        line-height: 1;
+
+        text-decoration: none;
+
+        white-space: nowrap;
+
+        transition:
+            background $transition-fast,
+            border-color $transition-fast,
+            color $transition-fast;
+
+        &:hover {
+
+            border-color: $color-blue;
+
+            color: $color-blue;
+        }
+    }
+
+
+    // ========================================
+    // ACTIVE — UNDERSTAND
+    // ========================================
+
+    &__step--active {
+
+        background: $color-light-blue;
+
+        border-color: rgba($color-blue, 0.25);
+
+        color: $color-blue-dark;
+
+        cursor: default;
+    }
+
+
+    // ========================================
+    // NEXT — EVALUATE
+    // ========================================
+
+    &__step--next {
+
+        background: $color-blue;
+
+        border-color: $color-blue;
+
+        color: $color-white;
+
+        &:hover {
+
+            background: $color-blue-dark;
+
+            border-color: $color-blue-dark;
+
+            color: $color-white;
+        }
+    }
+
+
+    // ========================================
+    // STEP NUMBER
+    // ========================================
+
+    &__step-number {
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.04em;
+
+        opacity: 0.75;
+    }
+
+
+    // ========================================
+    // STEP LABEL
+    // ========================================
+
+    &__step-label {
+
+        font-size: $text-xs;
+
+        font-weight: 600;
+
+        letter-spacing: 0.01em;
+    }
+
+
+    // ========================================
+    // CONNECTOR
+    // ========================================
+
+    &__line {
+
+        width: 30px;
+
+        height: 1px;
+
+        margin: 0 5px;
+
+        background: $color-border;
+    }
+
+
+    // ========================================
+    // TABLET
+    // ========================================
+
+    @media (max-width: 768px) {
+
+        padding:
+            80px
+            $space-content
+            40px;
+
+
+        &__title {
+
+            font-size: 38px;
+        }
+
+
+        &__description {
+
+            font-size: $text-base;
+        }
+
+
+        &__actions {
+
+            width: 100%;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        &__button {
+
+            width: 100%;
+
+            max-width: 340px;
+        }
+
+
+        &__journey {
+
+            margin-top: 48px;
+        }
+    }
+
+
+    // ========================================
+    // MOBILE
+    // ========================================
+
+    @media (max-width: 480px) {
+
+        padding:
+            72px
+            18px
+            32px;
+
+
+        &__eyebrow {
+
+            margin-bottom: 18px;
+
+            font-size: 11px;
+        }
+
+
+        &__title {
+
+            font-size: 34px;
+
+            line-height: 1.12;
+        }
+
+
+        &__description {
+
+            margin-top: 20px;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        &__actions {
+
+            margin-top: 32px;
+        }
+
+
+        &__button {
+
+            min-height: 54px;
+
+            padding: 0 22px;
+
+            font-size: $text-sm;
+        }
+
+
+        &__journey {
+
+            margin-top: 42px;
+        }
+
+
+        &__step {
+
+            padding: 7px 9px;
+
+            gap: 5px;
+        }
+
+
+        &__step-label {
+
+            font-size: 10px;
+        }
+
+
+        &__step-number {
+
+            font-size: 9px;
+        }
+
+
+        &__line {
+
+            width: 14px;
+
+            margin: 0 2px;
+        }
+    }
+}

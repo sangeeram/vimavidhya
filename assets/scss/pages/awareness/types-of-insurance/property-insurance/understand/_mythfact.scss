@@ -1,0 +1,198 @@
+// ========================================
+// VIMA VIDYA — MYTHS ACCORDION COMPONENT (SCSS)
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+
+.vv-myths {
+    padding: $space-section-sm 0;
+    background-color: white;
+    font-family: $font-primary;
+
+    &__container {
+        max-width: 1100px;
+        margin: 0 70px;
+        padding: 0 16px;
+    }
+
+    &__header {
+        text-align: left;
+        margin-bottom: $space-element;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-size: $text-xs;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $color-blue;
+        margin-bottom: $space-small;
+    }
+
+    &__heading {
+        font-size: 44px;
+        font-weight: 600;
+        color: $color-navy;
+        line-height: $line-heading;
+
+        @media (max-width: 768px) {
+            font-size: 26px;
+        }
+    }
+}
+
+/* Master single container box holding all 10 items */
+.vv-myth-master-box {
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(8, 39, 75, 0.04);
+}
+
+.vv-myth-carousel {
+    &__track {
+        display: flex;
+        flex-direction: column;
+        gap: 6px; // Minimal gap to eliminate excess spacing
+    }
+}
+
+/* Individual Accordion Item */
+.vv-myth-slide {
+    width: 100%;
+    transition: $transition-fast;
+    background: $color-light-gray;
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    overflow: hidden;
+
+    .vv-myth-split-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Collapsed / Default Toggle State */
+    .vv-myth-side {
+        padding: 14px 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+        transition: background-color $transition-fast;
+        position: relative;
+
+        &:hover {
+            background-color: rgba(0, 122, 255, 0.03);
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vv-myth-badge {
+            background-color: $color-light-blue;
+            color: $color-blue;
+            font-size: $text-xs;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: $radius-pill;
+        }
+
+        .vv-myth-tag {
+            display: none; 
+        }
+
+        &__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: $color-navy;
+            margin: 0;
+            flex-grow: 1;
+            padding-right: 16px;
+        }
+
+        /* Down arrow symbol for collapsed state */
+        .vv-accordion-icon {
+            font-size: 16px;
+            font-weight: bold;
+            color: $color-navy;
+            transition: transform $transition-fast;
+            display: inline-block;
+        }
+    }
+
+    .vv-reality-side {
+        display: none;
+    }
+
+   /* Expanded State Style */
+    &.is-expanded {
+        background-color: #eff6ff;
+        border-color: #dbeafe;
+        box-shadow: 0 4px 12px rgba(8, 39, 75, 0.06);
+
+        .vv-myth-side {
+            cursor: default;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px 20px 12px 20px;
+            border-bottom: 1px solid #dbeafe;
+            background-color: transparent;
+
+            &__header {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+
+            .vv-myth-badge {
+                background-color: $color-light-blue;
+                color: $color-blue;
+            }
+
+            .vv-myth-tag {
+                display: inline-block;
+                background-color: rgba(245, 154, 24, 0.15);
+                color: $color-orange;
+                font-size: $text-xs;
+                font-weight: 600;
+                padding: 3px 8px;
+                border-radius: $radius-sm;
+            }
+
+            &__title {
+                font-size: $text-base;
+                color: $color-navy;
+                font-weight: 700;
+                line-height: $line-heading;
+                margin: 0;
+                padding-right: 0;
+            }
+
+            /* Rotate arrow when expanded */
+            .vv-accordion-icon {
+                transform: rotate(180deg);
+                color: $color-navy;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        .vv-reality-side {
+            display: block;
+            padding: 16px 20px 20px 20px;
+
+            .vv-reality-text {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-navy; /* Dark text for readability on the light background */
+                margin: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,301 @@
+// ============================================================
+// PERSONAL ACCIDENT & COMPARISON — SECTION STYLES
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.pa-comparison-section {
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: 65px 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    // ========================================================
+    // HEADER
+    // ========================================================
+    .section-header {
+        .badge-pill {
+            display: inline-block;
+            color: $color-blue;
+            font-size: $text-xs;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: $space-small;
+        }
+
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-white;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-light;
+            max-width: 1000px;
+        }
+    }
+
+    // ========================================================
+    // CATEGORY TABS (WHITE ACTIVE / PILL STYLE)
+    // ========================================================
+    .pa-category-tabs {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+
+        .pa-tab {
+            background: $color-white;
+            border: 1px solid $color-white;
+            color: $color-navy-dark;
+            padding: 10px 22px;
+            border-radius: $radius-pill;
+            cursor: pointer;
+            font-size: $text-base;
+            font-weight: 500;
+            font-family: $font-primary;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: $transition-fast;
+
+            .tab-icon {
+                color: $color-navy-dark;
+                display: flex;
+                align-items: center;
+                transition: $transition-fast;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.9);
+                border-color: $color-white;
+                color: $color-navy;
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                color: $color-white;
+
+                .tab-icon {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    // ========================================================
+    // TAB CONTENT & PANELS (WHITE CARD STYLE)
+    // ========================================================
+    .pa-tab-content {
+        margin-top: $space-element;
+
+        .pa-tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn $transition;
+            }
+        }
+
+        // ========================================================
+        // MAIN PA CONTENT CARD (WHITE VARIANT)
+        // ========================================================
+        .pa-content-card {
+            background: $color-white;
+            border: 1px solid $color-border-dark;
+            border-radius: $radius-md;
+            padding: 36px 40px;
+            margin-top: $space-element;
+            color: $color-navy-dark;
+
+            @media (max-width: 768px) {
+                padding: 24px 20px;
+            }
+
+            .pa-content-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 16px;
+
+                .pa-content-label {
+                    color: $color-orange;
+                    font-size: $text-xs;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+
+                h3 {
+                    color: $color-navy;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-top: 6px;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .pa-policy-note {
+                    background: rgba(0, 0, 0, 0.05);
+                    color: $color-navy-dark;
+                    padding: 6px 14px;
+                    border-radius: $radius-sm;
+                    font-size: $text-xs;
+                    font-weight: 500;
+                }
+            }
+
+            .pa-card-description {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-navy-dark;
+                margin-bottom: 24px;
+            }
+
+            // ====================================================
+            // RESPONSIVE COMPARISON TABLE DESIGN
+            // ====================================================
+            .pa-table-wrapper {
+                overflow-x: auto;
+                margin-top: 20px;
+
+                .pa-comparison-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+                    font-size: $text-base;
+
+                    th, td {
+                        padding: 14px 16px;
+                        border-bottom: 1px solid $color-border-dark;
+                        vertical-align: middle;
+                    }
+
+                    th {
+                        background-color: rgba($color-navy, 0.03);
+                        color: $color-navy;
+                        font-weight: 700;
+                        font-size: 15px;
+                    }
+
+                    td {
+                        color: $color-navy-dark;
+
+                        strong {
+                            color: $color-navy;
+                        }
+                    }
+
+                    tr:hover {
+                        background-color: rgba(0, 0, 0, 0.015);
+                    }
+                }
+            }
+
+            // ====================================================
+            // BULLET LIST FOR EXCLUSIONS
+            // ====================================================
+            .pa-bullet-list {
+                list-style-type: disc;
+                padding-left: 20px;
+                color: $color-navy-dark;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                li {
+                    line-height: $line-body;
+                    font-size: $text-base;
+                    color: $color-navy-dark;
+
+                    strong {
+                        color: $color-navy;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        // ========================================================
+        // TAKEAWAY BANNER (FULL WIDTH BENEATH CARD)
+        // ========================================================
+        .story-takeaway-card {
+            display: flex;
+            align-items: flex-start;
+            background: $color-light-blue;
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            border-radius: $radius-sm;
+            padding: 20px;
+            gap: 16px;
+            margin-top: 32px;
+
+            .takeaway-icon-bubble {
+                background: $color-orange;
+                color: $color-white;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                flex-shrink: 0;
+                font-weight: 700;
+                box-shadow: 0 2px 6px rgba($color-orange, 0.3);
+            }
+
+            .takeaway-text-content {
+                strong {
+                    color: $color-blue-dark;
+                    font-size: $text-xs;
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                    display: block;
+                    margin-bottom: 6px;
+                }
+
+                p {
+                    font-size: $text-base;
+                    color: $color-navy-dark;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+// Fade-in keyframes
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

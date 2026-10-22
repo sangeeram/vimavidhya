@@ -1,0 +1,143 @@
+@use "../../../../../../abstracts/variables" as *;
+
+// ========================================
+// CLAIMS CHANNELS SECTION
+// Light Blue Background + White Cards Layout
+// ========================================
+
+.claims-channels {
+  background-color: $color-light-blue; // Updated to light blue background
+  padding: 65px 20px;
+  font-family: $font-primary;
+  color: $color-text;
+
+  &__container {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: $space-element;
+  }
+
+  &__subheading {
+    display: block;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $color-blue;
+    margin-bottom: $space-small;
+  }
+
+  &__heading {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: $line-heading;
+    color: $color-navy-dark;
+    margin: 0;
+
+    @media (min-width: 768px) {
+      font-size: 36px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $space-element;
+    margin-bottom: $space-element;
+  }
+
+  &__card {
+    background-color: $color-white; // Changed to white so cards pop against the light blue section
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: $space-content;
+    display: flex;
+    flex-direction: column;
+    transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: $color-blue;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    &-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    &-title {
+      font-size: $text-base;
+      font-weight: 700;
+      line-height: $line-heading;
+      margin: 0 0 10px 0;
+      color: $color-navy-dark;
+    }
+  }
+
+  &__icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: $color-light-blue; // Adjusted icon wrapper to match section or contrast nicely
+    border-radius: $radius-sm;
+  }
+
+  &__icon {
+    font-size: $text-lg;
+    line-height: 1;
+  }
+
+  &__number {
+    font-size: $text-xs;
+    font-weight: 600;
+    color: $color-text-muted;
+  }
+
+  &__detail {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-label {
+      display: block;
+      font-size: $text-xs;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: $color-blue;
+      margin-bottom: 4px;
+    }
+
+    &-text {
+      font-size: $text-sm;
+      line-height: $line-body;
+      color: $color-text-body;
+      margin: 0;
+    }
+  }
+
+  &__notice {
+    background-color: rgba($color-blue, 0.08);
+    border: 1px solid rgba($color-blue, 0.2);
+    border-radius: $radius-sm;
+    padding: $space-element;
+
+    p {
+      margin: 0;
+      font-size: $text-sm;
+      line-height: $line-body;
+      font-weight: 500;
+      color: $color-navy-dark;
+    }
+  }
+}

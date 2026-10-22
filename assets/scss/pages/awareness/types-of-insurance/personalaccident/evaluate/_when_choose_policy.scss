@@ -1,0 +1,395 @@
+// ============================================================
+// WHAT TO CONSIDER WHEN CHOOSING A POLICY — SECTION STYLES
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.asset-tabs-section#evaluate-pa-choosing-policy {
+    background-color: $color-navy;
+    color: $color-white;
+    padding: $space-section-lg 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-white;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 1000px;
+        }
+    }
+
+    /* TABS - COMPACT SINGLE ROW WITHOUT SCROLLBAR */
+    .asset-category-tabs {
+        display: flex;
+        gap: 8px;                   /* Reduced gap between tabs */
+        flex-wrap: nowrap;          /* Keeps everything on a single line */
+        overflow: visible;          /* Removes scrolling */
+        margin-top: 32px;
+
+        .asset-tab {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: $color-white;
+            padding: 8px 14px;      /* Reduced horizontal and vertical padding */
+            border-radius: $radius-pill;
+            cursor: pointer;
+            font-size: 13px;        /* Slightly smaller font size to fit all tabs */
+            font-weight: 500;
+            font-family: $font-primary;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;               /* Reduced gap between icon and text */
+            white-space: nowrap;    /* Prevents text wrapping */
+            flex: 1;                /* Allows tabs to flexibly share available space evenly */
+            justify-content: center;/* Centers content inside each tab */
+            transition: $transition-fast;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+            .tab-icon {
+                color: $color-white;
+                display: flex;
+                align-items: center;
+                transition: $transition-fast;
+
+                svg {
+                    width: 14px;     /* Slightly smaller icon size */
+                    height: 14px;
+                }
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.15);
+                border-color: $color-blue;
+                color: $color-white;
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                color: $color-white;
+                box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+
+                .tab-icon {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    /* TAB CONTENT PANELS */
+    .asset-tab-content {
+        margin-top: $space-element;
+
+        .asset-tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+        }
+
+        /* MAIN CARD */
+        .asset-content-card {
+            background: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-md;
+            padding: 36px 40px;
+            margin-top: $space-element;
+            color: $color-navy-dark;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+            @media (max-width: 768px) {
+                padding: 24px 20px;
+            }
+
+            .asset-content-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 16px;
+
+                .asset-content-label {
+                    color: $color-orange;
+                    font-size: $text-xs;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+
+                h3 {
+                    color: $color-navy;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-top: 6px;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .asset-policy-note {
+                    background: $color-light-gray;
+                    color: $color-navy-dark;
+                    padding: 6px 14px;
+                    border-radius: $radius-sm;
+                    font-size: $text-xs;
+                    font-weight: 500;
+                }
+            }
+
+            .asset-card-description {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-text-body;
+                margin-bottom: 16px;
+            }
+
+            .asset-card-intro {
+                font-size: $text-base;
+                font-weight: 500;
+                color: $color-navy;
+                margin-bottom: 20px;
+            }
+
+            /* BULLET LISTS & GRIDS */
+            .asset-items-container {
+                .asset-bullet-list {
+                    list-style-type: disc;
+                    padding-left: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                    li {
+                        line-height: $line-body;
+                        font-size: $text-base;
+                        color: $color-text-body;
+
+                        strong {
+                            color: $color-navy;
+                            font-weight: 700;
+                        }
+                    }
+
+                    &.exclusions-grid {
+                        list-style: none;
+                        padding-left: 0;
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 12px 24px;
+
+                        @media (max-width: 768px) {
+                            grid-template-columns: 1fr;
+                        }
+
+                        li {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 10px;
+
+                            .excl-bullet {
+                                color: #d92d20;
+                                font-weight: 700;
+                                flex-shrink: 0;
+                            }
+                        }
+                    }
+
+                    &.checklist {
+                        list-style: none;
+                        padding-left: 0;
+
+                        li {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 10px;
+                            padding: 8px 0;
+                            border-bottom: 1px dashed $color-border;
+
+                            .check-box-icon {
+                                color: $color-success;
+                                font-weight: 700;
+                                background: rgba(16, 185, 129, 0.1);
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 11px;
+                                flex-shrink: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* CALLOUT BOXES */
+            .policy-callout-box {
+                display: flex;
+                align-items: flex-start;
+                background: $color-light-blue;
+                border: 1px solid rgba(0, 122, 255, 0.2);
+                border-radius: $radius-sm;
+                padding: 20px;
+                gap: 16px;
+                margin-top: 24px;
+
+                &.warning {
+                    background: rgba(245, 154, 24, 0.08);
+                    border-color: rgba(245, 154, 24, 0.3);
+                }
+
+                &.success {
+                    background: rgba(16, 185, 129, 0.08);
+                    border-color: rgba(16, 185, 129, 0.3);
+                }
+
+                .callout-icon {
+                    font-size: 24px;
+                    flex-shrink: 0;
+                }
+
+                .callout-content {
+                    strong {
+                        color: $color-navy;
+                        font-size: $text-base;
+                        font-weight: 700;
+                        display: block;
+                        margin-bottom: 6px;
+                    }
+
+                    p {
+                        font-size: $text-base;
+                        color: $color-text-body;
+                        line-height: $line-body;
+                        margin: 0;
+                    }
+                }
+            }
+
+            /* RISK TABLE */
+            .policy-table-wrapper {
+                overflow-x: auto;
+
+                .policy-risk-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+                    font-size: $text-sm;
+
+                    th, td {
+                        padding: 14px 16px;
+                        border-bottom: 1px solid $color-border;
+                    }
+
+                    th {
+                        background: $color-light-gray;
+                        color: $color-navy;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: $text-xs;
+                        letter-spacing: 0.05em;
+                    }
+
+                    td {
+                        color: $color-text-body;
+
+                        strong {
+                            color: $color-navy;
+                        }
+
+                        .effect-tag {
+                            display: inline-block;
+                            padding: 4px 10px;
+                            border-radius: $radius-pill;
+                            font-size: $text-xs;
+                            font-weight: 600;
+                            background: $color-light-blue;
+                            color: $color-blue;
+                        }
+                    }
+                }
+            }
+
+            /* ADD-ONS GRID CARDS */
+            .policy-addons-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+
+                @media (max-width: 768px) {
+                    grid-template-columns: 1fr;
+                }
+
+                .addon-mini-card {
+                    background: $color-light-gray;
+                    border: 1px solid $color-border;
+                    border-radius: $radius-sm;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+
+                    h5 {
+                        margin: 0;
+                        font-size: $text-base;
+                        font-weight: 700;
+                        color: $color-navy;
+                    }
+
+                    .addon-desc {
+                        margin: 0;
+                        font-size: $text-sm;
+                        color: $color-text-body;
+                        line-height: 1.4;
+                    }
+
+                    .addon-best {
+                        font-size: $text-xs;
+                        color: $color-text-muted;
+                        margin-top: auto;
+                        padding-top: 6px;
+
+                        strong {
+                            color: $color-orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

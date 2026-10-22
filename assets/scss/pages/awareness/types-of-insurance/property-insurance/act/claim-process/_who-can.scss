@@ -1,0 +1,161 @@
+@use "../../../../../../abstracts/variables" as *;
+
+.eligibility-section {
+  padding: $space-section 20px;
+  background-color: #ffffff; // Updated to white background
+  font-family: $font-primary;
+
+  .container {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  .subheading {
+    display: block;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: $color-orange;
+    text-transform: uppercase;
+    margin-bottom: $space-small;
+  }
+
+  .main-heading {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: $line-heading;
+    color: $color-navy-dark; // Updated for contrast against white
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      font-size: $text-h2;
+    }
+  }
+
+  .sub-head {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: $line-heading;
+    color: $color-navy-dark; // Updated for contrast against white
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      font-size: 36px;
+    }
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .eligibility-card {
+    position: relative;
+    border-radius: $radius-md;
+    padding: $space-content $space-element;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: $color-navy;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 1px solid $color-border-dark;
+    cursor: pointer;
+    transition: transform $transition, box-shadow $transition;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); // Softer shadow for light background
+
+      .card-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba($color-navy-dark, 0.4) 0%,
+          rgba($color-navy, 0.96) 100%
+        );
+      }
+
+      .card-details {
+        max-height: 300px;
+        opacity: 1;
+        margin-top: 16px;
+        transform: translateY(0);
+      }
+    }
+
+    // Default semi-transparent overlay
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba($color-navy-dark, 0.2) 0%,
+        rgba($color-navy, 0.85) 100%
+      );
+      transition: background $transition;
+      z-index: 1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: $line-heading;
+      color: $color-white;
+      margin: 0;
+      transition: color $transition-fast;
+    }
+
+    // Hidden details that expand on hover
+    .card-details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(10px);
+      transition: max-height $transition-slow, opacity $transition, transform $transition;
+    }
+
+    .card-meta {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .meta-label {
+        display: block;
+        font-size: $text-xs;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: $color-orange;
+        margin-bottom: 4px;
+      }
+
+      .meta-text {
+        font-size: 14px;
+        line-height: $line-body;
+        color: $color-text-light;
+        margin: 0;
+      }
+    }
+  }
+}

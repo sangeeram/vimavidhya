@@ -1,0 +1,606 @@
+/* =========================================================
+   VIMA VIDYA
+   PERSONAL ACCIDENT — PREMIUM FACTOR TABS & CALCULATION FRAMEWORK
+========================================================= */
+@use "../../../../../abstracts/variables" as *;
+
+.vv-pricing-factors {
+    position: relative;
+    padding: $space-section 0;
+    background: $color-light-gray;
+    font-family: $font-primary;
+
+    /* CONTAINER */
+    &__container {
+        width: min(calc(100% - 48px), $container-width);
+        margin: 0 auto;
+    }
+
+    /* HEADER — LEFT ALIGNED */
+    &__header {
+        max-width: 100%;
+        margin: 0 0 $space-content;
+        text-align: left;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        margin-bottom: $space-small;
+        font-size: $text-xs;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        color: $color-blue;
+    }
+
+    &__title {
+        margin: 0 0 $space-small;
+        font-size: clamp(32px, 4vw, $text-h2);
+        line-height: $line-heading;
+        font-weight: 600;
+        color: $color-navy;
+    }
+
+    &__intro {
+        max-width: 1200px;
+        margin: 0;
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-body;
+    }
+
+    /* TABS (6-column layout for Personal Accident) */
+    .vv-pricing-tabs {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    /* INDIVIDUAL TAB */
+    .vv-pricing-tab {
+        position: relative;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        background: $color-white;
+        font-family: $font-primary;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast, transform $transition-fast;
+
+        &:hover {
+            border-color: rgba($color-blue, 0.45);
+            transform: translateY(-2px);
+        }
+
+        &__number {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            border-radius: $radius-pill;
+            background: $color-light-blue;
+            color: $color-blue;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        &__text {
+            font-size: 15px;
+            line-height: 1.25;
+            font-weight: 600;
+            color: $color-navy;
+        }
+
+        /* ACTIVE TAB */
+        &.is-active {
+            border-color: $color-blue;
+            background: $color-white;
+            box-shadow: 0 4px 14px rgba(8, 39, 75, 0.08);
+
+            .vv-pricing-tab__number {
+                background: $color-blue;
+                color: $color-white;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 14px;
+                right: 14px;
+                bottom: -1px;
+                height: 3px;
+                border-radius: $radius-pill $radius-pill 0 0;
+                background: $color-blue;
+            }
+        }
+    }
+
+    /* MAIN PANEL */
+    .vv-pricing-panel {
+        display: none;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        min-height: 300px;
+        overflow: hidden;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        background: $color-white;
+        box-shadow: 0 10px 30px rgba(8, 39, 75, 0.06);
+
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity $transition, transform $transition;
+
+        &.is-active {
+            display: grid;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* IMAGE */
+        &__visual {
+            position: relative;
+            min-height: 400px;
+            height: 400px;
+            overflow: hidden;
+            background: $color-navy-dark;
+
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                transition: transform $transition-slow;
+            }
+        }
+
+        &:hover {
+            .vv-pricing-panel__visual img {
+                transform: scale(1.025);
+            }
+        }
+
+        /* IMAGE OVERLAY */
+        &__visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba($color-navy-dark, 0.05) 30%, rgba($color-navy-dark, 0.58) 100%);
+            pointer-events: none;
+        }
+
+        /* IMAGE LABEL */
+        &__visual-label {
+            position: absolute;
+            left: $space-element;
+            bottom: $space-element;
+            display: inline-flex;
+            align-items: center;
+            padding: 9px 16px;
+            border: 1px solid rgba($color-white, 0.2);
+            border-radius: $radius-pill;
+            background: rgba($color-navy-dark, 0.82);
+            backdrop-filter: blur(8px);
+
+            span {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                color: $color-white;
+            }
+        }
+
+        /* CONTENT */
+        &__content {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: $color-white;
+        }
+
+        /* HEADING */
+        &__heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $color-border;
+        }
+
+        &__icon {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: $radius-sm;
+            background: $color-light-blue;
+            color: $color-blue;
+
+            .dashicons {
+                width: auto;
+                height: auto;
+                font-size: 20px;
+            }
+        }
+
+        &__section-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: $color-blue;
+        }
+
+        &__title {
+            margin: 0;
+            font-size: 20px;
+            line-height: $line-heading;
+            font-weight: 700;
+            color: $color-navy;
+        }
+
+        &__subtitle {
+            margin: 5px 0 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: $color-text-muted;
+        }
+    }
+
+    /* INFORMATION BLOCKS */
+    .vv-pricing-info {
+        padding: 10px 0;
+        border-bottom: 1px solid $color-border;
+
+        &__label {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: $color-blue;
+        }
+
+        &__text {
+            margin: 0;
+            font-size: $text-base;
+            line-height: 1.65;
+            color: $color-text-body;
+        }
+    }
+
+    /* CONTROL */
+    .vv-pricing-control {
+        padding: 10px 0;
+        border-bottom: 1px solid $color-border;
+
+        &__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        &__title {
+            margin: 0 0 4px;
+            font-size: $text-base;
+            font-weight: 700;
+            color: $color-navy;
+        }
+
+        &__text {
+            max-width: 440px;
+            margin: 0;
+            font-size: $text-base;
+            line-height: 1.55;
+            color: $color-text-muted;
+        }
+    }
+
+    /* STATUS BADGES */
+    .vv-pricing-status {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 9px;
+        border-radius: 4px;
+        font-size: 9px;
+        line-height: 1;
+        font-weight: 700;
+        white-space: nowrap;
+
+        &--choice {
+            border: 1px solid rgba($color-success, 0.3);
+            background: rgba($color-success, 0.07);
+            color: $color-success;
+        }
+
+        &--limited {
+            border: 1px solid rgba($color-orange, 0.35);
+            background: rgba($color-orange, 0.07);
+            color: $color-orange;
+        }
+
+        &--partial {
+            border: 1px solid rgba($color-orange, 0.35);
+            background: rgba($color-orange, 0.06);
+            color: $color-orange;
+        }
+    }
+
+    /* KEY POINTS */
+    .vv-pricing-points {
+        padding-top: 10px;
+
+        > .vv-pricing-info__label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: $color-blue;
+        }
+
+        ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: $text-base;
+            line-height: 1.5;
+            color: $color-text-body;
+        }
+
+        &__check {
+            flex: 0 0 auto;
+            color: $color-blue;
+            font-weight: 700;
+        }
+    }
+
+    /* BOTTOM NOTE */
+    &__note {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        background: #fdf2f2;
+
+        &-icon {
+            flex: 0 0 auto;
+            color: $color-blue;
+
+            .dashicons {
+                width: auto;
+                height: auto;
+                font-size: 18px;
+            }
+        }
+
+        p {
+            margin: 0;
+            font-size: $text-base;
+            line-height: 1.55;
+            color: $color-text-muted;
+        }
+
+        strong {
+            color: $color-navy;
+        }
+    }
+}
+
+/* =====================================================
+   PREMIUM CALCULATION FRAMEWORK CARD STYLES (LIGHT THEME)
+===================================================== */
+
+.vv-calc-framework {
+    margin-top: 32px;
+
+    &__card {
+        background: #eff6ff;
+        border: 1px solid #dbeafe;
+        border-radius: $radius-md;
+        padding: 40px;
+        color: #1e293b;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    &__intro {
+        font-size: 16px;
+        line-height: $line-body;
+        color: #475569;
+        margin: 0 0 24px;
+    }
+}
+
+.vv-calc-step {
+    margin-bottom: 24px;
+}
+
+.vv-calc-box {
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    border-radius: $radius-sm;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04);
+}
+
+/* Inline Equation Styles (Single Line, Plain Text) */
+.vv-calc-equation {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    font-size: $text-base;
+    color: #2563eb;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.vv-calc-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.vv-calc-term {
+    font-weight: 500;
+    color: #1e293b;
+    display: inline-block;
+}
+
+.vv-calc-operator {
+    color: #64748b;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 2px;
+}
+
+.vv-calc-note-text {
+    font-size: $text-base;
+    line-height: $line-body;
+    color: #64748b;
+    margin: 12px 0 0;
+}
+
+.vv-calc-divider {
+    border: 0;
+    height: 1px;
+    background: #dbeafe;
+    margin: 32px 0;
+}
+
+/* ILLUSTRATIVE EXAMPLES */
+.vv-calc-examples-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.vv-calc-example-item {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #334155;
+    margin: 0;
+
+    strong {
+        font-weight: 700;
+        color: #0f172a;
+    }
+}
+
+.vv-calc-footer-note {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 24px;
+    font-style: italic;
+}
+
+/* TABLET & MOBILE RESPONSIVE UPDATES */
+@media (max-width: 1100px) {
+    .vv-pricing-factors {
+        .vv-pricing-tabs {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .vv-pricing-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .vv-pricing-factors {
+        padding: $space-section-sm 0;
+
+        &__container {
+            width: min(calc(100% - 32px), $container-width);
+        }
+
+        &__header {
+            margin-bottom: $space-element;
+        }
+
+        &__title {
+            font-size: 32px;
+        }
+
+        &__intro {
+            font-size: $text-sm;
+        }
+
+        .vv-pricing-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .vv-pricing-tab {
+            flex: 0 0 150px;
+            min-height: 54px;
+        }
+
+        .vv-pricing-panel {
+            display: none;
+            flex-direction: column;
+            min-height: auto;
+            border-radius: $radius-md;
+
+            &.is-active {
+                display: flex;
+            }
+
+            &__visual {
+                min-height: 280px;
+                height: 280px;
+            }
+
+            &__content {
+                padding: 24px 20px;
+            }
+
+            &__title {
+                font-size: 18px;
+            }
+        }
+
+        .vv-pricing-points {
+            ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vv-calc-framework__card {
+            padding: 20px;
+        }
+    }
+}

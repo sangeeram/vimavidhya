@@ -1,0 +1,268 @@
+// ========================================
+// VIMA VIDYA - PA SUITABILITY SECTION (WHITE THEME CARD)
+// ========================================
+
+@use "../../../../../abstracts/variables" as *;
+
+.lifestage-section {
+    background-color: $color-navy-dark;
+    color: $color-white;
+    padding: $space-section 20px;
+    font-family: $font-primary;
+
+    .lifestage-container {
+        max-width: $container-width;
+        margin: 0 auto;
+    }
+
+    // Header Styling
+    .lifestage-header {
+        margin-bottom: $space-element;
+
+        .main-heading {
+            font-size: 44px;
+            font-weight: 600;
+            color: $color-white;
+            line-height: $line-heading;
+            margin-bottom: $space-small;
+
+            @media (min-width: 768px) {
+                font-size: $text-h2;
+            }
+        }
+
+        .section-desc {
+            color: $color-text-light;
+            font-size: $text-sm;
+            line-height: $line-body;
+            max-width: 1000px;
+
+            @media (min-width: 768px) {
+                font-size: $text-base;
+            }
+        }
+    }
+
+    // Navigation Tabs
+    .lifestage-tabs-nav {
+        display: flex;
+        gap: $space-small;
+        overflow-x: auto;
+        padding-bottom: $space-small;
+        margin-bottom: $space-element;
+        border-bottom: 1px solid $color-border-dark;
+
+        .tab-btn {
+            background: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-pill;
+            color: $color-navy-dark;
+            padding: $space-small $space-element;
+            font-size: $text-sm;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: $space-small;
+            transition: all $transition-fast;
+
+            &:hover {
+                background: lighten($color-white, 5%);
+                border-color: $color-blue;
+                color: $color-blue;
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                color: $color-white;
+            }
+        }
+    }
+
+    // Panel Animation
+    .lifestage-tabs-content {
+        .tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn $transition forwards;
+            }
+        }
+    }
+
+    // WHITE THEME MAIN CARD
+    .single-lifestage-card.white-theme {
+        background: $color-white;
+        border-radius: $radius-md;
+        padding: $space-content;
+        display: grid;
+        grid-template-columns: 1.65fr 1fr;
+        gap: $space-content;
+        align-items: stretch;
+        color: $color-text;
+
+        @media (max-width: 991px) {
+            grid-template-columns: 1fr;
+            padding: $space-element;
+        }
+
+        // Left Side Content
+        .card-left-content {
+            display: flex;
+            flex-direction: column;
+
+            .badge {
+                background: $color-navy;
+                color: $color-text-light;
+                font-size: $text-xs;
+                font-weight: 700;
+                padding: $space-small $space-content;
+                border-radius: $radius-pill;
+                display: inline-block;
+                align-self: flex-start;
+                margin-bottom: $space-element;
+            }
+
+            .panel-title {
+                font-size: $text-h3;
+                font-weight: 700;
+                color: $color-text;
+                line-height: $line-heading;
+                margin-bottom: $space-element;
+            }
+
+            // Details Sub-grid (Priority + Cost)
+            .details-grid {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: $space-element;
+
+                @media (max-width: 650px) {
+                    grid-template-columns: 1fr;
+                    gap: $space-element;
+                }
+
+                .section-sub-title {
+                    color: $color-navy;
+                    font-size: $text-xs;
+                    font-weight: 800;
+                    letter-spacing: 1.2px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                }
+
+                // Sub Column 1: Priority Focus
+                .priority-column {
+                    .priority-list {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: $space-small;
+
+                        li {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: $space-small;
+                            font-size: 15px;
+                            line-height: 1.4;
+                            color: $color-text-body;
+
+                            .check-icon {
+                                color: $color-orange;
+                                flex-shrink: 0;
+                                margin-top: $space-small;
+                            }
+                        }
+                    }
+                }
+
+                // Sub Column 2: Illustrative Cost
+                .cost-column {
+                    background: transparent;
+                    padding: 0 0 0 $space-element;
+                    border-left: 1px solid $color-border;
+
+                    @media (max-width: 650px) {
+                        padding-left: 0;
+                        border-left: none;
+                        border-top: 1px solid $color-border;
+                        padding-top: $space-element;
+                    }
+
+                    .cost-details {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0 0 $space-element 0;
+
+                        li {
+                            font-size: $text-sm;
+                            color: $color-text-body;
+                            padding: $space-small 0;
+                            border-bottom: 1px dashed $color-border;
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+
+                            strong {
+                                color: $color-text;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    .cost-highlight {
+                        color: $color-orange;
+                        font-size: $text-base;
+                        font-weight: 700;
+                        line-height: $line-body;
+                        margin-top: $space-small;
+                    }
+                }
+            }
+        }
+
+        // Right Side Image
+        .card-right-image {
+            display: flex;
+            align-items: stretch;
+
+            .image-box {
+                width: 100%;
+                height: 100%;
+                min-height: 280px;
+                border-radius: $radius-sm;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform $transition;
+
+                    &:hover {
+                        transform: scale(1.03);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Fade Animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

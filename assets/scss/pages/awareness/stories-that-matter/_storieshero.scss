@@ -1,0 +1,1142 @@
+// ========================================================
+// VIMA VIDYA
+// STORIES — HERO
+// ========================================================
+
+@use "../../../abstracts/variables" as *;
+
+
+// ========================================================
+// HERO
+// ========================================================
+
+.stories-hero-section {
+    position: relative;
+      padding-top: 60px;
+    min-height: 500px;
+    overflow: hidden;
+    background: $color-cream;
+}
+
+
+// ========================================================
+// BACKGROUND IMAGE
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .hero-bg-img {
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        /*
+         * Keep the people/family toward the
+         * right side, similar to Risk Management.
+         */
+        object-position: 72% center;
+    }
+}
+
+
+// ========================================================
+// WHITE / CREAM FADE
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+
+        z-index: 1;
+
+        /*
+         * IMPORTANT:
+         *
+         * Left side = almost completely cream
+         * Middle    = image starts appearing
+         * Right     = image clearly visible
+         */
+        background:
+            linear-gradient(
+                90deg,
+
+                rgba(253, 251, 247, 1) 0%,
+
+                rgba(253, 251, 247, 0.99) 15%,
+
+                rgba(253, 251, 247, 0.96) 28%,
+
+                rgba(253, 251, 247, 0.88) 38%,
+
+                rgba(253, 251, 247, 0.68) 48%,
+
+                rgba(253, 251, 247, 0.42) 58%,
+
+                rgba(253, 251, 247, 0.18) 70%,
+
+                rgba(253, 251, 247, 0.04) 84%,
+
+                rgba(253, 251, 247, 0) 100%
+            );
+    }
+}
+
+
+// ========================================================
+// HERO CONTAINER
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-container {
+        position: relative;
+        z-index: 3;
+
+        width: min(
+            calc(100% - 48px),
+            $container-width
+        );
+
+        min-height: 400px;
+
+        margin: 0 auto;
+
+        padding-top: 48px;
+        // padding-bottom: 160px;
+    }
+}
+
+
+// ========================================================
+// HERO GRID
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-grid {
+        position: relative;
+
+        min-height: 540px;
+
+        display: flex;
+
+        align-items: flex-start;
+    }
+}
+
+
+// ========================================================
+// LEFT CONTENT
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-content {
+        position: relative;
+        z-index: 4;
+
+        width: 56%;
+
+        max-width: 650px;
+
+        padding-top: 8px;
+    }
+}
+
+
+// ========================================================
+// EYEBROW
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-eyebrow {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        margin-bottom: 22px;
+
+        color: $color-orange;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        font-weight: 700;
+
+        letter-spacing: 0.16em;
+
+        text-transform: uppercase;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+        content: "";
+
+        width: 30px;
+        height: 2px;
+
+        flex-shrink: 0;
+
+        background: $color-orange;
+    }
+}
+
+
+// ========================================================
+// TITLE
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-title {
+        margin: 0;
+
+        max-width: 560px;
+
+        color: $color-navy;
+
+        font-family: $font-primary;
+
+        font-size: clamp(
+            46px,
+            4.2vw,
+            60px
+        );
+
+        font-weight: 700;
+
+        line-height: 1.05;
+
+        letter-spacing: -0.035em;
+    }
+
+    .hero-title .text-navy {
+        color: $color-navy;
+    }
+
+    .hero-title .text-blue {
+        display: block;
+
+        color: $color-blue;
+
+        font-weight: 600;
+    }
+}
+
+
+// ========================================================
+// DESCRIPTION
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-description {
+        max-width: 610px;
+
+        margin: 24px 0 0;
+
+        color: $color-text-body;
+
+        font-family: $font-primary;
+
+        font-size: $text-lg;
+
+        line-height: 1.55;
+    }
+}
+
+
+// ========================================================
+// BREADCRUMBS
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-breadcrumbs {
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        margin-top: 18px;
+
+        color: $color-text-muted;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+    }
+
+    .hero-breadcrumbs a {
+        color: $color-text-muted;
+
+        text-decoration: none;
+    }
+
+    .hero-breadcrumbs a:hover {
+        color: $color-blue;
+    }
+
+    .hero-breadcrumbs a:last-of-type {
+        color: $color-orange;
+
+        font-weight: 500;
+    }
+
+    .hero-breadcrumbs .sep {
+        color: $color-text-muted;
+    }
+}
+
+
+// ========================================================
+// ACTIONS
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-actions {
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        margin-top: 28px;
+    }
+
+    .btn {
+        min-height: 50px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        padding: 0 21px;
+
+        border-radius: $radius-sm;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        font-weight: 700;
+
+        text-decoration: none;
+
+        transition:
+            all $transition;
+    }
+
+    .btn svg {
+        flex-shrink: 0;
+
+        transition:
+            transform $transition-fast;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn:hover svg {
+        transform: translateX(3px);
+    }
+}
+
+
+// ========================================================
+// PRIMARY BUTTON
+// ========================================================
+
+.stories-hero-section {
+
+    .btn-primary {
+        color: $color-white;
+
+        background: $color-navy;
+
+        border: 1px solid $color-navy;
+
+        box-shadow:
+            0 8px 18px rgba(
+                3,
+                21,
+                46,
+                0.18
+            );
+    }
+
+    .btn-primary:hover {
+        color: $color-white;
+
+        background: $color-blue;
+
+        border-color: $color-blue;
+    }
+}
+
+
+// ========================================================
+// SECONDARY BUTTON
+// ========================================================
+
+.stories-hero-section {
+
+    .btn-secondary {
+        color: $color-navy;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.80
+        );
+
+        border: 1px solid rgba(
+            3,
+            21,
+            46,
+            0.15
+        );
+
+        backdrop-filter: blur(6px);
+    }
+
+    .btn-secondary:hover {
+        color: $color-white;
+
+        background: $color-navy;
+
+        border-color: $color-navy;
+    }
+}
+
+
+// ========================================================
+// FEATURED CARD
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-wrapper {
+        position: absolute;
+
+        top: 28px;
+
+        right: 0;
+
+        z-index: 6;
+
+        width: 420px;
+    }
+
+    .hero-card {
+        width: 100%;
+
+        padding: 36px 34px;
+
+        background: $color-navy;
+
+        border-radius: $radius-lg;
+
+        box-shadow:
+            0 22px 45px rgba(
+                3,
+                21,
+                46,
+                0.25
+            );
+    }
+}
+
+
+// ========================================================
+// CARD ICON
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-icon {
+        width: 52px;
+
+        height: 52px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin-bottom: 26px;
+
+        color: $color-orange;
+
+        background: rgba(
+            245,
+            154,
+            24,
+            0.08
+        );
+
+        border: 1px solid rgba(
+            245,
+            154,
+            24,
+            0.30
+        );
+
+        border-radius: 50%;
+    }
+
+    .hero-card-icon svg {
+        width: 27px;
+        height: 27px;
+    }
+}
+
+
+// ========================================================
+// CARD TAG
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-tag {
+        display: block;
+
+        margin-bottom: 13px;
+
+        color: $color-orange;
+
+        font-family: $font-primary;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.12em;
+
+        text-transform: uppercase;
+    }
+}
+
+
+// ========================================================
+// CARD TITLE
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-title {
+        margin: 0;
+
+        color: $color-white;
+
+        font-family: $font-primary;
+
+        font-size: $text-h3;
+
+        font-weight: 700;
+
+        line-height: 1.18;
+    }
+}
+
+
+// ========================================================
+// CARD DESCRIPTION
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-desc {
+        margin: 14px 0 24px;
+
+        color: rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        line-height: 1.6;
+    }
+}
+
+
+// ========================================================
+// CARD LINK
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-card-link {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        color: $color-white;
+
+        font-family: $font-primary;
+
+        font-size: $text-sm;
+
+        font-weight: 700;
+
+        text-decoration: none;
+    }
+
+    .hero-card-link:hover {
+        color: $color-orange;
+    }
+
+    .hero-card-link svg {
+        transition:
+            transform $transition-fast;
+    }
+
+    .hero-card-link:hover svg {
+        transform: translateX(4px);
+    }
+}
+
+
+// ========================================================
+// STATS BAR
+// ========================================================
+
+.stories-hero-section {
+
+    .hero-stats-bar {
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 28px;
+
+        z-index: 7;
+
+        width: min(
+            calc(100% - 48px),
+            $container-width
+        );
+
+        min-height: 122px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        transform: translateX(-50%);
+
+        overflow: hidden;
+
+        background: $color-navy;
+
+        border-radius: $radius-md;
+
+        box-shadow:
+            0 18px 40px rgba(
+                3,
+                21,
+                46,
+                0.22
+            );
+    }
+}
+
+
+// ========================================================
+// STAT ITEM
+// ========================================================
+
+.stories-hero-section {
+
+    .stat-item {
+        min-height: 122px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 18px 22px;
+
+        border-right: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.13
+        );
+    }
+
+    .stat-item:last-child {
+        border-right: 0;
+    }
+}
+
+
+// ========================================================
+// STAT ICON
+// ========================================================
+
+.stories-hero-section {
+
+    .stat-icon {
+        flex: 0 0 58px;
+
+        width: 58px;
+
+        height: 58px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: $color-orange;
+
+        background: rgba(
+            245,
+            154,
+            24,
+            0.08
+        );
+
+        border: 1px solid rgba(
+            245,
+            154,
+            24,
+            0.30
+        );
+
+        border-radius: 50%;
+    }
+
+    .stat-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+// ========================================================
+// STAT CONTENT
+// ========================================================
+
+.stories-hero-section {
+
+    .stat-content {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .stat-number {
+        color: $color-white;
+
+        font-family: $font-primary;
+
+        font-size: 38px;
+
+        font-weight: 700;
+
+        line-height: 1;
+
+        letter-spacing: -0.03em;
+
+        white-space: nowrap;
+    }
+
+    .stat-label {
+        max-width: 175px;
+
+        color: rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+        font-family: $font-primary;
+
+        font-size: $text-xs;
+
+        line-height: 1.4;
+    }
+}
+
+
+// ========================================================
+// LARGE TABLET
+// ========================================================
+
+@media (max-width: 1100px) {
+
+    .stories-hero-section {
+
+        min-height: 700px;
+
+
+        .hero-content {
+            width: 55%;
+        }
+
+
+        .hero-card-wrapper {
+            width: 370px;
+
+            top: 50px;
+        }
+
+
+        .hero-card {
+            padding: 30px;
+        }
+
+
+        .hero-stats-bar {
+            width: calc(100% - 40px);
+        }
+
+
+        .stat-item {
+            padding: 18px 15px;
+
+            gap: 10px;
+        }
+
+
+        .stat-icon {
+            flex-basis: 50px;
+
+            width: 50px;
+            height: 50px;
+        }
+
+
+        .stat-number {
+            font-size: 32px;
+        }
+    }
+}
+
+
+// ========================================================
+// TABLET / MOBILE
+// ========================================================
+
+@media (max-width: 768px) {
+
+    .stories-hero-section {
+
+        min-height: auto;
+
+        padding-bottom: 0;
+
+
+        // ------------------------------------
+        // Background
+        // ------------------------------------
+
+        .hero-bg {
+            height: 600px;
+        }
+
+
+        .hero-bg-img {
+            height: 600px;
+
+            object-position: 70% center;
+        }
+
+
+        // ------------------------------------
+        // Mobile overlay
+        // ------------------------------------
+
+        .hero-overlay {
+            height: 650px;
+
+            background:
+                linear-gradient(
+                    180deg,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.94
+                    ) 0%,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.90
+                    ) 38%,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.82
+                    ) 60%,
+
+                    rgba(
+                        253,
+                        251,
+                        247,
+                        0.96
+                    ) 82%,
+
+                    $color-cream 100%
+                );
+        }
+
+
+        // ------------------------------------
+        // Container
+        // ------------------------------------
+
+        .hero-container {
+            width: calc(100% - 32px);
+
+            min-height: auto;
+
+            padding-top: 45px;
+
+            padding-bottom: 30px;
+        }
+
+
+        // ------------------------------------
+        // Grid
+        // ------------------------------------
+
+        .hero-grid {
+            min-height: auto;
+
+            display: block;
+        }
+
+
+        // ------------------------------------
+        // Content
+        // ------------------------------------
+
+        .hero-content {
+            width: 100%;
+
+            max-width: none;
+
+            padding-top: 0;
+        }
+
+
+        // ------------------------------------
+        // Eyebrow
+        // ------------------------------------
+
+        .hero-eyebrow {
+            margin-bottom: 18px;
+        }
+
+
+        // ------------------------------------
+        // Title
+        // ------------------------------------
+
+        .hero-title {
+            max-width: 100%;
+
+            font-size: 40px;
+
+            line-height: 1.08;
+        }
+
+
+        // ------------------------------------
+        // Description
+        // ------------------------------------
+
+        .hero-description {
+            max-width: 100%;
+
+            margin-top: 18px;
+
+            font-size: $text-base;
+        }
+
+
+        // ------------------------------------
+        // Breadcrumbs
+        // ------------------------------------
+
+        .hero-breadcrumbs {
+            margin-top: 14px;
+        }
+
+
+        // ------------------------------------
+        // Buttons
+        // ------------------------------------
+
+        .hero-actions {
+            flex-direction: column;
+
+            align-items: stretch;
+
+            margin-top: 22px;
+        }
+
+
+        .btn {
+            width: 100%;
+        }
+
+
+        // ------------------------------------
+        // Card
+        // ------------------------------------
+
+        .hero-card-wrapper {
+            position: relative;
+
+            top: auto;
+
+            right: auto;
+
+            width: 100%;
+
+            margin-top: 35px;
+        }
+
+
+        .hero-card {
+            width: 100%;
+
+            padding: 25px;
+        }
+
+
+        // ------------------------------------
+        // Stats
+        // ------------------------------------
+
+        .hero-stats-bar {
+            position: relative;
+
+            left: auto;
+
+            bottom: auto;
+
+            width: calc(100% - 32px);
+
+            margin: 25px auto 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            transform: none;
+        }
+
+
+        .stat-item {
+            min-height: 95px;
+
+            border-right: 0;
+
+            border-bottom: 1px solid rgba(
+                255,
+                255,
+                255,
+                0.13
+            );
+        }
+
+
+        .stat-item:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+
+// ========================================================
+// SMALL MOBILE
+// ========================================================
+
+@media (max-width: 480px) {
+
+    .stories-hero-section {
+
+        .hero-title {
+            font-size: 34px;
+        }
+
+
+        .hero-description {
+            font-size: 15px;
+        }
+
+
+        .hero-card {
+            padding: 21px;
+        }
+
+
+        .hero-card-title {
+            font-size: 22px;
+        }
+
+
+        .hero-card-desc {
+            font-size: 14px;
+        }
+
+
+        .stat-number {
+            font-size: 30px;
+        }
+    }
+}

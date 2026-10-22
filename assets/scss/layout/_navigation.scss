@@ -1,1547 +1,568 @@
-/* =========================================================
-   VIMAVIDYA
-   PREMIUM GLASS NAVBAR
-========================================================= */
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
+@use "../abstracts/variables" as *;
+// ========================================
+// VIMA VIDYA
+// NAVIGATION COMPONENT
+// ========================================
 
-$nav-font:
-    Calibri,
-    "Segoe UI",
-    Arial,
-    sans-serif;
+/* --- Component Specific Glass Tokens (Derived from System) --- */
+$nav-glass-bg: linear-gradient(
+  180deg,
+  rgba($color-white, 0.88) 0%,
+  rgba($color-white, 0.68) 60%,
+  rgba($color-white, 0) 100%
+);
+$nav-dark-glass: rgba($color-navy-dark, 0.97);
 
-$nav-navy: #06152d;
-
-$nav-white: #ffffff;
-
-$nav-text: rgba(6, 21, 45, 0.88);
-
-$nav-text-hover: #06152d;
-
-$nav-muted: rgba(255, 255, 255, 0.68);
-
-$nav-orange: #f59a18;
-
-$nav-orange-hover: #ffab2e;
-
-$nav-teal: #19b7a5;
-
-$nav-border: rgba(6, 21, 45, 0.12);
-
-$nav-dark-glass: rgba(5, 20, 43, 0.97);
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
+/* --- Header Layout --- */
 .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  font-family: $font-primary;
+  background: $nav-glass-bg;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background $transition-slow, backdrop-filter $transition-slow, box-shadow $transition-slow;
 
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    z-index: 1000;
-
-    width: 100%;
-
-    font-family: $nav-font;
-
-    /*
-     * LIGHT GLASS
-     * This keeps the dark logo visible.
-     */
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.88) 0%,
-            rgba(255, 255, 255, 0.68) 60%,
-            rgba(255, 255, 255, 0) 100%
-        );
-
-    backdrop-filter: blur(10px);
-
-    -webkit-backdrop-filter: blur(10px);
-
-    transition:
-        background 0.35s ease,
-        backdrop-filter 0.35s ease,
-        box-shadow 0.35s ease;
-
-
-    /* =====================================================
-       NAVBAR CONTAINER
-    ===================================================== */
-
-    .navbar-container {
-
-        width: min(88%, 1380px);
-
-        min-height: 82px;
-
-        margin: 0 auto;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 35px;
-    }
-
-
-    /* =====================================================
-       LOGO
-    ===================================================== */
-
-    /* =====================================================
-   LOGO
-===================================================== */
-
-.navbar-logo {
-
-    flex: 0 0 auto;
-
+  .navbar-container {
+    width: min(88%, $container-wide);
+    min-height: 82px;
+    margin: 0 auto;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-element;
+  }
 
+  /* Logo */
+  .navbar-logo {
+    flex: 0 0 auto;
+    display: flex;
     align-items: center;
 
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      outline: none;
+
+      .logo-img {
+        display: block;
+        width: 225px;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  /* Navigation Base */
+  .main-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-element;
+    margin-left: auto;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-element;
+    margin: 0;
     padding: 0;
+    list-style: none;
 
-    background: transparent;
+    li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
 
-    border: 0;
-
-    box-shadow: none;
-
-    backdrop-filter: none;
-
-    -webkit-backdrop-filter: none;
-}
-
-
-.logo-link {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    text-decoration: none;
-
-    outline: none;
-}
-
-
-.logo-img {
-
-    display: block;
-
-    width: 225px;
-
-    height: auto;
-
-    max-width: 100%;
-
-    object-fit: contain;
-}
-
-    /* =====================================================
-       MAIN NAVIGATION
-    ===================================================== */
-
-    .main-navigation {
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: flex-end;
-
-        gap: 22px;
-
-        margin-left: auto;
+      &::before,
+      &::after {
+        display: none;
+      }
     }
 
+    /* Top-Level Menu Items */
+    > li {
+      position: relative;
 
-    /* =====================================================
-       WORDPRESS MENU
-    ===================================================== */
-
-    .nav-menu {
-
-        display: flex;
-
+      > a {
+        position: relative;
+        display: inline-flex;
         align-items: center;
-
-        justify-content: flex-end;
-
-        gap: 27px;
-
-        margin: 0;
-
+        justify-content: center;
+        min-height: 82px;
         padding: 0;
+        color: $color-text;
+        background: transparent;
+        text-decoration: none;
+        font-family: $font-primary;
+        font-size: $text-base;
+        font-weight: 700;
+        line-height: $line-tight;
+        white-space: nowrap;
+        outline: none;
+        transition: color $transition-fast;
 
-        list-style: none;
+        /* Active/Hover Indicator Bar */
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 18px;
+          width: 0;
+          height: 2px;
+          border-radius: $radius-pill;
+          background: $color-orange;
+          transition: width $transition;
+        }
+      }
 
+      &:hover > a,
+      &.current-menu-item > a,
+      &.current-menu-ancestor > a {
+        color: $color-navy;
 
-        /* =================================================
-           REMOVE WORDPRESS DEFAULTS
-        ================================================= */
+        &::after {
+          width: 100%;
+        }
+      }
 
-        li {
+      /* Dropdown Arrow Indicator */
+      &.menu-item-has-children {
+        > a {
+          padding-right: 15px;
 
-            position: relative;
-
-            margin: 0;
-
-            padding: 0;
-
-            list-style: none;
-
-
-            &::before,
-            &::after {
-
-                display: none;
-            }
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 1px;
+            width: 5px;
+            height: 5px;
+            border-right: 1px solid rgba($color-text, 0.65);
+            border-bottom: 1px solid rgba($color-text, 0.65);
+            transform: translateY(-70%) rotate(45deg);
+            transition: transform $transition-fast;
+          }
         }
 
+        &:hover > a::before {
+          transform: translateY(-35%) rotate(225deg);
+        }
+      }
 
-        /* =================================================
-           TOP LEVEL MENU ITEMS
-        ================================================= */
+      /* Level 1 Submenu */
+      > .sub-menu {
+        position: absolute;
+        top: calc(100% - 4px);
+        left: 50%;
+        z-index: 100;
+        min-width: 225px;
+        margin: 0;
+        padding: $space-small;
+        list-style: none;
+        background: $nav-dark-glass;
+        border: 1px solid $color-border-dark;
+        border-radius: $radius-md;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translate(-50%, 10px);
+        transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
 
         > li {
+          position: relative;
+          width: 100%;
 
+          > a {
             position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 40px;
+            padding: 8px $space-small;
+            border-radius: $radius-sm;
+            color: $color-text-muted;
+            background: transparent;
+            text-decoration: none;
+            font-size: $text-sm;
+            font-weight: 400;
+            white-space: nowrap;
+            transition: color $transition-fast, background $transition-fast, padding-left $transition-fast;
 
-
-            /* =================================================
-               TOP LEVEL LINK
-            ================================================= */
-
-            > a {
-
-                position: relative;
-
-                display: inline-flex;
-
-                align-items: center;
-
-                justify-content: center;
-
-                min-height: 82px;
-
-                padding: 0;
-
-                color: $nav-text;
-
-                background: transparent;
-
-                text-decoration: none;
-
-                font-family: $nav-font;
-
-                font-size: 16px;
-
-                font-weight: 700;
-
-                line-height: 1;
-
-                white-space: nowrap;
-
-                outline: none;
-
-                transition:
-                    color 0.25s ease;
+            &::after {
+              display: none;
             }
-
-
-            /* =================================================
-               ACTIVE / HOVER ORANGE LINE
-            ================================================= */
-
-            > a::after {
-
-                content: "";
-
-                position: absolute;
-
-                left: 0;
-
-                bottom: 18px;
-
-                width: 0;
-
-                height: 2px;
-
-                border-radius: 999px;
-
-                background: $nav-orange;
-
-                transition:
-                    width 0.3s ease;
-            }
-
-
-            /* =================================================
-               HOVER + ACTIVE
-            ================================================= */
-
-            &:hover > a,
-            &.current-menu-item > a,
-            &.current-menu-ancestor > a,
-            &.current_page_item > a,
-            &.current_page_ancestor > a {
-
-                color: $nav-text-hover;
-            }
-
-
-            &:hover > a::after,
-            &.current-menu-item > a::after,
-            &.current-menu-ancestor > a::after,
-            &.current_page_item > a::after,
-            &.current_page_ancestor > a::after {
-
-                width: 100%;
-            }
-
-
-            /* =================================================
-               MENU WITH CHILDREN
-            ================================================= */
-
-            &.menu-item-has-children {
-
-                > a {
-
-                    padding-right: 15px;
-
-
-                    /* -----------------------------------------
-                       DOWN ARROW
-                    ----------------------------------------- */
-
-                    &::before {
-
-                        content: "";
-
-                        position: absolute;
-
-                        top: 50%;
-
-                        right: 1px;
-
-                        width: 5px;
-
-                        height: 5px;
-
-                        border-right:
-                            1px solid rgba(6, 21, 45, 0.65);
-
-                        border-bottom:
-                            1px solid rgba(6, 21, 45, 0.65);
-
-                        transform:
-                            translateY(-70%)
-                            rotate(45deg);
-
-                        transition:
-                            transform 0.25s ease;
-                    }
-                }
-
-
-                &:hover {
-
-                    > a::before {
-
-                        transform:
-                            translateY(-35%)
-                            rotate(225deg);
-                    }
-                }
-            }
-
-
-            /* =================================================
-               FIRST LEVEL SUBMENU
-            ================================================= */
-
-            > .sub-menu {
-
-                position: absolute;
-
-                top: calc(100% - 4px);
-
-                left: 50%;
-
-                z-index: 100;
-
-                min-width: 225px;
-
-                margin: 0;
-
-                padding: 9px;
-
-                list-style: none;
-
-                background:
-                    $nav-dark-glass;
-
-                border:
-                    1px solid rgba(255, 255, 255, 0.12);
-
-                border-radius: 12px;
-
-                box-shadow:
-                    0 20px 50px rgba(0, 0, 0, 0.30);
-
-                backdrop-filter:
-                    blur(18px);
-
-                -webkit-backdrop-filter:
-                    blur(18px);
-
-                opacity: 0;
-
-                visibility: hidden;
-
-                pointer-events: none;
-
-                transform:
-                    translate(-50%, 10px);
-
-                transition:
-                    opacity 0.25s ease,
-                    visibility 0.25s ease,
-                    transform 0.25s ease;
-
-
-                /* =================================================
-                   SUBMENU ITEMS
-                ================================================= */
-
-                > li {
-
-                    position: relative;
-
-                    width: 100%;
-
-
-                    /* =================================================
-                       SUBMENU LINK
-                    ================================================= */
-
-                    > a {
-
-                        position: relative;
-
-                        display: flex;
-
-                        align-items: center;
-
-                        width: 100%;
-
-                        min-height: 40px;
-
-                        padding: 9px 12px;
-
-                        border-radius: 7px;
-
-                        color: $nav-muted;
-
-                        background: transparent;
-
-                        text-decoration: none;
-
-                        font-family: $nav-font;
-
-                        font-size: 12px;
-
-                        font-weight: 400;
-
-                        line-height: 1.3;
-
-                        white-space: nowrap;
-
-                        outline: none;
-
-                        transition:
-                            color 0.2s ease,
-                            background 0.2s ease,
-                            padding-left 0.2s ease;
-
-
-                        /* -----------------------------------------
-                           REMOVE ORANGE TOP MENU LINE
-                        ----------------------------------------- */
-
-                        &::after {
-
-                            display: none;
-                        }
-
-
-                        /* -----------------------------------------
-                           SUBMENU HOVER
-                        ----------------------------------------- */
-
-                        &:hover {
-
-                            padding-left: 17px;
-
-                            color: $nav-white;
-
-                            background:
-                                rgba(255, 255, 255, 0.08);
-                        }
-                    }
-
-
-                    /* =================================================
-                       ACTIVE SUBMENU
-                    ================================================= */
-
-                    &.current-menu-item,
-                    &.current-menu-ancestor,
-                    &.current_page_item {
-
-                        > a {
-
-                            color: $nav-white;
-
-                            background:
-                                rgba(25, 183, 165, 0.12);
-
-
-                            &::before {
-
-                                content: "";
-
-                                width: 5px;
-
-                                height: 5px;
-
-                                flex: 0 0 5px;
-
-                                margin-right: 8px;
-
-                                border-radius: 50%;
-
-                                background:
-                                    $nav-teal;
-                            }
-                        }
-                    }
-
-
-                    /* =================================================
-                       SECOND LEVEL SUBMENU
-                    ================================================= */
-
-                    &.menu-item-has-children {
-
-                        > a {
-
-                            padding-right: 25px;
-
-
-                            &::after {
-
-                                content: "";
-
-                                display: block;
-
-                                position: absolute;
-
-                                right: 12px;
-
-                                top: 50%;
-
-                                width: 5px;
-
-                                height: 5px;
-
-                                border-right:
-                                    1px solid rgba(255, 255, 255, 0.6);
-
-                                border-bottom:
-                                    1px solid rgba(255, 255, 255, 0.6);
-
-                                transform:
-                                    translateY(-50%)
-                                    rotate(-45deg);
-                            }
-                        }
-
-
-                        > .sub-menu {
-
-                            position: absolute;
-
-                            top: -9px;
-
-                            left: calc(100% + 8px);
-
-                            min-width: 210px;
-
-                            margin: 0;
-
-                            padding: 9px;
-
-                            list-style: none;
-
-                            background:
-                                $nav-dark-glass;
-
-                            border:
-                                1px solid rgba(255, 255, 255, 0.12);
-
-                            border-radius: 12px;
-
-                            box-shadow:
-                                0 20px 50px rgba(0, 0, 0, 0.30);
-
-                            backdrop-filter:
-                                blur(18px);
-
-                            -webkit-backdrop-filter:
-                                blur(18px);
-
-                            opacity: 0;
-
-                            visibility: hidden;
-
-                            pointer-events: none;
-
-                            transform:
-                                translateX(8px);
-
-                            transition:
-                                opacity 0.25s ease,
-                                visibility 0.25s ease,
-                                transform 0.25s ease;
-                        }
-
-
-                        &:hover {
-
-                            > .sub-menu {
-
-                                opacity: 1;
-
-                                visibility: visible;
-
-                                pointer-events: auto;
-
-                                transform:
-                                    translateX(0);
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            /* =================================================
-               SHOW FIRST LEVEL SUBMENU
-            ================================================= */
 
             &:hover {
-
-                > .sub-menu {
-
-                    opacity: 1;
-
-                    visibility: visible;
-
-                    pointer-events: auto;
-
-                    transform:
-                        translate(-50%, 0);
-                }
+              padding-left: 16px;
+              color: $color-white;
+              background: rgba($color-white, 0.08);
             }
-        }
-    }
-
-
-    /* =====================================================
-       START LEARNING BUTTON
-       HARD-CODED IN HEADER.PHP
-    ===================================================== */
-
-    .header-learning-btn {
-
-        flex: 0 0 auto;
-
-        display: inline-flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 7px;
-
-        min-height: 38px;
-
-        padding:
-            0 13px 0 16px;
-
-        border:
-            1px solid $nav-orange;
-
-        border-radius: 7px;
-
-        background:
-            $nav-orange;
-
-        color:
-            $nav-white;
-
-        text-decoration: none;
-
-        font-family:
-            $nav-font;
-
-        font-size: 16px;
-
-        font-weight: 600;
-
-        line-height: 1;
-
-        white-space: nowrap;
-
-        box-shadow:
-            0 7px 20px rgba(245, 154, 24, 0.20);
-
-        transition:
-            background 0.25s ease,
-            border-color 0.25s ease,
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
-
-
-        &:hover {
-
-            background:
-                $nav-orange-hover;
-
-            border-color:
-                $nav-orange-hover;
-
-            color:
-                $nav-white;
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 9px 25px rgba(245, 154, 24, 0.30);
-        }
-
-
-        .learning-arrow {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 20px;
-
-            height: 20px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255, 255, 255, 0.18);
-
-            color:
-                $nav-white;
-
-            font-size: 11px;
-
-            line-height: 1;
-
-            transition:
-                transform 0.25s ease;
-        }
-
-
-        &:hover {
-
-            .learning-arrow {
-
-                transform:
-                    translate(2px, -2px);
-            }
-        }
-    }
-
-
-    /* =====================================================
-       MOBILE TOGGLE
-    ===================================================== */
-
-    .menu-toggle {
-
-        display: none;
-
-        flex: 0 0 auto;
-
-        width: 42px;
-
-        height: 42px;
-
-        padding: 0;
-
-        border:
-            1px solid rgba(6, 21, 45, 0.16);
-
-        border-radius: 8px;
-
-        background:
-            rgba(255, 255, 255, 0.72);
-
-        color:
-            $nav-navy;
-
-        cursor: pointer;
-
-        align-items: center;
-
-        justify-content: center;
-
-        transition:
-            background 0.25s ease,
-            border-color 0.25s ease;
-
-
-        &:hover {
-
-            background:
-                rgba(255, 255, 255, 0.95);
-
-            border-color:
-                rgba(6, 21, 45, 0.28);
-        }
-
-
-        .hamburger-bar {
-
-            position: relative;
-
-            display: block;
-
-            width: 20px;
-
-            height: 2px;
-
-            border-radius: 5px;
-
-            background:
-                $nav-navy;
-
-            transition:
-                background 0.3s ease;
-
-
-            &::before,
-            &::after {
-
-                content: "";
-
-                position: absolute;
-
-                left: 0;
-
-                width: 20px;
-
-                height: 2px;
-
-                border-radius: 5px;
-
-                background:
-                    $nav-navy;
-
-                transition:
-                    transform 0.3s ease,
-                    top 0.3s ease;
-            }
-
+          }
+
+          &.current-menu-item > a {
+            color: $color-white;
+            background: rgba($color-blue, 0.15);
 
             &::before {
+              content: "";
+              width: 6px;
+              height: 6px;
+              flex: 0 0 6px;
+              margin-right: 8px;
+              border-radius: 50%;
+              background: $color-success;
+            }
+          }
 
-                top: -6px;
+          /* Level 2 Submenu */
+          &.menu-item-has-children {
+            > a {
+              padding-right: 25px;
+
+              &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                width: 5px;
+                height: 5px;
+                border-right: 1px solid rgba($color-white, 0.6);
+                border-bottom: 1px solid rgba($color-white, 0.6);
+                transform: translateY(-50%) rotate(-45deg);
+              }
             }
 
-
-            &::after {
-
-                top: 6px;
+            > .sub-menu {
+              position: absolute;
+              top: -$space-small;
+              left: calc(100% + 8px);
+              min-width: 210px;
+              margin: 0;
+              padding: $space-small;
+              background: $nav-dark-glass;
+              border: 1px solid $color-border-dark;
+              border-radius: $radius-md;
+              box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+              backdrop-filter: blur(18px);
+              -webkit-backdrop-filter: blur(18px);
+              opacity: 0;
+              visibility: hidden;
+              pointer-events: none;
+              transform: translateX(8px);
+              transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
             }
+
+            &:hover > .sub-menu {
+              opacity: 1;
+              visibility: visible;
+              pointer-events: auto;
+              transform: translateX(0);
+            }
+          }
         }
+      }
 
+      &:hover > .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
 
-        /* =================================================
-           OPEN MOBILE MENU
-        ================================================= */
+  /* Primary Call to Action Button */
+  .header-learning-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid $color-orange;
+    border-radius: $radius-sm;
+    background: $color-orange;
+    color: $color-white;
+    text-decoration: none;
+    font-size: $text-sm;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 7px 20px rgba($color-orange, 0.25);
+    transition: background $transition-fast, transform $transition-fast, box-shadow $transition-fast;
 
-        &[aria-expanded="true"] {
+    &:hover {
+      background: darken($color-orange, 5%);
+      transform: translateY(-1px);
+      box-shadow: 0 9px 25px rgba($color-orange, 0.35);
 
-            .hamburger-bar {
-
-                background:
-                    transparent;
-
-
-                &::before {
-
-                    top: 0;
-
-                    transform:
-                        rotate(45deg);
-                }
-
-
-                &::after {
-
-                    top: 0;
-
-                    transform:
-                        rotate(-45deg);
-                }
-            }
-        }
+      .learning-arrow {
+        transform: translate(2px, -2px);
+      }
     }
 
-
-    /* =====================================================
-       STICKY HEADER
-    ===================================================== */
-
-    &.is-sticky {
-
-        position: fixed;
-
-        background:
-            rgba(255, 255, 255, 0.94);
-
-        backdrop-filter:
-            blur(18px);
-
-        -webkit-backdrop-filter:
-            blur(18px);
-
-        box-shadow:
-            0 8px 30px rgba(6, 21, 45, 0.12);
-
-
-        .navbar-container {
-
-            min-height: 70px;
-        }
-
-
-        .nav-menu {
-
-            > li {
-
-                > a {
-
-                    min-height: 70px;
-
-
-                    &::after {
-
-                        bottom: 14px;
-                    }
-                }
-            }
-        }
-
-
-        .logo-img {
-
-            width: 215px;
-        }
-
-
-       
+    .learning-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba($color-white, 0.2);
+      color: $color-white;
+      font-size: $text-xs;
+      transition: transform $transition-fast;
     }
+  }
+
+  /* Mobile Hamburger Toggle */
+  .menu-toggle {
+    display: none;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    background: rgba($color-white, 0.72);
+    color: $color-navy;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    .hamburger-bar {
+      position: relative;
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: $radius-pill;
+      background: $color-navy;
+      transition: background $transition;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height: 2px;
+        border-radius: $radius-pill;
+        background: $color-navy;
+        transition: transform $transition, top $transition;
+      }
+
+      &::before { top: -6px; }
+      &::after { top: 6px; }
+    }
+
+    &[aria-expanded="true"] .hamburger-bar {
+      background: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  /* Sticky State */
+  &.is-sticky {
+    position: fixed;
+    background: rgba($color-white, 0.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 8px 30px rgba($color-navy, 0.12);
+
+    .navbar-container {
+      min-height: 70px;
+    }
+
+    .nav-menu > li > a {
+      min-height: 70px;
+
+      &::after {
+        bottom: 14px;
+      }
+    }
+
+    .logo-img {
+      width: 200px;
+    }
+  }
 }
 
+// ========================================
+// RESPONSIVE BREAKPOINTS
+// ========================================
 
-/* =========================================================
-   TABLET / SMALL LAPTOP
-========================================================= */
-
+/* Tablet & Desktop Adjustments */
 @media (max-width: 1200px) {
-
-    .site-header {
-
-        .navbar-container {
-
-            width:
-                calc(100% - 60px);
-
-            gap: 25px;
-        }
-
-
-        .logo-img {
-
-            width: 210px;
-        }
-
-
-        .main-navigation {
-
-            gap: 16px;
-        }
-
-
-        .nav-menu {
-
-            gap: 19px;
-
-
-            > li {
-
-                > a {
-
-                    font-size: 11px;
-                }
-            }
-        }
-
-
-        .header-learning-btn {
-
-            min-height: 36px;
-
-            padding:
-                0 10px 0 13px;
-
-            font-size: 10px;
-        }
+  .site-header {
+    .navbar-container {
+      width: calc(100% - 60px);
+      gap: 16px;
     }
+
+    .nav-menu {
+      gap: $space-small;
+
+      > li > a {
+        font-size: $text-sm;
+      }
+    }
+  }
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .site-header {
-
-        .navbar-container {
-
-            width:
-                calc(100% - 40px);
-
-            min-height: 76px;
-
-            gap: 18px;
-        }
-
-
-        .logo-img {
-
-            width: 190px;
-        }
-
-
-        .main-navigation {
-
-            gap: 12px;
-        }
-
-
-        .nav-menu {
-
-            gap: 14px;
-
-
-            > li {
-
-                > a {
-
-                    font-size: 10px;
-
-                    padding-right: 11px;
-                }
-            }
-        }
-
-
-        .header-learning-btn {
-
-            min-height: 34px;
-
-            padding:
-                0 9px 0 12px;
-
-            font-size: 9px;
-
-
-            .learning-arrow {
-
-                width: 18px;
-
-                height: 18px;
-
-                font-size: 10px;
-            }
-        }
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
+/* Mobile Viewports (<= 900px) */
 @media (max-width: 900px) {
-
-    .site-header {
-
-        /*
-         * Keep light glass on mobile
-         * so dark logo remains visible.
-         */
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0.92),
-                rgba(255, 255, 255, 0.72),
-                rgba(255, 255, 255, 0)
-            );
-
-
-        .navbar-container {
-
-            position: relative;
-
-            width:
-                calc(100% - 32px);
-
-            min-height: 72px;
-
-            gap: 15px;
-        }
-
-
-        /* =================================================
-           MOBILE LOGO
-        ================================================= */
-
-        .navbar-logo {
-
-            padding:
-                4px 8px;
-
-            border-radius: 8px;
-        }
-
-
-        .logo-img {
-
-            width: 175px;
-        }
-
-
-        /* =================================================
-           MOBILE TOGGLE
-        ================================================= */
-
-        .menu-toggle {
-
-            display: flex;
-
-            margin-left: auto;
-        }
-
-
-        /* =================================================
-           MOBILE NAVIGATION
-        ================================================= */
-
-        .main-navigation {
-
-            position: absolute;
-
-            top:
-                calc(100% - 2px);
-
-            left: 0;
-
-            width: 100%;
-
-            display: block;
-
-            margin: 0;
-
-            padding: 10px;
-
-            border:
-                1px solid rgba(6, 21, 45, 0.12);
-
-            border-radius: 14px;
-
-            background:
-                rgba(5, 20, 43, 0.97);
-
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.30);
-
-            backdrop-filter:
-                blur(18px);
-
-            -webkit-backdrop-filter:
-                blur(18px);
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            pointer-events: none;
-
-            transform:
-                translateY(-10px);
-
-            transition:
-                opacity 0.25s ease,
-                visibility 0.25s ease,
-                transform 0.25s ease;
-        }
-
-
-        /* =================================================
-           ACTIVE MOBILE NAV
-        ================================================= */
-
-        .main-navigation.is-active {
-
-            opacity: 1;
-
-            visibility: visible;
-
-            pointer-events: auto;
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =================================================
-           MOBILE MENU
-        ================================================= */
-
-        .nav-menu {
-
-            width: 100%;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: stretch;
-
-            gap: 2px;
-
-
-            > li {
-
-                width: 100%;
-
-
-                > a {
-
-                    width: 100%;
-
-                    min-height: 44px;
-
-                    justify-content: flex-start;
-
-                    padding:
-                        0 13px;
-
-                    border-radius: 8px;
-
-                    color:
-                        rgba(255, 255, 255, 0.82);
-
-                    font-size: 13px;
-
-
-                    &:hover {
-
-                        color:
-                            $nav-white;
-                    }
-
-
-                    &::after {
-
-                        left: 13px;
-
-                        bottom: 5px;
-                    }
-                }
-
-
-                /* =================================================
-                   MOBILE PARENT ARROW
-                ================================================= */
-
-                &.menu-item-has-children {
-
-                    > a {
-
-                        padding-right: 35px;
-
-
-                        &::before {
-
-                            right: 15px;
-
-                            border-color:
-                                rgba(255, 255, 255, 0.70);
-                        }
-                    }
-                }
-
-
-                /* =================================================
-                   MOBILE SUBMENU
-                ================================================= */
-
-                > .sub-menu {
-
-                    position: static;
-
-                    width: 100%;
-
-                    min-width: 0;
-
-                    margin: 0;
-
-                    padding:
-                        4px 7px 7px;
-
-                    background:
-                        rgba(0, 0, 0, 0.14);
-
-                    border: 0;
-
-                    border-radius: 8px;
-
-                    box-shadow: none;
-
-                    backdrop-filter: none;
-
-                    -webkit-backdrop-filter: none;
-
-                    opacity: 1;
-
-                    visibility: visible;
-
-                    pointer-events: auto;
-
-                    transform: none;
-
-
-                    > li {
-
-                        width: 100%;
-
-
-                        > a {
-
-                            min-height: 38px;
-
-                            padding:
-                                8px 12px 8px 25px;
-
-                            border-radius: 6px;
-
-                            color:
-                                rgba(255, 255, 255, 0.66);
-
-                            font-size: 12px;
-
-
-                            &:hover {
-
-                                padding-left: 29px;
-
-                                color:
-                                    $nav-white;
-
-                                background:
-                                    rgba(255, 255, 255, 0.07);
-                            }
-                        }
-                    }
-                }
-
-
-                /* =================================================
-                   SECOND LEVEL MOBILE SUBMENU
-                ================================================= */
-
-                .sub-menu {
-
-                    .sub-menu {
-
-                        position: static;
-
-                        width: 100%;
-
-                        min-width: 0;
-
-                        margin: 0;
-
-                        padding:
-                            2px 0 2px 10px;
-
-                        background:
-                            transparent;
-
-                        border: 0;
-
-                        box-shadow: none;
-
-                        opacity: 1;
-
-                        visibility: visible;
-
-                        transform: none;
-                    }
-                }
-            }
-        }
-
-
-        /* =================================================
-           MOBILE START LEARNING
-        ================================================= */
-
-        .header-learning-btn {
-
-            width: 100%;
-
-            min-height: 44px;
-
-            margin-top: 8px;
-
-            font-size: 12px;
-        }
-
-
-        /* =================================================
-           STICKY MOBILE
-        ================================================= */
-
-        &.is-sticky {
-
-            .navbar-container {
-
-                min-height: 68px;
-            }
-
-
-            .logo-img {
-
-                width: 170px;
-            }
-
-
-            
-        }
+  .site-header {
+    background: linear-gradient(
+      180deg,
+      rgba($color-white, 0.92),
+      rgba($color-white, 0.72),
+      rgba($color-white, 0)
+    );
+
+    .navbar-container {
+      position: relative;
+      width: calc(100% - 32px);
+      min-height: 72px;
     }
+
+    .logo-img {
+      width: 160px;
+    }
+
+    .menu-toggle {
+      display: flex;
+      margin-left: auto;
+    }
+
+    .main-navigation {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 16px;
+      border: 1px solid $color-border-dark;
+      border-radius: $radius-md;
+      background: $nav-dark-glass;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
+
+      &.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-menu {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+
+      > li {
+        width: 100%;
+
+        > a {
+          width: 100%;
+          min-height: 44px;
+          justify-content: flex-start;
+          padding: 0 $space-small;
+          color: $color-text-light;
+          font-size: $text-sm;
+
+          &::after {
+            left: $space-small;
+            bottom: 5px;
+          }
+        }
+
+        &.menu-item-has-children > a::before {
+          right: 15px;
+          border-color: rgba($color-white, 0.7);
+        }
+
+        > .sub-menu {
+          position: static;
+          width: 100%;
+          min-width: 0;
+          margin: 4px 0;
+          padding: 6px 8px;
+          background: rgba(0, 0, 0, 0.2);
+          border: 0;
+          box-shadow: none;
+          backdrop-filter: none;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+
+          > li > a {
+            min-height: 38px;
+            padding: 8px 12px 8px 20px;
+            color: $color-text-muted;
+            font-size: $text-xs;
+          }
+        }
+      }
+    }
+
+    .header-learning-btn {
+      width: 100%;
+      min-height: 44px;
+      margin-top: $space-small;
+      font-size: $text-sm;
+    }
+  }
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
+/* Extra Small Devices */
 @media (max-width: 480px) {
-
-    .site-header {
-
-        .navbar-container {
-
-            width:
-                calc(100% - 24px);
-
-            min-height: 68px;
-        }
-
-
-        .navbar-logo {
-
-            padding:
-                4px 7px;
-
-            border-radius: 8px;
-        }
-
-
-        .logo-img {
-
-            width: 155px;
-        }
-
-
-        .menu-toggle {
-
-            width: 38px;
-
-            height: 38px;
-        }
-
-
-        .main-navigation {
-
-            padding: 8px;
-        }
-
-
-        .nav-menu {
-
-            > li {
-
-                > a {
-
-                    min-height: 42px;
-
-                    font-size: 12px;
-                }
-            }
-        }
-
-
-        .header-learning-btn {
-
-            min-height: 42px;
-
-            font-size: 11px;
-        }
+  .site-header {
+    .navbar-container {
+      width: calc(100% - 24px);
+      min-height: 64px;
     }
+
+    .logo-img {
+      width: 140px;
+    }
+
+    .menu-toggle {
+      width: 38px;
+      height: 38px;
+    }
+  }
 }

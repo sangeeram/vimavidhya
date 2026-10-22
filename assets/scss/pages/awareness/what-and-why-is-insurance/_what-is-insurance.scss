@@ -1,0 +1,164 @@
+// ========================================
+// VISUAL SEQUENCE SECTION — WHITE BG & NAVY CARDS
+// ========================================
+@use "../../../abstracts/variables" as *;
+
+.visual-sequence {
+    background-color: $color-white; // Main section background is white
+    padding: $space-section 0;
+    font-family: $font-primary;
+
+    &__container {
+        max-width: $container-wide;
+        margin: 0 auto;
+        padding: 0 $space-element;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $space-content;
+        align-items: center;
+
+        @media (max-width: 992px) {
+            grid-template-columns: 1fr;
+            gap: $space-element;
+        }
+    }
+
+    // Left Column
+    &__left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__tagline {
+        font-size: $text-xs;
+        font-weight: 700;
+        color: $color-blue;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: $space-small;
+    }
+
+    &__title {
+        font-size: $text-h2;
+        line-height: $line-tight;
+        color: $color-navy; // Dark heading on white background
+        font-weight: 700;
+        margin-bottom: $space-element;
+        text-transform: none;
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        max-width: $text-width-medium;
+        border-radius: $radius-md;
+        overflow: hidden;
+        border: 1px solid $color-border;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    // Right Column Container
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: $space-small;
+    }
+
+    // Individual Navy Card Structure
+    &__card {
+        background-color: $color-navy; // Cards updated to navy
+        border-radius: $radius-md;
+        padding: $space-element;
+        display: flex;
+        gap: $space-small;
+        cursor: pointer;
+        border: 2px solid transparent;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        transition: border-color $transition, box-shadow $transition, transform $transition;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border-color: rgba($color-white, 0.2);
+        }
+
+        // Active State Details
+        &.is-active {
+            border-color: $color-blue;
+
+            .visual-sequence__marker {
+                background-color: $color-blue;
+                box-shadow: 0 0 0 3px rgba($color-blue, 0.3);
+            }
+
+            .visual-sequence__line {
+                background-color: $color-blue;
+            }
+
+            .visual-sequence__step-title {
+                color: $color-white; // Active step title becomes crisp white
+            }
+
+            .visual-sequence__step-desc {
+                display: block;
+            }
+        }
+    }
+
+    // Timeline elements within card
+    &__marker-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        padding-top: 4px;
+    }
+
+    &__marker {
+        width: 10px;
+        height: 10px;
+        border-radius: $radius-pill;
+        background-color: rgba($color-white, 0.3); // Subtle default marker on dark card
+        transition: background-color $transition, box-shadow $transition;
+    }
+
+    &__line {
+        width: 2px;
+        flex-grow: 1;
+        background-color: rgba($color-white, 0.15); // Subtle connecting line on dark card
+        margin-top: $space-small / 2;
+        border-radius: $radius-pill;
+        transition: background-color $transition;
+    }
+
+    // Content Styling inside card
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__step-title {
+        font-size: $text-sm;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin: 0;
+        color: rgba($color-white, 0.6); // Muted white for inactive step titles
+        line-height: $line-heading;
+        transition: color $transition;
+    }
+
+    &__step-desc {
+        display: none; // Hidden by default, expands on active
+        font-size: $text-sm;
+        line-height: $line-body;
+        color: rgba($color-white, 0.9); // High contrast light text for expanded body
+        margin-top: $space-small / 2;
+        margin-bottom: 0;
+    }
+}
