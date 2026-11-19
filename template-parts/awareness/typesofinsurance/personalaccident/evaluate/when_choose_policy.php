@@ -1,12 +1,13 @@
 <?php
 /**
  * Template Part: What to Consider When Choosing a Policy
- * Theme: Vima Vidya Custom Theme (Tabs + White Cards Architecture)
+ * Theme: Vima Vidya Custom Theme (Sidebar Tabs + White Cards Architecture)
  */
 
 $policy_considerations = [
     'csi' => [
         'label' => 'Capital Sum Insured',
+        'sublabel' => 'Valuation & Cover Foundation',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
         'title' => 'Capital Sum Insured (CSI): The Foundation of Your Cover',
         'subtitle' => 'The Capital Sum Insured is the maximum amount your policy will pay for Accidental Death or Permanent Total Disability. Every other benefit is calculated as a percentage of this figure.',
@@ -20,6 +21,7 @@ $policy_considerations = [
     ],
     'scope' => [
         'label' => 'Scope of Cover',
+        'sublabel' => 'Inclusions & Event Types',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>',
         'title' => 'Scope of Cover: What Events Are Included?',
         'subtitle' => 'All policies cover the basics — Accidental Death and Permanent Total Disability. But the list of covered disabilities and payout percentages vary significantly.',
@@ -35,6 +37,7 @@ $policy_considerations = [
     ],
     'exclusions' => [
         'label' => 'Exclusions',
+        'sublabel' => 'Critical Policy Limitations',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
         'title' => 'Exclusions: What the Policy Will NOT Pay For',
         'subtitle' => 'Every PA policy has a list of exclusions — events or circumstances under which no claim will be paid. Reading these is financial literacy.',
@@ -62,6 +65,7 @@ $policy_considerations = [
     ],
     'occupation' => [
         'label' => 'Occupational Risk',
+        'sublabel' => 'Job Classification & Premium',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
         'title' => 'Occupational Categories: How Your Job Affects Premium & Coverage',
         'subtitle' => 'PA Insurance classifies occupations by risk level. This is one of the most important and least-understood aspects of buying a PA policy.',
@@ -81,6 +85,7 @@ $policy_considerations = [
     ],
     'addons' => [
         'label' => 'Add-ons & Riders',
+        'sublabel' => 'Modular Protection Extensions',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
         'title' => 'Add-ons and Riders Worth Understanding',
         'subtitle' => 'Standard PA policies cover death and disability. Life is complex, which is why modular add-ons bridge the gap.',
@@ -98,6 +103,7 @@ $policy_considerations = [
     ],
     'dependents' => [
         'label' => 'Dependent Checklist',
+        'sublabel' => 'Family Protection Assessment',
         'icon'  => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="23 21v-2a4 4 0 0 0-3-3.87"/><path d="16 3.13a4 4 0 0 1 0 7.75"/></svg>',
         'title' => 'The Dependent-Protection Checklist',
         'subtitle' => 'An accident does not happen to one person. It happens to a family.',
@@ -132,170 +138,178 @@ $policy_considerations = [
             </p>
         </div>
 
-        <!-- CATEGORY TABS -->
-        <div class="asset-category-tabs m-t-32" role="tablist">
-            <?php $i = 0; ?>
-            <?php foreach ($policy_considerations as $key => $data): ?>
-                <button
-                    type="button"
-                    class="asset-tab <?= $i === 0 ? 'active' : ''; ?>"
-                    data-tab="<?= htmlspecialchars($key); ?>"
-                    role="tab"
-                    aria-selected="<?= $i === 0 ? 'true' : 'false'; ?>"
-                >
-                    <span class="tab-icon">
-                        <?= $data['icon']; ?>
-                    </span>
-                    <?= htmlspecialchars($data['label']); ?>
-                </button>
-                <?php $i++; ?>
-            <?php endforeach; ?>
-        </div>
+        <!-- MAIN LAYOUT WRAPPER (SIDEBAR + CONTENT) -->
+        <div class="policy-layout-wrapper m-t-32">
 
-        <!-- TAB CONTENT PANELS -->
-        <div class="asset-tab-content m-t-24">
-            <?php $i = 0; ?>
-            <?php foreach ($policy_considerations as $key => $data): ?>
-                <div
-                    class="asset-tab-panel <?= $i === 0 ? 'active' : ''; ?>"
-                    id="policy-<?= htmlspecialchars($key); ?>"
-                    role="tabpanel"
-                    aria-hidden="<?= $i === 0 ? 'false' : 'true'; ?>"
-                >
-                    <div class="asset-content-card">
-                        
-                        <!-- PANEL HEADER -->
-                        <div class="asset-content-header">
-                            <div>
-                                <span class="asset-content-label"><?= htmlspecialchars($data['label']); ?></span>
-                                <h3><?= htmlspecialchars($data['title']); ?></h3>
-                            </div>
-                            <span class="asset-policy-note">Critical Analysis</span>
+            <!-- SIDEBAR TABS -->
+            <div class="asset-category-tabs" role="tablist">
+                <?php $i = 0; ?>
+                <?php foreach ($policy_considerations as $key => $data): ?>
+                    <button
+                        type="button"
+                        class="asset-tab <?= $i === 0 ? 'active' : ''; ?>"
+                        data-tab="<?= htmlspecialchars($key); ?>"
+                        role="tab"
+                        aria-selected="<?= $i === 0 ? 'true' : 'false'; ?>"
+                    >
+                        <span class="tab-icon-box">
+                            <?= $data['icon']; ?>
+                        </span>
+                        <div class="tab-text-content">
+                            <span class="tab-title"><?= ($i + 1) . '. ' . htmlspecialchars($data['label']); ?></span>
+                            <span class="tab-subtitle"><?= htmlspecialchars($data['sublabel']); ?></span>
                         </div>
+                    </button>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
+            </div>
 
-                        <p class="asset-card-description"><?= htmlspecialchars($data['subtitle']); ?></p>
-                        <?php if (!empty($data['intro'])): ?>
-                            <p class="asset-card-intro"><?= htmlspecialchars($data['intro']); ?></p>
-                        <?php endif; ?>
-
-                        <!-- CONTENT VARIANT: TEXT WITH CALLOUT -->
-                        <?php if ($data['content_type'] === 'text_with_callout'): ?>
-                            <?php if (!empty($data['callout'])): ?>
-                                <div class="policy-callout-box <?= $data['callout']['type']; ?>">
-                                    <div class="callout-icon">📐</div>
-                                    <div class="callout-content">
-                                        <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
-                                        <p><?= htmlspecialchars($data['callout']['text']); ?></p>
-                                    </div>
+            <!-- TAB CONTENT PANELS -->
+            <div class="asset-tab-content">
+                <?php $i = 0; ?>
+                <?php foreach ($policy_considerations as $key => $data): ?>
+                    <div
+                        class="asset-tab-panel <?= $i === 0 ? 'active' : ''; ?>"
+                        id="policy-<?= htmlspecialchars($key); ?>"
+                        role="tabpanel"
+                        aria-hidden="<?= $i === 0 ? 'false' : 'true'; ?>"
+                    >
+                        <div class="asset-content-card">
+                            
+                            <!-- PANEL HEADER -->
+                            <div class="asset-content-header">
+                                <div>
+                                    <span class="asset-content-label"><?= htmlspecialchars($data['label']); ?></span>
+                                    <h3><?= htmlspecialchars($data['title']); ?></h3>
                                 </div>
-                            <?php endif; ?>
-
-                        <!-- CONTENT VARIANT: DETAILED LIST -->
-                        <?php elseif ($data['content_type'] === 'list_detailed'): ?>
-                            <div class="asset-items-container">
-                                <ul class="asset-bullet-list">
-                                    <?php foreach ($data['items'] as $item): ?>
-                                        <li>
-                                            <strong><?= htmlspecialchars($item['label']); ?>:</strong> 
-                                            <span><?= htmlspecialchars($item['desc']); ?></span>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                                <span class="asset-policy-note">Critical Analysis</span>
                             </div>
 
-                        <!-- CONTENT VARIANT: EXCLUSIONS -->
-                        <?php elseif ($data['content_type'] === 'exclusions_list'): ?>
-                            <div class="asset-items-container">
-                                <ul class="asset-bullet-list exclusions-grid">
-                                    <?php foreach ($data['items'] as $excl): ?>
-                                        <li>
-                                            <span class="excl-bullet">✕</span>
-                                            <span><?= htmlspecialchars($excl); ?></span>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                            <?php if (!empty($data['callout'])): ?>
-                                <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
-                                    <div class="callout-icon">⚠️</div>
-                                    <div class="callout-content">
-                                        <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
-                                        <p><?= htmlspecialchars($data['callout']['text']); ?></p>
-                                    </div>
-                                </div>
+                            <p class="asset-card-description"><?= htmlspecialchars($data['subtitle']); ?></p>
+                            <?php if (!empty($data['intro'])): ?>
+                                <p class="asset-card-intro"><?= htmlspecialchars($data['intro']); ?></p>
                             <?php endif; ?>
 
-                        <!-- CONTENT VARIANT: TABLE VIEW -->
-                        <?php elseif ($data['content_type'] === 'table_view'): ?>
-                            <div class="policy-table-wrapper m-t-20">
-                                <table class="policy-risk-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Risk Class</th>
-                                            <th>Typical Occupations</th>
-                                            <th>Effect on Premium</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($data['table'] as $row): ?>
-                                            <tr>
-                                                <td><strong><?= htmlspecialchars($row['class']); ?></strong></td>
-                                                <td><?= htmlspecialchars($row['occupations']); ?></td>
-                                                <td><span class="effect-tag"><?= htmlspecialchars($row['effect']); ?></span></td>
-                                            </tr>
+                            <!-- CONTENT VARIANT: TEXT WITH CALLOUT -->
+                            <?php if ($data['content_type'] === 'text_with_callout'): ?>
+                                <?php if (!empty($data['callout'])): ?>
+                                    <div class="policy-callout-box <?= $data['callout']['type']; ?>">
+                                        <div class="callout-icon">📐</div>
+                                        <div class="callout-content">
+                                            <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
+                                            <p><?= htmlspecialchars($data['callout']['text']); ?></p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                            <!-- CONTENT VARIANT: DETAILED LIST -->
+                            <?php elseif ($data['content_type'] === 'list_detailed'): ?>
+                                <div class="asset-items-container">
+                                    <ul class="asset-bullet-list">
+                                        <?php foreach ($data['items'] as $item): ?>
+                                            <li>
+                                                <strong><?= htmlspecialchars($item['label']); ?>:</strong> 
+                                                <span><?= htmlspecialchars($item['desc']); ?></span>
+                                            </li>
                                         <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <?php if (!empty($data['callout'])): ?>
-                                <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
-                                    <div class="callout-icon">⚠️</div>
-                                    <div class="callout-content">
-                                        <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
-                                        <p><?= htmlspecialchars($data['callout']['text']); ?></p>
-                                    </div>
+                                    </ul>
                                 </div>
-                            <?php endif; ?>
 
-                        <!-- CONTENT VARIANT: GRID CARDS (ADD-ONS) -->
-                        <?php elseif ($data['content_type'] === 'grid_cards'): ?>
-                            <div class="policy-addons-grid m-t-20">
-                                <?php foreach ($data['items'] as $addon): ?>
-                                    <div class="addon-mini-card">
-                                        <h5><?= htmlspecialchars($addon['name']); ?></h5>
-                                        <p class="addon-desc"><?= htmlspecialchars($addon['desc']); ?></p>
-                                        <span class="addon-best"><strong>Best for:</strong> <?= htmlspecialchars($addon['best']); ?></span>
+                            <!-- CONTENT VARIANT: EXCLUSIONS -->
+                            <?php elseif ($data['content_type'] === 'exclusions_list'): ?>
+                                <div class="asset-items-container">
+                                    <ul class="asset-bullet-list exclusions-grid">
+                                        <?php foreach ($data['items'] as $excl): ?>
+                                            <li>
+                                                <span class="excl-bullet">✕</span>
+                                                <span><?= htmlspecialchars($excl); ?></span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php if (!empty($data['callout'])): ?>
+                                    <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
+                                        <div class="callout-icon">⚠️</div>
+                                        <div class="callout-content">
+                                            <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
+                                            <p><?= htmlspecialchars($data['callout']['text']); ?></p>
+                                        </div>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
+                                <?php endif; ?>
 
-                        <!-- CONTENT VARIANT: CHECKLIST VIEW -->
-                        <?php elseif ($data['content_type'] === 'checklist_view'): ?>
-                            <div class="asset-items-container">
-                                <ul class="asset-bullet-list checklist">
-                                    <?php foreach ($data['items'] as $check): ?>
-                                        <li>
-                                            <span class="check-box-icon">✓</span>
-                                            <span><?= htmlspecialchars($check); ?></span>
-                                        </li>
+                            <!-- CONTENT VARIANT: TABLE VIEW -->
+                            <?php elseif ($data['content_type'] === 'table_view'): ?>
+                                <div class="policy-table-wrapper m-t-20">
+                                    <table class="policy-risk-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Risk Class</th>
+                                                <th>Typical Occupations</th>
+                                                <th>Effect on Premium</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($data['table'] as $row): ?>
+                                                <tr>
+                                                    <td><strong><?= htmlspecialchars($row['class']); ?></strong></td>
+                                                    <td><?= htmlspecialchars($row['occupations']); ?></td>
+                                                    <td><span class="effect-tag"><?= htmlspecialchars($row['effect']); ?></span></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php if (!empty($data['callout'])): ?>
+                                    <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
+                                        <div class="callout-icon">⚠️</div>
+                                        <div class="callout-content">
+                                            <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
+                                            <p><?= htmlspecialchars($data['callout']['text']); ?></p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                            <!-- CONTENT VARIANT: GRID CARDS (ADD-ONS) -->
+                            <?php elseif ($data['content_type'] === 'grid_cards'): ?>
+                                <div class="policy-addons-grid m-t-20">
+                                    <?php foreach ($data['items'] as $addon): ?>
+                                        <div class="addon-mini-card">
+                                            <h5><?= htmlspecialchars($addon['name']); ?></h5>
+                                            <p class="addon-desc"><?= htmlspecialchars($addon['desc']); ?></p>
+                                            <span class="addon-best"><strong>Best for:</strong> <?= htmlspecialchars($addon['best']); ?></span>
+                                        </div>
                                     <?php endforeach; ?>
-                                </ul>
-                            </div>
-                            <?php if (!empty($data['callout'])): ?>
-                                <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
-                                    <div class="callout-icon">✅</div>
-                                    <div class="callout-content">
-                                        <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
-                                        <p><?= htmlspecialchars($data['callout']['text']); ?></p>
-                                    </div>
                                 </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
 
+                            <!-- CONTENT VARIANT: CHECKLIST VIEW -->
+                            <?php elseif ($data['content_type'] === 'checklist_view'): ?>
+                                <div class="asset-items-container">
+                                    <ul class="asset-bullet-list checklist">
+                                        <?php foreach ($data['items'] as $check): ?>
+                                            <li>
+                                                <span class="check-box-icon">✓</span>
+                                                <span><?= htmlspecialchars($check); ?></span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php if (!empty($data['callout'])): ?>
+                                    <div class="policy-callout-box <?= $data['callout']['type']; ?> m-t-24">
+                                        <div class="callout-icon">✅</div>
+                                        <div class="callout-content">
+                                            <strong><?= htmlspecialchars($data['callout']['title']); ?></strong>
+                                            <p><?= htmlspecialchars($data['callout']['text']); ?></p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                        </div>
                     </div>
-                </div>
-                <?php $i++; ?>
-            <?php endforeach; ?>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
+            </div>
+
         </div>
 
     </div>

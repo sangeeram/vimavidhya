@@ -75,7 +75,7 @@ $pa_profiles = [
     <div class="vv-interactive-carousel__container">
 
         <!-- SECTION HEADER -->
-        <header class="vv-interactive-carousel__header">
+        <!-- <header class="vv-interactive-carousel__header">
             <div class="vv-interactive-carousel__header-left">
                 <span class="vv-interactive-carousel__eyebrow">PRICING BENCHMARKS</span>
                 <h2 class="vv-interactive-carousel__title">
@@ -85,82 +85,9 @@ $pa_profiles = [
                     These figures are indicative and vary by insurer, occupation class, age, and add-ons selected. Click <strong>Read More</strong> on any profile to explore details.
                 </p>
             </div>
-        </header>
+        </header> -->
 
-        <!-- CAROUSEL CONTAINER WITH CIRCULAR EDGE NAVIGATION BUTTONS -->
-        <div class="vv-ic-outer-wrap">
-            <button class="vv-ic-edge-btn vv-ic-edge-btn--prev" aria-label="Scroll left">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-
-            <div class="vv-ic-wrapper" id="icWrapper">
-                <div class="vv-ic-track" id="icTrack">
-                    <?php foreach ($pa_profiles as $index => $profile) : ?>
-                    <div class="vv-ic-card <?php echo $index === 0 ? 'is-expanded' : ''; ?>" data-card-index="<?php echo $index; ?>">
-                        
-                        <!-- INITIAL VIEW (Title + Read More Button) -->
-                        <div class="vv-ic-card__collapsed-content">
-                            <span class="card-badge"><?php echo esc_html($profile['badge']); ?></span>
-                            <h3 class="card-title"><?php echo esc_html($profile['title']); ?></h3>
-                            
-                            <button class="card-toggle-btn" type="button" aria-expanded="<?php echo $index === 0 ? 'true' : 'false'; ?>">
-                                <span class="btn-text">Read More</span>
-                                <span class="btn-icon">↗</span>
-                            </button>
-                        </div>
-
-                        <!-- EXPANDED VIEW -->
-                        <div class="vv-ic-card__expanded-content">
-                            <div class="expanded-inner-top">
-                                <span class="card-badge"><?php echo esc_html($profile['badge']); ?></span>
-                                <h3 class="card-title"><?php echo esc_html($profile['title']); ?></h3>
-                            </div>
-
-                            <div class="expanded-body-grid">
-                                <ul class="card-details-list">
-                                    <li>
-                                        <span class="label">Age</span>
-                                        <span class="value"><?php echo esc_html($profile['age']); ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="label">Sum Insured (CSI)</span>
-                                        <span class="value"><?php echo esc_html($profile['csi']); ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="label">Occupation</span>
-                                        <span class="value"><?php echo esc_html($profile['occupation']); ?></span>
-                                    </li>
-                                </ul>
-
-                                <?php if (!empty($profile['image'])) : ?>
-                                <div class="card-image-box">
-                                    <img src="<?php echo esc_url($profile['image']); ?>" alt="<?php echo esc_attr($profile['title']); ?>" loading="lazy">
-                                </div>
-                                <?php endif; ?>
-                            </div>
-
-                            <div class="expanded-footer-area">
-                                <div class="card-footer-price">
-                                    <span class="price-title">APPROX. ANNUAL PREMIUM</span>
-                                    <span class="price-amount"><?php echo esc_html($profile['premium']); ?></span>
-                                </div>
-
-                                <button class="card-collapse-btn" type="button">
-                                    <span class="collapse-icon">←</span> Less Details
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <button class="vv-ic-edge-btn vv-ic-edge-btn--next" aria-label="Scroll right">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-        </div>
-
+        
         <!-- CALCULATION FRAMEWORK / KEY TAKEAWAY BOX -->
         <div class="vv-pa-calc-box">
             <div class="vv-pa-calc-box__icon">📐</div>
@@ -169,7 +96,7 @@ $pa_profiles = [
                     How to calculate what you should spend on PA Insurance
                 </h4>
                 <p class="vv-pa-calc-box__text">
-                    A well-sized PA policy should cost <strong>0.5–1.5%</strong> of the Capital Sum Insured annually. So, CSI = 10× your annual income + outstanding loans. Annual premium target = 0.5–1.5% of that CSI. For most working Indians aged 25–50, this works out to between <strong>₹4,000 and ₹18,000 per year</strong> — a small fraction of what an accident without cover would cost your family.
+                    A well-sized PA policy should cost <strong>0.5–1.5%</strong> of the Capital Sum Insured annually. So, CSI = 10× your annual income + outstanding loans. Annual premium target = 0.5–1.5% of that CSI. For most working Indians aged 25–50, this works out to be — a small fraction of what an accident without cover would cost your family.
                 </p>
             </div>
         </div>

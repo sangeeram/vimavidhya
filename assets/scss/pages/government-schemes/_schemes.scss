@@ -1,0 +1,521 @@
+// ========================================
+// VIMA VIDYA
+// GLOBAL DESIGN SYSTEM — VARIABLES & SCHEMES DIRECTORY
+// ========================================
+
+// TYPOGRAPHY
+$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+// BRAND COLORS
+$color-navy: #08274b;
+$color-navy-dark: #03152e;
+$color-blue: #007aff;
+$color-blue-dark: #062b66;
+$color-orange: #f59a18;
+$color-cream: #fdfbf7;
+$color-white: #ffffff;
+
+// TEXT COLORS
+$color-text: #08274b;
+$color-text-body: #475569;
+$color-text-muted: #64748b;
+$color-text-light: #f5f7f8;
+
+// FUNCTIONAL COLORS
+$color-success: #10b981;
+$color-light-blue: #eff6ff;
+$color-light-gray: #f8fafc;
+$color-border: #e2e8f0;
+
+// TYPOGRAPHY SCALE
+$text-xs: 12px;
+$text-sm: 14px;
+$text-base: 16px;
+$text-lg: 18px;
+$text-h3: 24px;
+$text-h2: 36px;
+
+// SPACING
+$space-section: 65px;
+$space-small: 7px;
+
+// CONTAINERS
+$container-width: 1300px;
+
+// BORDER RADIUS
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 20px;
+$radius-pill: 999px;
+
+// TRANSITIONS
+$transition-fast: 0.2s ease;
+$transition: 0.3s ease;
+
+// ========================================
+// SCHEMES DIRECTORY STYLES
+// ========================================
+
+.vima-schemes-directory-wrap {
+    font-family: $font-primary;
+    background-color: $color-navy-dark;
+    color: $color-text;
+    padding: $space-section 0;
+    box-sizing: border-box;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .vima-container {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .vima-master-card {
+        background: $color-white;
+        border-radius: $radius-lg;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+            padding: 20px;
+        }
+    }
+
+    .vima-master-header {
+        margin-bottom: 30px;
+
+        h2 {
+            font-size:44px;
+            color: $color-navy;
+            margin-bottom: $space-small;
+            font-weight: 700;
+
+            @media (max-width: 768px) {
+                font-size: 36px;
+            }
+        }
+
+        p {
+            font-size: $text-base;
+            color: $color-text-body;
+            line-height: 1.5;
+            margin: 0;
+        }
+    }
+
+    // PILL TABS NAVBAR
+    .vima-pill-tabs-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 36px;
+        background: $color-navy;
+        padding: 16px;
+        border-radius: $radius-md;
+        border: 1px solid $color-border;
+        align-items: center;
+
+        .vima-pill-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: $color-white;
+            border: 1px solid $color-border;
+            color: $color-text-body;
+            padding: 10px 16px;
+            border-radius: $radius-pill;
+            cursor: pointer;
+            font-size: $text-sm;
+            font-weight: 500;
+            font-family: $font-primary;
+            transition: $transition-fast;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+            .vima-tab-icon {
+                font-size: 15px;
+                flex-shrink: 0;
+            }
+
+            .vima-tab-title {
+                white-space: nowrap;
+            }
+
+            &:hover {
+                background: $color-light-blue;
+                color: $color-blue;
+                border-color: rgba(0, 122, 255, 0.3);
+            }
+
+            &.active {
+                background: $color-blue;
+                color: $color-white;
+                border-color: $color-blue;
+                font-weight: 600;
+                box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            }
+        }
+    }
+
+    .vima-scheme-content-container {
+        background: transparent;
+    }
+
+    .vima-scheme-panel {
+        display: none;
+        animation: fadeIn $transition;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    // PANEL HERO
+    .vima-panel-hero {
+        border-bottom: 1px solid $color-border;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+
+        .vima-badge-tag {
+            display: inline-block;
+            font-size: $text-xs;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $color-orange;
+            letter-spacing: 0.8px;
+            margin-bottom: 12px;
+        }
+
+        .vima-hero-icon-title {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+
+            .vima-icon-badge {
+                font-size: 32px;
+                background: $color-light-blue;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: $radius-md;
+                flex-shrink: 0;
+            }
+
+            h3 {
+                font-size: $text-h3;
+                color: $color-navy;
+                margin: 0 0 6px 0;
+                font-weight: 700;
+            }
+
+            .vima-hero-subtitle {
+                font-size: $text-base;
+                color: $color-text-body;
+                margin: 0;
+            }
+        }
+
+        .vima-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vima-metric-card {
+                background: $color-light-gray;
+                border: 1px solid $color-border;
+                padding: 16px;
+                border-radius: $radius-sm;
+                text-align: center;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+
+                .vima-metric-value {
+                    font-size: $text-lg;
+                    font-weight: 700;
+                    color: $color-blue;
+                    margin-bottom: 6px;
+                }
+
+                .vima-metric-label {
+                    font-size: $text-xs;
+                    color: $color-text-muted;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .vima-lead-text {
+            font-size: $text-base;
+            color: $color-text-body;
+            line-height: 1.6;
+            margin: 0;
+        }
+    }
+
+    // SPECS TABLE
+    .vima-specs-card {
+        background: $color-light-gray;
+        border-radius: $radius-md;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border: 1px solid $color-border;
+
+        .vima-table {
+            width: 100%;
+            border-collapse: collapse;
+
+            tr {
+                border-bottom: 1px solid $color-border;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            td {
+                padding: 14px 18px;
+                font-size: $text-sm;
+            }
+
+            .vima-spec-label {
+                font-weight: 600;
+                color: $color-navy;
+                width: 32%;
+                background: rgba(8, 39, 75, 0.02);
+            }
+
+            .vima-spec-value {
+                color: $color-text-body;
+
+                a {
+                    color: $color-blue;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    // INFO & CALLOUT BOXES
+    .vima-info-box {
+        padding: 16px 20px;
+        border-radius: $radius-sm;
+        margin-bottom: 24px;
+        font-size: $text-sm;
+
+        h4 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: $color-navy;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-body;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        &.vima-links-box {
+            background: $color-light-blue;
+            border-left: 4px solid $color-blue;
+
+            .vima-links-list {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+                margin-top: 4px;
+
+                .vima-external-link {
+                    color: $color-blue;
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 500;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                .vima-link-sep {
+                    color: $color-text-muted;
+                }
+            }
+        }
+
+        &.vima-did-you-know {
+            background: rgba(245, 154, 24, 0.08);
+            border-left: 4px solid $color-orange;
+        }
+
+        &.vima-tip-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid $color-success;
+        }
+    }
+
+    .vima-callout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 24px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // STORY CARD WITH HIGHLIGHTED TEXT
+    .vima-story-card {
+        background: $color-cream;
+        border: 1px solid #f0e6d2;
+        border-radius: $radius-md;
+        padding: 24px;
+        margin-bottom: 24px;
+
+        h4 {
+            margin: 0 0 12px 0;
+            color: $color-navy;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-body;
+            font-size: $text-base;
+            line-height: 1.6;
+
+            .vima-hl {
+                color: $color-orange;
+                font-weight: 600;
+            }
+        }
+    }
+
+    // TWO COL GRID
+    .vima-grid-two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .vima-card-block {
+            background: $color-light-gray;
+            border: 1px solid $color-border;
+            border-radius: $radius-md;
+            padding: 20px;
+
+            h4 {
+                margin: 0 0 16px 0;
+                font-size: 18px;
+                font-weight: 700;
+                color: $color-navy;
+            }
+
+            .vima-check-list {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 16px 0;
+
+                li {
+                    position: relative;
+                    padding-left: 20px;
+                    margin-bottom: 8px;
+                    font-size: $text-base;
+                    color: $color-text-body;
+                    line-height: 1.5;
+
+                    &::before {
+                        content: "•";
+                        color: $color-blue;
+                        font-weight: bold;
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    .vima-hl {
+                        color: $color-orange;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .vima-sub-block {
+                font-size: $text-sm;
+                color: $color-text-body;
+                border-top: 1px solid $color-border;
+                padding-top: 12px;
+
+                strong {
+                    display: block;
+                    color: $color-navy;
+                    margin-bottom: 4px;
+                }
+
+                p {
+                    margin: 0;
+
+                    .vima-hl {
+                        color: $color-orange;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: $color-blue;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            &.vima-claim-block {
+                background: rgba(16, 185, 129, 0.03);
+                border-color: rgba(16, 185, 129, 0.2);
+
+                h4 {
+                    color: $color-success;
+                }
+
+                .vima-numbered-list {
+                    padding-left: 18px;
+                    margin: 0;
+                    font-size: $text-base;
+                    color: $color-text-body;
+
+                    li {
+                        margin-bottom: 8px;
+                        line-height: 1.5;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}

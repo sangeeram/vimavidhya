@@ -1,0 +1,773 @@
+
+@use "../../../../../abstracts/variables" as *;
+
+/* =========================================================
+   VIMA VIDYA — TRAVEL INSURANCE MILESTONE CAROUSEL
+========================================================= */
+
+$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+$color-navy: #08274b;
+$color-navy-dark: #03152e;
+$color-blue: #007aff;
+$color-orange: #f59a18;
+$color-white: #ffffff;
+
+$color-text-body: #475569;
+$color-light-gray: #f8fafc;
+$color-border: #e2e8f0;
+
+$space-section: 65px;
+$line-heading: 1.2;
+$line-body: 1.5;
+$radius-md: 16px;
+
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.travel-impact-section {
+
+    width: 100%;
+    padding: $space-section 0;
+    background: $color-light-gray;
+    font-family: $font-primary;
+    color: $color-text-body;
+    overflow: hidden;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .policy-impact-compact-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .policy-impact-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 28px;
+    }
+
+    .policy-impact-header {
+        flex: 1;
+        min-width: 0;
+        text-align: left;
+
+        .policy-impact-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: $line-heading;
+            font-weight: 700;
+            color: $color-navy;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .policy-impact-subtitle {
+            font-size: 1rem;
+            line-height: $line-body;
+            color: $color-text-body;
+            margin: 0;
+            max-width: 800px;
+        }
+    }
+
+
+    /* =====================================================
+       CAROUSEL VIEWPORT
+    ===================================================== */
+
+    .travel-carousel-viewport {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        padding: 4px 0 12px;
+    }
+
+
+    /* =====================================================
+       NAVIGATION BUTTONS — INSIDE CAROUSEL
+    ===================================================== */
+
+    .carousel-nav-buttons {
+        position: absolute;
+
+        top: 50%;
+        left: 0;
+        right: 0;
+
+        transform: translateY(-50%);
+
+        display: flex !important;
+        flex-direction: row !important;
+
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+
+        padding: 0 12px;
+
+        z-index: 50;
+
+        pointer-events: none;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    button.carousel-btn {
+
+        appearance: none !important;
+        -webkit-appearance: none !important;
+
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 44px !important;
+        height: 44px !important;
+
+        min-width: 44px !important;
+        min-height: 44px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        border: 1px solid $color-border !important;
+        border-radius: 50% !important;
+
+        background: $color-white !important;
+        color: $color-navy !important;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+
+        cursor: pointer;
+
+        pointer-events: auto;
+
+        position: relative;
+        z-index: 51;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        transition: all 0.25s ease;
+
+        svg {
+            display: block !important;
+            width: 20px !important;
+            height: 20px !important;
+            stroke: $color-navy !important;
+            stroke-width: 2.5 !important;
+            fill: none !important;
+        }
+
+        &:hover {
+            background: $color-navy !important;
+            color: $color-white !important;
+            border-color: $color-white !important;
+            transform: scale(1.08);
+            box-shadow: 0 5px 16px rgba(8, 39, 75, 0.2);
+        }
+
+        &:active {
+            transform: scale(0.94);
+        }
+
+        &:focus-visible {
+            outline: 3px solid rgba(0, 122, 255, 0.3);
+            outline-offset: 3px;
+        }
+    }
+
+
+    /* =====================================================
+       CAROUSEL TRACK
+    ===================================================== */
+
+    .policy-impact-carousel-track {
+
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+
+        gap: 24px;
+
+        width: 100%;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        user-select: none;
+        -webkit-user-select: none;
+
+        padding: 4px 2px 16px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &.is-dragging {
+            cursor: grabbing;
+            scroll-snap-type: none;
+            scroll-behavior: auto;
+        }
+    }
+
+
+    /* =====================================================
+       FLIP CARD
+    ===================================================== */
+
+    .impact-flip-card {
+
+        position: relative;
+
+        background: transparent;
+
+        perspective: 1200px;
+        -webkit-perspective: 1200px;
+
+        height: 340px;
+
+        width: 350px;
+        min-width: 350px;
+
+        flex: 0 0 350px;
+
+        scroll-snap-align: start;
+
+        cursor: grab;
+
+        .flip-card-inner {
+
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            text-align: left;
+
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+
+            border-radius: $radius-md;
+
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+        }
+
+        &:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+
+        /* SHARED CARD FACES */
+
+        .flip-card-front,
+        .flip-card-back {
+
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+            border-radius: $radius-md;
+
+            overflow: hidden;
+
+            border: 1px solid $color-border;
+        }
+
+
+        /* =================================================
+           FRONT FACE
+        ================================================= */
+
+        .flip-card-front {
+
+            background: $color-white;
+
+            display: flex;
+            flex-direction: column;
+
+            .card-image-wrap {
+
+                position: relative;
+
+                width: 100%;
+                height: 190px;
+
+                flex-shrink: 0;
+
+                overflow: hidden;
+
+                background: #e2e8f0;
+
+                img {
+
+                    display: block;
+
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+
+                    transition: transform 0.5s ease;
+
+                    pointer-events: none;
+                }
+            }
+
+            .card-content {
+
+                padding: 16px 20px;
+
+                display: flex;
+                flex-direction: column;
+
+                flex-grow: 1;
+                justify-content: center;
+            }
+
+            .card-header-row {
+
+                display: flex;
+                align-items: center;
+
+                gap: 10px;
+
+                .card-icon {
+                    font-size: 1.3rem;
+                    flex-shrink: 0;
+                }
+
+                .card-title {
+
+                    font-size: 1.1rem;
+                    font-weight: 700;
+
+                    line-height: 1.3;
+
+                    color: $color-navy;
+
+                    margin: 0;
+                }
+            }
+        }
+
+        &:hover .flip-card-front img {
+            transform: scale(1.06);
+        }
+
+
+        /* =================================================
+           BACK FACE
+        ================================================= */
+
+        .flip-card-back {
+
+            background: $color-navy;
+            color: $color-white;
+
+            transform: rotateY(180deg);
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            padding: 20px;
+
+            text-align: left;
+
+            overflow-y: auto;
+
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+
+            .card-back-content {
+
+                display: flex;
+                flex-direction: column;
+
+                min-height: 100%;
+                justify-content: space-between;
+            }
+
+            .card-back-header {
+
+                display: flex;
+                align-items: center;
+
+                gap: 10px;
+
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+                padding-bottom: 12px;
+                margin-bottom: 14px;
+
+                .card-back-icon {
+                    font-size: 1.2rem;
+                    flex-shrink: 0;
+                }
+
+                .card-back-title {
+
+                    font-size: 0.95rem;
+                    font-weight: 700;
+
+                    line-height: 1.35;
+
+                    color: $color-white;
+
+                    margin: 0;
+                }
+            }
+
+            .back-section {
+
+                margin-bottom: 14px;
+
+                .back-label {
+
+                    display: block;
+
+                    font-size: 11px;
+
+                    text-transform: uppercase;
+                    letter-spacing: 0.08em;
+
+                    color: $color-orange;
+
+                    font-weight: 700;
+
+                    margin-bottom: 5px;
+                }
+
+                .card-desc {
+
+                    font-size: 13.5px;
+                    line-height: 1.5;
+
+                    color: rgba(255, 255, 255, 0.9);
+
+                    margin: 0;
+                }
+            }
+
+            .flip-hint {
+
+                display: block;
+
+                font-size: 10px;
+
+                color: rgba(255, 255, 255, 0.55);
+
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+
+                text-align: right;
+
+                margin-top: auto;
+                padding-top: 8px;
+            }
+        }
+    }
+
+
+    /* =====================================================
+       KEY TAKEAWAY
+    ===================================================== */
+
+    .pa-standalone-takeaway {
+        margin-top: 40px;
+
+        .takeaway-banner {
+
+            width: 100%;
+
+            background: #eff6ff;
+
+            border: 1px solid #bae6fd;
+
+            border-radius: $radius-md;
+
+            padding: 20px 24px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 16px;
+        }
+
+        .takeaway-badge-icon {
+
+            width: 40px;
+            height: 40px;
+
+            min-width: 40px;
+
+            background: $color-orange;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            color: $color-white;
+
+            flex-shrink: 0;
+        }
+
+        .takeaway-text-group {
+
+            font-size: 0.95rem;
+            line-height: 1.6;
+
+            color: $color-navy;
+
+            .takeaway-title {
+
+                font-weight: 700;
+
+                margin-right: 4px;
+
+                color: #0369a1;
+            }
+
+            .takeaway-body {
+                color: $color-text-body;
+            }
+        }
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .travel-impact-section {
+
+        padding: 50px 0;
+
+        .policy-impact-header-row {
+            margin-bottom: 24px;
+        }
+
+        .policy-impact-header {
+
+            .policy-impact-title {
+                font-size: 1.9rem;
+            }
+
+            .policy-impact-subtitle {
+                font-size: 0.94rem;
+            }
+        }
+
+        .carousel-nav-buttons {
+            padding: 0 8px;
+        }
+
+        button.carousel-btn {
+
+            width: 40px !important;
+            height: 40px !important;
+
+            min-width: 40px !important;
+            min-height: 40px !important;
+        }
+
+        .impact-flip-card {
+
+            width: 320px;
+            min-width: 320px;
+
+            flex: 0 0 320px;
+
+            height: 330px;
+        }
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .travel-impact-section {
+
+        padding: 42px 0;
+
+        .policy-impact-compact-container {
+            padding: 0 14px;
+        }
+
+        .policy-impact-header-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .policy-impact-header {
+
+            width: 100%;
+
+            .policy-impact-title {
+                font-size: 1.7rem;
+            }
+
+            .policy-impact-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        .travel-carousel-viewport {
+            padding-bottom: 8px;
+        }
+
+        .carousel-nav-buttons {
+            padding: 0 5px;
+        }
+
+        button.carousel-btn {
+
+            width: 36px !important;
+            height: 36px !important;
+
+            min-width: 36px !important;
+            min-height: 36px !important;
+
+            background: rgba(255, 255, 255, 0.96) !important;
+        }
+
+        .impact-flip-card {
+
+            width: 290px;
+            min-width: 290px;
+
+            flex: 0 0 290px;
+
+            height: 330px;
+        }
+
+        .flip-card-front {
+
+            .card-image-wrap {
+                height: 180px;
+            }
+
+            .card-content {
+                padding: 14px 16px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+        }
+
+        .flip-card-back {
+            padding: 16px;
+        }
+
+        .pa-standalone-takeaway {
+
+            margin-top: 25px;
+
+            .takeaway-banner {
+
+                padding: 18px;
+
+                flex-direction: column;
+                align-items: flex-start;
+
+                gap: 12px;
+            }
+
+            .takeaway-text-group {
+                font-size: 0.88rem;
+            }
+        }
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .travel-impact-section {
+
+        .impact-flip-card {
+
+            width: 270px;
+            min-width: 270px;
+
+            flex: 0 0 270px;
+        }
+
+        .policy-impact-header {
+
+            .policy-impact-title {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .travel-impact-section {
+
+        .flip-card-inner,
+        .carousel-btn,
+        .card-image-wrap img {
+            transition: none !important;
+        }
+
+        .policy-impact-carousel-track {
+            scroll-behavior: auto;
+        }
+    }
+}

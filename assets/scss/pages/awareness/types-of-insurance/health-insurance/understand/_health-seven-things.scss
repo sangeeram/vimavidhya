@@ -1,0 +1,26 @@
+// ========================================
+// VIMA VIDYA — HEALTH MYTHS ACCORDION MODIFIER (SCSS)
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+
+.vv-myths--health {
+    // 7 distinct pastel shades tailored for health (e.g., medical greens, teal, fresh blues)
+    $pastel-colors: (
+        1: #f0fdf4, // Soft mint green tint of success/health
+        2: #f0f9ff, // Soft light blue tint
+        3: #fdf4f8, // Soft rose/pink tint
+        4: #f4f6f9, // Soft navy tint
+        5: #f5f3ff, // Soft purple tint
+        6: #ecfdf5, // Emerald green variant
+        7: #fffbeb  // Soft warm amber tint
+    );
+
+    @each $index, $color in $pastel-colors {
+        .vv-myth-slide--color-#{$index} {
+            .vv-myth-split-card {
+                background-color: $color;
+                border-color: rgba($color-navy, 0.06);
+            }
+        }
+    }
+}

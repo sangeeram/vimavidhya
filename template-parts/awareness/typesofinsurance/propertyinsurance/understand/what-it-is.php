@@ -1,11 +1,11 @@
 <?php
 
+$theme_uri = get_template_directory_uri();
+
 $insurance_page_data = [
 
     // -------------------------------------------------------------
-
     // SECTION 01.1: What is Property Insurance?
-
     // -------------------------------------------------------------
 
     'section_1' => [
@@ -22,7 +22,7 @@ $insurance_page_data = [
 
         ),
 
-       
+        
 
         'covered_events' => [
 
@@ -251,9 +251,7 @@ $insurance_page_data = [
 
 
     // -------------------------------------------------------------
-
     // SECTION 01.2: What Can It Protect?
-
     // -------------------------------------------------------------
 
     'section_2' => [
@@ -276,7 +274,7 @@ $insurance_page_data = [
 
                 'icon'     => '🏗️',
 
-                'image'    => 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80',
+                'image'    => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/what-can-it-protect-1.png',
 
                 'badge'    => 'Base Structure',
 
@@ -334,7 +332,7 @@ $insurance_page_data = [
 
                 'icon'     => '🛋️',
 
-                'image'    => 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
+                'image'    => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/what-can-it-protect-2.png',
 
                 'badge'    => 'Interior Furnishings',
 
@@ -386,7 +384,7 @@ $insurance_page_data = [
 
                 'icon'     => '💻',
 
-                'image'    => 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1400&q=80',
+                'image'    => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/what-can-it-protect-3.png',
 
                 'badge'    => 'Digital & Appliances',
 
@@ -436,7 +434,7 @@ $insurance_page_data = [
 
                 'icon'     => '📦',
 
-                'image'    => 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80',
+                'image'    => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/what-can-it-protect-4.png',
 
                 'badge'    => 'Commercial Inventory',
 
@@ -486,7 +484,7 @@ $insurance_page_data = [
 
                 'icon'     => '💍',
 
-                'image'    => 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1400&q=80',
+                'image'    => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/what-can-it-protect-5.png',
 
                 'badge'    => 'Declared Valuables',
 
@@ -538,7 +536,7 @@ $insurance_page_data = [
 
             For small businesses, stock and equipment cover protects the livelihood inside the shell.
 <br>
-          
+         
 
             Homeowners need the first two.
 
@@ -559,38 +557,34 @@ $insurance_page_data = [
 ?>
 
 
-
-<div class="pi-wrapper" id="what-it-is">
+<div class="vv-property-insurance-wrapper" id="what-it-is">
 
     <!-- ========================================================= -->
-
     <!-- SECTION 01.1: WHAT IS PROPERTY INSURANCE?                 -->
-
     <!-- ========================================================= -->
 
-    <section class="pi-section-s1">
+    <section class="vv-property-insurance-section-s1">
 
-        <header class="pi-header">
+        <header class="vv-property-insurance-header">
 
-            <!-- <span class="pi-subtag"><?php echo esc_html($insurance_page_data['section_1']['subtag']); ?></span> -->
+            <h1 class="vv-property-insurance-title"><?php echo esc_html($insurance_page_data['section_1']['title']); ?></h1>
 
-            <h1 class="pi-title"><?php echo esc_html($insurance_page_data['section_1']['title']); ?></h1>
-
-            <p class="pi-desc"><?php echo wp_kses_post($insurance_page_data['section_1']['description']); ?></p>
+            <p class="vv-property-insurance-desc">
+                <?php echo wp_kses_post($insurance_page_data['section_1']['description']); ?></p>
 
         </header>
 
 
 
-        <div class="pi-contrast-grid">
+        <div class="vv-property-insurance-contrast-grid">
 
             <!-- Left: Covered Column -->
 
-            <section class="pi-contrast-col pi-contrast-col--covered">
+            <section class="vv-property-insurance-contrast-col vv-property-insurance-contrast-col--covered">
 
-                <div class="pi-col-header">
+                <div class="vv-property-insurance-col-header">
 
-                    <div class="pi-col-icon-circle pi-col-icon-circle--covered">
+                    <div class="vv-property-insurance-col-icon-circle vv-property-insurance-col-icon-circle--covered">
 
                         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
                             stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -601,12 +595,13 @@ $insurance_page_data = [
 
                     </div>
 
-                    <div class="pi-col-title-wrap">
+                    <div class="vv-property-insurance-col-title-wrap">
 
-                        <h2 class="pi-col-title">
+                        <h2 class="vv-property-insurance-col-title">
                             <?php echo esc_html($insurance_page_data['section_1']['covered_events']['title']); ?></h2>
 
-                        <span class="pi-col-underline pi-col-underline--covered"></span>
+                        <span
+                            class="vv-property-insurance-col-underline vv-property-insurance-col-underline--covered"></span>
 
                     </div>
 
@@ -614,65 +609,23 @@ $insurance_page_data = [
 
 
 
-                <p class="pi-col-subtext">
+                <p class="vv-property-insurance-col-subtext">
 
                     <?php echo wp_kses_post($insurance_page_data['section_1']['covered_events']['subtext']); ?>
 
                 </p>
 
-
-
-                <!-- <div class="pi-peril-card-grid">
-
-                    <?php foreach ($insurance_page_data['section_1']['covered_events']['cards'] as $card): ?>
-
-                    <article class="pi-visual-card pi-visual-card--covered">
-
-                        <div class="pi-visual-card__media">
-
-                            <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['label']); ?>" loading="lazy">
-
-                            <span class="pi-visual-card__pill"><?php echo esc_html($card['tag']); ?></span>
-
-                        </div>
-
-                        <div class="pi-visual-card__body">
-
-                            <span class="pi-visual-card__icon-badge"><?php echo esc_html($card['icon']); ?></span>
-
-                            <h3 class="pi-visual-card__title"><?php echo esc_html($card['label']); ?></h3>
-
-                            <p class="pi-visual-card__desc"><?php echo esc_html($card['explanation']); ?></p>
-
-                        </div>
-
-                    </article>
-
-                    <?php endforeach; ?>
-
-                </div> -->
-
             </section>
 
 
 
-            <!-- Right: Not Covered Column (With Watermark Text Box) -->
+            <!-- Right: Not Covered Column -->
 
-            <section class="pi-contrast-col pi-contrast-col--denied">
+            <section class="vv-property-insurance-contrast-col vv-property-insurance-contrast-col--denied">
 
-                <!-- Text Watermark Banner -->
+                <div class="vv-property-insurance-col-header">
 
-                <!-- <div class="pi-watermark-stamp" aria-hidden="true">
-
-                    <div class="pi-watermark-text">NOT COVERED</div>
-
-                </div> -->
-
-
-
-                <div class="pi-col-header">
-
-                    <div class="pi-col-icon-circle pi-col-icon-circle--denied">
+                    <div class="vv-property-insurance-col-icon-circle vv-property-insurance-col-icon-circle--denied">
 
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
                             stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
@@ -685,13 +638,14 @@ $insurance_page_data = [
 
                     </div>
 
-                    <div class="pi-col-title-wrap">
+                    <div class="vv-property-insurance-col-title-wrap">
 
-                        <h2 class="pi-col-title">
+                        <h2 class="vv-property-insurance-col-title">
                             <?php echo esc_html($insurance_page_data['section_1']['not_covered_events']['title']); ?>
                         </h2>
 
-                        <span class="pi-col-underline pi-col-underline--denied"></span>
+                        <span
+                            class="vv-property-insurance-col-underline vv-property-insurance-col-underline--denied"></span>
 
                     </div>
 
@@ -699,43 +653,11 @@ $insurance_page_data = [
 
 
 
-                <p class="pi-col-subtext">
+                <p class="vv-property-insurance-col-subtext">
 
                     <?php echo esc_html($insurance_page_data['section_1']['not_covered_events']['subtext']); ?>
 
                 </p>
-
-
-
-                <!-- <div class="pi-peril-card-grid">
-
-                    <?php foreach ($insurance_page_data['section_1']['not_covered_events']['cards'] as $card): ?>
-
-                    <article class="pi-visual-card pi-visual-card--denied">
-
-                        <div class="pi-visual-card__media">
-
-                            <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['label']); ?>" loading="lazy">
-
-                            <span class="pi-visual-card__pill"><?php echo esc_html($card['tag']); ?></span>
-
-                        </div>
-
-                        <div class="pi-visual-card__body">
-
-                            <span class="pi-visual-card__icon-badge"><?php echo esc_html($card['icon']); ?></span>
-
-                            <h3 class="pi-visual-card__title"><?php echo esc_html($card['label']); ?></h3>
-
-                            <p class="pi-visual-card__desc"><?php echo esc_html($card['explanation']); ?></p>
-
-                        </div>
-
-                    </article>
-
-                    <?php endforeach; ?>
-
-                </div> -->
 
             </section>
 
@@ -743,11 +665,11 @@ $insurance_page_data = [
 
 
 
-        <aside class="pi-global-takeaway pi-global-takeaway--s1">
+        <aside class="vv-property-insurance-global-takeaway vv-property-insurance-global-takeaway--s1">
 
-            <span class="pi-global-takeaway__icon" aria-hidden="true">📌</span>
+            <span class="vv-property-insurance-global-takeaway__icon" aria-hidden="true">📌</span>
 
-            <p class="pi-global-takeaway__text">
+            <p class="vv-property-insurance-global-takeaway__text">
                 <?php echo wp_kses_post($insurance_page_data['section_1']['takeaway']); ?></p>
 
         </aside>
@@ -757,49 +679,50 @@ $insurance_page_data = [
 
 
     <!-- ========================================================= -->
-
     <!-- SECTION 01.2: WHAT CAN IT PROTECT? (SPLIT VIEW)          -->
+    <!-- ========================================================= -->
 
-
-    <section class="pi-section-s2">
-        <header class="pi-header pi-header--secondary">
-            <!-- <span class="pi-subtag"><?php echo esc_html($insurance_page_data['section_2']['subtag']); ?></span> -->
-            <h2 class="pi-title-h2"><?php echo esc_html($insurance_page_data['section_2']['title']); ?></h2>
-            <p class="pi-desc"><?php echo esc_html($insurance_page_data['section_2']['subtitle']); ?></p>
+    <section class="vv-property-insurance-section-s2">
+        <header class="vv-property-insurance-header vv-property-insurance-header--secondary">
+            <h2 class="vv-property-insurance-title-h2">
+                <?php echo esc_html($insurance_page_data['section_2']['title']); ?></h2>
+            <p class="vv-property-insurance-desc"><?php echo esc_html($insurance_page_data['section_2']['subtitle']); ?>
+            </p>
         </header>
 
-        <div class="pi-stage-wrapper">
+        <div class="vv-property-insurance-stage-wrapper">
             <!-- 1. TOP TABS / TIMELINE -->
-            <nav class="pi-layer-timeline" role="tablist" aria-label="Coverage Stages">
+            <nav class="vv-property-insurance-layer-timeline" role="tablist" aria-label="Coverage Stages">
                 <?php foreach ($insurance_page_data['section_2']['zones'] as $key => $zone): ?>
                 <button type="button" role="tab"
-                    class="pi-layer-step <?php echo $key === 'building' ? 'is-active' : ''; ?>"
+                    class="vv-property-insurance-layer-step <?php echo $key === 'building' ? 'is-active' : ''; ?>"
                     data-layer="<?php echo esc_attr($key); ?>"
                     aria-selected="<?php echo $key === 'building' ? 'true' : 'false'; ?>">
-                    <span class="pi-layer-step__icon"><?php echo esc_html($zone['icon']); ?></span>
-                    <span class="pi-layer-step__label"><?php echo esc_html($zone['label']); ?></span>
+                    <span class="vv-property-insurance-layer-step__icon"><?php echo esc_html($zone['icon']); ?></span>
+                    <span class="vv-property-insurance-layer-step__label"><?php echo esc_html($zone['label']); ?></span>
                 </button>
                 <?php endforeach; ?>
             </nav>
 
             <!-- 2. SIDE-BY-SIDE SPLIT CONTAINER -->
-            <div class="pi-stage-split">
+            <div class="vv-property-insurance-stage-split">
                 <!-- LEFT: IMAGE VIEWPORT -->
-                <div class="pi-viewport pi-viewport--compact" id="piViewport">
-                    <img id="piStageImage" class="pi-stage-img"
+                <div class="vv-property-insurance-viewport vv-property-insurance-viewport--compact"
+                    id="vvPropertyInsuranceViewport">
+                    <img id="vvPropertyInsuranceStageImage" class="vv-property-insurance-stage-img"
                         src="<?php echo esc_url($insurance_page_data['section_2']['zones']['building']['image']); ?>"
                         alt="Property Protection Stage View">
 
-                    <div class="pi-viewport__overlay">
-                        <span class="pi-layer-badge" id="piLayerBadge">
+                    <div class="vv-property-insurance-viewport__overlay">
+                        <span class="vv-property-insurance-layer-badge" id="vvPropertyInsuranceLayerBadge">
                             <?php echo esc_html($insurance_page_data['section_2']['zones']['building']['badge']); ?>
                         </span>
                     </div>
 
                     <!-- PINS -->
-                    <div id="piPinContainer" class="pi-pin-container">
+                    <div id="vvPropertyInsurancePinContainer" class="vv-property-insurance-pin-container">
                         <?php foreach ($insurance_page_data['section_2']['zones']['building']['pins'] as $pin): ?>
-                        <button type="button" class="pi-map-pin"
+                        <button type="button" class="vv-property-insurance-map-pin"
                             style="top: <?php echo esc_attr($pin['top']); ?>; left: <?php echo esc_attr($pin['left']); ?>;">
                             <?php echo esc_html($pin['label']); ?>
                         </button>
@@ -808,51 +731,66 @@ $insurance_page_data = [
                 </div>
 
                 <!-- RIGHT: COMPACT SIDE DETAILS PANEL -->
-                <div class="pi-side-panel pi-side-panel--compact" id="piSidePanel">
-                    <div class="pi-panel-header">
-                        <span class="pi-panel-icon" id="piPanelIcon">🏗️</span>
+                <div class="vv-property-insurance-side-panel vv-property-insurance-side-panel--compact"
+                    id="vvPropertyInsuranceSidePanel">
+                    <div class="vv-property-insurance-panel-header">
+                        <span class="vv-property-insurance-panel-icon" id="vvPropertyInsurancePanelIcon">
+                            <?php echo esc_html($insurance_page_data['section_2']['zones']['building']['icon']); ?>
+                        </span>
                         <div>
-                            <span class="pi-panel-sub" id="piPanelSub">Coverage Details</span>
-                            <h3 class="pi-panel-title" id="piPanelTitle">
+                            <span class="vv-property-insurance-panel-sub" id="vvPropertyInsurancePanelSub">Coverage Details</span>
+                            <h3 class="vv-property-insurance-panel-title" id="vvPropertyInsurancePanelTitle">
                                 <?php echo esc_html($insurance_page_data['section_2']['zones']['building']['title']); ?>
                             </h3>
                         </div>
                     </div>
 
-                    <div class="pi-panel-body">
-                        <p class="pi-panel-desc" id="piPanelDesc">
+                    <div class="vv-property-insurance-panel-body">
+                        <p class="vv-property-insurance-panel-desc" id="vvPropertyInsurancePanelDesc">
                             <?php echo esc_html($insurance_page_data['section_2']['zones']['building']['desc']); ?>
                         </p>
 
                         <!-- Combined Target Audience Block -->
-                        <div class="pi-panel-group pi-panel-group--merged">
-                            <span class="pi-panel-group-title">Who & Best For</span>
-                            <div class="pi-merged-audience-content">
-                                <!-- <ul class="pi-panel-list pi-panel-list--audience" id="piPanelWhoFor">
-                                <?php foreach ($insurance_page_data['section_2']['zones']['building']['who_for'] as $person): ?>
-                                <li><?php echo esc_html($person); ?></li>
-                                <?php endforeach; ?>
-                            </ul> -->
-                                <p class="pi-panel-best-for" id="piPanelBestFor">
+                        <div class="vv-property-insurance-panel-group vv-property-insurance-panel-group--merged">
+                            <span class="vv-property-insurance-panel-group-title">Who & Best For</span>
+                            <div class="vv-property-insurance-merged-audience-content">
+                                <p class="vv-property-insurance-panel-best-for" id="vvPropertyInsurancePanelBestFor">
                                     <?php echo esc_html($insurance_page_data['section_2']['zones']['building']['best_for']); ?>
                                 </p>
                             </div>
                         </div>
 
                         <!-- Side-by-Side Grid for Includes & Protects -->
-                        <div class="pi-panel-grid-row">
-                            <div class="pi-panel-group pi-panel-group--no-border">
-                                <span class="pi-panel-group-title">Includes</span>
-                                <ul class="pi-panel-list" id="piPanelIncludes">
-                                    <?php foreach ($insurance_page_data['section_2']['zones']['building']['includes'] as $inc): ?>
-                                    <li><?php echo esc_html($inc); ?></li>
+                        <div class="vv-property-insurance-panel-grid-row">
+                            <div class="vv-property-insurance-panel-group vv-property-insurance-panel-group--no-border">
+                                <span class="vv-property-insurance-panel-group-title">Includes</span>
+                                <ul class="vv-property-insurance-panel-list" id="vvPropertyInsurancePanelIncludes">
+                                    <?php 
+                                    $default_icons = [
+                                        'Walls & roof' => '🏠', 'Floors' => '🧱', 'Staircases' => '🪜', 
+                                        'Fixtures' => '🔧', 'Plumbing' => '🚰', 'Electrical wiring' => '⚡', 
+                                        'Compound walls' => '🧱', 'Sofas & Tables' => '🛋️', 'Refrigerators & Washers' => '❄️', 
+                                        'Smart TV / Sound systems' => '📺', 'Kitchen cookware' => '🍳', 'Wardrobes' => '🚪',
+                                        'Computers & Laptops' => '💻', 'High-end Televisions' => '📺', 'Home Server / Audio Gear' => '🎧', 
+                                        'Surge Breakdown' => '⚡', 'Trade equipment & machinery' => '⚙️', 'Raw material inventories' => '📦', 
+                                        'Point-of-sale registers' => '🖥️', 'Display counters' => '🏷️', 'Gold & Diamond jewellery' => '💍', 
+                                        'Luxury watches' => '⌚', 'Rare heirlooms' => '🏺', 'Works of art' => '🎨'
+                                    ];
+                                    foreach ($insurance_page_data['section_2']['zones']['building']['includes'] as $inc): 
+                                    ?>
+                                    <li>
+                                        <span class="vv-property-include-icon" aria-hidden="true">
+                                            <?php echo esc_html($default_icons[$inc] ?? '✓'); ?>
+                                        </span>
+                                        <span><?php echo esc_html($inc); ?></span>
+                                    </li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
 
-                            <div class="pi-panel-group pi-panel-group--no-border">
-                                <span class="pi-panel-group-title">When It Protects</span>
-                                <ul class="pi-panel-list" id="piPanelProtects">
+                            <div class="vv-property-insurance-panel-group vv-property-insurance-panel-group--no-border">
+                                <span class="vv-property-insurance-panel-group-title">When It Protects</span>
+                                <ul class="vv-property-insurance-panel-list" id="vvPropertyInsurancePanelProtects">
                                     <?php foreach ($insurance_page_data['section_2']['zones']['building']['protects_against'] as $item): ?>
                                     <li><?php echo esc_html($item); ?></li>
                                     <?php endforeach; ?>
@@ -864,252 +802,137 @@ $insurance_page_data = [
             </div>
         </div>
 
-        <aside class="pi-global-takeaway pi-global-takeaway--s2">
-            <span class="pi-global-takeaway__icon" aria-hidden="true">📌</span>
-            <p class="pi-global-takeaway__text">
+        <aside class="vv-property-insurance-global-takeaway vv-property-insurance-global-takeaway--s2">
+            <span class="vv-property-insurance-global-takeaway__icon" aria-hidden="true">📌</span>
+            <p class="vv-property-insurance-global-takeaway__text">
                 <?php echo wp_kses_post($insurance_page_data['section_2']['takeaway']); ?></p>
         </aside>
     </section>
 
 </div>
 
-
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
-    const zonesData =
-        <?php echo json_encode($insurance_page_data['section_2']['zones'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
-
-
-
+    const zonesData = <?php echo json_encode($insurance_page_data['section_2']['zones'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
     let activeZoneKey = 'building';
 
+    const imgEl = document.getElementById('vvPropertyInsuranceStageImage');
+    const badgeEl = document.getElementById('vvPropertyInsuranceLayerBadge');
+    const pinContainer = document.getElementById('vvPropertyInsurancePinContainer');
+    const timelineButtons = document.querySelectorAll('.vv-property-insurance-layer-step');
 
-
-    const imgEl = document.getElementById('piStageImage');
-
-    const badgeEl = document.getElementById('piLayerBadge');
-
-    const pinContainer = document.getElementById('piPinContainer');
-
-    const timelineButtons = document.querySelectorAll('.pi-layer-step');
-
-
-
-    // Panel Elements
-
-    const panelIcon = document.getElementById('piPanelIcon');
-
-    const panelTitle = document.getElementById('piPanelTitle');
-
-    const panelDesc = document.getElementById('piPanelDesc');
-
-    const panelWhoFor = document.getElementById('piPanelWhoFor');
-
-    const panelBestFor = document.getElementById('piPanelBestFor');
-
-    const panelIncludes = document.getElementById('piPanelIncludes');
-
-    const panelProtects = document.getElementById('piPanelProtects');
-
-
+    const panelIcon = document.getElementById('vvPropertyInsurancePanelIcon');
+    const panelTitle = document.getElementById('vvPropertyInsurancePanelTitle');
+    const panelDesc = document.getElementById('vvPropertyInsurancePanelDesc');
+    const panelWhoFor = document.getElementById('vvPropertyInsurancePanelWhoFor');
+    const panelBestFor = document.getElementById('vvPropertyInsurancePanelBestFor');
+    const panelIncludes = document.getElementById('vvPropertyInsurancePanelIncludes');
+    const panelProtects = document.getElementById('vvPropertyInsurancePanelProtects');
 
     function renderPins(pins) {
-
         if (!pinContainer) return;
-
         pinContainer.innerHTML = '';
-
         if (!Array.isArray(pins)) return;
 
-
-
         pins.forEach(function(pin, index) {
-
             const btn = document.createElement('button');
-
             btn.type = 'button';
-
-            btn.className = 'pi-map-pin';
-
+            btn.className = 'vv-property-insurance-map-pin';
             btn.style.top = pin.top || '50%';
-
             btn.style.left = pin.left || '50%';
-
             btn.textContent = pin.label || '';
-
             btn.style.animationDelay = (index * 0.12) + 's';
-
             pinContainer.appendChild(btn);
-
         });
-
     }
-
-
 
     function updateDetailsPanel(data) {
-
         if (!data) return;
 
-
-
         if (panelIcon) panelIcon.textContent = data.icon || '';
-
         if (panelTitle) panelTitle.textContent = data.title || '';
-
         if (panelDesc) panelDesc.textContent = data.desc || '';
-
         if (panelBestFor) panelBestFor.textContent = data.best_for || '';
 
-
-
-        if (panelWhoFor) {
-
-            panelWhoFor.innerHTML = '';
-
-            if (Array.isArray(data.who_for)) {
-
-                data.who_for.forEach(function(person) {
-
-                    const li = document.createElement('li');
-
-                    li.textContent = person;
-
-                    panelWhoFor.appendChild(li);
-
-                });
-
-            }
-
-        }
-
-
-
         if (panelIncludes) {
-
             panelIncludes.innerHTML = '';
-
             if (Array.isArray(data.includes)) {
-
-                data.includes.forEach(function(item) {
-
-                    const li = document.createElement('li');
-
-                    li.textContent = item;
-
-                    panelIncludes.appendChild(li);
-
-                });
-
-            }
-
-        }
-
-
-
-        if (panelProtects) {
-
-            panelProtects.innerHTML = '';
-
-            if (Array.isArray(data.protects_against)) {
-
-                data.protects_against.forEach(function(item) {
-
-                    const li = document.createElement('li');
-
-                    li.textContent = item;
-
-                    panelProtects.appendChild(li);
-
-                });
-
-            }
-
-        }
-
-    }
-
-
-
-    function switchLayer(key) {
-
-        if (!zonesData || !zonesData[key] || key === activeZoneKey) return;
-
-        activeZoneKey = key;
-
-        const data = zonesData[key];
-
-
-
-        timelineButtons.forEach(function(btn) {
-
-            const isActive = btn.getAttribute('data-layer') === key;
-
-            btn.classList.toggle('is-active', isActive);
-
-            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-
-        });
-
-
-
-        // Update image & pins
-
-        if (imgEl) {
-
-            imgEl.classList.add('is-switching');
-
-            setTimeout(function() {
-
-                imgEl.src = data.image;
-
-                if (badgeEl) badgeEl.textContent = data.badge;
-
-                renderPins(data.pins);
-
-                imgEl.onload = function() {
-
-                    imgEl.classList.remove('is-switching');
-
+                const coverageIcons = {
+                    "Walls & roof": "🏠", "Floors": "🧱", "Staircases": "🪜", 
+                    "Fixtures": "🔧", "Plumbing": "🚰", "Electrical wiring": "⚡", 
+                    "Compound walls": "🧱", "Sofas & Tables": "🛋️", "Refrigerators & Washers": "🧺", 
+                    "Smart TV / Sound systems": "📺", "Kitchen cookware": "🍳", "Wardrobes": "🚪",
+                    "Computers & Laptops": "💻", "High-end Televisions": "📺", "Home Server / Audio Gear": "🔊", 
+                    "Surge Breakdown": "⚡", "Trade equipment & machinery": "⚙️", "Raw material inventories": "📦", 
+                    "Point-of-sale registers": "🧾", "Display counters": "🏪", "Gold & Diamond jewellery": "💎", 
+                    "Luxury watches": "⌚", "Rare heirlooms": "🏺", "Works of art": "🎨"
                 };
 
-            }, 150);
+                data.includes.forEach(function(item) {
+                    const li = document.createElement('li');
+                    const icon = document.createElement('span');
+                    icon.className = 'vv-property-include-icon';
+                    icon.textContent = coverageIcons[item] || '✓';
+                    icon.setAttribute('aria-hidden', 'true');
 
+                    const label = document.createElement('span');
+                    label.textContent = item;
+
+                    li.appendChild(icon);
+                    li.appendChild(label);
+                    panelIncludes.appendChild(li);
+                });
+            }
         }
 
-
-
-        // Update side panel content
-
-        updateDetailsPanel(data);
-
+        if (panelProtects) {
+            panelProtects.innerHTML = '';
+            if (Array.isArray(data.protects_against)) {
+                data.protects_against.forEach(function(item) {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    panelProtects.appendChild(li);
+                });
+            }
+        }
     }
 
-
-
-    if (timelineButtons.length) {
+    function switchLayer(key) {
+        if (!zonesData || !zonesData[key] || key === activeZoneKey) return;
+        activeZoneKey = key;
+        const data = zonesData[key];
 
         timelineButtons.forEach(function(btn) {
-
-            btn.addEventListener('click', function() {
-
-                switchLayer(this.getAttribute('data-layer'));
-
-            });
-
+            const isActive = btn.getAttribute('data-layer') === key;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
+        if (imgEl) {
+            imgEl.classList.add('is-switching');
+            setTimeout(function() {
+                imgEl.src = data.image;
+                if (badgeEl) badgeEl.textContent = data.badge;
+                renderPins(data.pins);
+                imgEl.onload = function() {
+                    imgEl.classList.remove('is-switching');
+                };
+            }, 150);
+        }
+
+        updateDetailsPanel(data);
     }
 
-
+    if (timelineButtons.length) {
+        timelineButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                switchLayer(this.getAttribute('data-layer'));
+            });
+        });
+    }
 
     if (zonesData.building) {
-
         renderPins(zonesData.building.pins);
-
     }
-
 });
 </script>

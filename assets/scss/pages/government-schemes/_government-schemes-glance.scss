@@ -1,0 +1,190 @@
+@use "../../abstracts/variables" as *;
+
+.gov-glance-section {
+    position: relative;
+    padding:40px 0;
+    background: #FFFFFF;
+
+    .gov-glance__container {
+        width: min(calc(100% - 48px), $container-width);
+        margin: 0 auto;
+    }
+
+    .gov-glance__header {
+        text-align: left;
+        max-width: 1200px;
+        margin: 0 auto 50px;
+
+        .gov-glance__eyebrow {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: $color-orange;
+            font-family: $font-primary;
+            font-size: $text-sm;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .gov-glance__title {
+            margin: 0 0 12px;
+            color: $color-navy;
+            font-family: $font-primary;
+            font-size:44px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .gov-glance__subtitle {
+            margin: 0;
+            color: $color-text-body;
+            font-family: $font-primary;
+            font-size: $text-base;
+            line-height: 1.5;
+        }
+    }
+
+    .gov-glance__interactive-box {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 30px;
+        background: $color-navy;
+        padding: 30px;
+        border-radius: $radius-lg;
+        box-shadow: 0 25px 60px rgba(3, 21, 46, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gov-glance__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-height: 520px;
+        overflow-y: auto;
+        padding-right: 6px;
+
+        &::-webkit-scrollbar { width: 4px; }
+        &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+
+        .gov-glance__tab-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: $radius-sm;
+            cursor: pointer;
+            text-align: left;
+            transition: all $transition-fast;
+
+            .tab-num { color: rgba(255, 255, 255, 0.4); font-family: $font-primary; font-size: 12px; font-weight: 700; width: 18px; }
+            .tab-icon { font-size: 16px; }
+            .tab-name { flex-grow: 1; color: rgba(255, 255, 255, 0.8); font-family: $font-primary; font-size: $text-sm; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .tab-arrow { color: $color-orange; font-size: 14px; opacity: 0; transform: translateX(-6px); transition: all $transition-fast; }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+                .tab-name { color: $color-white; }
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                box-shadow: 0 6px 15px rgba(0, 122, 255, 0.3);
+
+                .tab-num, .tab-name { color: $color-white; }
+                .tab-arrow { opacity: 1; transform: translateX(0); }
+            }
+        }
+    }
+
+    .gov-glance__content-panel {
+        background: $color-white;
+        border-radius: $radius-md;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        .gov-glance__pane {
+            display: none;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 1fr 1.2fr;
+            animation: fadeInGlancePane 0.4s ease forwards;
+
+            &.active { display: grid; }
+        }
+    }
+
+    @keyframes fadeInGlancePane {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gov-glance__pane-media {
+        position: relative;
+        height: 100%;
+        min-height: 420px;
+        background: $color-navy;
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .gov-glance__pane-badge {
+            position: absolute; top: 20px; left: 20px; padding: 8px 14px;
+            background: rgba(3, 21, 46, 0.85); backdrop-filter: blur(8px);
+            color: $color-white; font-family: $font-primary; font-size: 12px; font-weight: 700;
+            border-radius: $radius-sm; border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    .gov-glance__pane-info {
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .pane-category { display: block; margin-bottom: 6px; color: $color-blue; font-family: $font-primary; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+        .pane-title { margin: 0 0 24px; color: $color-navy; font-family: $font-primary; font-size: 24px; font-weight: 700; line-height: 1.3; }
+
+        .pane-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+
+            .spec-item {
+                background: #f8fafc;
+                padding: 14px 16px;
+                border-radius: $radius-sm;
+                border: 1px solid rgba(3, 21, 46, 0.06);
+
+                .spec-label { display: block; margin-bottom: 4px; color: $color-text-muted; font-family: $font-primary; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+                .spec-val { color: $color-navy; font-family: $font-primary; font-size: 15px; font-weight: 700; }
+            }
+        }
+
+        .pane-action-footer {
+            padding-top: 16px;
+            border-top: 1px solid rgba(3, 21, 46, 0.08);
+
+            .pane-link-btn {
+                display: inline-flex; align-items: center; gap: 8px; color: $color-blue; font-family: $font-primary; font-size: $text-sm; font-weight: 700; text-decoration: none; transition: color $transition-fast;
+                span { color: $color-orange; transition: transform $transition-fast; }
+                &:hover { color: $color-navy; span { transform: translateX(4px); } }
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .gov-glance__interactive-box { grid-template-columns: 1fr; padding: 20px; }
+        .gov-glance__nav-list { max-height: 220px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .gov-glance__content-panel .gov-glance__pane { grid-template-columns: 1fr; }
+        .gov-glance__pane-media { min-height: 240px; }
+    }
+
+    @media (max-width: 640px) {
+        .gov-glance__nav-list { grid-template-columns: 1fr; }
+        .pane-specs-grid { grid-template-columns: 1fr !important; }
+    }
+}

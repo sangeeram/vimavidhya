@@ -1,0 +1,220 @@
+@use "../../../../../abstracts/variables" as *;
+
+.travel-comparison-section {
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: 65px 24px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        .header-badge-row {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .h2 {
+            font-size: 44px;
+            font-weight: 600;
+            color: $color-white;
+            margin: 4px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .text-body-med {
+            font-size: 1rem;
+            color: $color-text-muted;
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+
+    .travel-category-tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+
+        .travel-tab {
+            background: $color-white;
+            border: 1px solid $color-border;
+            color: $color-navy;
+            padding: 9px 18px;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+
+            .tab-icon {
+                color: $color-text-muted;
+                display: flex;
+                align-items: center;
+            }
+
+            &:hover {
+                background: #f0f7ff;
+                border-color: $color-blue;
+                color: $color-blue;
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                color: $color-white;
+                font-size: 16px;
+
+                .tab-icon {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    .travel-content-container {
+        margin-top: 24px;
+
+        .travel-tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn 0.3s ease;
+            }
+        }
+
+        .travel-content-card {
+            background: $color-white;
+            color: $color-text;
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.15);
+
+            .travel-content-header {
+                h3 {
+                    color: $color-navy;
+                    font-size: 1.35rem;
+                    font-weight: 700;
+                    line-height: 1.3;
+                    margin: 0 0 12px 0;
+                }
+            }
+
+            .travel-card-description {
+                font-size:16px;
+                line-height: 1.6;
+                color: black;
+                margin-bottom: 24px;
+            }
+
+            .travel-table-wrapper {
+                overflow-x: auto;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+
+                .travel-comparison-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+                    font-size: 16px;
+
+                    th, td {
+                        padding: 16px 20px;
+                        border-bottom: 1px solid #e2e8f0;
+                        border-right: 1px solid #e2e8f0;
+                        vertical-align: middle;
+                        background-color: #f8fafc;
+
+                        &:last-child {
+                            border-right: none;
+                        }
+                    }
+
+                    th {
+                        color: $color-navy;
+                        font-weight: 700;
+                        font-size: 0.85rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        background-color: #f1f5f9;
+                    }
+
+                    td {
+                        color: #334155;
+
+                        .feature-title-cell {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+
+                            .feature-icon {
+                                display: flex;
+                                align-items: center;
+                                color: $color-blue;
+                                background: #eff6ff;
+                                padding: 6px;
+                                border-radius: 6px;
+                                border: 1px solid #dbeafe;
+                            }
+
+                            strong {
+                                color: $color-navy;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    tr:last-child td {
+                        border-bottom: none;
+                    }
+
+                    tr:hover {
+                        background-color: rgba(0, 122, 255, 0.04);
+                        
+                        td {
+                            background-color: rgba(0, 122, 255, 0.02);
+                        }
+                    }
+                }
+            }
+
+            .card-footer-banner {
+                display: flex;
+                align-items: center;
+                background: #eff6ff;
+                border: 1px solid #bae6fd;
+                border-radius: 12px;
+                padding: 16px 20px;
+                gap: 14px;
+                margin-top: 24px;
+                font-size: 0.9rem;
+                color: #0369a1;
+                line-height: 1.5;
+
+                .banner-icon {
+                    font-size: 1.1rem;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

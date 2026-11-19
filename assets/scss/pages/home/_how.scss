@@ -1,0 +1,144 @@
+@use "../../abstracts/variables" as *;
+
+.vima-features-section {
+    font-family: $font-primary;
+    padding: $space-section-lg 0;
+    background-color: $color-white;
+    color: $color-text;
+    text-align: center;
+
+    .container {
+        max-width: $container-wide;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    // Section Header
+    .section-header {
+        max-width: $text-width-wide;
+        margin: 0 auto $space-section-sm auto;
+
+        h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            color: $color-navy;
+            margin-bottom: $space-small;
+            font-weight: 850;
+        }
+
+        p {
+            font-size: $text-lg;
+            line-height: $line-body;
+            color: $color-text-body;
+            font-weight: 500;
+        }
+    }
+
+    // 3-Column Grid Layout
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-content;
+        align-items: stretch;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // Feature Card Item
+    .feature-card {
+        background-color: $color-light-blue;
+        border-radius: $radius-lg;
+        padding: 36px $space-content;
+        display: flex;
+        flex-direction: column; // Stack items vertically to place button nicely at the bottom
+        align-items: flex-start;
+        text-align: left;
+        gap: $space-element;
+        box-shadow: 0 8px 30px rgba(8, 39, 75, 0.05);
+        border: 2px solid $color-border;
+        transition: $transition;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(8, 39, 75, 0.1);
+            border-color: rgba(0, 122, 255, 0.3);
+        }
+
+        // Top row inside card: Icon + Title wrapper or individual layout
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: $space-element;
+            width: 100%;
+
+            .card-icon {
+                flex-shrink: 0;
+                width: 64px;
+                height: 64px;
+                background-color: $color-white;
+                border-radius: $radius-md;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $color-orange;
+                box-shadow: 0 4px 12px rgba(8, 39, 75, 0.05);
+
+                svg {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            .card-header-text {
+                h3 {
+                    font-size: $text-h3;
+                    line-height: $line-heading;
+                    color: $color-navy;
+                    margin-bottom: 8px;
+                    font-weight: 800;
+                }
+
+                p {
+                    font-size: $text-base;
+                    line-height: $line-body;
+                    color: $color-text-body;
+                    margin: 0;
+                }
+            }
+        }
+
+        // Learn More Link / Button Style
+        .learn-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: $text-sm;
+            font-weight: 700;
+            color: $color-blue;
+            text-decoration: none;
+            margin-top: auto; // Pushes button to the bottom if cards stretch
+            padding-top: 12px;
+            transition: $transition-fast;
+
+            svg {
+                width: 16px;
+                height: 16px;
+                transition: transform $transition-fast;
+            }
+
+            &:hover {
+                color: $color-navy;
+
+                svg {
+                    transform: translateX(4px);
+                }
+            }
+        }
+    }
+}

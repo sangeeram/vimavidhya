@@ -673,3 +673,33 @@
         }
     }
 }
+
+.vv-assessment-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  padding-bottom: 16px;
+}
+
+.vv-view-faq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 15px 30px;
+  background: #123b69;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #087f8c;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(18, 59, 105, 0.2);
+  }
+}

@@ -231,6 +231,18 @@ if ($assessment_query->have_posts()) :
 
     </div>
 
+    <div class="vv-assessment-footer">
+    <a
+        href="<?php echo esc_url(
+            home_url('/insurance-faqs/')
+        ); ?>"
+        class="vv-view-faq-btn"
+    >
+        <span>Explore All FAQs</span>
+        <span aria-hidden="true">→</span>
+    </a>
+</div>
+
 </section>
 
 <?php

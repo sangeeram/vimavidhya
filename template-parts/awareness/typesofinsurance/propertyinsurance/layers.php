@@ -165,27 +165,78 @@ $layers = [
 
 
 <section class="journey-accordion-section">
-  <!-- Top Floating Frosted Header Arc -->
-  <div class="journey-vault-bg">
-    <div class="vault-content">
-      <!-- <span class="sub-heading"><?php esc_html_e('THE JOURNEY'); ?></span> -->
-      <h2 class="section-title">
-        <?php esc_html_e('You wake up. You leave for work. You lock the door. Lights off. Gas checked. A familiar turn of the key.  You do this every day — week after week, year after year. And rarely do you think: what if today is different?'); ?> 
-       
-      </h2>
-      <p>
+  <div class="property-intro">
+    <div class="property-routine" aria-label="Automatically animated daily property routine">
+      <div class="property-routine__eyebrow">PROPERTY INSURANCE</div>
+      <!-- <h3 class="property-routine__title">A day in the life of your home</h3> -->
+      <div class="property-wheel" id="property-wheel">
+        <svg class="property-wheel__track" viewBox="0 0 500 500" aria-hidden="true"><circle cx="250" cy="250" r="178" fill="none" stroke="#8ac6ff" stroke-width="2.5" stroke-dasharray="8 10"/><path d="M 397 146 l 13 1 -3 -13 M 404 343 l 3 13 -13 -1 M 104 343 l -13 -1 3 13" fill="none" stroke="#8ac6ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="property-wheel__center" aria-live="polite">
+          <svg viewBox="0 0 180 155" role="img" aria-label="Illustration of a family home"><circle cx="90" cy="76" r="72" fill="#e0f3ff"/><path d="M23 73 90 23l67 50" fill="none" stroke="#08274b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M39 70h102v68H39z" fill="#fff4e7" stroke="#d0e3ef" stroke-width="2"/><path d="M75 91h30v47H75z" fill="#d49b63"/><path d="M47 87h20v23H47zM113 87h20v23h-20z" fill="#7dc8f6" stroke="#08274b" stroke-width="2"/><path d="M14 139h152" stroke="#77b96b" stroke-width="6" stroke-linecap="round"/><circle cx="24" cy="113" r="16" fill="#82bc73"/><circle cx="157" cy="116" r="16" fill="#82bc73"/></svg>
+          <span class="property-wheel__center-label">YOUR HOME</span>
+        </div>
+        <?php
+      
+$routine_steps = [
+    [
+        'icon' => '☀',
+        'label' => 'You wake up.',
+        'position' => 'top'
+    ],
+    [
+        'icon' => '▣',
+        'label' => 'You leave for work.',
+        'position' => 'upper-right'
+    ],
+    [
+        'icon' => '🔒',
+        'label' => 'You lock the door.',
+        'position' => 'lower-right'
+    ],
+    [
+        'icon' => '☼',
+        'label' => 'Lights off.',
+        'position' => 'bottom'
+    ],
+    [
+        'icon' => '♨',
+        'label' => 'Gas checked.',
+        'position' => 'lower-left'
+    ],
+    [
+        'icon' => '🗝',
+        'label' => 'A familiar turn of the key.',
+        'position' => 'upper-left'
+    ],
+];
 
-      That is the nature of property loss. It does not announce itself. It arrives quietly — through a leaking pipe, a short circuit, a structural crack, a flood that rises overnight, a fire that spreads faster than expected.
+        foreach ($routine_steps as $i => $step) : ?>
+          <div class="property-wheel__step property-wheel__step--<?php echo esc_attr($step['position']); ?> <?php echo $i===0 ? 'is-active' : ''; ?>" data-routine-step>
+            <span class="property-wheel__icon" aria-hidden="true"><?php echo esc_html($step['icon']); ?></span>
+            <span class="property-wheel__label"><?php echo esc_html($step['label']); ?></span>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <p class="property-routine__hint">You do this every day — week after week, year after year</p>
+    </div>
+    <div class="property-story">
+      <span class="property-story__eyebrow">And rarely do you think</span>
+      <h2 class="property-story__heading">What if today is <span>different?</span></h2>
+      <p class="property-story__description">That is the nature of property loss. It does not announce itself. It arrives quietly — through a leaking pipe, a short circuit, a structural crack, a flood that rises overnight, a fire that spreads faster than expected.
 Your home did not come easy. It came through years of saving, decades of EMIs, postponed plans, and patient sacrifice. For most Indians, it is not just where life happens — it is the single largest asset they will ever own.
 For millions of small business owners, the situation is even more acute. The shop, the store, the kirana — it is not just property. It is the family's livelihood, built over years, built by hand.
 Yet, despite its value, it is often left financially exposed. 
-
 </p>
-      <p class="section-subtitle">
-        <?php esc_html_e('Property Insurance exists for exactly these ordinary days that end differently—designed to protect not just walls and floors, but everything they represent.'); ?>
-      </p>
+      <div class="property-story__art" role="img" aria-label="Property insurance protects a family home">
+        <div class="property-story__shield">✓</div>
+        <div class="property-story__house">🏡</div>
+        <div class="property-story__policy"><span>◆ PROPERTY</span><strong>INSURANCE</strong><i></i><i></i><i></i><i></i></div>
+        <span class="property-story__art-caption">Protect what you've built.</span>
+      </div>
     </div>
   </div>
+  <div class="property-protection-note"><span class="property-protection-note__icon" aria-hidden="true">♢</span><p>Property Insurance exists for exactly these ordinary days that end differently—designed to protect not just walls and floors, but everything they represent.</p></div>
+  <div class="journey-vault-bg"><div class="vault-content"><span class="sub-heading">The protection most homeowners and tenants overlook — until a fire, flood, or theft changes everything.</span><h2 class="section-title">Understand. <span class="highlight">Evaluate.</span> Act.</h2><p class="section-subtitle">Explore the essentials, assess your options, and take the next step with confidence.</p></div></div>
 
   <!-- Cards Container -->
   <div class="cards-container">
@@ -235,6 +286,37 @@ Yet, despite its value, it is often left financially exposed.
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const wheel = document.querySelector('.property-wheel');
+  const steps = wheel ? Array.from(wheel.querySelectorAll('[data-routine-step]')) : [];
+  let activeStep = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const showStep = (index) => {
+    steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+  };
+  if (steps.length && !reduceMotion) {
+    showStep(activeStep);
+    let routineTimer = null;
+    const startRoutine = () => {
+      if (routineTimer) return;
+      routineTimer = window.setInterval(() => {
+        activeStep = (activeStep + 1) % steps.length;
+        showStep(activeStep);
+      }, 3000);
+    };
+    const stopRoutine = () => {
+      if (routineTimer) window.clearInterval(routineTimer);
+      routineTimer = null;
+    };
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !document.hidden) startRoutine();
+      else stopRoutine();
+    }, { threshold: 0.15 });
+    observer.observe(wheel);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopRoutine();
+      else if (wheel.getBoundingClientRect().bottom > 0 && wheel.getBoundingClientRect().top < window.innerHeight) startRoutine();
+    });
+  }
   const cards = document.querySelectorAll('.journey-card[data-layer]');
 
   cards.forEach((card) => {

@@ -1,0 +1,249 @@
+// ============================================================
+// VIMA VIDYA
+// TRAVEL INSURANCE MASTER (Individual Tab System)
+// ============================================================
+
+@use "../../../../../abstracts/variables" as *;
+
+.travel-insurance-master-section {
+    position: relative;
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: 40px 20px;
+    font-family: $font-primary;
+
+    .master-container {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+    }
+
+    .whocanbuy-section-header {
+        text-align: left;
+    }
+
+    .section-title {
+        margin: 0 0 14px;
+        color: $color-text-light; 
+        font-size: 44px;
+        line-height: $line-tight;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+
+    .section-lead {
+        max-width: 1200px;
+        margin: 0 0 $space-element;
+        color: $color-text-light;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+    // ========================================================
+    // WHITE BOX CONTAINER FOR TABS AND CONTENT
+    // ========================================================
+    .master-content-grid {
+        width: 100%;
+        background: $color-white;
+        border-radius: $radius-lg;
+        padding: 30px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        color: $color-blue-dark;
+
+        @media (max-width: 768px) {
+            padding: 20px;
+        }
+    }
+
+    // ========================================================
+    // CATEGORY TABS (Navigation)
+    // ========================================================
+    .category-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: $space-element;
+        border-bottom: 1px solid $color-border;
+    }
+
+    .tab-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: $color-light-gray;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        color: $color-blue-dark;
+        font-family: $font-primary;
+        font-size: $text-sm;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background $transition-fast, border-color $transition-fast, color $transition-fast, transform $transition-fast;
+
+        .tab-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+        }
+
+        .tab-name {
+            white-space: nowrap;
+        }
+
+        &:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        &.is-active {
+            background: #1e3a8a;
+            border-color: #3b82f6;
+            color: $color-white;
+            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.22);
+        }
+    }
+
+    // ========================================================
+    // CONTENT PANELS
+    // ========================================================
+    .travel-content-panel {
+        display: none;
+        animation: travelPanelIn $transition ease both;
+
+        &.is-active {
+            display: block;
+        }
+    }
+
+    .info-pane {
+        width: 100%;
+        padding: 20px 0 0;
+    }
+
+    .pane-title {
+        max-width: 1100px;
+        margin: 0 0 20px;
+        color: $color-blue-dark;
+        font-size: clamp(1.65rem, 3vw, 2.15rem);
+        line-height: $line-heading;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    // ========================================================
+    // BODY TEXT & DETAILS
+    // ========================================================
+    .pane-body-text {
+        max-width: 1150px;
+        color: $color-text-body;
+        font-size: 16px;
+        line-height: 1.4;
+
+        p {
+            margin: 0 0 16px;
+            color: $color-text-body;
+        }
+
+        .eligibility-meta-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            background: #f8fafc;
+            border: 1px solid $color-border;
+            border-radius: $radius-sm;
+            padding: 18px;
+
+            .meta-item {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .meta-label {
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: #64748b;
+                }
+
+                .meta-value {
+                    font-size: 16px;
+                    font-weight: 750;
+                    color: $color-blue-dark;
+                }
+            }
+        }
+    }
+
+    // ========================================================
+    // NOTICE / CALLOUT BOX
+    // ========================================================
+    .travel-notice-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-top: 30px;
+        padding: 20px;
+        background: #eef7ff;
+        border: 1px solid #bfdbfe;
+        border-radius: $radius-lg;
+
+        .notice-icon {
+            flex: 0 0 auto;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: $color-orange;
+            color: $color-blue-dark;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .notice-content {
+            min-width: 0;
+
+            .notice-label {
+                display: block;
+                margin-bottom: 6px;
+                color: $color-blue-dark;
+                font-size: 16px;
+                font-weight: 800;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            p {
+                margin: 0 0 10px;
+                color: #334155;
+                font-size: 15px;
+                line-height: 1.5;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes travelPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -10,7 +10,7 @@ $video_thumbnail   = "https://img.youtube.com/vi/8LU6gTCJwmc/maxresdefault.jpg";
         <!-- Left Column: Video Media Component -->
         <div class="mission-media" data-aos="fade-right" data-aos-duration="800">
             <div class="video-thumbnail-wrapper">
-                <img src="<?php echo esc_url($video_thumbnail); ?>" alt="Vima Vidya Mission Video" class="video-poster">
+                <img src="<?php echo esc_url($video_thumbnail); ?>" alt="VimaVidya Mission Video" class="video-poster">
                 <div class="video-overlay"></div>
 
                 <!-- Play Button Trigger -->
@@ -30,11 +30,11 @@ $video_thumbnail   = "https://img.youtube.com/vi/8LU6gTCJwmc/maxresdefault.jpg";
             <h2 class="mission-title">Our Mission</h2>
 
             <p class="mission-description">
-                Vima Vidya is not an insurance company. We do not sell policies. We build understanding.
+                VimaVidya is not an insurance company. We do not sell policies. We build understanding.
             </p>
 
             <p class="mission-description-sub">
-                Vima Vidya is a knowledge and awareness platform created to empower every Indian-students,
+                VimaVidya is a knowledge and awareness platform created to empower every Indian-students,
                 professionals, business owners, and the general public—to understand and manage risk effectively through
                 the power of insurance.
             </p>

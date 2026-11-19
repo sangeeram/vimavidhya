@@ -1,0 +1,170 @@
+// =========================================================
+// VIMA VIDYA
+// CUSTOM REPORTS SECTION (LIGHT BLUE BACKGROUND)
+// =========================================================
+
+@use "../../abstracts/variables" as *;
+
+.custom-reports-section {
+    position: relative;
+    padding: $space-section-lg 0;
+    background: $color-light-blue; // Changed from dark navy to light blue
+    font-family: $font-primary;
+
+    .custom-reports__container {
+        width: min(calc(100% - 48px), $container-width);
+        margin: 0 auto;
+    }
+
+    // HEADER
+    .custom-reports__header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .custom-reports__eyebrow {
+        display: inline-block;
+        color: $color-orange;
+        font-size: $text-sm;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .custom-reports__title {
+        margin: 0;
+        color: $color-navy; // Changed to dark navy text for contrast on light blue background
+        font-size: clamp(32px, 3.2vw, $text-h2);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    // MAIN CARD CONTAINER
+    .custom-reports__card {
+        background: $color-white;
+        border-radius: 28px;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 35px;
+        align-items: center;
+        box-shadow: 0 20px 50px rgba(3, 21, 46, 0.08); // Softer shadow for light background
+        border: 1px solid $color-border; // Updated border for light theme
+        transition: transform $transition, box-shadow $transition;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(3, 21, 46, 0.12);
+        }
+    }
+
+    // IMAGE MEDIA
+    .custom-reports__media {
+        position: relative;
+        height: 260px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: $color-navy-dark;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform $transition-slow;
+        }
+
+        &:hover img {
+            transform: scale(1.04);
+        }
+    }
+
+    .custom-reports__badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(8, 39, 75, 0.8);
+        backdrop-filter: blur(8px);
+        color: $color-white;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: $radius-pill;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    // CONTENT AREA
+    .custom-reports__content {
+        padding-right: 20px;
+
+        h3 {
+            margin: 0 0 12px;
+            color: $color-navy;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 24px;
+            color: $color-text-body;
+            font-size: $text-base;
+            line-height: 1.6;
+        }
+    }
+
+    // ACTION BUTTON
+    .custom-reports__button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 26px;
+        background: $color-navy;
+        color: $color-white;
+        border-radius: $radius-pill;
+        font-size: $text-sm;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background $transition-fast, transform $transition-fast;
+
+        span {
+            color: $color-orange;
+            transition: transform $transition-fast;
+        }
+
+        &:hover {
+            background: $color-blue;
+            transform: translateY(-2px);
+
+            span {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    // RESPONSIVE BREAKPOINTS
+    @media (max-width: 1024px) {
+        .custom-reports__card {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .custom-reports__media {
+            height: 220px;
+        }
+
+        .custom-reports__content {
+            padding-right: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: $space-section-sm 0;
+
+        .custom-reports__button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}

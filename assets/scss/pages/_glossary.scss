@@ -1350,3 +1350,51 @@
         }
     }
 }
+
+
+.vv-glossary-section {
+
+  .vv-glossary-card__alphabet-bar {
+
+    button.vv-home-letter {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: #526b8a;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s ease, color 0.2s ease;
+
+      &:hover {
+        background: #edf4fc;
+        color: #09274b;
+      }
+
+      &.current-word {
+        background: #09274b;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #007bff;
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  .vv-tab-pane[hidden] {
+    display: none !important;
+  }
+
+  .vv-glossary-card__word {
+    overflow-wrap: anywhere;
+  }
+
+  .vv-detail-text {
+    overflow-wrap: anywhere;
+  }
+}

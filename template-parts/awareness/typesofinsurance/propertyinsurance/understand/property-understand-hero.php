@@ -13,6 +13,7 @@ $description = get_field('hero_description') ?: 'For most Indians, a home is the
 This section explains what property insurance actually is, who it’s meant for, what it covers (and doesn’t), and what’s at stake when protection is missing or incomplete.';
 
 // Fetch dynamic ACF Background Image or use Unsplash fallback
+// Fetch dynamic ACF Background Image or use theme asset fallback
 $bg_image_obj = get_field('hero_bg_image');
 
 if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
@@ -20,7 +21,7 @@ if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
 } elseif (is_string($bg_image_obj) && !empty($bg_image_obj)) {
     $bg_image = $bg_image_obj;
 } else {
-    $bg_image = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80';
+    $bg_image = get_stylesheet_directory_uri() . '/assets/images/typesofinsurance/propertyinsurance/understand-hero.png';
 }
 ?>
 
@@ -65,18 +66,22 @@ if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
                     <!-- Large Font Location Header -->
 
                     <!-- Eyebrow Pill -->
-                    <?php if ($eyebrow) : ?>
-                    <div class="propertyunderstandhero-slide-eyebrow">
-                        <span class="propertyunderstandhero-eyebrow-dot"></span>
-                        <?php echo esc_html($eyebrow); ?>
-                    </div>
-                    <?php endif; ?>
+               <div class="propertyunderstandhero-heading-row">
 
-                    <div class="propertyunderstandhero-page-indicator">
-                        <!-- <span class="propertyunderstandhero-indicator-category"><?php echo esc_html($page_category); ?></span> -->
-                        <span
-                            class="propertyunderstandhero-indicator-step"><?php echo esc_html($current_step); ?></span>
-                    </div>
+    <!-- Left: Property Insurance -->
+    <div class="propertyunderstandhero-slide-eyebrow">
+        <span class="propertyunderstandhero-eyebrow-dot"></span>
+        <?php echo esc_html($eyebrow); ?>
+    </div>
+
+    <!-- Center: Understand -->
+    <div class="propertyunderstandhero-page-indicator">
+        <span class="propertyunderstandhero-indicator-step">
+            <?php echo esc_html($current_step); ?>
+        </span>
+    </div>
+
+</div>
 
 
                     <!-- Main Title -->

@@ -67,7 +67,9 @@ $roadmap_stages = [
         <!-- ROADMAP HEADER -->
         <header class="roadmap-header" data-aos="fade-up" data-aos-duration="800">
             <!-- <span class="subtitle">STARTING OUT</span> -->
-            <h2 class="title">Wherever Life Takes You, Protection Should Follow</h2>
+            <!-- <h2 class="title">Wherever Life Takes You, Protection Should Follow</h2> -->
+            
+            <h2 class="title">Explore All Insurance Topics</h2>
             <p class="description">Life begins with dreams. Every journey starts somewhere.</p>
         </header>
 

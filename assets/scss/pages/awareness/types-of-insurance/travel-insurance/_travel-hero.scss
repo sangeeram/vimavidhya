@@ -1,0 +1,419 @@
+@use "../../../../abstracts/variables" as *;
+
+// =========================================================
+// VIMA VIDYA
+// TRAVEL INSURANCE HERO
+// HERO SLIDER — GLOBAL DESIGN SYSTEM
+// =========================================================
+
+.travelinsurancehero {
+  font-family: $font-primary;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+  background: $color-cream;
+
+  .travelinsurancehero-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .travelinsurancehero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      .travelinsurancehero-slide-image-wrapper {
+        transform: scale(1);
+      }
+
+      .travelinsurancehero-slide-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .travelinsurancehero-slide-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.08);
+    transition: transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  .travelinsurancehero-slide-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.94) 18%,
+      rgba($color-cream, 0.82) 34%,
+      rgba($color-cream, 0.58) 49%,
+      rgba($color-cream, 0.28) 67%,
+      rgba($color-cream, 0.04) 100%
+    );
+    pointer-events: none;
+  }
+
+  .travelinsurancehero-inner {
+    position: relative;
+    z-index: 5;
+    width: min(88%, $container-wide);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  .travelinsurancehero-slide-content {
+    width: 56%;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+  }
+
+  .travelinsurancehero-slide-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: $space-small;
+    padding: 7px 14px;
+    border-radius: $radius-pill;
+    background: rgba($color-white, 0.88);
+    border: 1px solid $color-border;
+    color: $color-navy;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba($color-navy, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .travelinsurancehero-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: $color-blue;
+    box-shadow: 0 0 0 4px rgba($color-blue, 0.15);
+  }
+
+  .travelinsurancehero-slide-tag {
+    display: block;
+    margin-bottom: $space-small;
+    color: $color-text-muted;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: $line-heading;
+    text-transform: uppercase;
+  }
+
+  .travelinsurancehero-slide-title {
+    margin: 0 0 $space-element;
+    max-width: 720px;
+    color: $color-text;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: $line-tight;
+    letter-spacing: -0.035em;
+
+    span {
+      display: block;
+      color: $color-blue;
+      font-weight: 600;
+    }
+  }
+
+  .travelinsurancehero-slide-desc {
+    max-width: $text-width-medium;
+    margin: 0 0 $space-element;
+    color: $color-text-body;
+    font-size: $text-sm;
+    font-weight: 400;
+    line-height: $line-body;
+  }
+
+  .travelinsurancehero-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-small;
+    flex-wrap: wrap;
+  }
+
+  .travelinsurancehero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: $radius-pill;
+    text-decoration: none;
+    font-size: $text-sm;
+    font-weight: 700;
+    line-height: 1;
+    transition: $transition;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: $color-white;
+      color: $color-blue;
+      font-size: $text-sm;
+      transition: transform $transition;
+    }
+
+    &:hover span {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .travelinsurancehero-btn--primary {
+    background: $color-orange;
+    color: $color-white;
+    border: 1px solid $color-orange;
+    box-shadow: 0 10px 25px rgba($color-orange, 0.25);
+
+    &:hover {
+      background: $color-orange;
+      border-color: $color-orange;
+      color: $color-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  .travelinsurancehero-btn--secondary {
+    background: $color-white;
+    border: 1px solid $color-border;
+    color: $color-navy;
+    box-shadow: 0 4px 12px rgba($color-navy, 0.04);
+
+    span {
+      background: rgba($color-blue, 0.1);
+    }
+
+    &:hover {
+      background: $color-cream;
+      border-color: $color-navy;
+      color: $color-navy;
+      transform: translateY(-2px);
+    }
+  }
+
+  .travelinsurancehero-arrow {
+    position: absolute;
+    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid $color-border;
+    border-radius: 50%;
+    background: rgba($color-white, 0.88);
+    color: $color-navy;
+    font-size: $text-lg;
+    cursor: pointer;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba($color-navy, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: $transition;
+
+    &:hover {
+      background: $color-blue;
+      border-color: $color-blue;
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      opacity: 1;
+      outline: 2px solid $color-blue;
+      outline-offset: 3px;
+    }
+  }
+
+  &:hover .travelinsurancehero-arrow {
+    opacity: 1;
+  }
+
+  .travelinsurancehero-arrow--prev {
+    left: 25px;
+  }
+
+  .travelinsurancehero-arrow--next {
+    right: 150px;
+  }
+
+  .travelinsurancehero-slider-dots {
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .travelinsurancehero-slider-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba($color-navy, 0.2);
+    cursor: pointer;
+    transition: $transition;
+
+    &.active {
+      width: 25px;
+      border-radius: $radius-pill;
+      background: $color-blue;
+    }
+
+    &:hover {
+      background: $color-navy;
+    }
+  }
+}
+
+// =========================================================
+// RESPONSIVE QUERIES
+// =========================================================
+
+@media (min-width: 1400px) {
+  .travelinsurancehero {
+    .travelinsurancehero-inner {
+      width: min(88%, $container-wide);
+    }
+    .travelinsurancehero-slide-title {
+      font-size: 60px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .travelinsurancehero {
+    .travelinsurancehero-inner {
+      width: 86%;
+    }
+    .travelinsurancehero-slide-content {
+      width: 62%;
+    }
+    .travelinsurancehero-slide-title {
+      font-size: 52px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .travelinsurancehero {
+    min-height: 650px;
+    .travelinsurancehero-inner {
+      width: 88%;
+    }
+    .travelinsurancehero-slide-content {
+      width: 70%;
+    }
+    .travelinsurancehero-slide-title {
+      font-size: 44px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .travelinsurancehero {
+    height: 100svh;
+    min-height: 650px;
+
+    .travelinsurancehero-slide-image-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba($color-cream, 0.05) 0%,
+        rgba($color-cream, 0.28) 28%,
+        rgba($color-cream, 0.76) 60%,
+        rgba($color-cream, 0.97) 100%
+      );
+    }
+
+    .travelinsurancehero-inner {
+      width: calc(100% - 36px);
+      padding-top: 100px;
+      padding-bottom: 65px;
+      align-items: flex-end;
+    }
+
+    .travelinsurancehero-slide-content {
+      width: 100%;
+      max-width: none;
+    }
+
+    .travelinsurancehero-slide-title {
+      font-size: 38px;
+    }
+
+    .travelinsurancehero-arrow {
+      width: 36px;
+      height: 36px;
+      opacity: 1;
+      font-size: $text-sm;
+    }
+
+    .travelinsurancehero-arrow--prev {
+      left: 12px;
+    }
+
+    .travelinsurancehero-arrow--next {
+      right: 12px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .travelinsurancehero {
+    .travelinsurancehero-slide,
+    .travelinsurancehero-slide-content,
+    .travelinsurancehero-slide-image-wrapper,
+    .travelinsurancehero-btn,
+    .travelinsurancehero-arrow,
+    .travelinsurancehero-slider-dot {
+      transition: none !important;
+    }
+  }
+}

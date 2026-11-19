@@ -2,7 +2,7 @@
 // Dynamic Hero Data
 $subheading  = "ABOUT US";
 $title       = "Empowering India<br>Through Insurance<br>Awareness & Education";
-$description = "Vima Vidya is a public awareness initiative dedicated to making insurance simple, relevant, and accessible for every Indian. We believe informed citizens build a stronger, more resilient India.";
+$description = "VimaVidya is a public awareness initiative dedicated to making insurance simple, relevant, and accessible for every Indian. We believe informed citizens build a stronger, more resilient India.";
 $heroImage   = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSUvnNAb-udlQJRfQzjMhDN1ZzxHLKIgmAwtBBg1TEtsORl21ETHV_zx3MBs7U";// Dynamic PNG image with transparent/solid background
 
 $features = [

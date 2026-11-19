@@ -17,7 +17,7 @@ $insurance_items = [
         'title'       => 'Life Insurance',
         'short_title' => 'Life',
         'icon'        => '❤️',
-        'url'         => get_permalink(get_page_by_path('life-insurance')),
+        'url'         => home_url('/life-insurance/'),
         'image'       => 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85',
         'description' => 'Financial security for your dependents — parents, spouse, children — when the primary earner is no longer around.',
         'why'         => [
@@ -38,7 +38,7 @@ $insurance_items = [
         'title'       => 'Health Insurance',
         'short_title' => 'Health',
         'icon'        => '🏥',
-        'url'         => get_permalink(get_page_by_path('health-insurance')),
+        'url'         => home_url('/health-insurance/'),
         'image'       => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85',
         'description' => 'Protect yourself and your family from the rising cost of medical treatment.',
         'why'         => [
@@ -80,7 +80,7 @@ $insurance_items = [
         'title'       => 'Motor Insurance',
         'short_title' => 'Motor',
         'icon'        => '🚗',
-        'url'         => get_permalink(get_page_by_path('motor-insurance')),
+        'url'         => home_url('/motor-insurance/'),
         'image'       => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85',
         'description' => 'Protection for your vehicle against covered accidents, damage and third-party liabilities.',
         'why'         => [
@@ -95,14 +95,13 @@ $insurance_items = [
         ],
         'footer'      => 'Third-party motor insurance is mandatory for vehicles on Indian roads.'
     ],
-
     [
         'number'      => '05',
         'slug'        => 'property',
         'title'       => 'Property Insurance',
         'short_title' => 'Property',
         'icon'        => '🏠',
-        'url'         =>  home_url('/property-insurance/'),
+        'url'         => home_url('/property-insurance/'),
         'image'       => 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=85',
         'description' => 'Protection for your home and property against covered risks and unexpected damage.',
         'why'         => [
@@ -116,6 +115,48 @@ $insurance_items = [
             '<strong>Optional extensions</strong> — Additional protection may be available depending on the policy.'
         ],
         'footer'      => 'Home insurance is generally not mandatory, but can protect a major financial asset.'
+    ],
+    [
+        'number'      => '06',
+        'slug'        => 'travel',
+        'title'       => 'Travel Insurance',
+        'short_title' => 'Travel',
+        'icon'        => '✈️',
+        'url'         => home_url('/travel-insurance/'),
+        'image'       => 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Financial protection against unexpected trip cancellations, medical emergencies abroad, and lost luggage.',
+        'why'         => [
+            '<strong>Medical emergencies abroad</strong> — Covers unexpected hospitalisation and treatment costs while traveling.',
+            '<strong>Trip interruption</strong> — Compensates for sudden cancellations, delays, or missed connections.',
+            '<strong>Baggage loss safety</strong> — Protection against lost, stolen, or delayed checked-in luggage.'
+        ],
+        'benefits'    => [
+            '<strong>Global assistance</strong> — 24/7 emergency helpline and concierge support worldwide.',
+            '<strong>Personal liability</strong> — Covers accidental damages caused to third parties during travel.',
+            '<strong>Peace of mind</strong> — Travel stress-free knowing unexpected disruptions are financially cushioned.'
+        ],
+        'footer'      => 'Highly recommended for international trips; mandatory for visas in many countries.'
+    ],
+    [
+        'number'      => '07',
+        'slug'        => 'government-schemes',
+        'title'       => 'Government Schemes',
+        'short_title' => 'Govt Schemes',
+        'icon'        => '🛡️',
+        'url'         => home_url('/government-scheme/'),
+        'image'       => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85',
+        'description' => 'Affordable social security and insurance initiatives backed by the government for financial inclusion.',
+        'why'         => [
+            '<strong>Subsidized premiums</strong> — Highly affordable coverage designed for broad societal welfare.',
+            '<strong>Broad accessibility</strong> — Ensures vulnerable and rural populations have basic safety nets.',
+            '<strong>Life & accident security</strong> — Schemes like PMJJBY and PMSBY provide crucial family backing.'
+        ],
+        'benefits'    => [
+            '<strong>Low cost enrolment</strong> — Extremely nominal annual subscription fees.',
+            '<strong>Direct benefit transfer</strong> — Seamless payouts directly linked to bank accounts.',
+            '<strong>Inclusive welfare</strong> — Complements private insurance to cover underserved segments.'
+        ],
+        'footer'      => 'Accessible via public and private banks; ideal baseline safety net for every citizen.'
     ]
 ];
 ?>
@@ -130,204 +171,91 @@ $insurance_items = [
             <p><?php echo esc_html($section_text); ?></p>
         </header>
 
-        <!-- CARDS GRID -->
-        <div class="insurance-cards">
-            <?php foreach ($insurance_items as $index => $item) : ?>
-            <article class="insurance-card" data-insurance="<?php echo esc_attr($item['slug']); ?>"
-                data-number="<?php echo esc_attr($item['number']); ?>"
-                data-title="<?php echo esc_attr($item['title']); ?>"
-                data-description="<?php echo esc_attr($item['description']); ?>"
-                data-image="<?php echo esc_url($item['image']); ?>"
-                data-footer="<?php echo esc_attr($item['footer']); ?>" data-url="<?php echo esc_url($item['url']); ?>"
-                data-why="<?php echo esc_attr(wp_json_encode($item['why'])); ?>"
-                data-benefits="<?php echo esc_attr(wp_json_encode($item['benefits'])); ?>" tabindex="0" role="button"
-                aria-label="Learn more about <?php echo esc_attr($item['title']); ?>">
+        <!-- CAROUSEL WRAPPER -->
+        <div class="insurance-carousel-wrapper">
+            <button class="insurance-carousel-btn insurance-prev" aria-label="Previous slide">←</button>
+            
+            <div class="insurance-cards-track" id="insuranceTrack">
+                <?php foreach ($insurance_items as $index => $item) : ?>
+                <article class="insurance-card" 
+                    data-url="<?php echo esc_url($item['url']); ?>"
+                    tabindex="0" role="button"
+                    aria-label="Learn more about <?php echo esc_attr($item['title']); ?>">
 
-                <div class="insurance-image-wrap">
-                    <img src="<?php echo esc_url($item['image']); ?>" alt="<?php echo esc_attr($item['title']); ?>"
-                        loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
-                    <div class="insurance-image-overlay"></div>
-                </div>
+                    <div class="insurance-image-wrap">
+                        <img src="<?php echo esc_url($item['image']); ?>" alt="<?php echo esc_attr($item['title']); ?>"
+                            loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
+                        <div class="insurance-image-overlay"></div>
+                    </div>
 
-                <div class="insurance-floating-icon">
-                    <span><?php echo esc_html($item['icon']); ?></span>
-                </div>
+                    <div class="insurance-floating-icon">
+                        <span><?php echo esc_html($item['icon']); ?></span>
+                    </div>
 
-                <div class="insurance-card-content">
-                    <span class="insurance-number"><?php echo esc_html($item['number']); ?></span>
-                    <span class="insurance-blue-line"></span>
-                    <h3><?php echo esc_html($item['title']); ?></h3>
-                    <p><?php echo esc_html($item['description']); ?></p>
-                    <span class="insurance-explore">
-                        Explore <span class="insurance-explore-arrow">→</span>
-                    </span>
-                </div>
-            </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-
-    <!-- MODAL POPUP -->
-    <!-- =====================================================
-     MODAL (SLIM VERTICAL TEXT STRIP — NO IMAGE)
-====================================================== -->
-    <div class="insurance-modal" id="insuranceModal" aria-hidden="true">
-        <div class="insurance-modal-overlay"></div>
-
-        <div class="insurance-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="insuranceModalTitle">
-            <!-- CLOSE BUTTON -->
-            <button type="button" class="insurance-modal-close" aria-label="Close modal">
-                <span aria-hidden="true">&times;</span>
-            </button>
-
-            <!-- SLIM TEXT-ONLY SIDEBAR (NO PHOTO) -->
-            <div class="insurance-modal-side-bar">
-                <span class="insurance-modal-vertical-title" id="insuranceModalVerticalTitle"></span>
+                    <div class="insurance-card-content">
+                        <span class="insurance-number"><?php echo esc_html($item['number']); ?></span>
+                        <span class="insurance-blue-line"></span>
+                        <h3><?php echo esc_html($item['title']); ?></h3>
+                        <p><?php echo esc_html($item['description']); ?></p>
+                        <span class="insurance-explore">
+                            Explore <span class="insurance-explore-arrow">→</span>
+                        </span>
+                    </div>
+                </article>
+                <?php endforeach; ?>
             </div>
 
-            <!-- EXPANDED CONTENT PANE (NO SCROLL) -->
-            <div class="insurance-modal-content">
-                <div class="insurance-modal-heading">
-                    <span class="insurance-modal-number" id="insuranceModalNumber"></span>
-                    <h2 id="insuranceModalTitle"></h2>
-                    <p id="insuranceModalDescription"></p>
-                </div>
-
-                <div class="insurance-modal-grid">
-                    <div class="insurance-modal-box">
-                        <span class="insurance-modal-pill">Why it matters</span>
-                        <ul id="insuranceModalWhy"></ul>
-                    </div>
-
-                    <div class="insurance-modal-box">
-                        <span class="insurance-modal-pill">Key benefits</span>
-                        <ul id="insuranceModalBenefits"></ul>
-                    </div>
-
-                    <div class="insurance-modal-bigger-picture">
-                        <strong>The Bigger Picture</strong>
-                        <p>Insurance isn't simply about paying for unexpected events — it's about protecting the people,
-                            assets and plans that matter to you.</p>
-                    </div>
-                </div>
-
-                <div class="insurance-modal-footer">
-                    <div class="insurance-modal-footer-text">
-                        <span class="footer-check">&#10003;</span>
-                        <p id="insuranceModalFooter"></p>
-                    </div>
-
-                    <div class="insurance-modal-actions">
-                        <button type="button" class="insurance-modal-know-more" id="insuranceModalKnowMore">
-                            Know More <span>&rarr;</span>
-                        </button>
-                        <button type="button" class="insurance-modal-done">Close</button>
-                    </div>
-                </div>
-            </div>
+            <button class="insurance-carousel-btn insurance-next" aria-label="Next slide">→</button>
         </div>
     </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('insuranceTrack');
+    const prevBtn = document.querySelector('.insurance-carousel-btn.insurance-prev');
+    const nextBtn = document.querySelector('.insurance-carousel-btn.insurance-next');
     const cards = document.querySelectorAll('.insurance-card');
-    const modal = document.getElementById('insuranceModal');
 
-    if (!cards.length || !modal) return;
+    if (!track || !cards.length) return;
 
-    const modalVerticalTitle = document.getElementById('insuranceModalVerticalTitle');
-    const modalNumber        = document.getElementById('insuranceModalNumber');
-    const modalTitle         = document.getElementById('insuranceModalTitle');
-    const modalDescription   = document.getElementById('insuranceModalDescription');
-    const modalWhy           = document.getElementById('insuranceModalWhy');
-    const modalBenefits      = document.getElementById('insuranceModalBenefits');
-    const modalFooter        = document.getElementById('insuranceModalFooter');
-    const modalKnowMore      = document.getElementById('insuranceModalKnowMore');
-    const closeButton        = modal.querySelector('.insurance-modal-close');
-    const doneButton         = modal.querySelector('.insurance-modal-done');
-    const overlay            = modal.querySelector('.insurance-modal-overlay');
-
-    function openModal(card) {
-        const title       = card.dataset.title || '';
-        const number      = card.dataset.number || '';
-        const description = card.dataset.description || '';
-        const footer      = card.dataset.footer || '';
-        const url         = card.dataset.url || '';
-
-        let why = [];
-        let benefits = [];
-
-        try {
-            why = JSON.parse(card.dataset.why);
-            benefits = JSON.parse(card.dataset.benefits);
-        } catch (error) {
-            console.error('Insurance modal JSON parse error:', error);
-        }
-
-        if (modalVerticalTitle) {
-           modalVerticalTitle.textContent = title;
-        }
-
-        modalNumber.textContent      = number;
-        modalTitle.textContent       = title;
-        modalDescription.textContent = description;
-        modalFooter.textContent      = footer;
-
-        modalKnowMore.onclick = function() {
-            if (url) window.location.href = url;
-        };
-
-        modalWhy.innerHTML = '';
-        why.forEach(function(item) {
-            const li = document.createElement('li');
-            li.innerHTML = item;
-            modalWhy.appendChild(li);
-        });
-
-        modalBenefits.innerHTML = '';
-        benefits.forEach(function(item) {
-            const li = document.createElement('li');
-            li.innerHTML = item;
-            modalBenefits.appendChild(li);
-        });
-
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('insurance-modal-open');
-
-        setTimeout(function() {
-            closeButton.focus();
-        }, 100);
+    // Carousel Navigation
+    function getScrollAmount() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 16; // gap from CSS
+        return cardWidth + gap;
     }
 
-    function closeModal() {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('insurance-modal-open');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            track.scrollBy({ left: getScrollAmount() * 2, behavior: 'smooth' });
+        });
     }
 
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            track.scrollBy({ left: -(getScrollAmount() * 2), behavior: 'smooth' });
+        });
+    }
+
+    // Card Click & Key Navigation
     cards.forEach(function(card) {
-        card.addEventListener('click', function() {
-            openModal(this);
-        });
+        const url = card.dataset.url;
+
+        function navigateToUrl() {
+            if (url) {
+                window.location.href = url;
+            }
+        }
+
+        card.addEventListener('click', navigateToUrl);
 
         card.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                openModal(this);
+                navigateToUrl();
             }
         });
-    });
-
-    closeButton.addEventListener('click', closeModal);
-    doneButton.addEventListener('click', closeModal);
-    overlay.addEventListener('click', closeModal);
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-            closeModal();
-        }
     });
 });
 </script>

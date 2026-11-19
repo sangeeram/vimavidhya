@@ -1,0 +1,26 @@
+// ========================================
+// VIMA VIDYA — TRAVEL MYTHS ACCORDION MODIFIER (SCSS)
+// ========================================
+@use "../../../../../abstracts/variables" as *;
+
+.vv-myths--travel {
+    // 7 distinct pastel shades derived from your brand color variables
+    $pastel-colors: (
+        1: #f4f8ff, // Soft tint of $color-blue (#007aff)
+        2: #fef8ee, // Soft tint of $color-orange (#f59a18)
+        3: #f0f7f4, // Soft tint of $color-success (#10b981)
+        4: #f4f6f9, // Soft tint of $color-navy (#08274b)
+        5: #fbf7f2, // Soft tint of $color-cream (#fdfbf7)
+        6: #eef5ff, // Alternative soft blue variant
+        7: #fdf3ed  // Alternative soft warm orange variant
+    );
+
+    @each $index, $color in $pastel-colors {
+        .vv-myth-slide--color-#{$index} {
+            .vv-myth-split-card {
+                background-color: $color;
+                border-color: rgba($color-navy, 0.06); // Keeps borders consistent and crisp
+            }
+        }
+    }
+}

@@ -30,14 +30,19 @@
         <div class="property-transition__content">
 
             <h2 id="property-transition-title" class="property-transition__title">
-                You’ve Evaluated the Risks.<br>
-                Now It’s Time to Act.
+                You've Understood the Risks.<br>
+                You've Evaluated Your Protection Needs.<br>
+                Now You're Ready to Take Action.
+
+
             </h2>
 
             <p class="property-transition__description">
-                You’ve understood your property, explored the risks it may face, and learned what insurance can and
-                cannot protect. Now move from understanding to action — review your protection, identify what needs
-                attention, and take the next step with confidence.
+                You now understand how personal accidents can affect your health, income and family's financial
+                stability. You've evaluated the protection you need and learned what to look for in a suitable Personal
+                Accident Insurance policy. Now put that knowledge into action — choose appropriate coverage, verify the
+                policy benefits and exclusions, complete the application process, and ensure your financial protection
+                is in place.
             </p>
 
             <!-- LARGE LINK: CONTINUE TO EVALUATE -->
@@ -79,8 +84,7 @@
             <span class="property-transition__line" aria-hidden="true"></span>
 
             <!-- 04. EVALUATE -->
-            <a href="/pa-evaluate/" class="property-transition__step "
-                aria-current="step">
+            <a href="/pa-evaluate/" class="property-transition__step " aria-current="step">
                 <span class="property-transition__step-number">04</span>
                 <span class="property-transition__step-label">Evaluate</span>
             </a>

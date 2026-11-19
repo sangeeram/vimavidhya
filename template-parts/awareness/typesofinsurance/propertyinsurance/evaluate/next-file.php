@@ -30,14 +30,16 @@
         <div class="property-transition__content">
 
             <h2 id="property-transition-title" class="property-transition__title">
-                You’ve Evaluated the Risks.<br>
-                Now It’s Time to Act.
+                You've Evaluated Your Property's Protection Needs.<br>
+                Now Take Action to Safeguard What You've Built.
             </h2>
 
             <p class="property-transition__description">
-                You’ve understood your property, explored the risks it may face, and learned what insurance can and
-                cannot protect. Now move from understanding to action — review your protection, identify what needs
-                attention, and take the next step with confidence.
+                You've assessed your property's value, estimated rebuilding costs, evaluated your household contents and
+                identified the risks your property may face. You've also explored coverage options, exclusions,
+                deductibles and policy conditions. Now it's time to put your evaluation into action — choose suitable
+                coverage, verify the insured values, review the policy terms and ensure your home and belongings have
+                the financial protection they need.
             </p>
 
             <!-- LARGE LINK: CONTINUE TO EVALUATE -->

@@ -1,0 +1,628 @@
+// ========================================================
+// CLAIM DOCUMENTS SECTION — LIFE INSURANCE (MULTI-COLOR ACTIVE BORDERS ON BOTH SIDES)
+// ========================================================
+
+@use "../../../../../abstracts/variables" as *;
+
+.claim-docs {
+    background-color: $color-light-blue;
+    padding: $space-section-sm 0;
+    font-family: $font-primary;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    &__container {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $space-element;
+    }
+
+    // ====================================================
+    // SECTION HEADER
+    // ====================================================
+
+    &__header {
+        margin-bottom: $space-element;
+    }
+
+    &__eyebrow {
+        display: block;
+        margin-bottom: $space-small;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        margin: 0 0 $space-small;
+        color: $color-navy;
+        font-size: clamp(28px, 3.5vw, $text-h2);
+        font-weight: 700;
+        line-height: $line-heading;
+    }
+
+    &__subtitle {
+        max-width: $text-width-wide;
+        margin: 0;
+        color: $color-text-body;
+        font-size: $text-base;
+        line-height: $line-body;
+    }
+
+    // ====================================================
+    // SECTION 1: COMMON DOCUMENTS RIBBON GRID
+    // ====================================================
+
+    &__common {
+        margin-bottom: $space-section-sm;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    &__common-heading {
+        margin-bottom: $space-element;
+
+        h3 {
+            margin: 0 0 5px;
+            color: $color-navy;
+            font-size: $text-h3;
+            font-weight: 700;
+            line-height: $line-heading;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: $line-body;
+        }
+    }
+
+    &__ribbon-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px 16px;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__ribbon-card {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        min-height: 130px;
+    }
+
+    &__ribbon-number {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px;
+        flex: 0 0 72px;
+        background: linear-gradient(135deg, #ffffff 0%, #e6edf5 100%);
+        border-top: 1px solid $color-border;
+        border-bottom: 1px solid $color-border;
+        border-left: 1px solid $color-border;
+        box-shadow: inset -4px 0 8px rgba(3, 21, 46, 0.08);
+        z-index: 2;
+
+        span {
+            color: $color-navy;
+            font-family: $font-primary;
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .claim-docs__fold-shadow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 12px;
+            background: linear-gradient(to right, rgba(3, 21, 46, 0.03), rgba(3, 21, 46, 0.15));
+            pointer-events: none;
+        }
+    }
+
+    &__ribbon-arrow {
+        position: relative;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        background-color: $color-light-blue;
+        border-top: 1px solid $color-border;
+        border-right: 1px solid $color-border;
+        border-bottom: 1px solid $color-border;
+        padding: 14px 16px 14px 22px;
+        clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);
+        margin-left: -1px;
+        box-shadow: 0 4px 12px rgba(8, 39, 75, 0.04);
+        transition: background-color $transition-fast, transform $transition-fast;
+
+        &:hover {
+            background-color: darken($color-light-blue, 3%);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__ribbon-content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+
+        p {
+            margin: 0;
+            color: $color-navy;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.45;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    &__ribbon-icon {
+        display: inline-grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        background-color: rgba(8, 39, 75, 0.08);
+        color: $color-navy;
+        border-radius: $radius-sm;
+        font-size: 13px;
+    }
+
+    // ====================================================
+    // SECTION HEADING
+    // ====================================================
+
+    &__section {
+        margin-bottom: $space-section-sm;
+    }
+
+    &__section-heading {
+        margin-bottom: $space-element;
+
+        h3 {
+            margin: 0 0 $space-small;
+            color: $color-navy;
+            font-size: clamp(22px, 2.5vw, $text-h3);
+            font-weight: 700;
+            line-height: $line-heading;
+        }
+
+        p {
+            margin: 0;
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: $line-body;
+        }
+    }
+
+    // ====================================================
+    // SECTION 2: BENTO CONTAINER & MULTI-COLOR ACCENTS
+    // ====================================================
+
+    &__bento-container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    &__bento-left {
+        position: relative;
+    }
+
+    &__active-panel {
+        display: none;
+        background-color: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-lg;
+        padding: 36px;
+        color: $color-navy;
+        box-shadow: 0 16px 36px rgba(8, 39, 75, 0.08);
+        height: 100%;
+        animation: panelFadeIn $transition-fast ease both;
+
+        &.is-active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .claim-docs__panel-symbol {
+            background-color: $color-light-blue;
+            border: 1px solid $color-border;
+            color: $color-navy;
+        }
+
+        .claim-docs__panel-desc {
+            color: $color-text-body;
+        }
+
+        .claim-docs__progress-track {
+            background-color: $color-light-blue;
+        }
+
+        .claim-docs__panel-progress-text {
+            color: $color-text-muted;
+        }
+
+        .claim-docs__checkbox-label {
+            background-color: $color-light-blue;
+            border: 1px solid $color-border;
+
+            &:hover {
+                border-color: var(--panel-accent, #{$color-blue});
+            }
+
+            &.is-checked {
+                background-color: rgba(16, 185, 129, 0.06);
+                border-color: $color-success;
+
+                .claim-docs__item-text {
+                    color: $color-text-muted;
+                }
+            }
+        }
+
+        .claim-docs__custom-check {
+            background-color: $color-white;
+            border: 1.5px solid $color-border;
+        }
+
+        .claim-docs__item-text {
+            color: $color-navy;
+        }
+
+        .claim-docs__panel-footer {
+            border-top: 1px solid $color-border;
+
+            p {
+                color: $color-text-muted;
+            }
+        }
+
+        .claim-docs__footer-icon {
+            border: 1px solid $color-text-muted;
+            color: $color-text-muted;
+        }
+
+        // Multi-color left panel active accent borders on both top and bottom (or left and right frames)
+        &.claim-docs__panel--accidental {
+            --panel-accent: #f59e0b; // Amber Gold
+            border-top: 5px solid #f59e0b;
+            border-bottom: 5px solid #f59e0b;
+            .claim-docs__panel-kicker, .claim-docs__item-status { color: #d97706; }
+            .claim-docs__panel-title { color: $color-navy; }
+            .claim-docs__progress-fill { background-color: #f59e0b; }
+        }
+
+        &.claim-docs__panel--illness {
+            --panel-accent: #0284c7; // Medical Blue
+            border-top: 5px solid #0284c7;
+            border-bottom: 5px solid #0284c7;
+            .claim-docs__panel-kicker, .claim-docs__item-status { color: #0284c7; }
+            .claim-docs__panel-title { color: $color-navy; }
+            .claim-docs__progress-fill { background-color: #0284c7; }
+        }
+
+        &.claim-docs__panel--early {
+            --panel-accent: #8b5cf6; // Purple Investigation
+            border-top: 5px solid #8b5cf6;
+            border-bottom: 5px solid #8b5cf6;
+            .claim-docs__panel-kicker, .claim-docs__item-status { color: #7c3aed; }
+            .claim-docs__panel-title { color: $color-navy; }
+            .claim-docs__progress-fill { background-color: #8b5cf6; }
+        }
+
+        &.claim-docs__panel--critical {
+            --panel-accent: #ef4444; // Crimson Red
+            border-top: 5px solid #ef4444;
+            border-bottom: 5px solid #ef4444;
+            .claim-docs__panel-kicker, .claim-docs__item-status { color: #dc2626; }
+            .claim-docs__panel-title { color: $color-navy; }
+            .claim-docs__progress-fill { background-color: #ef4444; }
+        }
+
+        &.claim-docs__panel--disability {
+            --panel-accent: #10b981; // Emerald Green
+            border-top: 5px solid #10b981;
+            border-bottom: 5px solid #10b981;
+            .claim-docs__panel-kicker, .claim-docs__item-status { color: #059669; }
+            .claim-docs__panel-title { color: $color-navy; }
+            .claim-docs__progress-fill { background-color: #10b981; }
+        }
+    }
+
+    // Right-side Bento Cards Grid utilizing both sides with multi-color active frames on both left & right edges
+    &__bento-right {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    &__bento-card {
+        position: relative;
+        overflow: hidden;
+        border: 2px solid $color-border;
+        border-radius: $radius-md;
+        padding: 20px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 140px;
+        box-shadow: 0 6px 16px rgba(8, 39, 75, 0.04);
+        transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 122, 255, 0.2);
+        }
+
+        // Active borders applied distinctively to both sides (e.g. left and right vertical accent borders when active)
+        &--accidental {
+            grid-column: span 2;
+            &.is-active {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-color: #f59e0b;
+                box-shadow: 0 12px 25px rgba(245, 158, 11, 0.35);
+                .claim-docs__bento-badge { background-color: #f59e0b; color: #ffffff; }
+            }
+        }
+
+        &--illness {
+            grid-column: span 1;
+            &.is-active {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-color: #0284c7;
+                box-shadow: 0 12px 25px rgba(2, 132, 199, 0.35);
+                .claim-docs__bento-badge { background-color: #0284c7; color: #ffffff; }
+            }
+        }
+
+        &--early {
+            grid-column: span 1;
+            &.is-active {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-color: #8b5cf6;
+                box-shadow: 0 12px 25px rgba(139, 92, 246, 0.35);
+                .claim-docs__bento-badge { background-color: #8b5cf6; color: #ffffff; }
+            }
+        }
+
+        &--critical {
+            grid-column: span 1;
+            &.is-active {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-color: #ef4444;
+                box-shadow: 0 12px 25px rgba(239, 68, 68, 0.35);
+                .claim-docs__bento-badge { background-color: #ef4444; color: #ffffff; }
+            }
+        }
+
+        &--disability {
+            grid-column: span 1;
+            &.is-active {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-color: #10b981;
+                box-shadow: 0 12px 25px rgba(16, 185, 129, 0.35);
+                .claim-docs__bento-badge { background-color: #10b981; color: #ffffff; }
+            }
+        }
+
+        &.is-active {
+            .claim-docs__bento-title {
+                color: $color-white;
+            }
+            .claim-docs__bento-num {
+                color: #ffffff;
+            }
+        }
+    }
+
+    &__bento-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        transition: transform $transition-slow;
+
+        .claim-docs__bento-card:hover & {
+            transform: scale(1.05);
+        }
+    }
+
+    &__bento-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(3, 21, 46, 0.9) 0%, rgba(3, 21, 46, 0.3) 100%);
+        z-index: 2;
+    }
+
+    &__bento-card-top {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__bento-icon {
+        font-size: 22px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px;
+        border-radius: $radius-sm;
+        backdrop-filter: blur(4px);
+    }
+
+    &__bento-badge {
+        position: relative;
+        z-index: 3;
+        padding: 4px 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(4px);
+        border-radius: $radius-pill;
+        color: $color-navy;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &__bento-card-content {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: 12px;
+    }
+
+    &__bento-title {
+        margin: 0;
+        color: $color-white;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.3;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    &__bento-num {
+        color: #93c5fd;
+        font-size: 16px;
+        font-weight: 800;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    // ====================================================
+    // IMPORTANT NOTICE
+    // ====================================================
+
+    &__notice {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-element;
+        padding: $space-content;
+        background-color: $color-cream;
+        border: 1px solid $color-border;
+        border-radius: $radius-lg;
+        margin-top: $space-section-sm;
+    }
+
+    &__notice-icon {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        place-items: center;
+        background-color: rgba(245, 154, 24, 0.12);
+        border: 1px solid $color-orange;
+        border-radius: $radius-pill;
+        color: $color-navy;
+        font-size: $text-base;
+        font-weight: 700;
+    }
+
+    &__notice-content {
+        min-width: 0;
+
+        h3 {
+            margin: 0 0 $space-small;
+            color: $color-navy;
+            font-size: $text-lg;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 $space-small;
+            color: $color-text-body;
+            font-size: $text-sm;
+            line-height: 1.75;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+        }
+    }
+
+    // ====================================================
+    // RESPONSIVE DESIGN
+    // ====================================================
+
+    @media (max-width: 1199px) {
+        &__ribbon-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 991px) {
+        &__bento-container {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__ribbon-grid {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        &__active-panel {
+            padding: 22px;
+        }
+
+        &__bento-right {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        &__bento-card--accidental {
+            grid-column: span 1;
+        }
+    }
+}
+
+@keyframes panelFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

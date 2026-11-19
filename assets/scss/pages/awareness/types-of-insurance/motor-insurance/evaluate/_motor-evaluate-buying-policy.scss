@@ -1,0 +1,320 @@
+// ============================================================
+// WHAT TO CONSIDER WHEN BUYING A POLICY — SECTION STYLES
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.asset-tabs-section#evaluate-policy-considerations {
+    background-color: $color-light-blue;
+    color: $color-text-body;
+    padding: $space-section-lg 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-navy;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-body;
+            max-width: 1000px;
+        }
+    }
+
+    /* LAYOUT WRAPPER: LEFT NAV + RIGHT CONTENT CARD */
+    .stage-layout-wrapper {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 28px;
+        align-items: flex-start;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+
+        /* LEFT SIDEBAR NAVIGATION BUTTONS */
+        .stage-nav-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .stage-tab-btn {
+                background: $color-white;
+                border: 1px solid $color-border;
+                color: $color-navy-dark;
+                padding: 16px 20px;
+                border-radius: $radius-md;
+                cursor: pointer;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                transition: $transition-fast;
+                box-shadow: 0 2px 6px rgba(8, 39, 75, 0.03);
+
+                .tab-icon-wrap {
+                    background: $color-light-blue;
+                    color: $color-blue;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    transition: $transition-fast;
+                }
+
+                .tab-text-wrap {
+                    display: flex;
+                    flex-direction: column;
+
+                    .tab-label-main {
+                        font-size: $text-base;
+                        font-weight: 700;
+                        color: $color-navy;
+                    }
+
+                    .tab-label-sub {
+                        font-size: $text-xs;
+                        color: $color-text-muted;
+                        font-weight: 500;
+                        margin-top: 2px;
+                    }
+                }
+
+                &:hover {
+                    border-color: $color-blue;
+                    background: $color-white;
+                }
+
+                &.active {
+                    background: $color-blue;
+                    border-color: $color-blue;
+                    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.2);
+
+                    .tab-icon-wrap {
+                        background: rgba(255, 255, 255, 0.2);
+                        color: $color-white;
+                    }
+
+                    .tab-text-wrap {
+                        .tab-label-main,
+                        .tab-label-sub {
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* RIGHT CONTENT CONTAINER */
+        .stage-content-container {
+            .stage-panel {
+                display: none;
+
+                &.active {
+                    display: block;
+                    animation: fadeIn $transition;
+                }
+            }
+
+            /* SPLIT CARD */
+            .stage-split-card {
+                background: $color-white;
+                border: 1px solid $color-border;
+                border-radius: $radius-md;
+                padding: 36px 40px;
+                color: $color-navy-dark;
+                box-shadow: 0 10px 30px rgba(8, 39, 75, 0.05);
+
+                @media (max-width: 768px) {
+                    padding: 24px 20px;
+                }
+
+                .stage-card-header {
+                    .stage-badge {
+                        background: rgba(245, 154, 24, 0.1);
+                        color: $color-orange;
+                        padding: 6px 14px;
+                        border-radius: $radius-sm;
+                        font-size: $text-xs;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                    }
+
+                    h3 {
+                        color: $color-navy;
+                        font-size: 1.85rem;
+                        font-weight: 700;
+                        margin: 0 0 8px 0;
+                        line-height: $line-heading;
+
+                        @media (max-width: 768px) {
+                            font-size: 1.4rem;
+                        }
+                    }
+
+                    .stage-subtitle {
+                        font-size: $text-base;
+                        color: $color-text-body;
+                        line-height: $line-body;
+                        margin: 0;
+                    }
+                }
+
+                .stage-divider {
+                    border: none;
+                    border-top: 1px solid $color-border;
+                    margin: 24px 0;
+                }
+
+                .section-sub-title {
+                    color: $color-navy;
+                    font-size: $text-xs;
+                    font-weight: 800;
+                    letter-spacing: 1.2px;
+                    text-transform: uppercase;
+                    margin-bottom: 12px;
+                }
+
+                .desc-text {
+                    font-size: $text-sm;
+                    color: $color-text-body;
+                    line-height: $line-body;
+                    margin: 0;
+                }
+
+                /* TABLES */
+                .policy-table-wrapper {
+                    overflow-x: auto;
+
+                    .policy-risk-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        text-align: left;
+                        font-size: $text-base;
+
+                        th, td {
+                            padding: 12px 14px;
+                            border-bottom: 1px solid $color-border;
+                        }
+
+                        th {
+                            background: $color-light-gray;
+                            color: $color-navy;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                        }
+
+                        td {
+                            color: $color-text-body;
+
+                            strong {
+                                color: $color-navy;
+                            }
+
+                            .effect-tag {
+                                display: inline-block;
+                                padding: 3px 8px;
+                                border-radius: $radius-pill;
+                                font-size: 11px;
+                                font-weight: 600;
+                                background: $color-light-blue;
+                                color: $color-blue;
+                            }
+                        }
+                    }
+                }
+
+                /* DUAL FOCUS COLUMNS */
+                .details-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+
+                    @media (max-width: 650px) {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .priority-column, .cost-column {
+                        background: $color-light-gray;
+                        padding: 18px;
+                        border-radius: $radius-sm;
+                        border: 1px solid $color-border;
+                    }
+                }
+
+                .single-focus-box {
+                    background: $color-light-gray;
+                    padding: 18px;
+                    border-radius: $radius-sm;
+                    border: 1px solid $color-border;
+                }
+
+                /* CALLOUT BOX */
+                .policy-callout-box {
+                    display: flex;
+                    align-items: flex-start;
+                    background: rgba(16, 185, 129, 0.08);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    border-radius: $radius-sm;
+                    padding: 18px;
+                    gap: 16px;
+
+                    .callout-icon {
+                        font-size: 22px;
+                        flex-shrink: 0;
+                    }
+
+                    .callout-content {
+                        strong {
+                            color: $color-navy;
+                            font-size: $text-sm;
+                            font-weight: 700;
+                            display: block;
+                            margin-bottom: 4px;
+                        }
+
+                        p {
+                            font-size: $text-sm;
+                            color: $color-text-body;
+                            line-height: $line-body;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

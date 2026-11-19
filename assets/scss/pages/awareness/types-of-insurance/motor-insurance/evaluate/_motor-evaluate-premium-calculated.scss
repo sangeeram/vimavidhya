@@ -1,0 +1,206 @@
+// ============================================================
+// MOTOR INSURANCE PREMIUMS — STACKED SECTION STYLES
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.asset-stacked-section#evaluate-motor-premiums {
+    background-color: $color-light-blue;
+    color: $color-text-body;
+    padding: $space-section-lg 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-navy;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-body;
+            max-width: 1000px;
+        }
+    }
+
+    /* STACKED CONTENT WRAPPER */
+    .asset-stack-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 32px;
+
+        /* MAIN CARD */
+        .asset-content-card {
+            background: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-md;
+            padding: 36px 40px;
+            color: $color-navy-dark;
+            box-shadow: 0 10px 30px rgba(8, 39, 75, 0.05);
+
+            @media (max-width: 768px) {
+                padding: 24px 20px;
+            }
+
+            .asset-content-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 16px;
+
+                .asset-content-label {
+                    color: $color-orange;
+                    font-size: $text-xs;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+
+                h3 {
+                    color: $color-navy;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-top: 6px;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .asset-policy-note {
+                    background: $color-light-gray;
+                    color: $color-navy-dark;
+                    padding: 6px 14px;
+                    border-radius: $radius-sm;
+                    font-size: $text-xs;
+                    font-weight: 500;
+                }
+            }
+
+            .asset-card-description {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-text-body;
+                margin-bottom: 16px;
+            }
+
+            .asset-card-intro {
+                font-size: $text-base;
+                font-weight: 500;
+                color: $color-navy;
+                margin-bottom: 20px;
+            }
+
+            /* CALLOUT BOXES */
+            .policy-callout-box {
+                display: flex;
+                align-items: flex-start;
+                background: $color-light-blue;
+                border: 1px solid rgba(0, 122, 255, 0.2);
+                border-radius: $radius-sm;
+                padding: 20px;
+                gap: 16px;
+                margin-top: 24px;
+
+                &.warning {
+                    background: rgba(245, 154, 24, 0.08);
+                    border-color: rgba(245, 154, 24, 0.3);
+                }
+
+                &.success {
+                    background: rgba(16, 185, 129, 0.08);
+                    border-color: rgba(16, 185, 129, 0.3);
+                }
+
+                .callout-icon {
+                    font-size: 24px;
+                    flex-shrink: 0;
+                }
+
+                .callout-content {
+                    strong {
+                        color: $color-navy;
+                        font-size: $text-base;
+                        font-weight: 700;
+                        display: block;
+                        margin-bottom: 6px;
+                    }
+
+                    p {
+                        font-size: $text-base;
+                        color: $color-text-body;
+                        line-height: $line-body;
+                        margin: 0;
+                    }
+                }
+            }
+
+            /* TABLES */
+            .policy-table-wrapper {
+                overflow-x: auto;
+
+                .policy-risk-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+                    font-size: $text-sm;
+
+                    th, td {
+                        padding: 14px 16px;
+                        border-bottom: 1px solid $color-border;
+                    }
+
+                    th {
+                        background: $color-light-gray;
+                        color: $color-navy;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: $text-xs;
+                        letter-spacing: 0.05em;
+                    }
+
+                    td {
+                        color: $color-text-body;
+
+                        strong {
+                            color: $color-navy;
+                        }
+
+                        .effect-tag {
+                            display: inline-block;
+                            padding: 4px 10px;
+                            border-radius: $radius-pill;
+                            font-size: $text-xs;
+                            font-weight: 600;
+                            background: $color-light-blue;
+                            color: $color-blue;
+                        }
+                    }
+
+                    &.motor-od-table {
+                        td:nth-child(3) {
+                            font-size: $text-xs;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

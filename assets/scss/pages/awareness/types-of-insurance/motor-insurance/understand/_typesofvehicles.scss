@@ -1,0 +1,197 @@
+// ========================================
+// VIMA VIDYA
+// GLOBAL DESIGN SYSTEM — VARIABLES
+// ========================================
+
+// TYPOGRAPHY
+$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+// BRAND COLORS
+$color-navy: #08274b;
+$color-navy-dark: #03152e;
+$color-blue: #007aff;
+$color-blue-dark: #062b66;
+$color-orange: #f59a18;
+$color-cream: #fdfbf7;
+$color-white: #ffffff;
+
+// TEXT COLORS
+$color-text: #08274b;
+$color-text-body: #475569;
+$color-text-muted: #64748b;
+$color-text-light: #f5f7f8;
+
+// FUNCTIONAL COLORS
+$color-success: #10b981;
+$color-light-blue: #eff6ff;
+$color-light-gray: #f8fafc;
+$color-border: #e2e8f0;
+$color-border-dark: rgba(255, 255, 255, 0.15);
+
+// TYPOGRAPHY SCALE
+$text-xs: 12px;
+$text-sm: 14px;
+$text-base: 16px;
+$text-lg: 18px;
+$text-h3: 22px;
+$text-h2: 44px;
+$text-h1: 56px;
+$text-h1-hero: 40px;
+
+// LINE HEIGHT
+$line-tight: 1.1;
+$line-heading: 1.2;
+$line-body: 1.5;
+
+// SPACING
+$space-section-sm: 64px;
+$space-section: 65px;
+$space-section-lg: 100px;
+$space-content: 26px;
+$space-element: 24px;
+$space-small: 7px;
+
+// CONTAINERS
+$container-width: 1200px;
+$container-wide: 1400px;
+$text-width-narrow: 430px;
+$text-width-medium: 580px;
+$text-width-wide: 680px;
+
+// BORDER RADIUS
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 20px;
+$radius-pill: 999px;
+
+// TRANSITIONS
+$transition-fast: 0.2s ease;
+$transition: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ========================================
+// VEHICLE COVERAGE COMPONENT STYLES
+// ========================================
+
+.vehicle-coverage-section {
+  font-family: $font-primary;
+  background-color: $color-navy; // Set section background to navy
+  padding: $space-section 0;
+  color: $color-white;
+
+  .container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-header {
+    margin-bottom: $space-content;
+
+    h2 {
+      font-size: $text-h3;
+      @media (min-width: 768px) {
+        font-size: $text-h2;
+      }
+      color: $color-white; // Turned white for contrast against navy
+      line-height: $line-heading;
+      margin-bottom: $space-small;
+    }
+
+    p {
+      font-size: $text-base;
+      color: rgba(255, 255, 255, 0.8); // Softer white/cream for body text
+      line-height: $line-body;
+      max-width: $text-width-wide;
+    }
+  }
+
+  .vehicle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-element;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .vehicle-card {
+    background: $color-white; // Cards remain white to pop cleanly out of the navy background
+    border: 1px solid transparent;
+    border-radius: $radius-lg;
+    padding: $space-element;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: $transition;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+      border-color: $color-orange; // Accent border on hover
+    }
+
+    .card-top {
+      .vehicle-icon {
+        height: 50px;
+        margin-bottom: $space-small;
+        display: flex;
+        align-items: center;
+
+        img {
+          max-height: 100%;
+          width: auto;
+          object-fit: contain;
+        }
+      }
+
+      h3 {
+        font-size: $text-lg;
+        color: $color-navy; // Dark text on white card
+        margin-bottom: 4px;
+        line-height: $line-heading;
+      }
+
+      .vehicle-examples {
+        font-size: $text-sm;
+        color: $color-text-body; // Standard muted body text
+        line-height: $line-body;
+        margin-bottom: $space-element;
+        min-height: 42px;
+      }
+    }
+
+    .card-bottom {
+      background-color: $color-light-gray; // Subtle gray-blue contrast inside white card
+      border-radius: $radius-sm;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .info-block {
+        .info-label {
+          font-size: $text-xs;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: $color-text-muted;
+          font-weight: 600;
+          margin-bottom: 2px;
+        }
+
+        .info-value {
+          font-size: $text-sm;
+          color: $color-navy;
+          font-weight: 500;
+          line-height: $line-body;
+        }
+      }
+    }
+  }
+}

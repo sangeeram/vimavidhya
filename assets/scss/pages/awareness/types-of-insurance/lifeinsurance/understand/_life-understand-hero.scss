@@ -1,0 +1,7 @@
+@use "../../../../../abstracts/insurancevariable" as *;
+
+// Reuse identical styling architecture from property understand hero
+.lifeunderstandhero {
+  // Inherits all .propertyunderstandhero styles directly from your global stylesheet.
+  // Add any specific overrides for Life Insurance chapters or badges here if needed.
+}

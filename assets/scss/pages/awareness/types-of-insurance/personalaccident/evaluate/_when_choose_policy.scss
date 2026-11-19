@@ -1,5 +1,5 @@
 // ============================================================
-// WHAT TO CONSIDER WHEN CHOOSING A POLICY — SECTION STYLES
+// WHAT TO CONSIDER WHEN CHOOSING A POLICY — WHITE SIDEBAR TABS
 // ============================================================
 @use "../../../../../abstracts/variables" as *;
 
@@ -36,59 +36,97 @@
         }
     }
 
-    /* TABS - COMPACT SINGLE ROW WITHOUT SCROLLBAR */
+    /* TWO-COLUMN SIDEBAR LAYOUT WRAPPER */
+    .policy-layout-wrapper {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 32px;
+        align-items: start;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* VERTICAL SIDEBAR TABS - WHITE BACKGROUND */
     .asset-category-tabs {
         display: flex;
-        gap: 8px;                   /* Reduced gap between tabs */
-        flex-wrap: nowrap;          /* Keeps everything on a single line */
-        overflow: visible;          /* Removes scrolling */
-        margin-top: 32px;
+        flex-direction: column;
+        gap: 12px;
 
         .asset-tab {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: $color-white;
-            padding: 8px 14px;      /* Reduced horizontal and vertical padding */
-            border-radius: $radius-pill;
+            background: $color-white;
+            border: 1px solid $color-border;
+            color: $color-navy-dark;
+            padding: 16px 18px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 13px;        /* Slightly smaller font size to fit all tabs */
-            font-weight: 500;
-            font-family: $font-primary;
-            display: inline-flex;
+            text-align: left;
+            display: flex;
             align-items: center;
-            gap: 6px;               /* Reduced gap between icon and text */
-            white-space: nowrap;    /* Prevents text wrapping */
-            flex: 1;                /* Allows tabs to flexibly share available space evenly */
-            justify-content: center;/* Centers content inside each tab */
+            gap: 14px;
+            width: 100%;
             transition: $transition-fast;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
-            .tab-icon {
-                color: $color-white;
+            .tab-icon-box {
+                background: $color-light-gray;
+                color: $color-navy;
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
                 transition: $transition-fast;
 
                 svg {
-                    width: 14px;     /* Slightly smaller icon size */
-                    height: 14px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            .tab-text-content {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+
+                .tab-title {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: $color-navy;
+                }
+
+                .tab-subtitle {
+                    font-size: 11px;
+                    color: $color-text-muted;
                 }
             }
 
             &:hover {
-                background: rgba(255, 255, 255, 0.15);
-                border-color: $color-blue;
-                color: $color-white;
+                border-color: rgba(0, 122, 255, 0.4);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             }
 
             &.active {
                 background: $color-blue;
                 border-color: $color-blue;
-                color: $color-white;
-                box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+                box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
 
-                .tab-icon {
+                .tab-icon-box {
+                    background: rgba(255, 255, 255, 0.2);
                     color: $color-white;
+                }
+
+                .tab-text-content {
+                    .tab-title {
+                        color: $color-white;
+                    }
+
+                    .tab-subtitle {
+                        color: rgba(255, 255, 255, 0.85);
+                    }
                 }
             }
         }
@@ -96,8 +134,6 @@
 
     /* TAB CONTENT PANELS */
     .asset-tab-content {
-        margin-top: $space-element;
-
         .asset-tab-panel {
             display: none;
 
@@ -107,13 +143,12 @@
             }
         }
 
-        /* MAIN CARD */
+        /* MAIN CONTENT CARD */
         .asset-content-card {
             background: $color-white;
             border: 1px solid $color-border;
-            border-radius: $radius-md;
+            border-radius: 16px;
             padding: 36px 40px;
-            margin-top: $space-element;
             color: $color-navy-dark;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 
@@ -139,13 +174,13 @@
 
                 h3 {
                     color: $color-navy;
-                    font-size: 2rem;
+                    font-size: 1.75rem;
                     font-weight: 700;
                     margin-top: 6px;
                     line-height: $line-heading;
 
                     @media (max-width: 768px) {
-                        font-size: 1.5rem;
+                        font-size: 1.35rem;
                     }
                 }
 

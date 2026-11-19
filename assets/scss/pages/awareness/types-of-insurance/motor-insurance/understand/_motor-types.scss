@@ -1,0 +1,170 @@
+// ============================================================
+// MOTOR MASTER — WITH / WITHOUT COVER SIMULATION ADD-ONS
+// ============================================================
+
+@use "../../../../../abstracts/variables" as *;
+.property-insurance-master-section {
+    .pane-header-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 20px;
+
+        .pane-title {
+            margin: 0;
+        }
+    }
+
+    // Toggle Pills
+    .vv-toggle-wrapper {
+        display: inline-flex;
+        background: #f1f5f9;
+        padding: 5px;
+        border-radius: 999px;
+        border: 1px solid $color-border;
+        gap: 4px;
+    }
+
+    .vv-pill-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 999px;
+        background: transparent;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: background $transition-fast, color $transition-fast, box-shadow $transition-fast;
+
+        .pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        &.is-active {
+            background: $color-white;
+            color: $color-navy;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+            &[data-toggle-state="with"] .pill-dot {
+                background: #16a34a;
+            }
+
+            &[data-toggle-state="without"] .pill-dot {
+                background: #f59e0b;
+            }
+        }
+
+        &:hover:not(.is-active) {
+            color: $color-navy;
+        }
+    }
+
+    // Scenario Banner
+    .vv-scenario-banner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: #f0f7ff;
+        border: 1.5px solid #dbeafe;
+        border-radius: $radius-sm;
+        color: #1e3a8a;
+        font-size: 14.5px;
+        font-weight: 600;
+        margin-bottom: 16px;
+
+        .scenario-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+    }
+
+    // Comparison Rows
+    .vv-comparison-list {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        background: #ffffff;
+        overflow: hidden;
+    }
+
+    .vv-comparison-row {
+        display: grid;
+        grid-template-columns: 1.1fr 2fr;
+        align-items: center;
+        padding: 14px 18px;
+        border-bottom: 1px solid $color-border;
+        gap: 20px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 8px;
+            padding: 12px 14px;
+        }
+    }
+
+    .row-aspect {
+        color: $color-navy;
+        font-size: 14.5px;
+        font-weight: 600;
+    }
+
+    .row-outcome {
+        display: none;
+        align-items: flex-start;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(4px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+
+        &.is-visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            color: $color-text-body;
+        }
+    }
+
+    .outcome-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        margin-top: 1px;
+
+        &.check {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        &.cross {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+    }
+}

@@ -1,0 +1,213 @@
+@use "../../../../abstracts/variables" as *;
+
+.motor-journey-accordion {
+  position: relative;
+  padding: 0 $space-element $space-section;
+  background: $color-white;
+  overflow: hidden;
+  font-family: $font-primary;
+
+  // =======================================================
+  // HEADER CONTAINER & 2-COLUMN GRID
+  // =======================================================
+  .journey-vault-bg {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: $space-section-sm 0 $space-content;
+    position: relative;
+    z-index: 2;
+
+    .vault-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+
+      @media (min-width: 992px) {
+        grid-template-columns: 340px 1fr;
+        gap: 60px;
+      }
+    }
+  }
+
+  // -------------------------------------------------------
+  // LEFT COLUMN: TIMELINE ROUTINE
+  // -------------------------------------------------------
+  .vault-col-left {
+    .routine-header h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: $color-blue;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .routine-timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      position: relative;
+
+      // Vertical connecting line
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 6px;
+        width: 2px;
+        background-color: lighten($color-blue, 35%);
+      }
+
+      li {
+        position: relative;
+        padding-left: 32px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .dot {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: $color-white;
+          border: 2.5px solid $color-blue;
+          z-index: 1;
+
+          &.active-dot {
+            background: $color-blue-dark;
+            border-color: $color-blue-dark;
+          }
+        }
+
+        .text {
+          font-size: 16px;
+          font-weight: 700;
+          color: $color-navy-dark;
+          line-height: 1.4;
+
+          &.bold-text {
+            font-weight: 800;
+            color: $color-blue-dark;
+          }
+        }
+      }
+    }
+
+    .routine-footer {
+      border-top: 1px solid rgba($color-navy, 0.1);
+      padding-top: 16px;
+
+      p {
+        font-size: 13px;
+        color: lighten($color-text, 15%);
+        line-height: 1.55;
+        margin: 0;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // -------------------------------------------------------
+  // RIGHT COLUMN: HERO CONTENT & CALLOUT
+  // -------------------------------------------------------
+  .vault-col-right {
+    .vault-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: lighten($color-text, 20%);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 56px;
+      font-weight: 900;
+      color: $color-blue-dark;
+      line-height: 1.05;
+      margin: 0 0 24px 0;
+      letter-spacing: -1.5px;
+
+      @media (max-width: 768px) {
+        font-size: 38px;
+      }
+    }
+
+    .section-lead-text {
+      font-size: 18px;
+      line-height: 1.65;
+      color: $color-text;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .vault-illustration-card {
+      width: 100%;
+      background: #fff6ee;
+      border-radius: $radius-lg;
+      padding: 36px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      min-height: 320px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+
+      .illustration-img {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        max-height: 320px;
+        object-fit: contain;
+      }
+    }
+
+    .vault-highlight-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #edf5ff;
+      border-left: 5px solid $color-blue;
+      border-radius: $radius-md;
+      padding: 24px 28px;
+      box-shadow: 0 4px 15px rgba($color-blue, 0.06);
+
+      .callout-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: $color-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+
+        .dashicons {
+          color: $color-blue;
+          font-size: 22px;
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      .callout-text {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.6;
+        color: $color-navy-dark;
+        margin: 0;
+      }
+    }
+  }
+}

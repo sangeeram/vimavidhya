@@ -1,0 +1,105 @@
+@use "../../abstracts/variables" as *;
+
+.vima-vidya-section {
+    font-family: $font-primary;
+    padding: $space-section 0;
+    background-color: $color-white;
+    color: $color-text;
+
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: $space-content;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: $space-element;
+        }
+    }
+
+    // Left Column Content
+    .vima-main-content {
+        max-width: $text-width-wide;
+
+        .accent-bar {
+            width: 36px;
+            height: 4px;
+            background-color: $color-orange;
+            border-radius: $radius-pill;
+            margin-bottom: $space-element;
+        }
+
+        h2 {
+            font-size: 44px; // Matches compact layout heading scale from visual
+            line-height: $line-heading;
+            color: $color-navy;
+            margin-bottom: $space-element;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-body;
+            font-weight: 500;
+        }
+    }
+
+    // Vertical Separator Divider
+    .vima-divider {
+        width: 1px;
+        height: 120px;
+        background-color: $color-border;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    // Right Column Card
+    .vima-card {
+        background-color: $color-cream;
+        border-radius: $radius-md;
+        padding: $space-element;
+        display: flex;
+        align-items: center;
+        gap: $space-element;
+        transition: $transition;
+
+        .card-icon {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color-orange;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .card-content {
+            h3 {
+                font-size:44px;
+                line-height: $line-heading;
+                color: $color-navy;
+                margin-bottom: $space-small;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-text-body;
+                font-weight: 500;
+            }
+        }
+    }
+}

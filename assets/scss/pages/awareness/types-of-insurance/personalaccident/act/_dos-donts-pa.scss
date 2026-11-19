@@ -3,18 +3,15 @@
 
 // Local section colors
 $color-do-border: rgba(#10b981, 0.4);
-$color-do-bg: rgba(#10b981, 0.08);
+$color-do-bg: rgba(#10b981, 0.06);
 $color-dont-border: rgba(#ef4444, 0.3);
-$color-dont-bg: rgba(#ef4444, 0.06);
+$color-dont-bg: rgba(#ef4444, 0.05);
 $color-dont-red: #dc2626;
-
-// New variable for light blue card background
-$color-card-blue: #f0f4f8; 
 
 .guidance-section--dark {
   padding: $space-section 0;
   font-family: $font-primary;
-  background-color: $color-white; // Matches reference background
+  background-color: $color-white;
 
   .guidance-container {
     max-width: $container-width;
@@ -39,16 +36,20 @@ $color-card-blue: #f0f4f8;
     .guidance-title {
       font-size: 36px;
       line-height: $line-heading;
-      color: $color-navy; // Matches reference navy heading color
+      color: $color-navy;
       font-weight: 500;
       margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 28px;
+      }
     }
   }
 
   .guidance-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-element;
+    gap: 24px;
 
     @media (max-width: 992px) {
       grid-template-columns: 1fr;
@@ -56,96 +57,155 @@ $color-card-blue: #f0f4f8;
   }
 
   .guidance-card {
-    border-radius: $radius-md;
+    border-radius: 16px;
     overflow: hidden;
-    background-color: $color-card-blue; // Matches reference card background
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     transition: $transition;
 
     .card-header {
-      padding: 14px $space-element;
-      font-size: $text-sm;
+      padding: 24px 28px 16px 28px;
+      font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
 
       .icon {
-        font-size: $text-xs;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+
+    .guidance-list {
+      list-style: none;
+      padding: 0 28px 16px 28px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex-grow: 1;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+
+        .list-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          min-width: 20px;
+          border: 1.5px solid;
+          border-radius: 50%;
+          font-size: 10px;
+          font-weight: bold;
+          margin-top: 2px;
+        }
+
+        .list-text {
+          font-size: 15px;
+          line-height: $line-body;
+          color: black;
+        }
+      }
+    }
+
+    /* CARD FOOTER CALLOUT BOX (matches reference card footers) */
+    .card-footer-callout {
+      margin: 12px 20px 20px 20px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .callout-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+
+      p {
+        margin: 0;
+        font-size: 13.5px;
+        line-height: 1.4;
+        color: $color-navy;
       }
     }
 
     &.do-card {
+      background-color: $color-do-bg;
       border: 1px solid $color-do-border;
 
       .card-header {
-        background-color: $color-do-bg;
-        color: $color-navy;
+        color: #047857;
 
         .icon {
-          color: $color-success;
+          background-color: #10b981;
+          color: $color-white;
         }
       }
 
       .list-icon {
-        border-color: rgba($color-success, 0.5);
-        color: $color-success;
+        border-color: rgba(#10b981, 0.5);
+        background-color: rgba(#10b981, 0.1);
+        color: #059669;
+      }
+
+      .card-footer-callout {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(#10b981, 0.2);
+
+        .callout-icon {
+          background-color: $color-blue;
+          color: $color-white;
+        }
       }
     }
 
     &.dont-card {
+      background-color: $color-dont-bg;
       border: 1px solid $color-dont-border;
 
       .card-header {
-        background-color: $color-dont-bg;
         color: $color-dont-red;
 
         .icon {
-          color: $color-dont-red;
+          background-color: $color-dont-red;
+          color: $color-white;
         }
       }
 
       .list-icon {
         border-color: rgba($color-dont-red, 0.4);
+        background-color: rgba($color-dont-red, 0.08);
         color: $color-dont-red;
       }
-    }
-  }
 
-  .guidance-list {
-    list-style: none;
-    padding: $space-element;
-    margin: 0;
+      .card-footer-callout {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba($color-dont-red, 0.15);
 
-    li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 8px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      .list-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 18px;
-        height: 18px;
-        min-width: 18px;
-        border: 1px solid;
-        border-radius: 50%;
-        font-size: 10px;
-        font-weight: bold;
-        margin-top: 2px;
-      }
-
-      .list-text {
-        font-size: 16px;
-        line-height: $line-body;
-        color: black; // Matches reference text color
+        .callout-icon {
+          background-color: $color-dont-red;
+          color: $color-white;
+        }
       }
     }
   }

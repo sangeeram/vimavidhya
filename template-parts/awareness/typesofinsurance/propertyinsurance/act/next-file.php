@@ -30,14 +30,17 @@
         <div class="property-transition__content">
 
             <h2 id="property-transition-title" class="property-transition__title">
-                You’ve Evaluated the Risks.<br>
-                Now It’s Time to Act.
+                You've Understood the Risks.<br>
+                You've Evaluated Your Property's Protection Needs.<br>
+                Now You're Ready to Take Action.
             </h2>
 
             <p class="property-transition__description">
-                You’ve understood your property, explored the risks it may face, and learned what insurance can and
-                cannot protect. Now move from understanding to action — review your protection, identify what needs
-                attention, and take the next step with confidence.
+                You now understand the risks that can threaten your property, the financial consequences of unexpected
+                damage and the importance of adequate property insurance. You've evaluated the coverage needed to
+                protect your building, household contents and valuable belongings. Now put that knowledge into action —
+                choose appropriate coverage, verify the insured values, understand the policy conditions, complete the
+                application process and protect what you've worked hard to build.
             </p>
 
             <!-- LARGE LINK: CONTINUE TO EVALUATE -->
@@ -79,8 +82,7 @@
             <span class="property-transition__line" aria-hidden="true"></span>
 
             <!-- 04. EVALUATE -->
-            <a href="/property-evaluate/" class="property-transition__step "
-                aria-current="step">
+            <a href="/property-evaluate/" class="property-transition__step " aria-current="step">
                 <span class="property-transition__step-number">04</span>
                 <span class="property-transition__step-label">Evaluate</span>
             </a>

@@ -10,6 +10,7 @@
 @use "../../../abstracts/variables" as *;
 
 
+
 // =============================================================================
 // ROOT EXPERIENCE
 // =============================================================================
@@ -2393,4 +2394,668 @@
         flex-shrink: 0;
 
     }
+}
+
+
+/* ==========================================================
+   VIMA VIDYA — RESPONSIVE STORY BOOK FIX
+   ========================================================== */
+
+/* Main section */
+
+.vima-experience-section {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+
+  padding: clamp(36px, 4vw, 70px)
+           clamp(14px, 3vw, 48px)
+           clamp(45px, 5vw, 85px);
+}
+
+/* Shelf */
+
+.shelf-scene,
+.reader-stage {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shelf-split-layout {
+  min-width: 0;
+}
+
+.shelf-col-shelf {
+  min-width: 0;
+}
+
+.shelf-col-shelf .books-lineup {
+  justify-content: safe center;
+  gap: clamp(5px, 0.8vw, 12px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 26px 12px 5px;
+  scrollbar-width: thin;
+}
+
+/* Each category book */
+
+.book-spine {
+  width: clamp(43px, 4vw, 58px);
+  height: clamp(215px, 22vw, 310px);
+  min-width: 43px;
+  flex-shrink: 0;
+}
+
+.book-spine .spine-vertical-core {
+  gap: 10px;
+}
+
+.book-spine .spine-title-vertical {
+  font-size: clamp(9px, 0.8vw, 11px);
+  letter-spacing: 1.3px;
+}
+
+.book-spine .spine-vertical-core i {
+  color: #fff;
+  font-size: 15px;
+}
+
+/* Correct spine colors */
+
+.book-spine.spine-navy {
+  background: linear-gradient(180deg, #235c9b, #09294d);
+}
+
+.book-spine.spine-green {
+  background: linear-gradient(180deg, #15966b, #064b3b);
+}
+
+.book-spine.spine-burgundy {
+  background: linear-gradient(180deg, #b83458, #66152d);
+}
+
+.book-spine.spine-terracotta {
+  background: linear-gradient(180deg, #d96a35, #85381d);
+}
+
+.book-spine.spine-slate {
+  background: linear-gradient(180deg, #65758b, #29394e);
+}
+
+.book-spine.spine-teal {
+  background: linear-gradient(180deg, #158f99, #0c4653);
+}
+
+.book-spine.spine-purple {
+  background: linear-gradient(180deg, #8260c8, #493174);
+}
+
+.book-spine.spine-brown {
+  background: linear-gradient(180deg, #b9823b, #65421e);
+}
+
+.book-spine.spine-emerald {
+  background: linear-gradient(180deg, #22a88b, #075d50);
+}
+
+/* Book viewport */
+
+.book-viewport-3d {
+  width: 100%;
+  min-width: 0;
+  perspective: 2500px;
+}
+
+/* The book grows according to its content */
+
+.realistic-open-book {
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(520px, 58vh, 740px);
+  height: auto;
+
+  display: flex;
+  align-items: stretch;
+
+  overflow: hidden;
+}
+
+/* Both pages always have equal height */
+
+.realistic-open-book > .book-page {
+  flex: 0 0 50%;
+  width: 50%;
+  min-width: 0;
+  height: auto;
+
+  padding: clamp(20px, 2.8vw, 42px);
+}
+
+.page-content-box {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+}
+
+.page-left .story-intro-page,
+.page-right .story-content-page {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Responsive title */
+
+.page-left .story-title {
+  font-size: clamp(23px, 2.5vw, 42px);
+  line-height: 1.16;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive image */
+
+.page-left .story-intro-image {
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  padding: clamp(6px, 0.8vw, 10px);
+}
+
+.page-left .story-intro-image img {
+  width: 100%;
+  height: clamp(180px, 25vw, 330px);
+  max-height: 38vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Story text */
+
+.page-right .story-content-page {
+  padding-top: 4px;
+}
+
+.page-right .story-paragraphs {
+  flex: 1 0 auto;
+  min-width: 0;
+  padding: 20px 0 12px;
+  margin: 0;
+
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.7;
+
+  overflow-wrap: anywhere;
+}
+
+.page-right .story-paragraphs p {
+  margin-bottom: 14px;
+}
+
+.page-right .takeaway-banner {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Flipping page uses same padding */
+
+.flipping-page-leaf .leaf-face {
+  padding: clamp(20px, 2.8vw, 42px);
+}
+
+/* Navigation follows actual book height */
+
+.reader-control-row {
+  position: relative;
+  width: 100%;
+  min-height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: clamp(10px, 2vw, 25px);
+  margin: 22px auto 0;
+}
+
+.reader-control-row .book-nav-btn {
+  min-height: 40px;
+  padding: 10px clamp(15px, 2vw, 28px);
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   SMALL LAPTOP — 1025px to 1366px
+   ========================================================== */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .shelf-col-intro {
+    flex: 0 1 280px;
+  }
+
+  .shelf-split-layout {
+    gap: 20px;
+  }
+
+  .realistic-open-book {
+    min-height: 520px;
+  }
+
+  .realistic-open-book > .book-page {
+    padding: 25px;
+  }
+
+  .flipping-page-leaf .leaf-face {
+    padding: 25px;
+  }
+
+  .page-left .story-title {
+    font-size: clamp(23px, 2.4vw, 34px);
+  }
+
+  .page-left .story-intro-image img {
+    height: clamp(180px, 22vw, 270px);
+  }
+
+  .page-right .story-paragraphs {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .page-right .story-corner-bookmark {
+    top: -25px;
+  }
+}
+
+/* ==========================================================
+   TABLET — STACKED PAGES
+   ========================================================== */
+
+@media (max-width: 1024px) {
+
+  .shelf-scene .shelf-split-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .shelf-col-intro {
+    flex: 0 1 auto;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .shelf-col-intro .gold-filigree-divider {
+    justify-content: center;
+  }
+
+  .shelf-col-shelf {
+    width: 100%;
+  }
+
+  .realistic-open-book {
+    flex-direction: column;
+    min-height: 0;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .realistic-open-book > .book-page {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 28px;
+  }
+
+  .realistic-open-book > .page-left {
+    border-right: 0;
+    border-bottom: 1px solid #d6dce5;
+  }
+
+  .book-gutter-valley,
+  .flipping-page-leaf {
+    display: none !important;
+  }
+
+  .page-left .story-title {
+    font-size: clamp(25px, 4vw, 38px);
+  }
+
+  .page-left .story-intro-image {
+    margin-top: 22px;
+  }
+
+  .page-left .story-intro-image img {
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+  }
+
+  .page-right {
+    min-height: 0;
+  }
+
+  .page-right .story-paragraphs {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .page-right .takeaway-banner {
+    margin-top: 20px;
+  }
+
+  .page-right .story-corner-bookmark {
+    top: -28px;
+  }
+}
+
+/* ==========================================================
+   MOBILE — BELOW 600px
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  .vima-experience-section {
+    padding: 35px 12px 55px;
+  }
+
+  .shelf-col-intro .shelf-intro-text h1 {
+    font-size: clamp(32px, 8vw, 42px);
+  }
+
+  .shelf-col-shelf .books-lineup {
+    justify-content: flex-start;
+    gap: 7px;
+    padding: 25px 8px 5px;
+  }
+
+  .book-spine {
+    width: 44px;
+    min-width: 44px;
+    height: 230px;
+    padding: 14px 0 12px;
+  }
+
+  .book-spine .spine-title-vertical {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .realistic-open-book {
+    border-radius: 6px;
+  }
+
+  .realistic-open-book > .book-page {
+    padding: 22px 18px;
+  }
+
+  .page-left .story-title {
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.2;
+  }
+
+  .page-left .story-intro-image img {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  .page-right .story-paragraphs {
+    font-size: 14px;
+    line-height: 1.7;
+    padding-top: 16px;
+  }
+
+  .page-right .takeaway-banner {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .page-right .story-corner-bookmark {
+    top: -22px;
+    right: 0;
+    width: 34px;
+    height: 46px;
+  }
+
+  .reader-control-row {
+    width: 100%;
+    margin-top: 18px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .reader-control-row .book-nav-btn {
+    flex: 0 1 auto;
+    min-width: 0;
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .reader-control-row .page-indicator-pill {
+    flex-shrink: 0;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .glossary-tooltip {
+    width: min(230px, 75vw);
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .book-spine,
+  .book-nav-btn {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   VIMA VIDYA — FULL-SPACE STORY IMAGE
+   ========================================================= */
+
+/* Book grows according to story content */
+
+.realistic-open-book {
+  height: auto;
+  min-height: 620px;
+  align-items: stretch;
+}
+
+/* Left and right pages stay equal height */
+
+.realistic-open-book > .book-page {
+  min-width: 0;
+  align-self: stretch;
+}
+
+/* Left page layout */
+
+.page-left .story-intro-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Keep heading at the top */
+
+.page-left .story-title {
+  flex-shrink: 0;
+}
+
+.page-left .ornament-divider {
+  flex-shrink: 0;
+  margin: 20px 0;
+}
+
+/* Image container fills remaining space */
+
+.page-left .story-intro-image {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 300px;
+
+  margin-top: 0;
+  padding: 10px;
+
+  background: #fff;
+  border: 1px solid #dce3eb;
+  border-radius: 4px;
+}
+
+/* Full image visible, no cropping */
+
+.page-left .story-intro-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+
+  flex: 1 1 auto;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Caption stays below image */
+
+.page-left .story-image-caption {
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+/* Right page content determines book height */
+
+.page-right .story-paragraphs {
+  flex: 0 0 auto;
+}
+
+.page-right .takeaway-banner {
+  margin-top: auto;
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .realistic-open-book {
+    min-height: 520px;
+  }
+
+  .page-left .story-intro-image {
+    min-height: 260px;
+  }
+}
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .realistic-open-book {
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .page-left .story-intro-page {
+    height: auto;
+  }
+
+  .page-left .story-intro-image {
+    flex: none;
+    min-height: 0;
+  }
+
+  .page-left .story-intro-image img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .page-right .story-paragraphs {
+    flex: 0 0 auto;
+  }
+}
+
+/* Equal-height book pages */
+
+@media (min-width: 1025px) {
+
+  .realistic-open-book {
+    display: flex;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .realistic-open-book > .book-page {
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    height: auto;
+  }
+
+  .page-left .story-intro-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .page-left .page-top-meta,
+  .page-left .story-title,
+  .page-left .ornament-divider {
+    flex-shrink: 0;
+  }
+
+  .page-left .story-intro-image {
+    flex: 1 1 0;
+    min-height: 0;
+    margin-top: 0;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .page-left .story-intro-image img {
+    flex: 1 1 0;
+    width: 100%;
+    height: 0;
+    min-height: 0;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-left .story-image-caption {
+    flex-shrink: 0;
+  }
+
+  .page-right .story-paragraphs {
+    flex: 0 0 auto;
+  }
+
+  .page-right .takeaway-banner {
+    margin-top: 20px;
+  }
 }

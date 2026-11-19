@@ -6,7 +6,7 @@
 @use "../../../../../abstracts/variables" as *;
 
 .vv-myths-section {
-    background-color: $color-light-blue; // Updated section background to light blue
+    background-color: $color-light-blue;
     padding: 60px 0;
     font-family: $font-primary;
 
@@ -174,23 +174,25 @@
         background-color: #fff5f5;
         border: 1.5px solid #feb2b2;
 
-        .vv-big-myth-title {
-            font-size: 38px;
-            font-weight: 900;
+        .vv-label--myth {
             color: #e53e3e;
-            letter-spacing: 2px;
-            text-align: center;
-            margin: 15px 0;
-            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 0.08em;
         }
 
         .vv-myth-text {
-            margin: 0;
-            font-size: 17px;
-            font-weight: 600;
+            margin: auto 0; // Centers the text vertically inside the card space
+            font-size: 20px;
+            font-weight: 700;
             font-style: italic;
             color: $color-navy;
             line-height: 1.45;
+            text-align: center;
+        }
+
+        .vv-card-spacer {
+            height: 24px; // Balances out header height to keep quote centered accurately
         }
     }
 

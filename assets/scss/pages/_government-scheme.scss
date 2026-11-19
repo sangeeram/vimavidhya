@@ -1,0 +1,1072 @@
+// =========================================================
+// VIMA VIDYA — DESIGN TOKENS & MIXINS
+// =========================================================
+@use "../abstracts/variables" as *;
+
+// Local variables to ensure zero leakage across components
+$dash-bg-dark: #0B132B;
+$dash-card-light: #EFF6FF;
+$dash-card-border: #BFDBFE;
+$dash-btn-blue: #1E40AF;
+$dash-btn-hover: #1D4ED8;
+$dash-accent-cyan: #38BDF8;
+
+// =========================================================
+// 1. GOVERNMENT SCHEMES — HERO SECTION
+// =========================================================
+.gov-hero {
+    position: relative;
+    min-height: 690px;
+    overflow: hidden;
+    background: $color-cream;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: var(--gov-bg);
+        background-size: cover;
+        background-position: 65% center;
+        background-repeat: no-repeat;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+            90deg,
+            rgba(253, 251, 247, 0.98) 0%,
+            rgba(253, 251, 247, 0.95) 22%,
+            rgba(253, 251, 247, 0.82) 42%,
+            rgba(253, 251, 247, 0.42) 60%,
+            rgba(253, 251, 247, 0.08) 100%
+        );
+    }
+
+    &__container {
+        position: relative;
+        z-index: 3;
+        width: min(calc(100% - 48px), $container-width);
+        min-height: 610px;
+        margin: 0 auto;
+        padding-top: 68px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__content {
+        width: 62%;
+        max-width: 720px;
+        padding-top: 12px;
+    }
+
+    &__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        color: $color-orange;
+        font-family: $font-primary;
+        font-size: $text-sm;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+
+        &::before,
+        &::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background: $color-orange;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        max-width: 700px;
+        font-family: $font-primary;
+        font-size: clamp(36px, 3.5vw, $text-h1);
+        font-weight: 700;
+        line-height: $line-tight;
+        letter-spacing: -0.025em;
+
+        .title-dark {
+            color: $color-navy;
+        }
+
+        .title-blue {
+            display: block;
+            color: $color-blue;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+    }
+
+    &__description {
+        max-width: $text-width-medium;
+        margin: 20px 0 0;
+        color: $color-text-body;
+        font-family: $font-primary;
+        font-size: $text-lg;
+        line-height: 1.55;
+    }
+
+    &__breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 14px;
+        color: $color-text-muted;
+        font-family: $font-primary;
+        font-size: $text-sm;
+
+        a {
+            color: $color-text-muted;
+            text-decoration: none;
+            transition: color $transition-fast;
+
+            &:hover {
+                color: $color-blue;
+            }
+        }
+
+        span:last-child {
+            color: $color-orange;
+            font-weight: 500;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    &__button {
+        min-height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 21px;
+        border-radius: $radius-sm;
+        font-family: $font-primary;
+        font-size: $text-sm;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform $transition, background $transition, box-shadow $transition;
+
+        span {
+            font-size: 17px;
+            transition: transform $transition-fast;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+
+            span {
+                transform: translate(3px, -2px);
+            }
+        }
+    }
+
+    &__button--primary {
+        color: $color-white;
+        background: $color-blue;
+        box-shadow: 0 8px 20px rgba(0, 122, 255, 0.18);
+
+        &:hover {
+            background: $color-blue-dark;
+        }
+    }
+
+    &__button--outline {
+        color: $color-navy;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid $color-blue;
+        backdrop-filter: blur(8px);
+
+        &:hover {
+            color: $color-white;
+            background: $color-navy;
+            border-color: $color-navy;
+        }
+    }
+
+    &__card {
+        position: absolute;
+        top: 180px;
+        right: 10px;
+        z-index: 5;
+        width: 350px;
+        display: flex;
+        gap: 18px;
+        padding: 23px;
+        background: $color-navy;
+        border-radius: $radius-lg;
+        box-shadow: 0 20px 50px rgba(3, 21, 46, 0.22);
+    }
+
+    &__card-icon {
+        flex: 0 0 52px;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-orange;
+        background: rgba(245, 154, 24, 0.10);
+        border: 1px solid rgba(245, 154, 24, 0.25);
+        border-radius: 50%;
+
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &__card-content {
+        .gov-label {
+            display: block;
+            margin-bottom: 7px;
+            color: $color-orange;
+            font-family: $font-primary;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        h2 {
+            margin: 0;
+            color: $color-white;
+            font-family: $font-primary;
+            font-size: $text-h3;
+            line-height: $line-heading;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 9px 0 13px;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: $font-primary;
+            font-size: $text-sm;
+            line-height: 1.5;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: $color-white;
+            font-family: $font-primary;
+            font-size: $text-sm;
+            font-weight: 600;
+            text-decoration: none;
+
+            span {
+                color: $color-orange;
+            }
+
+            &:hover {
+                color: $color-orange;
+            }
+        }
+    }
+
+    &__stats-wrapper {
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        z-index: 6;
+        width: min(calc(100% - 48px), $container-width);
+        transform: translateX(-50%);
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 128px;
+        background: $color-navy;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: $radius-md;
+        box-shadow: 0 18px 40px rgba(3, 21, 46, 0.25);
+        overflow: hidden;
+    }
+
+    &__stat {
+        min-height: 128px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 22px;
+        border-right: 1px solid rgba(255, 255, 255, 0.14);
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+
+    &__stat-icon {
+        flex: 0 0 60px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-orange;
+        background: rgba(245, 154, 24, 0.10);
+        border: 1px solid rgba(245, 154, 24, 0.25);
+        border-radius: 50%;
+
+        svg {
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    &__stat-content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        strong {
+            color: $color-white;
+            font-family: $font-primary;
+            font-size: 38px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
+        }
+
+        span {
+            max-width: 210px;
+            color: rgba(255, 255, 255, 0.75);
+            font-family: $font-primary;
+            font-size: $text-sm;
+            line-height: 1.4;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        min-height: 700px;
+        &__container { padding-top: 60px; }
+        &__content { width: 58%; }
+        &__card { top: 175px; right: 0; width: 310px; }
+        &__stat { padding: 18px 14px; gap: 10px; }
+        &__stat-content strong { font-size: 32px; }
+        &__stat-content span { font-size: $text-xs; }
+    }
+
+    @media (max-width: 768px) {
+        min-height: auto;
+        padding-bottom: 30px;
+        &__bg { height: 560px; }
+        &__overlay {
+            height: 620px;
+            background: linear-gradient(180deg, rgba(253, 251, 247, 0.90) 0%, rgba(253, 251, 247, 0.80) 40%, rgba(253, 251, 247, 0.95) 75%, $color-cream 100%);
+        }
+        &__container { width: calc(100% - 32px); min-height: auto; padding-top: 65px; display: block; }
+        &__content { width: 100%; padding-top: 10px; }
+        &__title { font-size: 36px; }
+        &__description { font-size: $text-base; }
+        &__actions { flex-direction: column; align-items: stretch; }
+        &__button { width: 100%; }
+        &__card { position: relative; top: auto; right: auto; width: 100%; margin-top: 30px; }
+        &__stats-wrapper { position: relative; left: auto; bottom: auto; width: calc(100% - 32px); margin: 25px auto 0; transform: none; }
+        &__stats { grid-template-columns: 1fr; min-height: auto; }
+        &__stat { min-height: 100px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.14); &:last-child { border-bottom: 0; } }
+    }
+
+    @media (max-width: 480px) {
+        &__title { font-size: 30px; }
+        &__card { padding: 18px; }
+        &__stat-content strong { font-size: 30px; }
+    }
+}
+
+
+// =========================================================
+// 2. GOVERNMENT SCHEMES — WHY SECTION
+// =========================================================
+.gov-why-section {
+    position: relative;
+    padding: 80px 0;
+    background-color: #f0f4f8;
+
+    .gov-why__container {
+        width: min(calc(100% - 48px), 850px);
+        margin: 0 auto;
+    }
+
+    .gov-why__header {
+        margin-bottom: 30px;
+
+        .gov-why__main-title {
+            margin: 0;
+            color: $color-navy;
+            font-family: $font-primary;
+            font-size: clamp(28px, 2.5vw, $text-h2);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid rgba(3, 21, 46, 0.15);
+            padding-bottom: 12px;
+        }
+    }
+
+    .gov-why__alert-box {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        border-left: 4px solid #dc2626;
+        border-radius: $radius-md;
+        padding: 24px 28px;
+        margin-bottom: 35px;
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.05);
+
+        .gov-why__alert-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+
+            .gov-why__alert-icon { font-size: 20px; line-height: 1; }
+            .gov-why__alert-title { margin: 0; color: #b91c1c; font-family: $font-primary; font-size: 18px; font-weight: 700; }
+        }
+
+        .gov-why__bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            li {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                color: $color-navy;
+                font-family: $font-primary;
+                font-size: $text-sm;
+                line-height: 1.55;
+
+                .bullet-dot { color: $color-navy; font-size: 10px; line-height: 1.8; flex-shrink: 0; }
+            }
+        }
+    }
+
+    .gov-why__content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .gov-why__paragraph {
+            margin: 0;
+            color: $color-text-body;
+            font-family: $font-primary;
+            font-size: $text-base;
+            line-height: 1.65;
+
+            .highlight-text { color: #b91c1c; font-weight: 600; }
+            .highlight-green { color: #047857; font-weight: 600; }
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 50px 0;
+        .gov-why__container { width: calc(100% - 32px); }
+        .gov-why__alert-box { padding: 18px 20px; }
+    }
+}
+
+
+// =========================================================
+// 3. GOVERNMENT SCHEMES — AT A GLANCE SECTION
+// =========================================================
+.gov-glance-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: $color-light-blue;
+
+    .gov-glance__container {
+        width: min(calc(100% - 48px), $container-width);
+        margin: 0 auto;
+    }
+
+    .gov-glance__header {
+        text-align: center;
+        max-width: 650px;
+        margin: 0 auto 50px;
+
+        .gov-glance__eyebrow {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: $color-orange;
+            font-family: $font-primary;
+            font-size: $text-sm;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .gov-glance__title {
+            margin: 0 0 12px;
+            color: $color-navy;
+            font-family: $font-primary;
+            font-size: clamp(30px, 3vw, $text-h2);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .gov-glance__subtitle {
+            margin: 0;
+            color: $color-text-body;
+            font-family: $font-primary;
+            font-size: $text-base;
+            line-height: 1.5;
+        }
+    }
+
+    .gov-glance__interactive-box {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 30px;
+        background: $color-navy;
+        padding: 30px;
+        border-radius: $radius-lg;
+        box-shadow: 0 25px 60px rgba(3, 21, 46, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gov-glance__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-height: 520px;
+        overflow-y: auto;
+        padding-right: 6px;
+
+        &::-webkit-scrollbar { width: 4px; }
+        &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+
+        .gov-glance__tab-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: $radius-sm;
+            cursor: pointer;
+            text-align: left;
+            transition: all $transition-fast;
+
+            .tab-num { color: rgba(255, 255, 255, 0.4); font-family: $font-primary; font-size: 12px; font-weight: 700; width: 18px; }
+            .tab-icon { font-size: 16px; }
+            .tab-name { flex-grow: 1; color: rgba(255, 255, 255, 0.8); font-family: $font-primary; font-size: $text-sm; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .tab-arrow { color: $color-orange; font-size: 14px; opacity: 0; transform: translateX(-6px); transition: all $transition-fast; }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+                .tab-name { color: $color-white; }
+            }
+
+            &.active {
+                background: $color-blue;
+                border-color: $color-blue;
+                box-shadow: 0 6px 15px rgba(0, 122, 255, 0.3);
+
+                .tab-num, .tab-name { color: $color-white; }
+                .tab-arrow { opacity: 1; transform: translateX(0); }
+            }
+        }
+    }
+
+    .gov-glance__content-panel {
+        background: $color-white;
+        border-radius: $radius-md;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        .gov-glance__pane {
+            display: none;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 1fr 1.2fr;
+            animation: fadeInGlancePane 0.4s ease forwards;
+
+            &.active { display: grid; }
+        }
+    }
+
+    @keyframes fadeInGlancePane {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gov-glance__pane-media {
+        position: relative;
+        height: 100%;
+        min-height: 420px;
+        background: $color-navy;
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .gov-glance__pane-badge {
+            position: absolute; top: 20px; left: 20px; padding: 8px 14px;
+            background: rgba(3, 21, 46, 0.85); backdrop-filter: blur(8px);
+            color: $color-white; font-family: $font-primary; font-size: 12px; font-weight: 700;
+            border-radius: $radius-sm; border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    .gov-glance__pane-info {
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .pane-category { display: block; margin-bottom: 6px; color: $color-blue; font-family: $font-primary; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+        .pane-title { margin: 0 0 24px; color: $color-navy; font-family: $font-primary; font-size: 24px; font-weight: 700; line-height: 1.3; }
+
+        .pane-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+
+            .spec-item {
+                background: #f8fafc;
+                padding: 14px 16px;
+                border-radius: $radius-sm;
+                border: 1px solid rgba(3, 21, 46, 0.06);
+
+                .spec-label { display: block; margin-bottom: 4px; color: $color-text-muted; font-family: $font-primary; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+                .spec-val { color: $color-navy; font-family: $font-primary; font-size: 15px; font-weight: 700; }
+            }
+        }
+
+        .pane-action-footer {
+            padding-top: 16px;
+            border-top: 1px solid rgba(3, 21, 46, 0.08);
+
+            .pane-link-btn {
+                display: inline-flex; align-items: center; gap: 8px; color: $color-blue; font-family: $font-primary; font-size: $text-sm; font-weight: 700; text-decoration: none; transition: color $transition-fast;
+                span { color: $color-orange; transition: transform $transition-fast; }
+                &:hover { color: $color-navy; span { transform: translateX(4px); } }
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .gov-glance__interactive-box { grid-template-columns: 1fr; padding: 20px; }
+        .gov-glance__nav-list { max-height: 220px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .gov-glance__content-panel .gov-glance__pane { grid-template-columns: 1fr; }
+        .gov-glance__pane-media { min-height: 240px; }
+    }
+
+    @media (max-width: 640px) {
+        .gov-glance__nav-list { grid-template-columns: 1fr; }
+        .pane-specs-grid { grid-template-columns: 1fr !important; }
+    }
+}
+
+
+// =========================================================
+// 4. SCHEMES DASHBOARD BODY & MAIN CONTAINER
+// =========================================================
+body.schemes-dashboard-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: $dash-bg-dark;
+    color: #F8FAFC;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    * { box-sizing: border-box; }
+}
+
+.dashboard-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $dash-bg-dark;
+
+    .dashboard-global-header {
+        padding: 16px 20px;
+        background: rgba(11, 19, 43, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        @media (min-width: 768px) { padding: 16px 40px; }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            @media (min-width: 768px) { width: 500px; }
+
+            .search-icon {
+                position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #93C5FD;
+            }
+
+            input {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 12px;
+                padding: 10px 16px 10px 48px;
+                color: #F8FAFC;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+
+                &::placeholder { color: #93C5FD; }
+                &:focus {
+                    outline: none;
+                    border-color: $dash-accent-cyan;
+                    background: rgba(255, 255, 255, 0.15);
+                    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+                }
+            }
+        }
+
+        .user-profile-widget {
+            .badge-live {
+                background: rgba(13, 148, 136, 0.25);
+                color: #5EEAD4;
+                padding: 6px 14px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                border: 1px solid rgba(94, 234, 212, 0.4);
+            }
+        }
+    }
+
+    .dashboard-main-content {
+        padding: 20px 16px;
+        max-width: 1500px;
+        margin: 0 auto;
+        width: 100%;
+        background-color: $dash-bg-dark;
+
+        @media (min-width: 768px) { padding: 30px 40px; }
+
+        .section-intro-header {
+            text-align: center;
+            margin-bottom: 24px;
+
+            h2 {
+                font-size: 1.5rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;
+                @media (min-width: 768px) { font-size: 1.75rem; }
+            }
+            p {
+                font-size: 0.9rem; color: #93C5FD;
+                @media (min-width: 768px) { font-size: 0.95rem; }
+            }
+        }
+    }
+
+    // SCOPED WIDGET CONTAINER
+    .scoped-widget-container {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        background-color: $dash-bg-dark;
+
+        @media (max-width: 1200px) { flex-direction: column; }
+
+        .scoped-sidebar {
+            width: 100%;
+            flex-shrink: 0;
+            background: $dash-card-light;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+
+            @media (min-width: 1201px) { width: 280px; }
+
+            .sidebar-brand {
+                padding: 16px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                h3 { font-size: 1rem; color: #FCD34D; font-weight: 700; }
+            }
+
+            .sidebar-nav {
+                padding: 12px 0;
+                @media (min-width: 1201px) { max-height: 700px; overflow-y: auto; }
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    padding: 0 12px;
+
+                    @media (min-width: 1201px) { flex-direction: column; padding: 0; }
+
+                    li {
+                        margin-bottom: 0;
+                        flex: 1 1 calc(50% - 8px);
+                        @media (min-width: 768px) and (max-width: 1200px) { flex: 1 1 calc(33.333% - 8px); }
+                        @media (min-width: 1201px) { flex: none; margin-bottom: 4px; }
+
+                        a.scoped-nav-link {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            padding: 10px 14px;
+                            background-color: $dash-btn-blue;
+                            color: #F8FAFC;
+                            text-decoration: none;
+                            font-size: 0.85rem;
+                            font-weight: 500;
+                            transition: all 0.2s ease;
+                            border-left: 3px solid transparent;
+                            border-radius: 8px;
+
+                            @media (min-width: 1201px) { margin: 0 10px; padding: 12px 20px; font-size: 0.88rem; }
+                            span { font-size: 1rem; }
+
+                            &:hover { background-color: $dash-btn-hover; color: #FFFFFF; }
+                            &.active {
+                                background-color: #2563EB;
+                                color: #FFFFFF;
+                                border-left-color: #38BDF8;
+                                font-weight: 600;
+                                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .scoped-display-area {
+            flex: 1;
+            min-width: 0;
+            width: 100%;
+            background-color: $dash-bg-dark;
+
+            .scheme-tab-pane {
+                display: none;
+                background-color: $dash-bg-dark;
+                animation: fadeInDashboardPane 0.3s ease forwards;
+                &.active { display: block; }
+            }
+        }
+    }
+}
+
+@keyframes fadeInDashboardPane {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+// Light Blue Cards inside Dashboard Component
+.dashboard-page-container {
+    .scheme-card-top,
+    .details-table-card,
+    .info-box,
+    .story-box,
+    .info-card {
+        background-color: $dash-card-light !important;
+        border: 1px solid $dash-card-border !important;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        color: #1E293B !important;
+
+        @media (min-width: 768px) {
+            padding: 28px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2, h3 { color: #1E3A8A !important; }
+        p, li, td { color: #334155 !important; }
+        strong { color: #0F172A !important; }
+        a { color: #2563EB !important; text-decoration: none; &:hover { text-decoration: underline; } }
+    }
+
+    .scheme-card-top {
+        .card-header-flex {
+            display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+            .scheme-emoji { font-size: 2rem; display: inline-block; margin-bottom: 8px; }
+            h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; @media (min-width: 768px) { font-size: 1.5rem; } }
+            .card-subtitle { font-size: 0.9rem; color: #2563EB !important; font-weight: 500; @media (min-width: 768px) { font-size: 0.98rem; } }
+        }
+
+        .quick-stats-grid {
+            display: grid; grid-template-columns: repeat(2, minmax(110px, 1fr)); gap: 10px; margin-top: 16px;
+            @media (min-width: 640px) { grid-template-columns: repeat(4, minmax(110px, 1fr)); gap: 12px; }
+
+            .stat-box {
+                background: #FFFFFF !important; border: 1px solid #93C5FD !important; padding: 10px 12px; border-radius: 10px; text-align: center;
+                strong { display: block; font-size: 1rem; color: #D97706 !important; margin-bottom: 2px; @media (min-width: 768px) { font-size: 1.15rem; } }
+                span { font-size: 0.68rem; color: #64748B !important; text-transform: uppercase; }
+            }
+        }
+
+        .card-intro-text {
+            margin-top: 16px; padding-top: 14px; border-top: 1px solid #BFDBFE; font-size: 0.95rem; line-height: 1.5;
+            @media (min-width: 768px) { margin-top: 20px; padding-top: 16px; font-size: 1rem; line-height: 1.6; }
+        }
+    }
+
+    .scheme-details-grid {
+        display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px;
+        @media (min-width: 1024px) { grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+    }
+
+    .scheme-table {
+        width: 100%; border-collapse: collapse;
+        tr {
+            border-bottom: 1px solid #BFDBFE;
+            &:last-child { border-bottom: none; }
+            th, td { padding: 10px 12px; text-align: left; font-size: 0.82rem; vertical-align: top; @media (min-width: 768px) { padding: 12px 14px; font-size: 0.88rem; } }
+            th { width: 40%; color: #475569 !important; font-weight: 600; @media (min-width: 768px) { width: 35%; } }
+        }
+    }
+
+    .details-sidebar-card {
+        .info-box {
+            .did-you-know { background: rgba(37, 99, 235, 0.08) !important; border-left: 3px solid #2563EB; padding: 8px 12px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.82rem; }
+            .pro-tip { background: rgba(217, 119, 6, 0.08) !important; border-left: 3px solid #D97706; padding: 8px 12px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.82rem; }
+        }
+    }
+
+    .story-box { h3 { color: #0D9488 !important; } }
+
+    .bottom-split-grid {
+        display: grid; grid-template-columns: 1fr; gap: 16px;
+        @media (min-width: 900px) { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .info-card {
+            ul, ol { padding-left: 18px; li { margin-bottom: 8px; font-size: 0.9rem; } }
+            &.claim-card { border-color: #5EEAD4 !important; h3 { color: #0D9488 !important; } }
+            &.highlight-card { background: linear-gradient(135deg, #EFF6FF, #FEF3C7) !important; border-color: #FCD34D !important; h3 { color: #B45309 !important; } }
+            &.warning-card { border-color: #FCA5A5 !important; h3 { color: #DC2626 !important; } }
+        }
+    }
+}
+
+
+// =========================================================
+// 5. AGE-WISE PROTECTION TOOLKIT SECTION
+// =========================================================
+.toolkit-container {
+    background-color: #EFF6FF !important;
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 40px 5%;
+    box-sizing: border-box;
+
+    .section-intro-header {
+        text-align: center;
+        margin-bottom: 30px;
+
+        h2 { font-size: 1.75rem; font-weight: 700; color: #1E3A8A; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: #64748B; }
+    }
+
+    .toolkit-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(220px, 1fr));
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+
+        @media (max-width: 1100px) { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 600px) { grid-template-columns: 1fr; }
+
+        .toolkit-card {
+            background-color: #FFFFFF;
+            border: 1px solid #BFDBFE;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.08);
+            display: flex;
+            flex-direction: column;
+
+            .card-img-wrapper {
+                position: relative; height: 140px; width: 100%; overflow: hidden;
+                img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+                .card-badge {
+                    position: absolute; bottom: 10px; left: 10px; background: rgba(11, 19, 43, 0.85); backdrop-filter: blur(6px);
+                    color: #F8FAFC; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.2);
+                }
+            }
+
+            .card-body {
+                padding: 18px; display: flex; flex-direction: column; flex: 1; justify-content: space-between;
+                h3 { font-size: 1.05rem; color: #1E3A8A; font-weight: 700; margin-bottom: 6px; }
+                p { font-size: 0.82rem; color: #475569; line-height: 1.4; margin-bottom: 14px; }
+                .toolkit-toggle-btn { background: none; border: none; color: #1E40AF; font-weight: 600; font-size: 0.85rem; padding: 0; text-align: left; cursor: pointer; }
+            }
+
+            &:hover {
+                transform: translateY(-4px); border-color: #0284C7; box-shadow: 0 8px 25px rgba(2, 132, 199, 0.15);
+                img { transform: scale(1.08); }
+            }
+
+            &.active {
+                border: 2px solid #1E40AF; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2); background: linear-gradient(135deg, #FFFFFF, #E0F2FE);
+                .toolkit-toggle-btn { color: #1D4ED8; text-decoration: underline; }
+            }
+        }
+    }
+
+    .toolkit-display-pane-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+
+        .toolkit-pane {
+            display: none;
+            animation: fadeInToolkitPane 0.3s ease forwards;
+            &.active { display: block; }
+
+            .info-card {
+                background-color: #FFFFFF !important;
+                border: 1px solid #BFDBFE !important;
+                border-radius: 20px;
+                padding: 30px;
+                box-shadow: 0 6px 20px rgba(30, 64, 175, 0.08);
+                color: #1E293B !important;
+
+                .pane-header-flex {
+                    display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #BFDBFE; padding-bottom: 14px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+                    h3 { color: #1E3A8A !important; font-size: 1.3rem; font-weight: 700; margin: 0; }
+                    .pane-badge { background: rgba(37, 99, 235, 0.1); color: #1E40AF; padding: 4px 12px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; border: 1px solid #BFDBFE; }
+                }
+
+                ul {
+                    list-style-type: none; padding-left: 0; margin: 0;
+                    li {
+                        color: #334155 !important; font-size: 0.95rem; padding: 12px 0; border-bottom: 1px dashed rgba(191, 219, 254, 0.6); line-height: 1.6;
+                        &:last-child { border-bottom: none; }
+                        strong { color: #0F172A !important; }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeInToolkitPane {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}

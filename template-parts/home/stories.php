@@ -1,166 +1,526 @@
+
 <?php
-// Story items structured with image URLs matching your site & design themes
-$stories = [
-    [
-        'category'    => 'HEALTH INSURANCE',
-        'badge_icon'  => 'https://img.icons8.com/ios-filled/50/0b48a2/health-heart.png',
-        'title'       => 'When health insurance matters',
-        'excerpt'     => 'A sudden medical expense can change everything. Learn how the right health insurance provides financial support and peace of mind.',
-        'image_url'   => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
-        'link'        => '/health-insurance/story-1'
+/**
+ * Vima Vidya Homepage
+ * Display ONE story from EACH category.
+ */
+
+$vv_stories_page = home_url('/stories/');
+
+$stories = [];
+$selected_categories = [];
+
+// Fetch published stories in the same order
+// as the main Stories page.
+$vv_story_query = new WP_Query([
+    'post_type'      => 'vima_story',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => [
+        'menu_order' => 'ASC',
+        'date'       => 'ASC',
     ],
-    [
-        'category'    => 'PROPERTY INSURANCE',
-        'badge_icon'  => 'https://img.icons8.com/ios-filled/50/16a34a/home.png',
-        'title'       => 'Protecting what you have built',
-        'excerpt'     => 'Your home is more than just a building. Discover how property insurance can help you rebuild and recover from unexpected events.',
-        'image_url'   => 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-        'link'        => '/property-insurance/story-2'
-    ],
-    [
-        'category'    => 'LIFE INSURANCE',
-        'badge_icon'  => 'https://img.icons8.com/ios-filled/50/9333ea/conference-call.png',
-        'title'       => 'Planning for those who matter',
-        'excerpt'     => 'Life is full of uncertainties. Learn how life insurance ensures your loved ones are financially secure, no matter what.',
-        'image_url'   => 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80',
-        'link'        => '/life-insurance/story-3'
-    ]
-];
+    'order'          => 'ASC',
+    'no_found_rows'  => true,
+]);
+
+if ($vv_story_query->have_posts()) {
+
+    while ($vv_story_query->have_posts()) {
+
+        $vv_story_query->the_post();
+
+        $post_id = get_the_ID();
+
+        // CATEGORY
+        $terms = get_the_terms(
+            $post_id,
+            'vv_story_category'
+        );
+
+        $category = 'Insurance Stories';
+        $category_slug = 'general';
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+
+            $category = $terms[0]->name;
+            $category_slug = $terms[0]->slug;
+
+        } else {
+
+            // Support legacy imported stories.
+            $legacy = function_exists('get_field')
+                ? get_field('story_category', $post_id)
+                : '';
+
+            if (is_array($legacy)) {
+                $legacy = $legacy['value']
+                    ?? $legacy['label']
+                    ?? '';
+            }
+
+            if (is_string($legacy) && trim($legacy) !== '') {
+                $category = $legacy;
+                $category_slug = sanitize_title($legacy);
+            }
+        }
+
+        // Skip if this category already has a story.
+        if (isset($selected_categories[$category_slug])) {
+            continue;
+        }
+
+        // ACF FIELDS
+        $subtitle = function_exists('get_field')
+            ? get_field('story_subtitle', $post_id)
+            : '';
+
+        $story_image = function_exists('get_field')
+            ? get_field('story_image', $post_id)
+            : '';
+
+        $story_content = function_exists('get_field')
+            ? get_field('story_content', $post_id)
+            : '';
+
+        // IMAGE
+        $image_url = '';
+
+        if (is_array($story_image)) {
+            $image_url = $story_image['url'] ?? '';
+        } elseif (is_numeric($story_image)) {
+            $image_url = wp_get_attachment_image_url(
+                (int) $story_image,
+                'large'
+            );
+        } elseif (is_string($story_image)) {
+            $image_url = $story_image;
+        }
+
+        if (!$image_url) {
+            $image_url = get_the_post_thumbnail_url(
+                $post_id,
+                'large'
+            );
+        }
+
+        // EXCERPT
+        if (has_excerpt($post_id)) {
+            $excerpt_source = get_the_excerpt($post_id);
+        } elseif (is_string($story_content) && $story_content !== '') {
+            $excerpt_source = $story_content;
+        } elseif (is_string($subtitle) && $subtitle !== '') {
+            $excerpt_source = $subtitle;
+        } else {
+            $excerpt_source = get_post_field(
+                'post_content',
+                $post_id
+            );
+        }
+
+        $excerpt = wp_trim_words(
+            wp_strip_all_tags(
+                strip_shortcodes($excerpt_source)
+            ),
+            22,
+            '...'
+        );
+
+        // CATEGORY ICONS
+        $icon_map = [
+            'health'             => 'fa-heart-pulse',
+            'health-insurance'   => 'fa-heart-pulse',
+            'life'               => 'fa-heart',
+            'life-insurance'     => 'fa-heart',
+            'property'           => 'fa-house',
+            'property-insurance' => 'fa-house',
+            'motor'              => 'fa-car',
+            'travel'             => 'fa-plane',
+            'personal_accident'  => 'fa-shield-halved',
+            'government_schemes' => 'fa-landmark',
+            'retirement'         => 'fa-person-cane',
+            'child'              => 'fa-child',
+            'critical'           => 'fa-kit-medical',
+        ];
+
+        $badge_icon = $icon_map[$category_slug]
+            ?? 'fa-book-open';
+
+        // ADD FIRST STORY FROM CATEGORY
+        $stories[] = [
+            'id'            => $post_id,
+            'category'      => $category,
+            'category_slug' => $category_slug,
+            'badge_icon'    => $badge_icon,
+            'title'         => get_the_title($post_id),
+            'excerpt'       => $excerpt,
+            'image_url'     => $image_url,
+            'link'          => add_query_arg(
+                'story',
+                $post_id,
+                $vv_stories_page
+            ),
+        ];
+
+        // Mark category as selected.
+        $selected_categories[$category_slug] = true;
+    }
+
+    wp_reset_postdata();
+}
 ?>
 
-<section class="stories-section">
+<section class="stories-section" id="vv-home-stories">
+
     <div class="stories-section__header">
+
         <div class="header-badge">
-            <img src="https://img.icons8.com/ios-filled/50/0b48a2/filled-like.png" alt="Stories Icon" />
+
+            <i class="fa-solid fa-book-open"></i>
+
         </div>
+
         <h2>Stories that connect</h2>
-        <p>Real-life situations. Everyday risks. Simple insurance lessons.</p>
+
+        <p>
+            Real-life situations. Everyday risks.
+            Simple insurance lessons.
+        </p>
+
     </div>
 
-    <!-- 3D Carousel Wrapper -->
+    <?php if (!empty($stories)) : ?>
+
     <div class="carousel-container">
-        <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous">
-            <img src="https://img.icons8.com/ios-glyphs/30/0b48a2/chevron-left.png" alt="Previous" />
+
+        <!-- PREVIOUS BUTTON -->
+
+        <button
+            type="button"
+            class="carousel-btn prev"
+            id="carouselPrev"
+            aria-label="Previous story"
+        >
+
+            <img
+                src="https://img.icons8.com/ios-glyphs/30/0b48a2/chevron-left.png"
+                alt=""
+            />
+
         </button>
-        
+
+        <!-- CAROUSEL -->
+
         <div class="carousel-stage">
-            <div class="carousel-track" id="carouselTrack">
-                <?php foreach ($stories as $index => $story): ?>
-                    <article class="story-card" data-index="<?= $index; ?>">
+
+            <div
+                class="carousel-track"
+                id="carouselTrack"
+            >
+
+                <?php foreach ($stories as $index => $story) : ?>
+
+                    <article
+                        class="story-card"
+                        data-index="<?php echo esc_attr($index); ?>"
+                    >
+
+                        <!-- IMAGE -->
+
                         <div class="story-card__image-wrap">
-                            <img src="<?= htmlspecialchars($story['image_url']); ?>" alt="<?= htmlspecialchars($story['title']); ?>" loading="lazy" />
+
+                            <?php if (!empty($story['image_url'])) : ?>
+
+                                <img
+                                    src="<?php echo esc_url($story['image_url']); ?>"
+                                    alt="<?php echo esc_attr($story['title']); ?>"
+                                    loading="lazy"
+                                />
+
+                            <?php else : ?>
+
+                                <div class="story-card__image-placeholder">
+                                    <i class="fa-solid fa-book-open"></i>
+                                </div>
+
+                            <?php endif; ?>
+
+                            <!-- CATEGORY BADGE -->
+
                             <span class="story-card__badge">
-                                <img src="<?= htmlspecialchars($story['badge_icon']); ?>" class="badge-icon" alt="" />
-                                <?= htmlspecialchars($story['category']); ?>
+
+                                <i class="fa-solid <?php
+                                    echo esc_attr($story['badge_icon']);
+                                ?> badge-icon"></i>
+
+                                <?php
+                                    echo esc_html(
+                                        strtoupper($story['category'])
+                                    );
+                                ?>
+
                             </span>
+
                         </div>
+
+                        <!-- CONTENT -->
+
                         <div class="story-card__content">
-                            <h3><?= htmlspecialchars($story['title']); ?></h3>
-                            <p><?= htmlspecialchars($story['excerpt']); ?></p>
-                            <a href="<?= htmlspecialchars($story['link']); ?>" class="story-card__link">
+
+                            <h3>
+                                <?php echo esc_html($story['title']); ?>
+                            </h3>
+
+                            <p>
+                                <?php echo esc_html($story['excerpt']); ?>
+                            </p>
+
+                            <a
+                                href="<?php echo esc_url($story['link']); ?>"
+                                class="story-card__link"
+                            >
+
                                 Read the story
-                                <img src="https://img.icons8.com/ios-glyphs/20/0b48a2/long-arrow-right.png" alt="Arrow" />
+
+                                <img
+                                    src="https://img.icons8.com/ios-glyphs/20/0b48a2/long-arrow-right.png"
+                                    alt=""
+                                />
+
                             </a>
+
                         </div>
+
                     </article>
+
                 <?php endforeach; ?>
+
             </div>
+
         </div>
 
-        <button class="carousel-btn next" id="carouselNext" aria-label="Next">
-            <img src="https://img.icons8.com/ios-glyphs/30/0b48a2/chevron-right.png" alt="Next" />
+        <!-- NEXT BUTTON -->
+
+        <button
+            type="button"
+            class="carousel-btn next"
+            id="carouselNext"
+            aria-label="Next story"
+        >
+
+            <img
+                src="https://img.icons8.com/ios-glyphs/30/0b48a2/chevron-right.png"
+                alt=""
+            />
+
         </button>
+
     </div>
+
+    <?php else : ?>
+
+        <p class="stories-section__empty">
+            Stories will appear here once published.
+        </p>
+
+    <?php endif; ?>
 
     <div class="stories-section__cta">
-        <a href="/all-stories" class="btn-primary">Explore all stories &rarr;</a>
+
+        <a
+            href="<?php echo esc_url($vv_stories_page); ?>"
+            class="btn-primary"
+        >
+            Explore all stories &rarr;
+        </a>
+
     </div>
+
 </section>
 
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('carouselTrack');
-    const cards = Array.from(track.querySelectorAll('.story-card'));
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    
+  
+document.addEventListener('DOMContentLoaded', function () {
+
+    const root = document.getElementById('vv-home-stories');
+
+    if (!root) return;
+
+    const track = root.querySelector('#carouselTrack');
+
+    if (!track) return;
+
+    const cards = Array.from(
+        track.querySelectorAll('.story-card')
+    );
+
+    const prevBtn = root.querySelector('#carouselPrev');
+    const nextBtn = root.querySelector('#carouselNext');
+
+    const container = root.querySelector('.carousel-container');
+
+    const total = cards.length;
+
+    if (!total) return;
+
     let currentIndex = 0;
     let autoPlayTimer = null;
-    const autoPlayDelay = 3000; // Time per slide (3 seconds)
 
-    // Function to update CSS classes for 3D layout position
+    const autoPlayDelay = 3000;
+
     function updateCarousel() {
-        const totalCards = cards.length;
 
-        cards.forEach((card, index) => {
-            // Remove previous positional classes
-            card.classList.remove('active', 'prev-card', 'next-card', 'far-prev', 'far-next');
+        cards.forEach(function (card, index) {
 
-            // Calculate relative offset from active card
-            let offset = index - currentIndex;
+            card.classList.remove(
+                'active',
+                'prev-card',
+                'next-card',
+                'far-prev',
+                'far-next'
+            );
 
-            // Handle wrap-around math for continuous looping
-            if (offset < -1) offset += totalCards;
-            if (offset > 1) offset -= totalCards;
+            const forward = (index - currentIndex + total) % total;
+            const backward = (currentIndex - index + total) % total;
 
-            // Assign positional classes based on calculated offset
-            if (offset === 0) {
+            if (forward === 0) {
+
                 card.classList.add('active');
-            } else if (offset === -1) {
+
+            } else if (total > 2 && backward === 1) {
+
                 card.classList.add('prev-card');
-            } else if (offset === 1) {
+
+            } else if (forward === 1) {
+
                 card.classList.add('next-card');
-            } else if (offset < -1) {
+
+            } else if (backward < forward) {
+
                 card.classList.add('far-prev');
+
             } else {
+
                 card.classList.add('far-next');
             }
+
         });
+
     }
 
-    // Move to next slide
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % cards.length;
+
+        if (total <= 1) return;
+
+        currentIndex = (currentIndex + 1) % total;
+
         updateCarousel();
     }
 
-    // Move to previous slide
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-        updateCarousel();
-    }
 
-    // Auto-play timer controls
-    function startAutoPlay() {
-        stopAutoPlay(); // Clear any existing intervals first
-        autoPlayTimer = setInterval(nextSlide, autoPlayDelay);
+        if (total <= 1) return;
+
+        currentIndex = (currentIndex - 1 + total) % total;
+
+        updateCarousel();
     }
 
     function stopAutoPlay() {
-        if (autoPlayTimer) {
+
+        if (autoPlayTimer !== null) {
+
             clearInterval(autoPlayTimer);
             autoPlayTimer = null;
         }
     }
 
-    // Event Listeners for Buttons
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        startAutoPlay(); // Reset timer on manual click
+    function startAutoPlay() {
+
+        stopAutoPlay();
+
+        if (total <= 1) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        autoPlayTimer = setInterval(
+            nextSlide,
+            autoPlayDelay
+        );
+    }
+
+    if (prevBtn) {
+
+        prevBtn.addEventListener('click', function () {
+
+            prevSlide();
+            startAutoPlay();
+
+        });
+
+    }
+
+    if (nextBtn) {
+
+        nextBtn.addEventListener('click', function () {
+
+            nextSlide();
+            startAutoPlay();
+
+        });
+
+    }
+
+    if (container) {
+
+        container.addEventListener(
+            'mouseenter',
+            stopAutoPlay
+        );
+
+        container.addEventListener(
+            'mouseleave',
+            startAutoPlay
+        );
+
+        container.addEventListener(
+            'focusin',
+            stopAutoPlay
+        );
+
+        container.addEventListener(
+            'focusout',
+            function (event) {
+                if (!container.contains(event.relatedTarget)) {
+                    startAutoPlay();
+                }
+            }
+        );
+
+    }
+
+    document.addEventListener('visibilitychange', function () {
+
+        if (document.hidden) {
+            stopAutoPlay();
+        } else {
+            startAutoPlay();
+        }
+
     });
 
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        startAutoPlay(); // Reset timer on manual click
-    });
+    if (total <= 1) {
 
-    // Pause slider when user hovers over carousel area
-    const container = document.querySelector('.carousel-container');
-    container.addEventListener('mouseenter', stopAutoPlay);
-    container.addEventListener('mouseleave', startAutoPlay);
+        if (prevBtn) prevBtn.hidden = true;
+        if (nextBtn) nextBtn.hidden = true;
+    }
 
-    // Initial setup
     updateCarousel();
     startAutoPlay();
+
 });
+
 </script>

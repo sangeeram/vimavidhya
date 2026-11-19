@@ -1,11 +1,15 @@
+
 // =========================================================
 // VIMA VIDYA
-// JOURNEY + EMPOWERMENT SECTIONS (REFACTORED)
+// JOURNEY + EMPOWERMENT SECTIONS
+// REFACTORED + RESPONSIVE
 // =========================================================
+
 @use "../../abstracts/variables" as *;
+
+
 // =========================================================
 // LOCAL SCOPE MAPPING
-// Maps global design variables to component-level variables
 // =========================================================
 
 $bg-page: $color-cream;
@@ -47,14 +51,12 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     overflow: hidden;
     font-family: $font-primary;
 
-    // Header
     &__header {
         max-width: 760px;
         margin: 0 auto $space-content;
         text-align: center;
     }
 
-    // Title
     &__title {
         margin: 0;
         color: $color-cream;
@@ -75,13 +77,21 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     width: 100%;
     box-sizing: border-box;
     padding: 42px $space-content;
+
     background: linear-gradient(
         135deg,
         $color-cream 0%,
         color-mix(in srgb, $color-blue 5%, $color-cream) 100%
     );
-    border: 1px solid color-mix(in srgb, $color-navy 12%, transparent);
+
+    border: 1px solid color-mix(
+        in srgb,
+        $color-navy 12%,
+        transparent
+    );
+
     border-radius: $radius;
+
     box-shadow: 0 20px 50px rgba($color-navy, 0.07);
     overflow: hidden;
 
@@ -93,11 +103,13 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         right: -80px;
         width: 320px;
         height: 320px;
+
         background: radial-gradient(
             circle,
             color-mix(in srgb, $color-blue 12%, transparent) 0%,
             transparent 70%
         );
+
         pointer-events: none;
     }
 
@@ -108,11 +120,13 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         left: 0;
         width: 5px;
         height: 100%;
+
         background: linear-gradient(
             180deg,
             $color-blue 0%,
             $color-navy 100%
         );
+
         border-radius: $radius 0 0 $radius;
     }
 
@@ -120,6 +134,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     &__body {
         position: relative;
         z-index: 2;
+
         display: flex;
         flex-direction: column;
         gap: 18px;
@@ -145,33 +160,45 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         display: flex;
         align-items: flex-start;
         gap: 14px;
+
         margin-top: 10px;
         padding: 20px $space-element;
+
         background: linear-gradient(
             135deg,
             $color-navy,
             color-mix(in srgb, $color-navy 82%, $color-blue)
         );
+
         border-radius: calc(#{$radius} - 5px);
         border-left: 3px solid $color-blue;
+
         box-shadow: 0 10px 25px rgba($color-navy, 0.14);
     }
 
     // Highlight Icon
     &__icon {
         flex: 0 0 auto;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         width: 38px;
         height: 38px;
+
         border-radius: 50%;
-        background: color-mix(in srgb, $color-cream 12%, transparent);
+        background: color-mix(
+            in srgb,
+            $color-cream 12%,
+            transparent
+        );
+
         font-size: $text-lg;
         line-height: 1;
     }
 
-    // Highlight Content Stack
+    // Highlight Content
     &__highlight-content {
         display: flex;
         flex-direction: column;
@@ -204,9 +231,12 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
 .empower-section {
     position: relative;
     width: 100%;
-    padding: $space-section-lg 24px 110px;
+
+    padding: 60px 24px 110px;
+
     background: $color-light-blue;
     overflow: hidden;
+
     font-family: $font-primary;
 
     // Header
@@ -219,9 +249,12 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     // Title
     &__title {
         margin: 0 0 14px;
+
         color: $color-navy;
+
         font-size: clamp(32px, 4vw, 46px);
         line-height: $line-tight;
+
         font-weight: 700;
         letter-spacing: -1.2px;
     }
@@ -230,12 +263,14 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     &__tagline {
         max-width: $text-width-wide;
         margin: 0 auto;
+
         color: $color-blue;
+
         font-size: $text-base;
         line-height: $line-body;
     }
 
-    // Grid Container
+    // Grid
     &__grid {
         display: flex;
         align-items: stretch;
@@ -251,102 +286,318 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
 
 .empower-pillar {
     position: relative;
+
     flex: 1 1 0;
     width: 100%;
     max-width: 360px;
 
+    // Card
     &__card {
         position: relative;
+
         width: 100%;
         min-height: 520px;
+
         padding: 14px 14px 72px;
+
         box-sizing: border-box;
+
         display: flex;
         flex-direction: column;
+
         border-radius: $radius;
         overflow: hidden;
+
         font-family: $font-primary;
-        transition: transform $transition-val, box-shadow $transition-val;
+
+        transition:
+            transform $transition-val,
+            box-shadow $transition-val;
 
         &:hover {
             transform: translateY(-7px);
         }
 
-        // Card Radial Glow Overlay
+        // Radial Glow
         &::before {
             content: "";
             position: absolute;
+
             top: -80px;
             right: -80px;
+
             width: 220px;
             height: 220px;
+
             border-radius: 50%;
+
             background: radial-gradient(
                 circle,
                 rgba($color-white, 0.14),
                 transparent 68%
             );
+
             pointer-events: none;
             z-index: 1;
         }
     }
 
-    // Pillar Image Block
+    // =====================================================
+    // COMMON IMAGE CONTAINER
+    // ALL THREE CARDS SAME LANDSCAPE DIMENSIONS
+    // =====================================================
+
     &__image {
         position: relative;
+
         width: 100%;
         height: 190px;
+
         flex-shrink: 0;
+
         overflow: hidden;
+
         border-radius: calc(#{$radius} - 4px);
+
+        background: $color-white;
+
         z-index: 2;
 
         img {
+            position: relative;
+            z-index: 2;
+
             display: block;
+
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+            object-position: center;
+
             transform: scale(1);
-            transition: transform $transition-val, filter $transition-val;
+
+            transition:
+                transform $transition-val,
+                filter $transition-val;
         }
 
-        // Bottom Gradient Overlay
+        // Bottom Gradient
         &::after {
             content: "";
             position: absolute;
+
             inset: 0;
+
             background: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0) 30%,
                 rgba($color-navy, 0.48) 100%
             );
+
             pointer-events: none;
-            z-index: 1;
+            z-index: 3;
         }
 
-        // Light Sweep Animation Effect
+        // Light Sweep
         &::before {
             content: "";
             position: absolute;
+
             top: 0;
             left: -130%;
+
             width: 60%;
             height: 100%;
+
             background: linear-gradient(
                 90deg,
                 transparent,
                 rgba($color-cream, 0.25),
                 transparent
             );
+
             transform: skewX(-20deg);
-            z-index: 3;
+
+            z-index: 4;
+
             pointer-events: none;
+
             transition: left 0.8s ease;
         }
     }
 
-    // Hover State triggers for Image
+    // =====================================================
+    // CONTENT BODY
+    // =====================================================
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        flex-grow: 1;
+
+        padding: 22px 18px 0;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    // Number
+    &__number {
+        display: block;
+
+        margin-bottom: $space-small;
+
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        opacity: 0.75;
+    }
+
+    // Title
+    &__title {
+        margin: 0 0 14px;
+
+        font-size: 25px;
+        font-weight: 700;
+
+        line-height: $line-heading;
+        letter-spacing: -0.3px;
+
+        transition: transform $transition-val;
+    }
+
+    // Description
+    &__description {
+        max-width: 320px;
+
+        margin: 0;
+
+        font-size: 16px;
+        line-height: $line-body;
+    }
+
+    // CTA
+    &__cta {
+        position: absolute;
+
+        left: 12px;
+        bottom: 7px;
+
+        z-index: 10;
+
+        height: 40px;
+
+        padding: 0 16px 0 20px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        border-radius: $radius-pill;
+
+        font-size: $text-xs + 1px;
+        font-weight: 700;
+        line-height: 1;
+
+        text-decoration: none;
+
+        transition:
+            transform $transition-val,
+            box-shadow $transition-val,
+            opacity $transition-val;
+    }
+
+    // CTA Arrow
+    &__arrow {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 22px;
+        height: 22px;
+
+        border-radius: 50%;
+
+        font-size: $text-sm;
+
+        transition: transform $transition-val;
+    }
+}
+
+
+// =========================================================
+// AWARENESS IMAGE
+// COMPLETE PORTRAIT IMAGE INSIDE LANDSCAPE CONTAINER
+// =========================================================
+
+.empower-pillar__image--portrait {
+
+    position: relative;
+
+    background: #eaf4f8;
+
+    // Soft blurred image background
+    &::after {
+        content: "";
+
+        position: absolute;
+        inset: -12px;
+
+        background-image: var(--pillar-image);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        filter: blur(12px);
+
+        opacity: 0.65;
+
+        transform: scale(1.08);
+
+        z-index: 0;
+    }
+
+    // Complete original image
+    img {
+        position: relative;
+
+        z-index: 2;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        padding: 5px;
+
+        box-sizing: border-box;
+
+        object-fit: contain;
+        object-position: center;
+
+        transform: scale(1);
+
+        transition:
+            transform $transition-val,
+            filter $transition-val;
+    }
+}
+
+
+// =========================================================
+// HOVER ANIMATIONS
+// =========================================================
+
+.empower-pillar {
+
     &:hover {
+
         .empower-pillar__image img {
             transform: scale(1.07);
             filter: saturate(1.08);
@@ -368,91 +619,28 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
             transform: translate(2px, -2px);
         }
     }
-
-    // Content Body
-    &__content {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        padding: 22px 18px 0;
-        position: relative;
-        z-index: 2;
-    }
-
-    // Number Label
-    &__number {
-        display: block;
-        margin-bottom: $space-small;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        opacity: 0.75;
-    }
-
-    // Title
-    &__title {
-        margin: 0 0 14px;
-        font-size: 25px;
-        font-weight: 700;
-        line-height: $line-heading;
-        letter-spacing: -0.3px;
-        transition: transform $transition-val;
-    }
-
-    // Description
-    &__description {
-        max-width: 320px;
-        margin: 0;
-        font-size: 14.5px;
-        line-height: $line-body;
-    }
-
-    // CTA Button Anchor
-    &__cta {
-        position: absolute;
-        left: 12px;
-        bottom: 7px;
-        z-index: 10;
-        height: 40px;
-        padding: 0 16px 0 20px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: $radius-pill;
-        font-size: $text-xs + 1px;
-        font-weight: 700;
-        line-height: 1;
-        text-decoration: none;
-        transition: transform $transition-val, box-shadow $transition-val, opacity $transition-val;
-    }
-
-    // CTA Circular Arrow Icon
-    &__arrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        font-size: $text-sm;
-        transition: transform $transition-val;
-    }
 }
 
 
 // =========================================================
-// CARD VARIATIONS (PILLARS)
+// CARD VARIATIONS
 // =========================================================
 
-// Card 01 — Awareness
+
+// ---------------------------------------------------------
+// CARD 01 — AWARENESS
+// ---------------------------------------------------------
+
 .empower-pillar:nth-child(1) {
+
     .empower-pillar__card {
+
         background: linear-gradient(
             145deg,
             color-mix(in srgb, $color-blue 25%, $color-cream) 0%,
             color-mix(in srgb, $color-blue 12%, $color-cream) 100%
         );
+
         box-shadow: 0 15px 35px rgba($color-navy, 0.08);
     }
 
@@ -468,6 +656,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     .empower-pillar__cta {
         background: $color-cream;
         color: $color-navy;
+
         box-shadow: 0 5px 16px rgba($color-navy, 0.10);
     }
 
@@ -477,9 +666,15 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 }
 
-// Card 02 — Education
+
+// ---------------------------------------------------------
+// CARD 02 — EDUCATION
+// ---------------------------------------------------------
+
 .empower-pillar:nth-child(2) {
+
     .empower-pillar__card {
+
         background:
             radial-gradient(
                 circle at 80% 0%,
@@ -491,6 +686,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
                 color-mix(in srgb, $color-blue 88%, $color-navy),
                 $color-blue
             );
+
         box-shadow: 0 18px 38px rgba($color-navy, 0.16);
     }
 
@@ -505,8 +701,9 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .empower-pillar__cta {
-        background: $color-blue;
+        background: $color-navy;
         color: $color-cream;
+
         box-shadow: 0 5px 16px rgba($color-navy, 0.18);
     }
 
@@ -516,9 +713,15 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 }
 
-// Card 03 — Expertise
+
+// ---------------------------------------------------------
+// CARD 03 — EXPERTISE
+// ---------------------------------------------------------
+
 .empower-pillar:nth-child(3) {
+
     .empower-pillar__card {
+
         background:
             radial-gradient(
                 circle at 65% 0%,
@@ -530,6 +733,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
                 $color-navy,
                 color-mix(in srgb, $color-navy 88%, $color-blue)
             );
+
         box-shadow: 0 20px 40px rgba($color-navy, 0.22);
     }
 
@@ -544,8 +748,9 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .empower-pillar__cta {
-        background: $color-navy;
+        background: $color-blue;
         color: $color-cream;
+
         box-shadow: 0 5px 18px rgba(#000000, 0.28);
     }
 
@@ -566,11 +771,11 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
 
 
 // =========================================================
-// MEDIA QUERIES
+// TABLET RESPONSIVE
 // =========================================================
 
-// Tablet Breakpoint
 @media (max-width: 992px) {
+
     .journey-section {
         padding: $space-section 20px;
     }
@@ -580,34 +785,54 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .empower-section {
+
         padding: $space-section 20px 90px;
 
         &__grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
             gap: 22px;
         }
     }
 
     .empower-pillar {
+
         max-width: none;
 
         &:nth-child(3) {
+
             grid-column: 1 / -1;
+
             width: 100%;
             max-width: 360px;
+
             justify-self: center;
         }
 
         &__card {
             min-height: 500px;
         }
+
+        &__image {
+            height: 190px;
+        }
     }
 }
 
-// Mobile Breakpoint
+
+// =========================================================
+// MOBILE RESPONSIVE
+// =========================================================
+
 @media (max-width: 640px) {
+
     .journey-section {
+
         padding: 70px 16px;
 
         &__header {
@@ -620,7 +845,9 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .journey-intro-card {
+
         padding: 28px 24px;
+
         border-radius: calc(#{$radius} - 2px);
 
         &__text {
@@ -629,6 +856,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         }
 
         &__highlight {
+
             padding: 16px 17px;
             gap: 11px;
 
@@ -643,6 +871,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .empower-section {
+
         padding: 70px 16px 80px;
 
         &__header {
@@ -659,14 +888,18 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         }
 
         &__grid {
+
             display: flex;
+
             flex-direction: column;
             align-items: center;
+
             gap: 20px;
         }
     }
 
     .empower-pillar {
+
         width: 100%;
         max-width: 390px;
 
@@ -676,7 +909,9 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         }
 
         &__card {
+
             min-height: 500px;
+
             padding: 14px 14px 70px;
         }
 
@@ -698,10 +933,16 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 }
 
-// Small Mobile Breakpoint
+
+// =========================================================
+// SMALL MOBILE
+// =========================================================
+
 @media (max-width: 400px) {
+
     .journey-section,
     .empower-section {
+
         padding-left: 14px;
         padding-right: 14px;
     }
@@ -712,6 +953,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .journey-intro-card {
+
         padding: 24px 20px;
 
         &__highlight {
@@ -720,6 +962,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 
     .empower-pillar {
+
         &__card {
             min-height: 490px;
         }
@@ -734,14 +977,20 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
     }
 }
 
-// Accessibility: Reduced Motion
+
+// =========================================================
+// ACCESSIBILITY — REDUCED MOTION
+// =========================================================
+
 @media (prefers-reduced-motion: reduce) {
+
     .empower-pillar__card,
     .empower-pillar__image img,
     .empower-pillar__image::before,
     .empower-pillar__title,
     .empower-pillar__cta,
     .empower-pillar__arrow {
+
         transition: none !important;
         animation: none !important;
     }

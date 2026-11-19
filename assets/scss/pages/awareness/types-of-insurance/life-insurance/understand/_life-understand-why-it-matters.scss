@@ -1,0 +1,268 @@
+@use "../../../../../abstracts/insurancevariable" as *;
+
+// =========================================================
+// LIFE INSURANCE — WHY IT MATTERS MODULE STYLES (SCSS)
+// =========================================================
+
+.case-for-cover {
+  font-family: $font-primary;
+  color: $color-text;
+  width: 100%;
+  padding: $space-element 0;
+
+  &__container {
+    width: min(92%, $container-wide);
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: $space-element;
+    text-align: left;
+
+    .case-for-cover__subtag {
+      display: inline-block;
+      margin-bottom: $space-small;
+      font-size: $text-xs;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: $color-blue;
+      text-transform: uppercase;
+    }
+
+    .case-for-cover__title {
+      margin: 0 0 $space-small;
+      color: $color-navy;
+      font-size: $text-h2;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: $line-heading;
+
+      @media (max-width: 768px) {
+        font-size: $text-h3;
+      }
+    }
+
+    .case-for-cover__subtitle {
+      margin: 0;
+      color: #64748b;
+      font-size: $text-base;
+      font-weight: 500;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+  }
+
+  // Full Background Image Card matching reference layout
+  &__full-bg-card {
+    background-image: var(--card-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 20px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    // Gradient overlay so text remains readable over full photo
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.85) 80%);
+      z-index: 1;
+    }
+
+    > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .pill-group {
+        display: flex;
+        gap: 6px;
+
+        .pill {
+          font-size: 11px;
+          font-weight: 600;
+          color: #ffffff;
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(6px);
+          padding: 5px 12px;
+          border-radius: 999px;
+        }
+      }
+
+      .rating-badge {
+        font-size: 11px;
+        font-weight: 700;
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(6px);
+        padding: 5px 10px;
+        border-radius: 999px;
+      }
+    }
+
+    .card-content-overlay {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 8px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      margin: 0 0 12px;
+    }
+
+    .card-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .action-overlay-btn {
+      width: 100%;
+      background: #ffffff;
+      color: #0f172a;
+      border: none;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s ease, transform 0.1s ease;
+
+      &:hover {
+        background: #f1f5f9;
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  &__card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__card-icon {
+    width: 48px;
+    height: 48px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  &__card-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2563eb;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  &__card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+
+    strong {
+      color: #1e293b;
+      font-weight: 700;
+    }
+  }
+
+  &__table-wrapper {
+    margin-top: 12px;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    background: #ffffff;
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: left;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #1e293b;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    td strong {
+      color: #1e293b;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

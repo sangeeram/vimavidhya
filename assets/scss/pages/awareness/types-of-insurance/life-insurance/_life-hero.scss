@@ -1,0 +1,501 @@
+@use "../../../../abstracts/variables" as *;
+
+// =========================================================
+// VIMA VIDYA
+// LIFE INSURANCE HERO — GLOBAL DESIGN SYSTEM
+// =========================================================
+
+.lifeinsurancehero {
+  font-family: $font-primary;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+  background: $color-cream;
+
+  // Slider Container
+  .lifeinsurancehero-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  // Slide
+  .lifeinsurancehero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      .lifeinsurancehero-slide-image-wrapper {
+        transform: scale(1);
+      }
+
+      .lifeinsurancehero-slide-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // Background Image
+  .lifeinsurancehero-slide-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.08);
+    transition: transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  // Image Overlay
+  .lifeinsurancehero-slide-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba($color-cream, 0.98) 0%,
+      rgba($color-cream, 0.94) 18%,
+      rgba($color-cream, 0.82) 34%,
+      rgba($color-cream, 0.58) 49%,
+      rgba($color-cream, 0.28) 67%,
+      rgba($color-cream, 0.04) 100%
+    );
+    pointer-events: none;
+  }
+
+  // Hero Inner
+  .lifeinsurancehero-inner {
+    position: relative;
+    z-index: 5;
+    width: min(88%, $container-wide);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  // Content
+  .lifeinsurancehero-slide-content {
+    width: 56%;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+  }
+
+  // Eyebrow
+  .lifeinsurancehero-slide-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: $space-small;
+    padding: 7px 14px;
+    border-radius: $radius-pill;
+    background: rgba($color-white, 0.88);
+    border: 1px solid $color-border;
+    color: $color-navy;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba($color-navy, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .lifeinsurancehero-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: $color-blue;
+    box-shadow: 0 0 0 4px rgba($color-blue, 0.15);
+  }
+
+  // Tag
+  .lifeinsurancehero-slide-tag {
+    display: block;
+    margin-bottom: $space-small;
+    color: $color-text-muted;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: $line-heading;
+    text-transform: uppercase;
+  }
+
+  // Title
+  .lifeinsurancehero-slide-title {
+    margin: 0 0 $space-element;
+    max-width: 720px;
+    color: $color-text;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: $line-tight;
+    letter-spacing: -0.035em;
+
+    span {
+      display: block;
+      color: $color-blue;
+      font-weight: 600;
+    }
+  }
+
+  // Description
+  .lifeinsurancehero-slide-desc {
+    max-width: $text-width-medium;
+    margin: 0 0 $space-element;
+    color: $color-text-body;
+    font-size: $text-sm;
+    font-weight: 400;
+    line-height: $line-body;
+  }
+
+  // Actions
+  .lifeinsurancehero-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-small;
+    flex-wrap: wrap;
+  }
+
+  // Buttons
+  .lifeinsurancehero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: $radius-pill;
+    text-decoration: none;
+    font-size: $text-sm;
+    font-weight: 700;
+    line-height: 1;
+    transition: $transition;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: $color-white;
+      color: $color-blue;
+      font-size: $text-sm;
+      transition: transform $transition;
+    }
+
+    &:hover span {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .lifeinsurancehero-btn--primary {
+    background: $color-orange;
+    color: $color-white;
+    border: 1px solid $color-orange;
+    box-shadow: 0 10px 25px rgba($color-orange, 0.25);
+
+    &:hover {
+      background: $color-orange;
+      border-color: $color-orange;
+      color: $color-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  .lifeinsurancehero-btn--secondary {
+    background: $color-white;
+    border: 1px solid $color-border;
+    color: $color-navy;
+    box-shadow: 0 4px 12px rgba($color-navy, 0.04);
+
+    span {
+      background: rgba($color-blue, 0.1);
+    }
+
+    &:hover {
+      background: $color-cream;
+      border-color: $color-navy;
+      color: $color-navy;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Arrows
+  .lifeinsurancehero-arrow {
+    position: absolute;
+    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid $color-border;
+    border-radius: 50%;
+    background: rgba($color-white, 0.88);
+    color: $color-navy;
+    font-size: $text-lg;
+    cursor: pointer;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba($color-navy, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: $transition;
+
+    &:hover {
+      background: $color-blue;
+      border-color: $color-blue;
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      opacity: 1;
+      outline: 2px solid $color-blue;
+      outline-offset: 3px;
+    }
+  }
+
+  &:hover .lifeinsurancehero-arrow {
+    opacity: 1;
+  }
+
+  .lifeinsurancehero-arrow--prev {
+    left: 25px;
+  }
+
+  .lifeinsurancehero-arrow--next {
+    right: 25px;
+  }
+
+  // Slider Dots
+  .lifeinsurancehero-slider-dots {
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .lifeinsurancehero-slider-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba($color-navy, 0.2);
+    cursor: pointer;
+    transition: $transition;
+
+    &.active {
+      width: 25px;
+      border-radius: $radius-pill;
+      background: $color-blue;
+    }
+
+    &:hover {
+      background: $color-navy;
+    }
+  }
+}
+
+// =========================================================
+// RESPONSIVE BREAKPOINTS
+// =========================================================
+
+@media (min-width: 1400px) {
+  .lifeinsurancehero {
+    .lifeinsurancehero-inner {
+      width: min(88%, $container-wide);
+    }
+    .lifeinsurancehero-slide-content {
+      max-width: 700px;
+    }
+    .lifeinsurancehero-slide-title {
+      font-size: 60px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .lifeinsurancehero {
+    .lifeinsurancehero-inner {
+      width: 86%;
+    }
+    .lifeinsurancehero-slide-content {
+      width: 62%;
+    }
+    .lifeinsurancehero-slide-title {
+      font-size: 52px;
+    }
+    .lifeinsurancehero-slide-desc {
+      font-size: $text-sm;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .lifeinsurancehero {
+    min-height: 650px;
+    .lifeinsurancehero-inner {
+      width: 88%;
+    }
+    .lifeinsurancehero-slide-content {
+      width: 70%;
+    }
+    .lifeinsurancehero-slide-title {
+      font-size: 44px;
+    }
+    .lifeinsurancehero-slide-desc {
+      font-size: $text-xs;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .lifeinsurancehero {
+    height: 100svh;
+    min-height: 650px;
+
+    .lifeinsurancehero-slide-image-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba($color-cream, 0.05) 0%,
+        rgba($color-cream, 0.28) 28%,
+        rgba($color-cream, 0.76) 60%,
+        rgba($color-cream, 0.97) 100%
+      );
+    }
+
+    .lifeinsurancehero-inner {
+      width: calc(100% - 36px);
+      padding-top: 100px;
+      padding-bottom: 65px;
+      align-items: flex-end;
+    }
+
+    .lifeinsurancehero-slide-content {
+      width: 100%;
+      max-width: none;
+    }
+
+    .lifeinsurancehero-slide-eyebrow {
+      margin-bottom: $space-small;
+      padding: 7px 11px;
+      font-size: 10px;
+    }
+
+    .lifeinsurancehero-slide-tag {
+      margin-bottom: 8px;
+      font-size: 9px;
+    }
+
+    .lifeinsurancehero-slide-title {
+      margin-bottom: $space-small;
+      font-size: 38px;
+      line-height: $line-tight;
+      letter-spacing: -0.045em;
+    }
+
+    .lifeinsurancehero-slide-desc {
+      max-width: 100%;
+      margin-bottom: $space-element;
+      font-size: $text-xs;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .lifeinsurancehero-actions {
+      gap: 8px;
+    }
+
+    .lifeinsurancehero-btn {
+      min-height: 42px;
+      padding: 0 17px;
+      font-size: $text-xs;
+    }
+
+    .lifeinsurancehero-arrow {
+      width: 36px;
+      height: 36px;
+      opacity: 1;
+      font-size: $text-sm;
+    }
+
+    .lifeinsurancehero-arrow--prev {
+      left: 12px;
+    }
+
+    .lifeinsurancehero-arrow--next {
+      right: 12px;
+    }
+
+    .lifeinsurancehero-slider-dots {
+      bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .lifeinsurancehero {
+    min-height: 620px;
+    .lifeinsurancehero-inner {
+      width: calc(100% - 28px);
+    }
+    .lifeinsurancehero-slide-title {
+      font-size: 32px;
+    }
+    .lifeinsurancehero-slide-desc {
+      font-size: $text-xs;
+      -webkit-line-clamp: 4;
+    }
+    .lifeinsurancehero-btn {
+      min-height: 40px;
+      padding: 0 15px;
+      font-size: 10px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifeinsurancehero {
+    .lifeinsurancehero-slide,
+    .lifeinsurancehero-slide-content,
+    .lifeinsurancehero-slide-image-wrapper,
+    .lifeinsurancehero-btn,
+    .lifeinsurancehero-arrow,
+    .lifeinsurancehero-slider-dot {
+      transition: none !important;
+    }
+  }
+}

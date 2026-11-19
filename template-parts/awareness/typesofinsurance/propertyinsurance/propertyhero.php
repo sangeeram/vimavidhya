@@ -1,116 +1,91 @@
+
 <?php
-/**
- * =========================================================
- * VIMA VIDYA
- * PROPERTY INSURANCE — HERO SLIDER
- * =========================================================
- *
- * 3 Storytelling Slides
- * 01 — Your Home
- * 02 — Flood Risk
- * 03 — Urban Fire Risk
- *
- * =========================================================
- */
 
+$property_hero_slides = [];
 
-
-/**
- * =========================================================
- * PROPERTY INSURANCE HERO DATA
- * =========================================================
- */
-
-$property_hero_slides = [
-
-    // =====================================================
-    // SLIDE 01
-    // =====================================================
-
-    [
-        'id'            => 'property-home',
-        'eyebrow'       => 'PROPERTY INSURANCE',
-        'tag'           => 'YOUR HOME. YOUR BIGGEST ASSET.',
-
-        'title'         => 'Your Home Did Not Come Easy.',
-        'title_accent'  => "Don't Leave It Unprotected.",
-
-        'description'   => "For most Indians, a home is the single largest asset they will ever own. Yet fewer than 1 in 10 Indian homes have any form of property insurance. Most people believe “nothing will happen to my home.” But risk is unpredictable. Property insurance helps protect your home, belongings and finances when an unexpected event changes everything.",
-
-        'primary_label'   => 'Start Here',
-        'primary_url'     => '#property-start',
-
-        'secondary_label' => 'Understand Property Insurance',
-        'secondary_url'   => '#what-is-property-insurance',
-
-        'image'         => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85',
-        'image_alt'     => 'Modern Indian family home',
-
-        'category'      => 'AWARENESS',
-        'category_icon' => 'awareness',
+$hero_query = new WP_Query([
+    'post_type' => 'property_hero',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
+    'orderby' => [
+        'menu_order' => 'ASC',
+        'date' => 'ASC',
     ],
+]);
 
+if ($hero_query->have_posts()) {
 
-    // =====================================================
-    // SLIDE 02
-    // =====================================================
+    while ($hero_query->have_posts()) {
 
-    [
-        'id'            => 'property-flood',
-        'eyebrow'       => 'UNDERSTANDING THE RISK',
-        'tag'           => 'FLOOD LOSSES IN INDIA',
+        $hero_query->the_post();
 
-        'title'         => 'Your Home Is More Vulnerable',
-        'title_accent'  => 'Than You Think.',
+        $post_id = get_the_ID();
 
-        'description'   => "India accounts for approximately 10% of global flood-related economic losses. Most disasters happen in conditions that felt completely ordinary when the week began. Property insurance exists for exactly those ordinary days that end differently.",
+        $image_id = get_post_thumbnail_id($post_id);
 
-        'primary_label'   => 'Understand the Risk',
-        'primary_url'     => '#property-risks',
+        $property_hero_slides[] = [
+            'id' => 'property-' . $post_id,
 
-        'secondary_label' => 'Explore Flood Protection',
-        'secondary_url'   => '#flood-risk',
+            'eyebrow' => get_post_meta(
+                $post_id, '_vv_eyebrow', true
+            ),
 
-        'image'         => 'https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=2000&q=85',
-        'image_alt'     => 'Flooded residential area',
+            'tag' => get_post_meta(
+                $post_id, '_vv_tag', true
+            ),
 
-        'category'      => 'RISK AWARENESS',
-        'category_icon' => 'risk',
-    ],
+            'title' => get_the_title(),
 
+            'title_accent' => get_post_meta(
+                $post_id, '_vv_title_accent', true
+            ),
 
-    // =====================================================
-    // SLIDE 03
-    // =====================================================
+            'description' => get_post_meta(
+                $post_id, '_vv_description', true
+            ),
 
-    [
-        'id'            => 'property-fire',
-        'eyebrow'       => 'URBAN PROPERTY RISKS',
-        'tag'           => 'APARTMENT FIRE RISK',
+            'primary_label' => get_post_meta(
+                $post_id, '_vv_primary_label', true
+            ),
 
-        'title'         => 'Every Few Hours,',
-        'title_accent'  => 'A Family Loses Its Shelter.',
+            'primary_url' => get_post_meta(
+                $post_id, '_vv_primary_url', true
+            ),
 
-        'description'   => "Behind every number is a household that woke up that morning with ordinary plans. A basic property insurance policy can help protect a significant home asset and provide a financial floor when the unexpected happens.",
+            'secondary_label' => get_post_meta(
+                $post_id, '_vv_secondary_label', true
+            ),
 
-        'primary_label'   => 'See How Protection Works',
-        'primary_url'     => '#property-protection',
+            'secondary_url' => get_post_meta(
+                $post_id, '_vv_secondary_url', true
+            ),
 
-        'secondary_label' => 'Explore Property Insurance',
-        'secondary_url'   => '#property-insurance',
+            'image' => get_the_post_thumbnail_url(
+                $post_id, 'full'
+            ) ?: '',
 
-        'image'         => 'https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?auto=format&fit=crop&w=2000&q=85',
-        'image_alt'     => 'Residential building at night',
+            'image_alt' => $image_id
+                ? get_post_meta(
+                    $image_id, '_wp_attachment_image_alt', true
+                )
+                : '',
 
-        'category'      => 'PROTECTION',
-        'category_icon' => 'protection',
-    ],
+            'category' => get_post_meta(
+                $post_id, '_vv_category', true
+            ),
 
-];
+            'category_icon' => get_post_meta(
+                $post_id, '_vv_category_icon', true
+            ),
+        ];
+    }
+
+    wp_reset_postdata();
+}
 
 $total_slides = count($property_hero_slides);
-?>
 
+?>
 
 <!-- =========================================================
      PROPERTY INSURANCE HERO

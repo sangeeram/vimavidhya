@@ -1,8 +1,23 @@
+// ========================================
+// POLICY IMPACT SECTION - 3D FLIP CARDS STYLE
+// ========================================
 @use "../../../../../abstracts/variables" as *;
+$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-// ========================================
-// SECTION & CONTAINER
-// ========================================
+$color-navy: #08274b;
+$color-navy-dark: #03152e;
+$color-blue: #007aff;
+$color-orange: #f59a18;
+$color-white: #ffffff;
+
+$color-text-body: #475569;
+$color-light-gray: #f8fafc;
+$color-border: #e2e8f0;
+
+$space-section: 65px;
+$line-heading: 1.2;
+$line-body: 1.5;
+$radius-md: 16px;
 
 .policy-impact-section {
     padding: $space-section 0;
@@ -12,204 +27,249 @@
 }
 
 .policy-impact-compact-container {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
 }
 
 .policy-impact-header {
     text-align: left;
-    max-width: 1200px;
-    margin: 0 auto 30px;
-
-    .policy-impact-badge {
-        display: inline-block;
-        padding: 5px 14px;
-        background-color: $color-light-blue;
-        color: $color-blue;
-        font-size: $text-xs;
-        font-weight: 700;
-        border-radius: $radius-pill;
-        margin-bottom: $space-small;
-        text-transform: uppercase;
-    }
+    max-width: 1100px;
+    margin: 0 auto 36px;
 
     .policy-impact-title {
-        font-size: $text-h2;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
         line-height: $line-heading;
-        font-weight: 600;
+        font-weight: 700;
         color: $color-navy;
-        margin-bottom: $space-small;
-
-        @media (max-width: 768px) {
-            font-size: $text-h1-hero;
-        }
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
     }
 
     .policy-impact-subtitle {
-        font-size: $text-base;
+        font-size: 1rem;
         line-height: $line-body;
-        color: $color-text-muted;
+        color: $color-text-body;
     }
 }
 
 // ========================================
-// CARDS GRID
+// FLIP CARDS GRID (3 Columns x 2 Rows)
 // ========================================
 
-.policy-impact-5col-grid {
+.policy-impact-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-bottom: $space-section-sm;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 20px;
 
-    @media (max-width: 1100px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
         grid-template-columns: 1fr;
     }
 }
 
-.impact-card-5col {
-    display: flex;
-    height: 100%;
+.impact-flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 320px;
+    width: 100%;
 
-    .card-inner {
-        background: $color-white;
-        border: 1px solid $color-border;
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+        border-radius: $radius-md;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    &:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+    }
+
+    // Shared Face Properties
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         border-radius: $radius-md;
         overflow: hidden;
+        border: 1px solid $color-border;
+    }
+
+    // Front Face Design (Clean look with only Title and Icon)
+    .flip-card-front {
+        background: $color-white;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
 
-        &:hover {
-            transform: translateY(-4px);
-            border-color: rgba($color-blue, 0.4);
-            box-shadow: 0 10px 20px -5px rgba($color-navy, 0.08);
+        .card-image-wrap {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
 
-            .card-image-wrap img {
-                transform: scale(1.06);
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .card-icon {
+                font-size: 1.3rem;
+            }
+
+            .card-title {
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: $color-navy;
+                margin: 0;
+                line-height: 1.2;
             }
         }
     }
 
-    .card-image-wrap {
-        position: relative;
-        width: 100%;
-        height: 120px;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform $transition-slow;
-        }
-    }
-
-    .card-content {
-        padding: 12px;
+    // Back Face Design (Reveals What Changes & Action Required)
+    .flip-card-back {
+        background: $color-navy;
+        color: $color-white;
+        transform: rotateY(180deg);
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
-    }
+        justify-content: space-between;
+        padding: 20px;
+        text-align: left;
 
-    .card-header-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 6px;
-
-        .card-icon {
-            font-size: $text-sm;
+        .card-back-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
         }
 
-        .card-title {
-            font-size: $text-lg;
-            font-weight: 700;
-            color: $color-navy;
-            margin: 0;
-            line-height: 1.2;
+        .card-back-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+
+            .card-back-icon {
+                font-size: 1.1rem;
+            }
+
+            .card-back-title {
+                font-size: 1rem;
+                font-weight: 700;
+                color: $color-white;
+                margin: 0;
+            }
         }
-    }
 
-    .card-heading {
-        font-size: $text-base;
-        font-weight: 600;
-        color: $color-blue-dark;
-        margin-bottom: 6px;
-        line-height: $line-tight;
-    }
+        .back-section {
+            margin-bottom: 6px;
 
-    .card-desc {
-        font-size: 14px;
-        line-height: 1.4;
-        color: $color-text-body;
-        margin-bottom: 10px;
-        flex-grow: 1;
+            .back-label {
+                display: block;
+                font-size: 18px;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: $color-orange;
+                font-weight: 700;
+                margin-bottom: 2px;
+            }
+
+            .card-desc {
+                font-size: 16px;
+                line-height: 1.4;
+                color: rgba(255, 255, 255, 0.9);
+                margin: 0;
+            }
+        }
+
+        .flip-hint {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: right;
+            margin-top: auto;
+        }
     }
 }
 
 // ========================================
-// PA IMPACT SECTION & STANDALONE TAKEAWAY
+// STANDALONE TAKEAWAY BANNER
 // ========================================
 
-.pa-impact-section {
-    .policy-impact-5col-grid {
-        @media (min-width: 1101px) {
-            grid-template-columns: repeat(3, 1fr);
+.pa-standalone-takeaway {
+    .takeaway-banner {
+        background-color: #eff6ff;
+        border: 1px solid #bae6fd;
+        border-radius: $radius-md;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        @media (max-width: 640px) {
+            flex-direction: column;
+            align-items: flex-start;
         }
-    }
 
-    .pa-standalone-takeaway {
-        margin-top: 30px;
-
-        .wide-banner {
-            background-color: #e0f2fe;
-            border: 1px solid rgba($color-blue, 0.2);
-            border-radius: $radius-md;
-            padding: 20px 24px;
+        .takeaway-badge-icon {
+            width: 36px;
+            height: 36px;
+            background-color: $color-orange;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 4px 12px rgba($color-navy, 0.04);
+            justify-content: center;
+            font-size: 18px;
+            color: $color-white;
+            flex-shrink: 0;
+        }
 
-            @media (max-width: 768px) {
-                flex-direction: column;
-                align-items: flex-start;
+        .takeaway-text-group {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: $color-navy;
+
+            .takeaway-title {
+                font-weight: 700;
+                margin-right: 4px;
+                color: #0369a1;
             }
-
-            .takeaway-badge-icon {
-                width: 40px;
-                height: 40px;
-                background-color: #f59e0b;
-                border-radius: $radius-pill;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 18px;
-                color: $color-white;
-                flex-shrink: 0;
-            }
-
-            .takeaway-text-group {
-                font-size: $text-base;
-                line-height: $line-body;
-                color: $color-navy;
-
-                .takeaway-title {
-                    font-weight: 700;
-                    margin-right: 4px;
-                    color: $color-navy;
-                }
+            
+            .takeaway-body {
+                color: $color-text-body;
             }
         }
     }

@@ -1,0 +1,275 @@
+// ============================================================
+// MOTOR VS PERSONAL ACCIDENT SECTION (SCSS)
+// ============================================================
+@use "../../../../../abstracts/variables" as *;
+
+.pa-comparison-section {
+    background-color: $color-navy-dark;
+    color: $color-text-light;
+    padding: 65px 60px;
+    font-family: $font-primary;
+
+    .container-wide {
+        max-width: $container-wide;
+        margin: 0 auto;
+    }
+
+    // ========================================================
+    // HEADER
+    // ========================================================
+    .section-header {
+        .h2 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            font-weight: 600;
+            color: $color-white;
+            margin-top: 12px;
+            margin-bottom: $space-element;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .text-body-med {
+            font-size: $text-base;
+            line-height: $line-body;
+            color: $color-text-light;
+            max-width: 1000px;
+        }
+    }
+
+    // ========================================================
+    // TAB CONTENT & PANELS (WHITE CARD STYLE)
+    // ========================================================
+    .pa-tab-content {
+        margin-top: $space-element;
+
+        .pa-tab-panel {
+            display: none;
+
+            &.active {
+                display: block;
+                animation: fadeIn $transition;
+            }
+        }
+
+        // Main Card Container
+        .pa-content-card {
+            background: $color-white;
+            border: 1px solid $color-border-dark;
+            border-radius: $radius-md;
+            padding: 36px 40px;
+            margin-top: $space-element;
+            color: $color-navy-dark;
+
+            @media (max-width: 768px) {
+                padding: 24px 20px;
+            }
+
+            .pa-content-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 16px;
+
+                .pa-content-label {
+                    color: $color-orange;
+                    font-size: $text-xs;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+
+                h3 {
+                    color: $color-navy;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-top: 6px;
+                    line-height: $line-heading;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .pa-policy-note {
+                    background: rgba(0, 0, 0, 0.05);
+                    color: $color-navy-dark;
+                    padding: 6px 14px;
+                    border-radius: $radius-sm;
+                    font-size: $text-xs;
+                    font-weight: 500;
+                }
+            }
+
+            .pa-card-description {
+                font-size: $text-base;
+                line-height: $line-body;
+                color: $color-navy-dark;
+                margin-bottom: 24px;
+            }
+
+            // ========================================================
+            // REDESIGNED COMPARISON TABLE (Vibrant & Alive)
+            // ========================================================
+            .pa-table-wrapper {
+                overflow-x: auto;
+                margin-top: 20px;
+                border-radius: 12px;
+                border: 1px solid #e2e8f0;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+
+                .pa-comparison-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+                    font-size: $text-base;
+                    background-color: #ffffff;
+
+                    th, td {
+                        padding: 18px 20px;
+                        vertical-align: middle;
+                    }
+
+                    th {
+                        background-color: #f1f5f9;
+                        color: $color-navy;
+                        font-weight: 700;
+                        font-size: 15px;
+                        border-bottom: 2px solid #cbd5e1;
+                        text-transform: uppercase;
+                        letter-spacing: 0.03em;
+                    }
+
+                    // Column widths for optimal balance
+                    th:nth-child(1), td:nth-child(1) { width: 34%; }
+                    th:nth-child(2), td:nth-child(2) { width: 33%; border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9; background-color: rgba(239, 246, 255, 0.4); }
+                    th:nth-child(3), td:nth-child(3) { 
+    width: 33%; 
+    background-color: rgba(240, 244, 248, 0.3); // Fixed with proper comma-separated RGB numbers
+}
+
+                    td {
+                        color: $color-navy-dark;
+                        border-bottom: 1px solid #e2e8f0;
+                        font-size: 14.5px;
+
+                        strong {
+                            color: $color-navy;
+                            font-weight: 600;
+                        }
+                    }
+
+                    // Alternating subtle shading for row dynamics
+                    tr:nth-child(even) td {
+                        background-color: #fafafa;
+                        
+                        &.col-motor {
+                            background-color: rgba(239, 246, 255, 0.6); // Slightly deeper highlight for motor column
+                        }
+                    }
+
+                    tr:last-child td {
+                        border-bottom: none;
+                    }
+
+                    tr:hover td {
+                        background-color: #f8fafc;
+                    }
+
+                    // Status Icons Styling
+                    .status-cell {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 10px;
+                        line-height: 1.4;
+
+                        .status-badge {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 22px;
+                            height: 22px;
+                            border-radius: 50%;
+                            font-size: 11px;
+                            font-weight: 700;
+                            flex-shrink: 0;
+                            margin-top: 2px;
+
+                            &.yes {
+                                background-color: #d1fae5;
+                                color: #065f46;
+                                border: 1px solid #34d399;
+                            }
+
+                            &.no {
+                                background-color: #fee2e2;
+                                color: #991b1b;
+                                border: 1px solid #f87171;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Takeaway Banner
+        .story-takeaway-card {
+            display: flex;
+            align-items: flex-start;
+            background: $color-light-blue;
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            border-radius: $radius-sm;
+            padding: 20px;
+            gap: 16px;
+            margin-top: 32px;
+
+            .takeaway-icon-bubble {
+                background: $color-orange;
+                color: $color-white;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                flex-shrink: 0;
+                font-weight: 700;
+                box-shadow: 0 2px 6px rgba($color-orange, 0.3);
+            }
+
+            .takeaway-text-content {
+                strong {
+                    color: $color-blue-dark;
+                    font-size: $text-xs;
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                    display: block;
+                    margin-bottom: 6px;
+                }
+
+                p {
+                    font-size: $text-base;
+                    color: $color-navy-dark;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

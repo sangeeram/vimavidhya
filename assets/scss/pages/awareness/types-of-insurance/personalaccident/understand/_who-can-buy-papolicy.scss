@@ -1,59 +1,56 @@
 // ============================================================
 // VIMA VIDYA
-// PERSONAL ACCIDENT PROPERTY REFERENCE STYLE
+// PERSONAL ACCIDENT MASTER REDESIGNED STYLES
 // ============================================================
 
 @use "../../../../../abstracts/variables" as *;
 
 .pa-reference-style-section {
     position: relative;
-    background-color: $color-navy-dark;
-    color: $color-text-light;
-    padding: 40px 20px;
+    background-color: #071124; // Deep navy background matching reference
+    color: #ffffff;
+    padding: 60px 20px;
     font-family: $font-primary;
 
     .master-container {
         width: 100%;
-        max-width: $container-width;
+        max-width: 1200px;
         margin: 0 auto;
     }
 
     .whocanbuy-section-header {
         text-align: left;
-        margin-bottom: 30px;
+        margin-bottom: 32px;
     }
 
     .section-title {
-        margin: 0 0 14px;
-        color: $color-text-light;
-        font-size: 44px;
-        line-height: $line-tight;
-        font-weight: 600;
-        letter-spacing: -0.035em;
-
-        @media (max-width: 768px) {
-            font-size: 32px;
-        }
+        margin: 0 0 12px;
+        color: #ffffff; 
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: -0.02em;
     }
 
     .section-lead {
-        max-width: 1200px;
+        max-width: 1100px;
         margin: 0;
-        color: $color-text-light;
-        font-size: $text-base;
-        line-height: $line-body;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1rem;
+        line-height: 1.6;
     }
 
     // ========================================================
-    // WHITE BOX CONTAINER
+    // WHITE BOX CONTAINER FOR TABS AND CONTENT
     // ========================================================
     .master-content-grid {
         width: 100%;
-        background: $color-white;
-        border-radius: $radius-lg;
-        padding: 30px;
-        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
-        color: $color-blue-dark;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        color: #0f172a;
+        overflow: visible;
 
         @media (max-width: 768px) {
             padding: 20px;
@@ -61,36 +58,37 @@
     }
 
     // ========================================================
-    // TABS
+    // PILL TABS DESIGN (Matching Reference)
     // ========================================================
     .category-tabs {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        padding-bottom: $space-element;
-        border-bottom: 1px solid $color-border;
+        gap: 8px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #e2e8f0;
     }
 
     .tab-btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 10px 16px;
-        background: $color-light-gray;
-        border: 1px solid $color-border;
-        border-radius: $radius-sm;
-        color: $color-blue-dark;
+        padding: 10px 18px;
+        background: #f1f5f9;
+        border: 1px solid transparent;
+        border-radius: 50px; // Pill shape
+        color: #334155;
         font-family: $font-primary;
-        font-size: $text-sm;
+        font-size: 0.9rem;
         font-weight: 600;
         cursor: pointer;
-        transition: background $transition-fast, border-color $transition-fast, color $transition-fast, transform $transition-fast;
+        transition: all 0.2s ease;
 
         .tab-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             flex: 0 0 auto;
+            color: inherit;
         }
 
         .tab-name {
@@ -99,24 +97,23 @@
 
         &:hover {
             background: #e2e8f0;
-            border-color: #cbd5e1;
-            transform: translateY(-1px);
+            color: #0f172a;
         }
 
         &.is-active {
-            background: #1e3a8a;
-            border-color: #3b82f6;
-            color: $color-white;
-            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.22);
+            background: #2563eb; // Vibrant blue active pill
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
     }
 
     // ========================================================
-    // CONTENT PANELS
+    // CONTENT PANELS & PANE DETAILS
     // ========================================================
     .property-content-panel {
         display: none;
-        animation: propertyPanelIn 0.3s ease both;
+        overflow: visible;
+        animation: fadeInPanel 0.3s ease-in-out both;
 
         &.is-active {
             display: block;
@@ -125,56 +122,242 @@
 
     .info-pane {
         width: 100%;
-        padding: 24px 0 0;
+        padding: 28px 0 10px;
+        overflow: visible;
     }
 
     .pane-badge {
         display: inline-block;
-        margin-bottom: 10px;
-        color: $color-orange;
-        font-size: $text-xs;
+        margin-bottom: 8px;
+        color: #ea580c;
+        font-size: 0.75rem;
         font-weight: 700;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
     }
 
     .pane-title {
-        max-width: 1100px;
-        margin: 0 0 16px;
-        color: $color-blue-dark;
-        font-size: clamp(1.65rem, 3vw, 2.15rem);
-        line-height: $line-heading;
+        margin: 0 0 12px;
+        color: #0f172a;
+        font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+        line-height: 1.3;
         font-weight: 700;
-        letter-spacing: -0.025em;
     }
 
     .pane-body-text {
-        max-width: 1150px;
-        color: $color-text-body;
-        font-size: 16px;
-        line-height: 1.5;
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
 
         p {
-            margin: 0 0 12px;
-            color: $color-text-body;
+            margin: 0;
         }
     }
 
-    // RESPONSIVE STAT CARDS GRIDS
+    // ========================================================
+    // STAT CARDS (Fixed 200px Flex/Scroll Layout)
+    // ========================================================
+    .property-case-study {
+        margin-top: 24px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        overflow: visible;
+    }
+
     .case-study-stats {
-        @media (max-width: 900px) {
-            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        display: flex;
+        flex-wrap: nowrap; // Keeps them in a single row
+        gap: 16px;
+        margin-bottom: 20px;
+        width: 1200px;
+        overflow-x: auto; // Enables smooth horizontal scrolling if container is tight
+        padding-bottom: 8px; // Space for scrollbar if triggered
+
+        // Optional: Hide scrollbar for a clean look while maintaining scrollability
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            height: 6px;
         }
-        @media (max-width: 520px) {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        &::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
         }
+
+        @media (max-width: 600px) {
+            flex-direction: column; // Stack cards vertically on mobile screens
+            overflow-x: visible;
+        }
+    }
+
+    .case-stat {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px 14px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 0 0 200px; // Forces exact 200px width and prevents shrinking/growing
+        width: 200px;
+        min-height: 140px; 
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        @media (max-width: 600px) {
+            width: 100%; // Full width on small mobile viewports
+            flex: unset;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+        }
+    }
+
+    .case-stat-icon-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 8px;
+        flex-shrink: 0;
+    }
+
+    .case-stat-emoji {
+        font-size: 1rem;
+        line-height: 1.2;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    .case-stat-label {
+        color: #64748b;
+        font-size: 0.75rem; 
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        flex-shrink: 0;
+    }
+
+    .case-stat-value {
+        color: #0f172a;
+        font-size: 0.9rem; 
+        font-weight: 700;
+        line-height: 1.3;
+        margin-top: auto; 
+        flex-shrink: 0;
+    }
+
+    // Status Modifiers
+    .case-stat.covered {
+        border-left: 3px solid #16a34a;
+    }
+
+    .case-stat.loss {
+        border-left: 3px solid #dc2626;
+        .case-stat-value {
+            color: #dc2626;
+        }
+    }
+
+    .case-stat.neutral {
+        border-left: 3px solid #3b82f6;
+    }
+
+    // ========================================================
+    // TAKEAWAY BOX
+    // ========================================================
+    .case-study-takeaway {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px 20px;
+        background: #eff6ff;
+        border: 1px solid #dbeafe;
+        border-radius: 12px;
+    }
+
+    .takeaway-icon {
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #2563eb;
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .takeaway-content {
+        min-width: 0;
+    }
+
+    .takeaway-label {
+        display: block;
+        margin-bottom: 2px;
+        color: #1e40af;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .case-study-takeaway p {
+        margin: 0;
+        color: #334155;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    // ========================================================
+    // AGE-70 WALL BANNER
+    // ========================================================
+    .pa-age-wall-banner {
+        margin-top: 36px;
+        padding: 24px;
+        background: #fff8f8;
+        border: 1px solid #fed7d7;
+        border-radius: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 12px;
+        }
+    }
+
+    .age-wall-emoji {
+        font-size: 24px;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+
+    .age-wall-title {
+        margin: 0 0 6px;
+        color: #991b1b;
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .age-wall-text {
+        margin: 0;
+        color: #4b5563;
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 }
 
-@keyframes propertyPanelIn {
+@keyframes fadeInPanel {
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(6px);
     }
     to {
         opacity: 1;

@@ -1,0 +1,235 @@
+.vv-faq-page {
+  background: #f7fafc;
+  color: #18334e;
+
+  .vv-faq-container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+  }
+
+  .vv-faq-hero {
+    background: linear-gradient(
+      135deg,
+      #102f55,
+      #086e83
+    );
+
+    color: #fff;
+    padding: 100px 0 85px;
+    text-align: center;
+
+    .vv-faq-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9be4e8;
+    }
+
+    h1 {
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 700;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    p {
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: #e2edf4;
+    }
+  }
+
+  .vv-faq-search {
+    max-width: 650px;
+    margin: 38px auto 0;
+
+    input {
+      width: 100%;
+      padding: 18px 24px;
+      border: 1px solid #d8e5ed;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+      color: #18334e;
+
+      &:focus {
+        border-color: #19a7b5;
+        box-shadow: 0 0 0 3px
+          rgba(25, 167, 181, 0.2);
+      }
+    }
+  }
+
+  .vv-faq-library {
+    padding: 65px 0 100px;
+  }
+
+  .vv-faq-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 45px;
+  }
+
+  .vv-faq-filter {
+    padding: 12px 20px;
+    border: 1px solid #d9e5ed;
+    background: #fff;
+    border-radius: 30px;
+    color: #28465f;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover,
+    &.active {
+      background: #123b69;
+      color: #fff;
+      border-color: #123b69;
+    }
+  }
+
+  .vv-faq-list {
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  .vv-faq-item {
+    border: 1px solid #e1eaf0;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+
+    // Odd items: Light pastel blue
+    &:nth-child(odd) {
+      background: #f0f7fb;
+      border-color: #d3e4f0;
+    }
+
+    // Even items: Soft alternative light pastel blue
+    &:nth-child(even) {
+      background: #e8f1f8;
+      border-color: #c5daf0;
+    }
+
+    &[hidden] {
+      display: none !important;
+    }
+
+    &.open {
+      border-color: #0c8998;
+      // Optional: keep or slightly deepen background highlight when open if desired
+    }
+  }
+
+  .vv-faq-question {
+    width: 100%;
+    padding: 23px 26px;
+    background: transparent;
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 600;
+    color: #18334e;
+    cursor: pointer;
+
+    .vv-faq-plus {
+      font-size: 26px;
+      font-weight: 400;
+      color: #078c9b;
+      transition: transform 0.25s ease;
+    }
+
+    &[aria-expanded="true"] {
+      .vv-faq-plus {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .vv-faq-answer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+    &[hidden] {
+      display: none !important;
+    }
+  }
+
+  .vv-faq-answer-inner {
+    padding: 22px 26px 28px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #435b6e;
+
+    p {
+      margin: 0 0 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+
+    a {
+      color: #087f8c;
+      text-decoration: underline;
+    }
+  }
+
+  .vv-faq-empty {
+    text-align: center;
+    padding: 40px 0;
+    color: #60768a;
+
+    &[hidden] {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .vv-faq-hero {
+      padding: 65px 0 55px;
+    }
+
+    .vv-faq-library {
+      padding: 40px 0 70px;
+    }
+
+    .vv-faq-filters {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .vv-faq-filter {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .vv-faq-question {
+      padding: 18px;
+      font-size: 15px;
+    }
+
+    .vv-faq-answer-inner {
+      padding: 18px;
+    }
+  }
+}

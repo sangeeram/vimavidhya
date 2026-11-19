@@ -83,8 +83,8 @@
 
                     <div class="site-footer__link-column">
 
-                        <a href="<?php echo esc_url( home_url( '/knowledge/' ) ); ?>">
-                            Knowledge
+                        <a href="<?php echo esc_url( home_url( '/expertise/' ) ); ?>">
+                            Expertise
                         </a>
 
                         <a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">
@@ -156,7 +156,7 @@
 
             <p class="site-footer__disclaimer">
 
-                The information provided on the Vima Vidya website is for
+                The information provided on the VimaVidya website is for
                 general educational and awareness purposes only. While we
                 strive to ensure accuracy and relevance, some content may
                 be sourced from third-party websites, including official
@@ -168,7 +168,7 @@
             <p class="site-footer__copyright">
 
                 © <?php echo esc_html( date( 'Y' ) ); ?>
-                Vima Vidya. All Rights Reserved.
+                VimaVidya. All Rights Reserved.
 
             </p>
 

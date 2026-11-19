@@ -1,0 +1,161 @@
+// ============================================================
+// MOTOR ADD-ON COVERS COMPONENT (SCSS)
+// ============================================================
+
+@use "../../../../../abstracts/variables" as *;
+
+.vv-motor-addons-section {
+    position: relative;
+    background-color: $color-light-gray;
+    color: $color-text-body;
+    padding: $space-section 0;
+    font-family: $font-primary;
+
+    .master-container {
+        width: 100%;
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .whocanbuy-section-header {
+        text-align: left;
+        margin-bottom: 36px;
+    }
+
+    .step-badge {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: $color-light-blue;
+        color: $color-blue;
+        font-size: $text-xs;
+        font-weight: 700;
+        border-radius: $radius-pill;
+        margin-bottom: $space-small;
+        text-transform: uppercase;
+    }
+
+    .section-title {
+        font-size: $text-h2;
+        line-height: $line-heading;
+        font-weight: 600;
+        color: $color-navy;
+        margin-bottom: $space-small;
+
+        @media (max-width: 768px) {
+            font-size: 28px;
+        }
+    }
+
+    .section-lead {
+        font-size: $text-base;
+        line-height: $line-body;
+        color: $color-text-muted;
+        max-width: 900px;
+        margin: 0;
+    }
+
+    // ========================================================
+    // ADD-ONS GRID (3 COLUMNS)
+    // ========================================================
+    .addons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // ========================================================
+    // ADDON CARD
+    // ========================================================
+    .addon-card {
+        background: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+        transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: rgba($color-blue, 0.4);
+            box-shadow: 0 10px 24px -5px rgba($color-navy, 0.08);
+        }
+    }
+
+    .addon-card-header {
+        margin-bottom: 12px;
+    }
+
+    .addon-tag {
+        display: inline-block;
+        font-size: 10.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: $color-blue;
+        background: $color-light-blue;
+        padding: 3px 8px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+    }
+
+    .addon-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $color-navy;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .addon-desc {
+        font-size: 14.5px;
+        line-height: 1.45;
+        color: $color-text-body;
+        margin: 0 0 18px;
+        flex-grow: 1;
+    }
+
+    .addon-meta {
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        padding-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .meta-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13px;
+
+        .meta-label {
+            color: $color-text-muted;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .meta-value {
+            color: $color-navy;
+            text-align: right;
+            font-weight: 500;
+
+            &.highlight {
+                font-weight: 700;
+                color: #16a34a;
+            }
+        }
+    }
+}

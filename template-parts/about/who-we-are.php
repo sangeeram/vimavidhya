@@ -1,6 +1,6 @@
 <?php
 $sub_heading    = "THE JOURNEY";
-$title_main     = "How Vima Vidya Began";
+$title_main     = "How VimaVidya Began";
 
 $main_image_url = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop";
 
@@ -10,7 +10,7 @@ $journey_steps = [
         'sub_label'   => 'THE BEGINNING',
         'title'       => 'Recognising the Gap',
         'active'      => true,
-        'content'     => 'Vima Vidya was born from a simple observation: most people buy insurance because they are told to — not because they understand why. The gap between the industry\'s knowledge and the public\'s understanding was vast.'
+        'content'     => 'VimaVidya was born from a simple observation: most people buy insurance because they are told to — not because they understand why. The gap between the industry\'s knowledge and the public\'s understanding was vast.'
     ],
     [
         'id'          => 'purpose',
@@ -55,7 +55,7 @@ $journey_steps = [
       <div class="journey-image-wrapper" data-aos="fade-right" data-aos-duration="1000">
         <img 
           src="<?= $main_image_url ?>" 
-          alt="How Vima Vidya Began" 
+          alt="How VimaVidya Began" 
           class="journey-img" 
           loading="lazy"
         />

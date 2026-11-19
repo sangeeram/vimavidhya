@@ -1,6 +1,6 @@
 <?php
 // Dynamic Configuration Variables
-$brandName       = "Vimavidya";
+$brandName       = "VimaVidya";
 $pageTitle       = "About Us";
 $headingText     = "About Us";
 $subheadingLine1 = "Empowering confidence through knowledge.";
@@ -30,7 +30,7 @@ $founderImagePath= get_template_directory_uri() . '/assets/images/aboutus/founde
           data-aos-delay="200"
         >
           <span class="c-hero__brand-name">
-            ABOUT <?php echo htmlspecialchars(strtoupper($brandName)); ?>
+            About VimaVidya
           </span>
         </div>
 
@@ -70,13 +70,13 @@ $founderImagePath= get_template_directory_uri() . '/assets/images/aboutus/founde
         </nav>
 
         <!-- Action Callout Buttons -->
-        <div class="c-hero__actions">
-          <a href="#explore" class="c-btn c-btn--primary">EXPLORE KNOWLEDGE</a>
+        <!-- <div class="c-hero__actions">
+          <a href="/expertise/" class="c-btn c-btn--primary">EXPLORE Expertise</a>
           <div class="c-tag c-tag--orange">
             FOUNDER<br><?php echo htmlspecialchars(strtoupper($brandName)); ?>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Founder Image Column Right -->
       <div 

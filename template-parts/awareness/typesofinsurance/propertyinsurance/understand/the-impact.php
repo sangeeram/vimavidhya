@@ -1,8 +1,10 @@
-<?
+<?php
 /**
  * SECTION 01 — WHY PROPERTY INSURANCE?
  * Module: Property Insurance Showcase
  */
+
+$theme_uri = get_template_directory_uri();
 
 $personas = [
     'homeowner' => [
@@ -12,7 +14,7 @@ $personas = [
         'name'           => 'Vikram',
         'location_age'   => 'Visakhapatnam, age 47',
         'coverage_badge' => '₹8L',
-        'image_url'      => 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80',
+        'image_url'      => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/homeowner-1.png',
         'scenario_title' => 'SCENARIO',
         'scenario_text'  => 'Vikram, 47, owns a house in Visakhapatnam. A severe cyclone partially tears off the roof, brings down the compound wall, rain water enters and destroys furniture, appliances, and his daughter\'s laptop. He also has to vacate the house for two months while repairs are underway.',
         'highlight_box'  => 'Cyclone damage — estimated repair and replacement cost <strong>₹8 lakhs</strong>',
@@ -56,7 +58,7 @@ $personas = [
         'name'           => 'Shiraj',
         'location_age'   => 'Bengaluru, age 33',
         'coverage_badge' => '₹3L',
-        'image_url'      => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80',
+        'image_url'      => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/tenant-1.png',
         'scenario_title' => 'SCENARIO',
         'scenario_text'  => 'Shiraj, 33, lives in a rented home in Bengaluru. A kitchen fire caused by an electrical short circuit destroys appliances and furniture. Estimated loss: ₹3,00,000.',
         'highlight_box'  => 'Kitchen fire — contents loss <strong>₹3,00,000</strong>',
@@ -95,7 +97,7 @@ $personas = [
         'name'           => 'Murugan',
         'location_age'   => 'Coimbatore, age 44',
         'coverage_badge' => '₹4.9L',
-        'image_url'      => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80',
+        'image_url'      => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/small-bussiness-1.png',
         'scenario_title' => 'SCENARIO',
         'scenario_text'  => 'Murugan, 44, runs a grocery store in Coimbatore from rented premises. A fire destroys ₹3.5L of stock, refrigeration unit (₹85k), billing computer/printer (₹45k), and shelving/counter (₹60k). Total loss: ₹4.9L.',
         'highlight_box'  => 'Shop fire — stock, equipment and fixture loss <strong>₹4.9 lakh</strong>',
@@ -177,7 +179,7 @@ $personas = [
                         <div class="pi-profile-card pi-profile-card--emphasized">
                             <div class="pi-profile-media">
                                 <?php if (!empty($p['image_url'])): ?>
-                                    <img src="<?php echo htmlspecialchars($p['image_url']); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="pi-profile-img">
+                                    <img src="<?php echo esc_url($p['image_url']); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="pi-profile-img">
                                 <?php else: ?>
                                     <div class="pi-profile-placeholder"></div>
                                 <?php endif; ?>

@@ -1,5 +1,6 @@
 <?php
 $myths_realities = [
+    
     [
         'image' => 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&auto=format&fit=crop&q=80',
         'myth' => 'Nothing will happen to my home — I have lived here 30 years and nothing has happened.',

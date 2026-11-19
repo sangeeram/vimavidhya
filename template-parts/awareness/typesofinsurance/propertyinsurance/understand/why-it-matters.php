@@ -46,9 +46,9 @@
             <!-- Right Column: Single Combined Image (Flood, Fire, Cyclone, Earthquake destruction) -->
             <div class="case-for-cover__image-col">
                 <div class="case-for-cover__image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=1200&q=80" 
-                         alt="Collage of natural and urban disasters including floods, fires, and storms" 
-                         class="case-for-cover__banner-img" />
+                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/typesofinsurance/propertyinsurance/understand/why-it-matters.png'); ?>" 
+     alt="Collage of natural and urban disasters including floods, fires, and storms" 
+     class="case-for-cover__banner-img" />
                 </div>
             </div>
 

@@ -1,0 +1,250 @@
+    @use "../../../../../abstracts/insurancevariable" as *;
+
+    // =========================================================
+    // LIFE INSURANCE — NOT AN INVESTMENT STYLES (NAVY THEME)
+    // =========================================================
+    .not-an-investment {
+        font-family: $font-primary;
+        color: $color-text-light;
+        width: 100%;
+        padding: $space-section 0;
+        background: linear-gradient(135deg, $color-navy-dark 0%, $color-navy 100%);
+
+        .not-an-investment__container {
+            width: min(92%, $container-width);
+            margin: 0 auto;
+        }
+
+        .not-an-investment__header {
+            margin-bottom: $space-element * 1.5;
+            text-align: left;
+            border-bottom: 2px solid rgba($color-white, 0.15);
+            padding-bottom: $space-element;
+        }
+
+        .not-an-investment__subtag {
+            display: inline-block;
+            margin-bottom: $space-small;
+            font-size: $text-xs;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: $color-blue;
+            text-transform: uppercase;
+        }
+
+        .not-an-investment__title {
+            margin: 0 0 $space-small;
+            color: $color-white;
+            font-size: 44px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: $line-heading;
+        }
+
+        .not-an-investment__subtitle {
+            margin: 0;
+            color: $color-text-light;
+            opacity: 0.85;
+            font-size: $text-lg;
+            font-weight: 600;
+        }
+
+        // Magazine Split Layout
+        .not-an-investment__magazine-split {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: $space-element * 1.5;
+            align-items: start;
+            margin-bottom: $space-section-sm;
+
+            @media (max-width: 1024px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .not-an-investment__section-heading {
+            font-size: $text-lg;
+            font-weight: 700;
+            color: $color-white;
+            margin: 0 0 $space-element;
+            line-height: $line-heading;
+        }
+
+        .not-an-investment__text {
+            font-size: $text-base;
+            color: $color-text-light;
+            opacity: 0.9;
+            line-height: $line-body;
+            margin: 0;
+
+            strong {
+                color: $color-white;
+                font-weight: 700;
+            }
+        }
+
+        // Pullquote Styling
+        .not-an-investment__pullquote {
+            margin-top: $space-element * 1.25;
+            padding: $space-element;
+            background: rgba($color-white, 0.05);
+            border: 1px solid rgba($color-white, 0.1);
+            border-left: 4px solid $color-blue;
+            border-radius: 0 $radius-md $radius-md 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+            blockquote {
+                margin: 0;
+                font-size: $text-base;
+                font-style: italic;
+                font-weight: 600;
+                color: $color-white;
+                line-height: $line-body;
+            }
+        }
+
+        // Table Column (White card wrapper on navy background)
+        .not-an-investment__table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: $radius-md;
+            border: 1px solid $color-border;
+            background: $color-white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .not-an-investment__table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: $text-sm;
+            text-align: left;
+
+            th, td {
+                border: 1px solid $color-border;
+                padding: 12px 16px;
+                color: $color-text-body;
+                line-height: 1.45;
+            }
+
+            th {
+                background: $color-navy;
+                color: $color-white;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-size: $text-xs;
+                letter-spacing: 0.05em;
+            }
+
+            tr:nth-child(even) {
+                background: $color-light-gray;
+            }
+
+            td strong {
+                color: $color-navy;
+                font-weight: 700;
+            }
+        }
+
+        // Newspaper Clickable Grid Theme with Light Blue to White Gradient
+        .not-an-investment__newspaper-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $space-element;
+
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .not-an-investment__news-card {
+            background: linear-gradient(135deg, $color-light-blue 0%, $color-white 100%);
+            border: 1.5px solid rgba($color-blue, 0.25);
+            border-radius: $radius-md;
+            padding: $space-element;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: $transition-fast;
+            position: relative;
+            color: $color-text;
+
+            &:hover {
+                border-color: $color-blue;
+                box-shadow: 0 8px 24px rgba($color-blue, 0.3);
+                transform: translateY(-2px);
+            }
+
+            &.is-expanded {
+                border-color: $color-blue;
+                background: $color-white;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+                .not-an-investment__news-title {
+                    color: $color-navy;
+                }
+
+                .not-an-investment__text {
+                    color: $color-text-body;
+                    opacity: 1;
+                }
+
+                .not-an-investment__news-toggle {
+                    transform: rotate(180deg);
+                    color: $color-blue;
+                }
+
+                .not-an-investment__news-body {
+                    max-height: 500px;
+                    opacity: 1;
+                    margin-top: $space-element;
+                }
+            }
+        }
+
+        .not-an-investment__news-card-header {
+            display: flex;
+            align-items: center;
+            gap: $space-small * 2;
+        }
+
+        .not-an-investment__news-icon {
+            font-size: 24px;
+            background: $color-white;
+            width: 44px;
+            height: 44px;
+            border-radius: $radius-sm;
+            border: 1px solid $color-border;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .not-an-investment__news-title {
+            font-size: $text-lg;
+            font-weight: 700;
+            color: $color-navy;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .not-an-investment__news-toggle {
+            font-size: $text-sm;
+            font-weight: 800;
+            color: $color-blue;
+            transition: transform $transition;
+        }
+
+        .not-an-investment__news-body {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.35s ease-in-out, opacity 0.25s ease-in-out, margin-top 0.3s ease;
+            margin-top: 0;
+
+            .not-an-investment__text {
+                color: $color-text-body;
+                opacity: 1;
+            }
+        }
+    }

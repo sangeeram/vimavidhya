@@ -4,12 +4,13 @@
  * Individual Policy Stacked Accordion
  */
 
+$theme_uri = get_template_directory_uri();
 
 $policies = [
     [
         'number'        => '01',
         'type'          => 'Individual Homeowner Policy',
-        'image'         => 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Individual Homeowner Policy.png',
         'who_it_covers' => 'One property owner',
         'key_features'  => 'Structure + contents; full add-on flexibility; renewable annually.',
         'best_for'      => 'Owner-occupiers, landlords renting out property.'
@@ -17,7 +18,7 @@ $policies = [
     [
         'number'        => '02',
         'type'          => "Tenant's Contents Policy",
-        'image'         => 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Tenant Contents Policy.png',
         'who_it_covers' => 'Renter / tenant',
         'key_features'  => 'Contents only — no building cover; covers personal belongings in rented space.',
         'best_for'      => 'Renters and PG residents.'
@@ -25,7 +26,7 @@ $policies = [
     [
         'number'        => '03',
         'type'          => 'Bharat Griha Raksha',
-        'image'         => 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Bharat Griha Raksha.png',
         'who_it_covers' => 'Any individual homeowner',
         'key_features'  => 'IRDAI-mandated standard product; uniform structure across all insurers; 1–5 year cover.',
         'best_for'      => 'First-time buyers; comparison baseline.'
@@ -33,7 +34,7 @@ $policies = [
     [
         'number'        => '04',
         'type'          => "Householder's Package Policy",
-        'image'         => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Householder Package Policy.png',
         'who_it_covers' => 'Homeowner — bundle',
         'key_features'  => 'Combines building, contents, third-party liability, and several add-ons in one policy.',
         'best_for'      => 'Comprehensive single-policy buyers.'
@@ -41,7 +42,7 @@ $policies = [
     [
         'number'        => '05',
         'type'          => 'Standard Fire & Special Perils (SFSP)',
-        'image'         => 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/SFSP.png',
         'who_it_covers' => 'Small businesses, shops, commercial establishments',
         'key_features'  => 'Covers structure and/or stock against fire, explosion, flood, cyclone, earthquake, riot, and named perils.',
         'best_for'      => 'Kirana stores, small retail, workshops, service establishments — any physical premises.'
@@ -49,7 +50,7 @@ $policies = [
     [
         'number'        => '06',
         'type'          => "Shopkeeper's Package Policy",
-        'image'         => 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Shopkeeper Package Policy.png',
         'who_it_covers' => 'Small retail and service businesses',
         'key_features'  => 'Bundled commercial policy combining building, stock, cash, fidelity, personal accident, and public liability.',
         'best_for'      => 'The single most practical starting point for most small business owners.'
@@ -57,7 +58,7 @@ $policies = [
     [
         'number'        => '07',
         'type'          => 'Group Property Policy (Societies)',
-        'image'         => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Group Property Policy (Societies).png',
         'who_it_covers' => 'Society / RWA',
         'key_features'  => 'Covers only common areas and building shell — NOT individual flats or contents.',
         'best_for'      => 'Common area protection only — not adequate as sole cover for residents.'
@@ -65,7 +66,7 @@ $policies = [
     [
         'number'        => '08',
         'type'          => 'Long-Term Policy (2–5 years)',
-        'image'         => 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
+        'image'         => $theme_uri . '/assets/images/typesofinsurance/propertyinsurance/understand/Long-Term Policy (2–5 years).png',
         'who_it_covers' => 'Individual owner',
         'key_features'  => 'Premium discount up to 12%; no renewal risk; cover locked in.',
         'best_for'      => 'Those wanting continuity and savings on premium.'

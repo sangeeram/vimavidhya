@@ -15,6 +15,7 @@ $journey-green-accent: $color-success;
 $journey-border-dark: $color-navy;
 $journey-radius: $radius-lg;
 
+
 .section-life-journey {
     background-color: $journey-bg-dark;
     padding: $space-section-lg 0;
@@ -58,6 +59,13 @@ $journey-radius: $radius-lg;
             margin: 0 auto;
         }
     }
+     .accent-bar {
+            width: 36px;
+            height: 4px;
+            background-color: $color-orange;
+            border-radius: $radius-pill;
+            margin-bottom: $space-element;
+        }
 
     .roadmap-wrapper {
         position: relative;

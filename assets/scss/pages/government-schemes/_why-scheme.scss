@@ -1,0 +1,320 @@
+@use "../../abstracts/variables" as *;
+.government-matters {
+    padding: $space-section-sm 20px;
+    background-color: $color-light-blue;
+    font-family: $font-primary;
+    color: $color-text;
+
+    &__container {
+        max-width: $container-width;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    // ========================================
+    // SECTION HEADER
+    // ========================================
+
+    &__header {
+        margin-bottom: $space-content;
+    }
+
+    &__title {
+        margin: 0;
+        color: $color-navy;
+        font-size: 44px;
+        font-weight: 700;
+        line-height: $line-heading;
+        letter-spacing: -0.035em;
+    }
+
+    // ========================================
+    // CARD GRID
+    // ========================================
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: $space-element;
+        align-items: stretch;
+    }
+
+    // ========================================
+    // SHARED CARD STYLES
+    // ========================================
+
+    &__card {
+        position: relative;
+        min-width: 0;
+        padding: $space-content;
+        background-color: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        box-shadow: 0 5px 18px rgba($color-navy, 0.025);
+        transition:
+            box-shadow $transition,
+            transform $transition,
+            border-color $transition;
+
+        &:hover {
+            box-shadow: 0 10px 28px rgba($color-navy, 0.07);
+            transform: translateY(-3px);
+        }
+
+        // ========================================
+        // LEFT CARD — RED THEME
+        // ========================================
+
+        &--statistics {
+            background-color: #fff5f5;
+            border: 1px solid #fecaca;
+            border-left: 4px solid #dc2626;
+
+            .government-matters__icon {
+                background-color: #fee2e2;
+                border-color: #fecaca;
+            }
+
+            .government-matters__card-title {
+                color: #b91c1c;
+            }
+
+            .government-matters__statistics {
+                li {
+                    color: $color-text;
+
+                    &::before {
+                        background-color: #dc2626;
+                    }
+                }
+
+                strong {
+                    color: #dc2626;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        // ========================================
+        // RIGHT CARD — BLUE THEME
+        // ========================================
+
+        &--protection {
+            background-color: $color-white;
+            border: 1px solid $color-border;
+            border-left: 4px solid $color-blue;
+
+            .government-matters__icon {
+                background-color: $color-light-blue;
+                border-color: rgba($color-blue, 0.14);
+            }
+
+            .government-matters__card-title {
+                color: $color-navy;
+            }
+        }
+    }
+
+    // ========================================
+    // ICON CIRCLES
+    // ========================================
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        margin-bottom: $space-small;
+        border: 1px solid rgba($color-blue, 0.12);
+        border-radius: $radius-pill;
+        background-color: $color-light-blue;
+        font-size: 17px;
+        line-height: 1;
+        flex-shrink: 0;
+
+        &--warning {
+            background-color: #fee2e2;
+            border-color: #fecaca;
+        }
+
+        &--protection {
+            background-color: $color-light-blue;
+            border-color: rgba($color-blue, 0.14);
+        }
+    }
+
+    // ========================================
+    // CARD HEADINGS
+    // ========================================
+
+    &__card-title {
+        margin: 0 0 12px;
+        color: $color-navy;
+        font-size: $text-lg;
+        font-weight: 700;
+        line-height: $line-heading;
+    }
+
+    // ========================================
+    // STATISTICS LIST
+    // ========================================
+
+    &__statistics {
+        display: grid;
+        gap: 13px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            color: $color-text;
+            font-size: $text-base;
+            line-height: $line-body;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 9px;
+                left: 2px;
+                width: 7px;
+                height: 7px;
+                background-color: $color-blue;
+                border-radius: $radius-pill;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+            font-weight: 700;
+        }
+    }
+
+    // ========================================
+    // CARD DESCRIPTION
+    // ========================================
+
+    &__card-text {
+        margin: 0;
+        color: $color-text-body;
+        font-size: $text-base;
+        line-height: $line-body;
+
+        strong {
+            color: $color-navy;
+            font-weight: 700;
+        }
+    }
+
+    // ========================================
+    // INTRODUCTION CONTENT
+    // ========================================
+
+    &__introduction {
+        max-width:1200px;
+        margin-top: $space-content;
+
+        p {
+            margin: 0;
+            color: $color-text-body;
+            font-size: $text-base;
+            line-height: 1.8;
+
+            & + p {
+                margin-top: $space-element;
+            }
+        }
+
+        strong {
+            color: $color-navy;
+            font-weight: 700;
+        }
+    }
+
+    // ========================================
+    // TABLET RESPONSIVE
+    // ========================================
+
+    @media (max-width: 900px) {
+        padding: 52px 24px;
+
+        &__grid {
+            gap: 18px;
+        }
+
+        &__card {
+            padding: 22px;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__statistics {
+            gap: 12px;
+        }
+    }
+
+    // ========================================
+    // MOBILE RESPONSIVE
+    // ========================================
+
+    @media (max-width: 640px) {
+        padding: 42px 18px;
+
+        &__header {
+            margin-bottom: 22px;
+        }
+
+        &__title {
+            font-size: 30px;
+            letter-spacing: -0.025em;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        &__card {
+            padding: 22px 20px;
+
+            &:hover {
+                transform: none;
+            }
+        }
+
+        &__card-title {
+            font-size: $text-base;
+        }
+
+        &__statistics {
+            gap: 12px;
+
+            li {
+                font-size: $text-sm;
+                line-height: 1.7;
+
+                &::before {
+                    top: 8px;
+                }
+            }
+        }
+
+        &__card-text {
+            font-size: $text-sm;
+            line-height: 1.7;
+        }
+
+        &__introduction {
+            margin-top: 22px;
+
+            p {
+                font-size: $text-sm;
+                line-height: 1.8;
+            }
+        }
+    }
+}

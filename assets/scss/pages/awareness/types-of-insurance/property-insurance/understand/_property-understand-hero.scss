@@ -4,6 +4,7 @@
 // HERO SECTION WITH BACKGROUND IMAGE & EXPANDED MENUS
 // =========================================================
 
+
 .propertyunderstandhero {
   font-family: $font-primary;
   position: relative;
@@ -450,6 +451,62 @@
     .propertyunderstandhero-arrow--prev,
     .propertyunderstandhero-slide-number {
       display: none;
+    }
+  }
+}
+
+// ==========================================
+// PROPERTY INSURANCE + CENTERED UNDERSTAND
+// ==========================================
+
+.propertyunderstandhero {
+
+  .propertyunderstandhero-heading-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .propertyunderstandhero-slide-eyebrow {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .propertyunderstandhero-page-indicator {
+    position: absolute;
+
+    // Center relative to the full hero section
+    left: 50vw;
+    transform: translateX(-50%);
+
+    margin: 0;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+
+  .propertyunderstandhero-indicator-step {
+    margin-left: 0;
+    color: $color-blue;
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .propertyunderstandhero {
+
+    .propertyunderstandhero-heading-row {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .propertyunderstandhero-page-indicator {
+      position: static;
+      transform: none;
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
     }
   }
 }

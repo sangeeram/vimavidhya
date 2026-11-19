@@ -1,0 +1,533 @@
+// ============================================================
+// MOTOR INSURANCE TEMPLATE PART — WITH YOUR DESIGN SYSTEM TOKENS
+// ============================================================
+ @use "../../../../../abstracts/variables" as *;
+
+.motor-insurance-template-part {
+   
+    font-family: $font-primary;
+    color: $color-text-body;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 20px;
+
+    // Header Section
+    .section-header {
+        margin-bottom: $space-element;
+        h1 {
+            font-size: $text-h2;
+            line-height: $line-heading;
+            color: $color-navy;
+            margin-bottom: $space-small;
+        }
+        p {
+            color: $color-text-muted;
+            font-size: $text-sm;
+            line-height: $line-body;
+            max-width: $text-width-wide;
+        }
+    }
+
+    // Policy Navigation Tabs
+    .policy-tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: $space-element;
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: $color-white;
+            border: 1px solid $color-border;
+            padding: 10px 18px;
+            border-radius: $radius-pill;
+            font-size: $text-sm;
+            font-weight: 500;
+            color: $color-text-muted;
+            cursor: pointer;
+            transition: all $transition-fast;
+
+            .radio-icon {
+                width: 14px;
+                height: 14px;
+                border: 2px solid $color-border;
+                border-radius: 50%;
+                display: inline-block;
+            }
+
+            &.active {
+                background-color: $color-navy;
+                color: $color-white;
+                border-color: $color-navy;
+
+                .radio-icon {
+                    border-color: $color-white;
+                    background-color: $color-white;
+                    box-shadow: inset 0 0 0 2px $color-navy;
+                }
+            }
+        }
+    }
+
+    // Main Policy Card Container
+    .policy-card {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1.2fr;
+        gap: 20px;
+        background: $color-white;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // Policy Hero Block
+    .policy-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .image-wrapper {
+            position: relative;
+            border-radius: $radius-sm;
+            overflow: hidden;
+            height: 160px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .shield-badge {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: $text-xs;
+            }
+        }
+
+        .policy-title-block {
+            h2 {
+                font-size: $text-lg;
+                color: $color-navy;
+                margin: 0 0 6px 0;
+            }
+
+            .badge-mandatory {
+                display: inline-block;
+                font-size: 11px;
+                font-weight: 700;
+                color: $color-blue;
+                background: $color-light-blue;
+                padding: 2px 6px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: $text-xs;
+                color: $color-text-muted;
+                margin-bottom: 12px;
+            }
+
+            .btn-outline {
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 14px;
+                border: 1px solid $color-border;
+                border-radius: 6px;
+                font-size: $text-xs;
+                color: $color-navy;
+                text-decoration: none;
+                font-weight: 500;
+                background: transparent;
+
+                .arrow-icon {
+                    font-weight: bold;
+                }
+
+                &:hover {
+                    background: $color-light-gray;
+                }
+            }
+        }
+    }
+
+    // Coverage Boxes
+    .coverage-box {
+        border-radius: $radius-sm;
+        padding: 16px;
+        font-size: $text-xs;
+
+        h3 {
+            font-size: $text-sm;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 16px;
+            
+            li {
+                margin-bottom: 8px;
+                line-height: $line-body;
+            }
+        }
+
+        &.covers {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            h3 { color: #166534; }
+            li { color: #14532d; }
+        }
+
+        &.not-covers {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            h3 { color: #991b1b; }
+            li { color: #7f1d1d; }
+        }
+    }
+
+    // Collapsible Accordion Panel (View Details)
+    .policy-accordion-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height $transition, padding $transition;
+        background: $color-white;
+        border: 1px solid $color-border;
+        border-top: none;
+        border-radius: 0 0 $radius-md $radius-md;
+        margin-top: -20px;
+        margin-bottom: 20px;
+        padding: 0 24px;
+
+        &.open {
+            max-height: 500px;
+            padding: 24px;
+            border-top: 1px solid $color-border;
+        }
+
+        .accordion-inner {
+            h3 {
+                font-size: $text-h3;
+                color: $color-navy;
+                margin-top: 0;
+                margin-bottom: 16px;
+            }
+
+            .accordion-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+
+                @media (max-width: 900px) {
+                    grid-template-columns: 1fr;
+                }
+
+                .accordion-col {
+                    font-size: $text-xs;
+                    background: $color-light-gray;
+                    padding: 12px;
+                    border-radius: $radius-sm;
+                    border: 1px solid #f1f5f9;
+
+                    strong {
+                        display: block;
+                        color: $color-navy;
+                        margin-bottom: 6px;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+
+                    p {
+                        margin: 0;
+                        color: $color-text-body;
+                        line-height: $line-body;
+                    }
+
+                    ul {
+                        margin: 0;
+                        padding-left: 14px;
+                        color: $color-text-body;
+                        li {
+                            margin-bottom: 4px;
+                            line-height: $line-body;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Notice Banner
+    .notice-banner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background-color: #fffbeb;
+        border: 1px solid #fde68a;
+        padding: 12px 16px;
+        border-radius: $radius-sm;
+        font-size: $text-xs;
+        margin-bottom: 40px;
+
+        p {
+            margin: 0;
+            color: #78350f;
+        }
+    }
+
+    // Case Studies Section
+    .case-studies-section {
+        .case-studies-header {
+            margin-bottom: 20px;
+            h2 {
+                font-size: $text-h3;
+                color: $color-navy;
+                margin-bottom: 6px;
+            }
+            p {
+                font-size: $text-sm;
+                color: $color-text-muted;
+                margin: 0;
+            }
+        }
+
+        .case-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            @media (max-width: 900px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .case-card {
+            background: $color-white;
+            border: 1px solid $color-border;
+            border-radius: $radius-sm;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+
+            .case-image {
+                height: 140px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .case-content {
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+
+                h3 {
+                    font-size: $text-sm;
+                    color: $color-navy;
+                    margin: 0 0 8px 0;
+                }
+
+                p {
+                    font-size: $text-xs;
+                    color: $color-text-muted;
+                    line-height: $line-body;
+                    margin-bottom: 16px;
+                    flex-grow: 1;
+                }
+
+                .read-more {
+                    font-size: $text-xs;
+                    font-weight: 600;
+                    color: $color-blue;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    // Simulation Add-on Elements
+    .pane-header-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 20px;
+
+        .pane-title {
+            margin: 0;
+        }
+    }
+
+    .vv-toggle-wrapper {
+        display: inline-flex;
+        background: $color-light-gray;
+        padding: 5px;
+        border-radius: $radius-pill;
+        border: 1px solid $color-border;
+        gap: 4px;
+    }
+
+    .vv-pill-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: $radius-pill;
+        background: transparent;
+        color: $color-text-muted;
+        font-size: $text-xs;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: background $transition-fast, color $transition-fast, box-shadow $transition-fast;
+
+        .pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        &.is-active {
+            background: $color-white;
+            color: $color-navy;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+            &[data-toggle-state="with"] .pill-dot {
+                background: $color-success;
+            }
+
+            &[data-toggle-state="without"] .pill-dot {
+                background: $color-orange;
+            }
+        }
+
+        &:hover:not(.is-active) {
+            color: $color-navy;
+        }
+    }
+
+    .vv-scenario-banner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: $color-light-blue;
+        border: 1.5px solid #dbeafe;
+        border-radius: $radius-sm;
+        color: #1e3a8a;
+        font-size: 14.5px;
+        font-weight: 600;
+        margin-bottom: 16px;
+
+        .scenario-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+    }
+
+    .vv-comparison-list {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $color-border;
+        border-radius: $radius-sm;
+        background: $color-white;
+        overflow: hidden;
+    }
+
+    .vv-comparison-row {
+        display: grid;
+        grid-template-columns: 1.1fr 2fr;
+        align-items: center;
+        padding: 14px 18px;
+        border-bottom: 1px solid $color-border;
+        gap: 20px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 8px;
+            padding: 12px 14px;
+        }
+    }
+
+    .row-aspect {
+        color: $color-navy;
+        font-size: 14.5px;
+        font-weight: 600;
+    }
+
+    .row-outcome {
+        display: none;
+        align-items: flex-start;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(4px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+
+        &.is-visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        p {
+            margin: 0;
+            font-size: $text-sm;
+            line-height: $line-body;
+            color: $color-text-body;
+        }
+    }
+
+    .outcome-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        margin-top: 1px;
+
+        &.check {
+            background: #dcfce7;
+            color: $color-success;
+        }
+
+        &.cross {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+    }
+}

@@ -16,8 +16,9 @@
 
 // home page specific styles
 @use "pages/home/hero";
-
+@use "pages/home/about";
 @use "pages/home/pillars";  
+@use "pages/home/how";
 @use "pages/home/risk-management";
 @use "pages/home/life-journey";
 @use "pages/home/assessment";
@@ -155,5 +156,200 @@
 
 
 
+// motor insurance
+
+@use "pages/awareness/types-of-insurance/motor-insurance/motor-hero";
+@use "pages/awareness/types-of-insurance/motor-insurance/motor-layers";
+
+// motor insurance- understand
+
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor-understand-hero";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor-what-it-is";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor-why-it-matters";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/typesofvehicles";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor_typesofinsurances";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor-types";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/add-ons";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/motor-vs-other";
+@use "pages/awareness/types-of-insurance/motor-insurance/understand/seven-things";
+
+
+// motor insurance - evaluate
+
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-hero";
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-premium-calculated";
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-suitability";
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-buying-policy";
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-myth-reality";
+@use "pages/awareness/types-of-insurance/motor-insurance/evaluate/motor-evaluate-lived-experiences";
+
+// motor insurance -act
+
+
+@use "pages/awareness/types-of-insurance/motor-insurance/act/motor-act-hero";
+@use "pages/awareness/types-of-insurance/motor-insurance/act/motor-how-to-apply";
+@use "pages/awareness/types-of-insurance/motor-insurance/act/motor-dos-donts";
+@use "pages/awareness/types-of-insurance/motor-insurance/act/claim-process/motor-claim";
+
+@use "pages/awareness/types-of-insurance/motor-insurance/act/claim-process/documents-motor";
+@use "pages/awareness/types-of-insurance/motor-insurance/act/claim-process/network-motor";
+@use "pages/awareness/types-of-insurance/motor-insurance/act/motor-checklist";
+
+
+//travel insurance
+
+
+@use "pages/awareness/types-of-insurance/travel-insurance/travel-hero";
+@use "pages/awareness/types-of-insurance/travel-insurance/travel-layers";
+
+
+
+//travel insurance understand
+
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-understand-hero";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-understand-what-it-is";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-why";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-types";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-who-can-buy";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-what-impact";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-the-impact";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-vs-other";
+@use "pages/awareness/types-of-insurance/travel-insurance/understand/travel-seven-things";
+
+
+//Travel Insurance - evaluate
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-evaluate-hero";
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-premium-logic";
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-evaluate-suitability";
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-evaluate-buying-a-policy";
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-evaluate-myth-vs-reality";
+@use "pages/awareness/types-of-insurance/travel-insurance/evaluate/travel-evaluate-lived-experiences";
+
+//travel insurance act
+
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-act-hero";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-how-to-apply";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-what-you-can-claim";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-who-can-claim";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-where-to-apply";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-step-by-step";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-claim-timeline";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-document-require";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-networks";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-checklist";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-resources-contacts";
+@use "pages/awareness/types-of-insurance/travel-insurance/act/travel-dos-donts";
+
+
+//life insurance
+
+
+@use "pages/awareness/types-of-insurance/life-insurance/life-hero";
+@use "pages/awareness/types-of-insurance/life-insurance/life-layers";
+
+
+//life understand
+
+@use "pages/awareness/types-of-insurance/life-insurance/understand/life-understand-hero";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/life-understand-what-it-is";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/life-understand-why-it-matters";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/why-life-not-an-investment";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/why-start-young";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/type-of-life-insurance-policy";
+@use "pages/awareness/types-of-insurance/life-insurance/understand/life-next-file";
+
+
+//life evaluate
+
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-hero";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-premium-logic";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/what-life-insurance-actual-cost";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-suitability";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-when-buying-policy";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-myth-vs-reality";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-lived-experience";
+@use "pages/awareness/types-of-insurance/life-insurance/evaluate/life-evaluate-next-file";
+
+
+//life act
+
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-hero";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-how-to-apply";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-dos-donts";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-claim-process";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-documents";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-checklist";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-contact-resources";
+@use "pages/awareness/types-of-insurance/life-insurance/act/life-act-next-file";
+
+// health insurance
+@use "pages/awareness/types-of-insurance/health-insurance/health-hero";
+@use "pages/awareness/types-of-insurance/health-insurance/health-layers";
+
+
+// health insurance understand
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-understand-hero";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-what-it-is";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-why";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-types";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-who-can-buy";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-vs-other";
+@use "pages/awareness/types-of-insurance/health-insurance/understand/health-seven-things";
+
+
+// health insurance evaluate
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-hero";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-premium-calculated";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-suitability";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-when-choose-policy";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-myth-vs-reality";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-evaluate-lived-experience";
+@use "pages/awareness/types-of-insurance/health-insurance/evaluate/health-next-file";
+
+
+// health insurance act
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-hero";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-how-to-apply";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-dos-donts";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-what-you-can-claim";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-claim-process";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-claim-timeline";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-document-requirement";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-checklist";
+@use "pages/awareness/types-of-insurance/health-insurance/act/health-act-next-file";
+
+
+
+
+
 @use "pages/glossary";
 
+@use 'pages/insurance-faqs';
+
+
+
+//education 
+@use "pages/education";
+
+
+// Contact Us 
+@use "pages/contact-us";
+
+// @use "pages/government-scheme";
+
+
+//expertise page 
+
+@use "pages/expertise/expertise-hero";
+@use "pages/expertise/expertise-insurance-market";
+@use "pages/expertise/expertise-syndicated-reports";
+@use "pages/expertise/expertise-custom-report";
+
+
+// government schemes
+@use "pages/government-schemes/scheme-hero";
+@use "pages/government-schemes/why-scheme";
+@use "pages/government-schemes/government-schemes-glance";
+@use "pages/government-schemes/schemes";
+@use "pages/government-schemes/toolkit-section";
+@use "pages/government-schemes/next-file-scheme";

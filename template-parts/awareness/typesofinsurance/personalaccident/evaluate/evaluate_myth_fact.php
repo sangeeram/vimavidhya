@@ -7,32 +7,32 @@
 $pa_myths_realities = [
     [
         'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'I have health insurance — I am fully covered.',
+        'myth' => 'I have health insurance — I am fully covered ? ',
         'reality' => 'Health insurance pays hospital bills. It does not replace your income if you are disabled for months, nor compensate your family if you are permanently unable to work. PA Insurance fills that gap.'
     ],
     [
         'image' => 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'Nothing will happen to me — I am a safe driver.',
+        'myth' => 'Nothing will happen to me — I am a safe driver ?',
         'reality' => 'India recorded 4,73,000 road accidents in recent data. The most vulnerable age group is 18–45 — the same people who believe they are safe. Accidents by definition are unforeseen.'
     ],
     [
         'image' => 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'My employer\'s group cover is enough.',
+        'myth' => 'My employer\'s group cover is enough ?',
         'reality' => 'Employer cover typically offers 2–3x your annual salary, stops the day you change jobs, and rarely covers your family. For a 40-year-old with dependents and a home loan, this is far from adequate.'
     ],
     [
         'image' => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'PA Insurance is expensive.',
+        'myth' => 'PA Insurance is expensive ?',
         'reality' => 'Entry-level PA coverage starts at ₹53 a month. A policy with ₹50 lakh CSI covering death, disability, and income replacement costs ₹500–₹1,000/month — less than most broadband plans.'
     ],
     [
         'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'My life insurance policy covers accidents too.',
+        'myth' => 'My life insurance policy covers accidents too?',
         'reality' => 'Term life insurance pays only on death — from any cause. It pays nothing if you are disabled, unable to work, or need income replacement during a long recovery. PA Insurance is specifically designed for exactly that.'
     ],
     [
         'image' => 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=400&auto=format&fit=crop&q=80',
-        'myth' => 'I can buy PA Insurance when I need it.',
+        'myth' => 'I can buy PA Insurance when I need it?',
         'reality' => 'Insurance is the one purchase that must happen before the need arises. A claim event after an accident makes you uninsurable. The premium is cheapest when you are young and healthy.'
     ]
 ];
@@ -55,7 +55,7 @@ $pa_myths_realities = [
 
             <div class="vv-carousel-viewport">
                 <div class="vv-carousel-track">
-                    <?php foreach ($pa_myths_realities as $index =>$item) : ?>
+                    <?php foreach ($pa_myths_realities as $index => $item) : ?>
                         <div class="vv-carousel-slide">
                             <div class="vv-flip-card" tabindex="0" role="button" aria-label="Click to flip card">
                                 <div class="vv-flip-card-inner">
@@ -63,15 +63,16 @@ $pa_myths_realities = [
                                     <!-- Front: Myth (Red Theme) -->
                                     <div class="vv-card-face vv-card-front">
                                         <div class="vv-card-header-tag">
+                                            <span class="vv-label vv-label--myth">MYTH?</span>
                                             <span class="vv-flip-hint-icon">🔄 Tap to Flip</span>
                                         </div>
                                         
-                                        <!-- Large MYTH? Heading Display -->
-                                        <div class="vv-big-myth-title">MYTH?</div>
-
+                                        <!-- Centered Myth Text Display -->
                                         <blockquote class="vv-myth-text">
                                             &ldquo;<?php echo htmlspecialchars($item['myth']); ?>&rdquo;
                                         </blockquote>
+
+                                        <div class="vv-card-spacer"></div>
                                     </div>
 
                                     <!-- Back: Reality (Green Theme) -->
@@ -109,7 +110,7 @@ $pa_myths_realities = [
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     const section = document.querySelector('.vv-myths-section');
     if (!section) return;
 
