@@ -13,7 +13,7 @@
         'subtitle' => 'Industry-leading publications and research reports from global insurance authorities.',
         'reports' => [
             [
-                'image' => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=85&w=1000',
+                'image' => get_template_directory_uri() . '/assets/images/expertise/swiss-image.png',
                 'category' => 'Swiss Re Institute',
                 'title' => 'Sigma Reports (Swiss Re)',
                 'description' => 'Published by Swiss Re Institute, Sigma Reports are globally respected publications covering insurance markets, reinsurance economics, risk emerging trends, historical performance, and forward-looking forecasts.',
@@ -21,7 +21,7 @@
                 'url' => 'https://www.swissre.com/institute/research/sigma-research.html'
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=85&w=1000',
+                'image' => get_template_directory_uri() . '/assets/images/expertise/risk-report-image.png',
                 'category' => 'Global Think Tanks',
                 'title' => 'Risk Reports',
                 'description' => 'These include strategic publications from top think tanks and research bodies (e.g., Lloyd’s or World Economic Forum). They assess current and predicted disruptions—ranging from climate change to cyber threats—and offer implications for individuals, businesses, and governments.',
@@ -29,7 +29,7 @@
                 'url' => 'https://www.lloyds.com/insights/risk-reports'
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=85&w=1000',
+                'image' => get_template_directory_uri() . '/assets/images/expertise/yearbook-image.png',
                 'category' => 'GIC India',
                 'title' => 'Yearbook (GI Council Yearbook)',
                 'description' => 'An annual publication by the General Insurance Council (GIC) of India. The Yearbook provides statistics on policy volumes, regulatory updates, industry performance metrics, and state-wise penetration rates, based on submissions from licensed insurers.',

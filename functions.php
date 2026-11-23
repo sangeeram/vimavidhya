@@ -756,3 +756,273 @@ function vv_register_faq_answer_field() {
         'active' => true,
     ]);
 }
+
+
+
+// home life stages animatins
+
+// contact form
+
+
+
+/**
+ * VIMA VIDYA — CONTACT FORM MANAGEMENT
+ * Database storage + WordPress admin listing.
+ */
+
+// Create database table.
+function vv_create_contact_table() {
+    global $wpdb;
+
+    $table = $wpdb->prefix . 'vv_contact_enquiries';
+    $charset = $wpdb->get_charset_collate();
+
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+    $sql = "CREATE TABLE $table (
+        id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+        name varchar(150) NOT NULL,
+        email varchar(190) NOT NULL,
+        message text NOT NULL,
+        status varchar(20) NOT NULL DEFAULT 'new',
+        created_at datetime NOT NULL,
+        PRIMARY KEY  (id),
+        KEY status (status),
+        KEY created_at (created_at)
+    ) $charset;";
+
+    dbDelta($sql);
+}
+
+// Run once per database/theme setup.
+add_action('admin_init', function () {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    if (get_option('vv_contact_db_version') !== '1.0') {
+        vv_create_contact_table();
+        update_option('vv_contact_db_version', '1.0');
+    }
+});
+
+// Handle form submissions.
+add_action('admin_post_nopriv_vv_contact_submit', 'vv_save_contact');
+add_action('admin_post_vv_contact_submit', 'vv_save_contact');
+
+function vv_save_contact() {
+    global $wpdb;
+
+    $redirect = home_url('/contact-us/#contact-form');
+
+    if (
+        !isset($_POST['vv_contact_nonce']) ||
+        !wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_POST['vv_contact_nonce'])),
+            'vv_contact_submit'
+        )
+    ) {
+        wp_die('Security verification failed.', 'Invalid Request', [
+            'response' => 403
+        ]);
+    }
+
+    // Honeypot spam protection.
+    if (!empty($_POST['website'])) {
+        wp_safe_redirect(add_query_arg('contact_status', 'success', $redirect));
+        exit;
+    }
+
+    $name = isset($_POST['name'])
+        ? sanitize_text_field(wp_unslash($_POST['name']))
+        : '';
+
+    $email = isset($_POST['email'])
+        ? sanitize_email(wp_unslash($_POST['email']))
+        : '';
+
+    $message = isset($_POST['message'])
+        ? sanitize_textarea_field(wp_unslash($_POST['message']))
+        : '';
+
+    if (
+        empty($name) ||
+        !is_email($email) ||
+        empty($message) ||
+        mb_strlen($name) > 150 ||
+        mb_strlen($message) > 5000
+    ) {
+        wp_safe_redirect(add_query_arg('contact_status', 'invalid', $redirect));
+        exit;
+    }
+
+    $table = $wpdb->prefix . 'vv_contact_enquiries';
+
+    $saved = $wpdb->insert(
+        $table,
+        [
+            'name'       => $name,
+            'email'      => $email,
+            'message'    => $message,
+            'status'     => 'new',
+            'created_at' => current_time('mysql')
+        ],
+        ['%s', '%s', '%s', '%s', '%s']
+    );
+
+    $status = $saved ? 'success' : 'error';
+
+    wp_safe_redirect(add_query_arg('contact_status', $status, $redirect));
+    exit;
+}
+
+// Add admin menu.
+add_action('admin_menu', function () {
+    add_menu_page(
+        'Contact Enquiries',
+        'Contact Enquiries',
+        'manage_options',
+        'vv-contact-enquiries',
+        'vv_contact_admin_page',
+        'dashicons-email-alt',
+        26
+    );
+});
+
+// Process admin actions.
+add_action('admin_post_vv_contact_action', function () {
+    if (!current_user_can('manage_options')) {
+        wp_die('Permission denied.');
+    }
+
+    $id = isset($_POST['entry_id']) ? absint($_POST['entry_id']) : 0;
+
+    check_admin_referer('vv_contact_action_' . $id);
+
+    if (!$id) {
+        wp_die('Invalid enquiry.');
+    }
+
+    global $wpdb;
+    $table = $wpdb->prefix . 'vv_contact_enquiries';
+
+    $action_type = isset($_POST['entry_action'])
+        ? sanitize_key(wp_unslash($_POST['entry_action']))
+        : '';
+
+    if ($action_type === 'delete') {
+        $wpdb->delete($table, ['id' => $id], ['%d']);
+    } elseif ($action_type === 'read') {
+        $wpdb->update(
+            $table,
+            ['status' => 'read'],
+            ['id' => $id],
+            ['%s'],
+            ['%d']
+        );
+    }
+
+    wp_safe_redirect(admin_url('admin.php?page=vv-contact-enquiries'));
+    exit;
+});
+
+// Admin listing.
+function vv_contact_admin_page() {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    global $wpdb;
+
+    $table = $wpdb->prefix . 'vv_contact_enquiries';
+
+    $page = isset($_GET['paged'])
+        ? max(1, absint($_GET['paged']))
+        : 1;
+
+    $per_page = 20;
+    $offset = ($page - 1) * $per_page;
+
+    $total = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table");
+
+    $entries = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT * FROM $table ORDER BY created_at DESC, id DESC LIMIT %d OFFSET %d",
+            $per_page,
+            $offset
+        )
+    );
+
+    echo '<div class="wrap">';
+    echo '<h1>Vima Vidya — Contact Enquiries</h1>';
+    echo '<p>Total enquiries: <strong>' . esc_html($total) . '</strong></p>';
+
+    echo '<table class="widefat striped">';
+    echo '<thead><tr>';
+    echo '<th>ID</th><th>Name</th><th>Email</th>';
+    echo '<th>Message</th><th>Status</th><th>Date</th><th>Actions</th>';
+    echo '</tr></thead><tbody>';
+
+    if ($entries) {
+        foreach ($entries as $entry) {
+            echo '<tr>';
+            echo '<td>' . esc_html($entry->id) . '</td>';
+            echo '<td>' . esc_html($entry->name) . '</td>';
+            echo '<td><a href="mailto:' . esc_attr($entry->email) . '">' .
+                esc_html($entry->email) . '</a></td>';
+            echo '<td style="max-width:350px;white-space:pre-wrap;">' .
+                esc_html($entry->message) . '</td>';
+            echo '<td>' . esc_html(ucfirst($entry->status)) . '</td>';
+            echo '<td>' . esc_html($entry->created_at) . '</td>';
+            echo '<td>';
+
+            if ($entry->status === 'new') {
+                vv_contact_admin_action_form($entry->id, 'read', 'Mark Read');
+            }
+
+            vv_contact_admin_action_form($entry->id, 'delete', 'Delete');
+
+            echo '</td></tr>';
+        }
+    } else {
+        echo '<tr><td colspan="7">No enquiries received yet.</td></tr>';
+    }
+
+    echo '</tbody></table>';
+
+    $pages = (int) ceil($total / $per_page);
+
+    if ($pages > 1) {
+        echo '<div class="tablenav"><div class="tablenav-pages">';
+        echo wp_kses_post(paginate_links([
+            'base'    => add_query_arg('paged', '%#%'),
+            'format'  => '',
+            'current' => $page,
+            'total'   => $pages
+        ]));
+        echo '</div></div>';
+    }
+
+    echo '</div>';
+}
+
+function vv_contact_admin_action_form($id, $action, $label) {
+    $url = admin_url('admin-post.php');
+
+    echo '<form method="post" action="' . esc_url($url) .
+        '" style="display:inline-block;margin:2px;">';
+
+    echo '<input type="hidden" name="action" value="vv_contact_action">';
+    echo '<input type="hidden" name="entry_id" value="' . esc_attr($id) . '">';
+    echo '<input type="hidden" name="entry_action" value="' . esc_attr($action) . '">';
+
+    wp_nonce_field('vv_contact_action_' . $id);
+
+    echo '<button type="submit" class="button button-small"';
+
+    if ($action === 'delete') {
+        echo ' onclick="return confirm(\'Delete this enquiry permanently?\')"';
+    }
+
+    echo '>' . esc_html($label) . '</button></form>';
+}

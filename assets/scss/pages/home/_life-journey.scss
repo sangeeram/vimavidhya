@@ -1,11 +1,12 @@
 
 @use "../../abstracts/variables" as *;
+
 // =========================================================
-// VIMA VIDYA
-// LIFE JOURNEY SECTION (REFACTORED)
+// VIMA VIDYA - LIFE JOURNEY
+// FULL RESPONSIVE SCSS
 // =========================================================
 
-// Local variable aliases referencing Global Design System
+// Global design system aliases
 $journey-bg-dark: $color-navy;
 $journey-card-dark: $color-white;
 $journey-text-light: $color-text-light;
@@ -15,222 +16,644 @@ $journey-green-accent: $color-success;
 $journey-border-dark: $color-navy;
 $journey-radius: $radius-lg;
 
+// =========================================================
+// MAIN SECTION
+// =========================================================
 
 .section-life-journey {
-    background-color: $journey-bg-dark;
-    padding: $space-section-lg 0;
-    color: $journey-text-light;
-    width: 100%;
-    border: 5px solid $journey-text-dark;
-    font-family: $font-primary;
+
+  // Default: 1280px - 1439px
+  --lj-heading-size: 36px;
+  --lj-body-size: 16px;
+  --lj-stage-heading: 24px;
+  --lj-stage-body: 15px;
+  --lj-section-padding: 80px;
+  --lj-item-gap: 50px;
+  --lj-column-gap: 28px;
+  --lj-pin-column: 90px;
+  --lj-card-padding: 28px;
+  --lj-pin-width: 48px;
+  --lj-pin-height: 58px;
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: $journey-bg-dark;
+  color: $journey-text-light;
+
+  border: 5px solid $journey-text-dark;
+
+  padding: var(--lj-section-padding) 0;
+  font-family: $font-primary;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // =======================================================
+  // CONTAINER
+  // =======================================================
+
+  .roadmap-container {
+    width: min(100% - 48px, $container-width);
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  // =======================================================
+  // HEADER
+  // =======================================================
+
+  .roadmap-header {
+    text-align: center;
+    margin-bottom: clamp(36px, 4vw, 70px);
+
+    .subtitle {
+      display: block;
+      margin-bottom: 12px;
+
+      font-size: clamp(11px, 0.9vw, 15px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: $journey-green-accent;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 0 0 14px;
+      padding: 0;
+
+      font-family: $font-primary;
+      font-size: var(--lj-heading-size);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+
+      color: $journey-text-light;
+      overflow-wrap: break-word;
+    }
+
+    .description {
+      max-width: $text-width-medium;
+      margin: 0 auto;
+
+      font-size: var(--lj-body-size);
+      line-height: $line-body;
+      color: $color-blue;
+    }
+  }
+
+  // =======================================================
+  // ACCENT BAR
+  // =======================================================
+
+  .accent-bar {
+    width: clamp(32px, 2.5vw, 48px);
+    height: 4px;
+    background-color: $color-orange;
+    border-radius: $radius-pill;
+    margin-bottom: 20px;
+  }
+
+  // =======================================================
+  // ROADMAP WRAPPER
+  // =======================================================
+
+  .roadmap-wrapper {
+    position: relative;
+    padding: 40px 0;
+
+    .road-path-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  // =======================================================
+  // ROADMAP ITEMS
+  // =======================================================
+
+  .roadmap-items {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  // =======================================================
+  // EACH ROADMAP ITEM
+  // =======================================================
+
+  .roadmap-item {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      var(--lj-pin-column)
+      minmax(0, 1fr);
+
+    column-gap: var(--lj-column-gap);
+    align-items: center;
+
+    min-width: 0;
+
+    // -----------------------------------------------------
+    // MAP PIN
+    // -----------------------------------------------------
+
+    .map-pin {
+      grid-column: 2;
+      grid-row: 1;
+
+      justify-self: center;
+      position: relative;
+      z-index: 3;
+
+      width: var(--lj-pin-width);
+      height: var(--lj-pin-height);
+
+      clip-path: polygon(
+        50% 100%,
+        0% 38%,
+        0% 0%,
+        100% 0%,
+        100% 38%
+      );
+
+      border-radius: calc(#{$radius-lg} + 4px);
+
+      background-color:
+        var(--node-color, #{$journey-green-accent});
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: $color-white;
+      font-weight: 800;
+      font-size: clamp(16px, 1.2vw, 22px);
+
+      box-shadow: 0 8px 20px rgba(#000000, 0.4);
+
+      transition:
+        transform $transition,
+        box-shadow $transition;
+
+      span {
+        margin-top: -8px;
+      }
+    }
+
+    // -----------------------------------------------------
+    // INFO CARD
+    // -----------------------------------------------------
+
+    .info-card {
+      width: 100%;
+      min-width: 0;
+
+      background: $journey-card-dark;
+      padding: var(--lj-card-padding);
+
+      border-radius: $journey-radius;
+      border: 1px solid $journey-border-dark;
+
+      box-shadow: 0 12px 35px rgba(#000000, 0.3);
+
+      .stage-label {
+        display: block;
+        margin-bottom: 6px;
+
+        font-size: clamp(11px, 0.8vw, 14px);
+        font-weight: 800;
+        letter-spacing: 1.5px;
+
+        color:
+          var(--node-color, #{$journey-green-accent});
+      }
+
+      .stage-title {
+        margin: 0 0 10px;
+        padding: 0;
+
+        font-family: $font-primary;
+        font-size: var(--lj-stage-heading);
+        font-weight: 600;
+        line-height: 1.25;
+
+        color: $journey-text-dark;
+        overflow-wrap: break-word;
+      }
+
+      .stage-tag {
+        display: inline-block;
+        margin-bottom: 14px;
+
+        padding: 5px 12px;
+        border-radius: $radius-lg;
+
+        font-size: clamp(11px, 0.8vw, 14px);
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .stage-desc {
+        margin: 0;
+
+        font-size: var(--lj-stage-body);
+        line-height: $line-body;
+        color: $journey-text-muted;
+
+        overflow-wrap: break-word;
+      }
+    }
+
+    // -----------------------------------------------------
+    // IMAGE CARD
+    // -----------------------------------------------------
+
+    .image-card {
+      width: 100%;
+      min-width: 0;
+
+      .image-wrapper {
+        display: block;
+        width: 100%;
+
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+
+        border-radius: $journey-radius;
+        border: 1px solid $journey-border-dark;
+
+        box-shadow: 0 12px 35px rgba(#000000, 0.4);
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+          object-position: center;
+
+          transition: transform $transition-slow;
+        }
+      }
+    }
+
+    // -----------------------------------------------------
+    // ALTERNATING LAYOUT
+    // -----------------------------------------------------
+
+    &.is-left {
+      .info-card {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .image-card {
+        grid-column: 3;
+        grid-row: 1;
+      }
+    }
+
+    &.is-right {
+      .info-card {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .image-card {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    // -----------------------------------------------------
+    // HOVER
+    // -----------------------------------------------------
+
+    &:hover {
+      .map-pin {
+        transform: scale(1.15) translateY(-4px);
+        box-shadow: 0 12px 25px rgba(#000000, 0.5);
+      }
+
+      .image-card .image-wrapper img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // =======================================================
+  // 1920px AND ABOVE
+  // =======================================================
+
+  @media (min-width: 1920px) {
+    --lj-heading-size: 48px;
+    --lj-body-size: 20px;
+    --lj-stage-heading: 30px;
+    --lj-stage-body: 18px;
+    --lj-section-padding: 120px;
+    --lj-item-gap: 140px;
+    --lj-column-gap: 48px;
+    --lj-pin-column: 110px;
+    --lj-card-padding: 40px;
+    --lj-pin-width: 60px;
+    --lj-pin-height: 72px;
 
     .roadmap-container {
-        max-width: $container-width;
-        margin: 0 auto;
-        padding: 0 20px;
+      width: min(90%, 1700px);
     }
+  }
 
-    .roadmap-header {
-        text-align: center;
-        margin-bottom: 70px;
+  // =======================================================
+  // 1600px - 1919px
+  // =======================================================
 
-        .subtitle {
-            display: block;
-            font-size: $text-xs + 1.5px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: $journey-green-accent;
-            text-transform: uppercase;
-            margin-bottom: $space-small;
-        }
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    --lj-heading-size: 44px;
+    --lj-body-size: 18px;
+    --lj-stage-heading: 28px;
+    --lj-stage-body: 17px;
+    --lj-section-padding: 105px;
+    --lj-item-gap: 125px;
+    --lj-column-gap: 40px;
+    --lj-pin-column: 100px;
+    --lj-card-padding: 36px;
+    --lj-pin-width: 56px;
+    --lj-pin-height: 68px;
 
-        .title {
-            font-size: $text-h2;
-            color: $journey-text-light;
-            margin: 0 0 14px 0;
-            font-weight: 800;
-            line-height: $line-heading;
-        }
-
-        .description {
-            font-size: $text-base + 1px;
-            color: $color-blue;
-            max-width: $text-width-medium;
-            margin: 0 auto;
-        }
+    .roadmap-container {
+      width: min(92%, 1550px);
     }
-     .accent-bar {
-            width: 36px;
-            height: 4px;
-            background-color: $color-orange;
-            border-radius: $radius-pill;
-            margin-bottom: $space-element;
-        }
+  }
+
+  // =======================================================
+  // 1440px - 1599px
+  // =======================================================
+
+  @media (min-width: 1440px) and (max-width: 1599px) {
+    --lj-heading-size: 40px;
+    --lj-body-size: 17px;
+    --lj-stage-heading: 26px;
+    --lj-stage-body: 16px;
+    --lj-section-padding: 90px;
+    --lj-item-gap: 110px;
+    --lj-column-gap: 32px;
+    --lj-pin-column: 96px;
+    --lj-card-padding: 32px;
+    --lj-pin-width: 52px;
+    --lj-pin-height: 64px;
+  }
+
+  // =======================================================
+  // 1280px - 1439px
+  // =======================================================
+
+  @media (min-width: 1280px) and (max-width: 1439px) {
+    --lj-heading-size: 36px;
+    --lj-body-size: 16px;
+    --lj-stage-heading: 24px;
+    --lj-stage-body: 15px;
+    --lj-section-padding: 80px;
+    --lj-item-gap: 100px;
+    --lj-column-gap: 28px;
+    --lj-pin-column: 90px;
+    --lj-card-padding: 28px;
+    --lj-pin-width: 48px;
+    --lj-pin-height: 58px;
+  }
+
+  // =======================================================
+  // 1024px - 1279px
+  // =======================================================
+
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    --lj-heading-size: 34px;
+    --lj-body-size: 15px;
+    --lj-stage-heading: 23px;
+    --lj-stage-body: 14px;
+    --lj-section-padding: 70px;
+    --lj-item-gap: 80px;
+    --lj-column-gap: 20px;
+    --lj-pin-column: 72px;
+    --lj-card-padding: 22px;
+    --lj-pin-width: 44px;
+    --lj-pin-height: 54px;
+
+    .roadmap-container {
+      width: calc(100% - 40px);
+    }
+  }
+
+  // =======================================================
+  // 769px - 1023px
+  // =======================================================
+
+  @media (min-width: 769px) and (max-width: 1023px) {
+    --lj-heading-size: 32px;
+    --lj-body-size: 15px;
+    --lj-stage-heading: 22px;
+    --lj-stage-body: 14px;
+    --lj-section-padding: 60px;
+    --lj-item-gap: 65px;
+    --lj-column-gap: 14px;
+    --lj-pin-column: 60px;
+    --lj-card-padding: 18px;
+    --lj-pin-width: 40px;
+    --lj-pin-height: 50px;
+
+    .roadmap-container {
+      width: calc(100% - 32px);
+    }
+  }
+
+  // =======================================================
+  // TABLET - 481px TO 768px
+  // =======================================================
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    --lj-heading-size: 30px;
+    --lj-body-size: 16px;
+    --lj-stage-heading: 22px;
+    --lj-stage-body: 15px;
+    --lj-section-padding: 55px;
+    --lj-item-gap: 48px;
+    --lj-card-padding: 24px;
+    --lj-pin-width: 46px;
+    --lj-pin-height: 56px;
+
+    .roadmap-container {
+      width: calc(100% - 40px);
+    }
 
     .roadmap-wrapper {
-        position: relative;
-        padding: 40px 0;
+      padding: 20px 0;
 
-        .road-path-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-    }
-
-    .roadmap-items {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 120px;
+      .road-path-svg {
+        display: none;
+      }
     }
 
     .roadmap-item {
-        display: grid;
-        grid-template-columns: 1fr 90px 1fr;
-        align-items: center;
-        position: relative;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
 
-        .map-pin {
-            grid-column: 2;
-            justify-self: center;
-            width: 48px;
-            height: 58px;
-            clip-path: polygon(50% 100%, 0% 38%, 0% 0%, 100% 0%, 100% 38%);
-            border-radius: calc(#{$radius-lg} + 4px);
-            background-color: var(--node-color, #{$journey-green-accent});
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: $color-white;
-            font-weight: 800;
-            font-size: $text-lg;
-            box-shadow: 0 8px 20px rgba(#000000, 0.4);
-            z-index: 3;
-            transition: transform $transition, box-shadow $transition;
+      .map-pin {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: flex-start;
+      }
 
-            span {
-                margin-top: -8px;
-            }
-        }
-
+      &.is-left,
+      &.is-right {
         .info-card {
-            background: $journey-card-dark;
-            padding: 32px;
-            border-radius: $journey-radius;
-            box-shadow: 0 12px 35px rgba(#000000, 0.3);
-            border: 1px solid $journey-border-dark;
-
-            .stage-label {
-                display: block;
-                font-size: $text-xs;
-                font-weight: 800;
-                letter-spacing: 1.5px;
-                color: var(--node-color, #{$journey-green-accent});
-                margin-bottom: 6px;
-            }
-
-            .stage-title {
-                font-size: $text-h3 + 2px;
-                font-weight: 800;
-                color: $journey-text-dark;
-                margin: 0 0 10px 0;
-            }
-
-            .stage-tag {
-                display: inline-block;
-                font-size: $text-xs + 1px;
-                font-weight: 700;
-                padding: 4px $space-small;
-                border-radius: $radius-lg;
-                margin-bottom: 14px;
-            }
-
-            .stage-desc {
-                font-size: $text-sm + 1px;
-                color: $journey-text-muted;
-                line-height: $line-body;
-                margin: 0;
-            }
+          grid-column: 1;
+          grid-row: 2;
         }
 
         .image-card {
-            .image-wrapper {
-                display: block;
-                border-radius: $journey-radius;
-                overflow: hidden;
-                box-shadow: 0 12px 35px rgba(#000000, 0.4);
-                aspect-ratio: 16 / 10;
-                border: 1px solid $journey-border-dark;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: transform $transition-slow;
-                }
-            }
+          grid-column: 1;
+          grid-row: 3;
         }
-
-        &.is-left {
-            .info-card { grid-column: 1; }
-            .image-card { grid-column: 3; }
-        }
-
-        &.is-right {
-            .info-card { grid-column: 3; }
-            .image-card { grid-column: 1; grid-row: 1; }
-        }
-
-        &:hover {
-            .map-pin {
-                transform: scale(1.15) translateY(-4px);
-                box-shadow: 0 12px 25px rgba(#000000, 0.5);
-            }
-
-            .image-card .image-wrapper img {
-                transform: scale(1.05);
-            }
-        }
+      }
     }
+  }
+
+  // =======================================================
+  // MOBILE - 376px TO 480px
+  // =======================================================
+
+  @media (min-width: 376px) and (max-width: 480px) {
+    --lj-heading-size: 28px;
+    --lj-body-size: 15px;
+    --lj-stage-heading: 21px;
+    --lj-stage-body: 15px;
+    --lj-section-padding: 45px;
+    --lj-item-gap: 40px;
+    --lj-card-padding: 20px;
+    --lj-pin-width: 42px;
+    --lj-pin-height: 52px;
+
+    .roadmap-container {
+      width: calc(100% - 32px);
+    }
+
+    .roadmap-header {
+      margin-bottom: 32px;
+    }
+
+    .roadmap-wrapper {
+      padding: 10px 0;
+
+      .road-path-svg {
+        display: none;
+      }
+    }
+
+    .roadmap-item {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+
+      .map-pin {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: flex-start;
+      }
+
+      &.is-left,
+      &.is-right {
+        .info-card {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        .image-card {
+          grid-column: 1;
+          grid-row: 3;
+        }
+      }
+    }
+  }
+
+  // =======================================================
+  // SMALL MOBILE - UP TO 375px
+  // =======================================================
+
+  @media (max-width: 375px) {
+    --lj-heading-size: 26px;
+    --lj-body-size: 15px;
+    --lj-stage-heading: 20px;
+    --lj-stage-body: 14px;
+    --lj-section-padding: 40px;
+    --lj-item-gap: 35px;
+    --lj-card-padding: 16px;
+    --lj-pin-width: 40px;
+    --lj-pin-height: 50px;
+
+    .roadmap-container {
+      width: calc(100% - 24px);
+    }
+
+    .roadmap-header {
+      margin-bottom: 28px;
+    }
+
+    .roadmap-wrapper {
+      padding: 10px 0;
+
+      .road-path-svg {
+        display: none;
+      }
+    }
+
+    .roadmap-item {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+
+      .map-pin {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: flex-start;
+      }
+
+      &.is-left,
+      &.is-right {
+        .info-card {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        .image-card {
+          grid-column: 1;
+          grid-row: 3;
+        }
+      }
+    }
+  }
 }
 
 // =========================================================
-// MEDIA QUERIES
+// ACCESSIBILITY - REDUCED MOTION
 // =========================================================
 
-@media (max-width: 768px) {
-    .section-life-journey {
-        padding: 50px 0;
-
-        .roadmap-wrapper .road-path-svg {
-            display: none;
-        }
-
-        .roadmap-items {
-            gap: 50px;
-        }
-
-        .roadmap-item {
-            grid-template-columns: 1fr;
-            gap: 20px;
-
-            .map-pin {
-                grid-column: 1;
-                grid-row: 1;
-                justify-self: flex-start;
-            }
-
-            &.is-left, 
-            &.is-right {
-                .info-card { grid-column: 1; }
-                .image-card { grid-column: 1; grid-row: auto; }
-            }
-        }
+@media (prefers-reduced-motion: reduce) {
+  .section-life-journey {
+    .map-pin,
+    .image-card .image-wrapper img {
+      transition: none;
     }
+  }
 }

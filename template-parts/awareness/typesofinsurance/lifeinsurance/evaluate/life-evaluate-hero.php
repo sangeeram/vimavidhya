@@ -99,10 +99,10 @@ if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
       <div class="lifeevaluatehero-navy-bar">
         <nav class="lifeevaluatehero-navy-button-group" role="tablist" aria-label="Topic Chapters">
           <a href="#premium-logic" class="lifeevaluatehero-navy-btn active" role="tab">Premium logic</a>
-          <a href="#suitability" class="lifeevaluatehero-navy-btn" role="tab">Suitability</a>
-          <a href="#fine-print" class="lifeevaluatehero-navy-btn" role="tab">Fine Print</a>
-          <a href="#myth-reality" class="lifeevaluatehero-navy-btn" role="tab">Myths</a>
-          <a href="#lived-experiences" class="lifeevaluatehero-navy-btn" role="tab">Real Scenarios</a>
+          <a href="#evaluate-life-lifestages" class="lifeevaluatehero-navy-btn" role="tab">Suitability</a>
+          <a href="#evaluate-life-policy-considerations" class="lifeevaluatehero-navy-btn" role="tab">Fine Print</a>
+          <a href="#life-evaluate-myths" class="lifeevaluatehero-navy-btn" role="tab">Myths</a>
+          <a href="#evaluate-life-real-scenerios" class="lifeevaluatehero-navy-btn" role="tab">Real Scenarios</a>
         </nav>
       </div>
 

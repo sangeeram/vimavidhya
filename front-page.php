@@ -7,8 +7,9 @@
     <?php get_template_part('template-parts/home/about'); ?>
     <?php get_template_part('template-parts/home/pillars'); ?>
     <?php get_template_part('template-parts/home/risk-management'); ?>
+   <?php get_template_part('template-parts/home/life-stages'); ?>
    
-    <?php get_template_part('template-parts/home/life-journey'); ?>
+     <?php get_template_part('template-parts/home/all-insurance'); ?>
 
    
     <?php get_template_part('template-parts/home/glossary'); ?>

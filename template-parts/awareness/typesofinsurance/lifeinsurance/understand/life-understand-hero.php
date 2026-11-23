@@ -103,6 +103,7 @@ if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
                     <a href="#life-insurance-types" class="lifeunderstandhero-navy-btn" role="tab">Types </a>
                 </nav>
             </div>
+            
 
 
         </div>

@@ -18,7 +18,7 @@ $insurance_items = [
         'short_title' => 'Life',
         'icon'        => '❤️',
         'url'         => home_url('/life-insurance/'),
-        'image'       => 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/life insurance.png',
         'description' => 'Financial security for your dependents — parents, spouse, children — when the primary earner is no longer around.',
         'why'         => [
             '<strong>Income replacement</strong> — Replaces lost income so family commitments — EMIs, school fees — can continue uninterrupted.',
@@ -39,7 +39,7 @@ $insurance_items = [
         'short_title' => 'Health',
         'icon'        => '🏥',
         'url'         => home_url('/health-insurance/'),
-        'image'       => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/health insurance.png',
         'description' => 'Protect yourself and your family from the rising cost of medical treatment.',
         'why'         => [
             '<strong>Hospital expenses</strong> — Helps manage large medical bills.',
@@ -60,7 +60,7 @@ $insurance_items = [
         'short_title' => 'Accident',
         'icon'        => '🚨',
         'url'         => home_url('/personal-accident/'),
-        'image'       => 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/accident insurance.png',
         'description' => 'Financial protection against the unexpected impact of accidental injuries.',
         'why'         => [
             '<strong>Accidental injury</strong> — Provides financial support following covered accidents.',
@@ -81,7 +81,7 @@ $insurance_items = [
         'short_title' => 'Motor',
         'icon'        => '🚗',
         'url'         => home_url('/motor-insurance/'),
-        'image'       => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/motor insurance.png',
         'description' => 'Protection for your vehicle against covered accidents, damage and third-party liabilities.',
         'why'         => [
             '<strong>Vehicle protection</strong> — Helps cover eligible repair or replacement costs.',
@@ -102,7 +102,7 @@ $insurance_items = [
         'short_title' => 'Property',
         'icon'        => '🏠',
         'url'         => home_url('/property-insurance/'),
-        'image'       => 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/property insurance.png',
         'description' => 'Protection for your home and property against covered risks and unexpected damage.',
         'why'         => [
             '<strong>Home protection</strong> — Helps protect against covered property losses.',
@@ -123,7 +123,7 @@ $insurance_items = [
         'short_title' => 'Travel',
         'icon'        => '✈️',
         'url'         => home_url('/travel-insurance/'),
-        'image'       => 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/travel insurance.png',
         'description' => 'Financial protection against unexpected trip cancellations, medical emergencies abroad, and lost luggage.',
         'why'         => [
             '<strong>Medical emergencies abroad</strong> — Covers unexpected hospitalisation and treatment costs while traveling.',
@@ -144,7 +144,7 @@ $insurance_items = [
         'short_title' => 'Govt Schemes',
         'icon'        => '🛡️',
         'url'         => home_url('/government-scheme/'),
-        'image'       => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85',
+        'image'       => get_template_directory_uri() . '/assets/images/awareness/government schemes.png',
         'description' => 'Affordable social security and insurance initiatives backed by the government for financial inclusion.',
         'why'         => [
             '<strong>Subsidized premiums</strong> — Highly affordable coverage designed for broad societal welfare.',

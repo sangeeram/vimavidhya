@@ -255,7 +255,7 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
         font-size: clamp(32px, 4vw, 46px);
         line-height: $line-tight;
 
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: -1.2px;
     }
 
@@ -771,227 +771,238 @@ $soft-blue: color-mix(in srgb, $blue 8%, $color-cream);
 
 
 // =========================================================
-// TABLET RESPONSIVE
+// RESPONSIVE FOUNDATION
 // =========================================================
-
-@media (max-width: 992px) {
-
-    .journey-section {
-        padding: $space-section 20px;
-    }
-
-    .journey-intro-card {
-        padding: 36px 38px;
-    }
-
-    .empower-section {
-
-        padding: $space-section 20px 90px;
-
-        &__grid {
-            display: grid;
-
-            grid-template-columns: repeat(
-                2,
-                minmax(0, 1fr)
-            );
-
-            gap: 22px;
-        }
-    }
-
-    .empower-pillar {
-
-        max-width: none;
-
-        &:nth-child(3) {
-
-            grid-column: 1 / -1;
-
-            width: 100%;
-            max-width: 360px;
-
-            justify-self: center;
-        }
-
-        &__card {
-            min-height: 500px;
-        }
-
-        &__image {
-            height: 190px;
-        }
-    }
+.journey-section,
+.empower-section {
+  box-sizing: border-box;
+  *, *::before, *::after { box-sizing: border-box; }
 }
 
-
-// =========================================================
-// MOBILE RESPONSIVE
-// =========================================================
-
-@media (max-width: 640px) {
-
-    .journey-section {
-
-        padding: 70px 16px;
-
-        &__header {
-            margin-bottom: 36px;
-        }
-
-        &__title {
-            font-size: 34px;
-        }
-    }
-
-    .journey-intro-card {
-
-        padding: 28px 24px;
-
-        border-radius: calc(#{$radius} - 2px);
-
-        &__text {
-            font-size: 14.5px;
-            line-height: 1.7;
-        }
-
-        &__highlight {
-
-            padding: 16px 17px;
-            gap: 11px;
-
-            &-text {
-                font-size: $text-sm;
-            }
-
-            &-subtext {
-                font-size: $text-xs + 1px;
-            }
-        }
-    }
-
-    .empower-section {
-
-        padding: 70px 16px 80px;
-
-        &__header {
-            margin-bottom: 40px;
-        }
-
-        &__title {
-            font-size: 34px;
-        }
-
-        &__tagline {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        &__grid {
-
-            display: flex;
-
-            flex-direction: column;
-            align-items: center;
-
-            gap: 20px;
-        }
-    }
-
-    .empower-pillar {
-
-        width: 100%;
-        max-width: 390px;
-
-        &:nth-child(3) {
-            width: 100%;
-            max-width: 390px;
-        }
-
-        &__card {
-
-            min-height: 500px;
-
-            padding: 14px 14px 70px;
-        }
-
-        &__image {
-            height: 200px;
-        }
-
-        &__content {
-            padding: 20px 16px 0;
-        }
-
-        &__title {
-            font-size: 23px;
-        }
-
-        &__description {
-            font-size: $text-sm;
-        }
-    }
+.journey-section__container,
+.empower-section__container {
+  width: 100%;
+  min-width: 0;
 }
 
-
-// =========================================================
-// SMALL MOBILE
-// =========================================================
-
-@media (max-width: 400px) {
-
-    .journey-section,
-    .empower-section {
-
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .journey-section__title,
-    .empower-section__title {
-        font-size: 30px;
-    }
-
-    .journey-intro-card {
-
-        padding: 24px 20px;
-
-        &__highlight {
-            flex-direction: column;
-        }
-    }
-
-    .empower-pillar {
-
-        &__card {
-            min-height: 490px;
-        }
-
-        &__image {
-            height: 185px;
-        }
-
-        &__title {
-            font-size: 22px;
-        }
-    }
+.journey-section__title,
+.empower-section__title {
+  overflow-wrap: break-word;
 }
 
+.empower-section__grid {
+  min-width: 0;
+}
 
-// =========================================================
-// ACCESSIBILITY — REDUCED MOTION
-// =========================================================
+.empower-pillar {
+  min-width: 0;
+  &__card { height: 100%; }
+  &__content { min-width: 0; }
+  &__description { overflow-wrap: break-word; }
+  &__cta { max-width: calc(100% - 24px); white-space: normal; }
+}
 
+// 1920px and larger
+@media (min-width: 1920px) {
+  .journey-section { padding: 110px 6%; }
+  .empower-section { padding: 100px 6% 130px; }
+  .journey-section__container,
+  .empower-section__container { max-width: 1700px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 48px; }
+  .journey-section__header,
+  .empower-section__header { max-width: 980px; }
+  .journey-intro-card { padding: 54px 56px; }
+  .journey-intro-card__text,
+  .empower-section__tagline { font-size: 20px; }
+  .journey-intro-card__highlight-text { font-size: 19px; }
+  .journey-intro-card__highlight-subtext { font-size: 24px; }
+  .empower-section__grid { gap: 36px; }
+  .empower-pillar { max-width: 480px; }
+  .empower-pillar__card { min-height: 600px; padding: 18px 18px 82px; }
+  .empower-pillar__image { height: 240px; }
+  .empower-pillar__content { padding: 28px 24px 0; }
+  .empower-pillar__title { font-size: 30px; }
+  .empower-pillar__description { font-size: 19px; }
+  .empower-pillar__cta { height: 48px; font-size: 16px; bottom: 14px; left: 18px; }
+}
+
+// 1600px to 1919px
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .journey-section { padding: 96px 5%; }
+  .empower-section { padding: 86px 5% 116px; }
+  .journey-section__container,
+  .empower-section__container { max-width: 1550px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 44px; }
+  .journey-intro-card { padding: 48px; }
+  .journey-intro-card__text,
+  .empower-section__tagline { font-size: 18px; }
+  .empower-section__grid { gap: 30px; }
+  .empower-pillar { max-width: 430px; }
+  .empower-pillar__card { min-height: 570px; padding-bottom: 78px; }
+  .empower-pillar__image { height: 220px; }
+  .empower-pillar__title { font-size: 28px; }
+  .empower-pillar__description { font-size: 18px; }
+}
+
+// 1440px to 1599px
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .journey-section { padding: 84px 4%; }
+  .empower-section { padding: 76px 4% 105px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 40px; }
+  .journey-intro-card { padding: 44px 40px; }
+  .empower-section__grid { gap: 26px; }
+  .empower-pillar { max-width: 390px; }
+  .empower-pillar__card { min-height: 540px; }
+  .empower-pillar__image { height: 205px; }
+  .empower-pillar__title { font-size: 26px; }
+  .empower-pillar__description { font-size: 17px; }
+}
+
+// 1280px to 1439px
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .journey-section { padding: 76px 32px; }
+  .empower-section { padding: 68px 32px 96px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 36px; }
+  .empower-section__grid { gap: 22px; }
+  .empower-pillar__card { min-height: 520px; }
+  .empower-pillar__title { font-size: 25px; }
+}
+
+// 1024px to 1279px - three columns, tighter spacing
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .journey-section { padding: 68px 24px; }
+  .empower-section { padding: 64px 24px 88px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 34px; }
+  .journey-intro-card { padding: 34px 30px; }
+  .empower-section__header { margin-bottom: 42px; }
+  .empower-section__grid { gap: 16px; }
+  .empower-pillar { max-width: none; }
+  .empower-pillar__card { min-height: 505px; padding: 12px 12px 72px; }
+  .empower-pillar__image { height: 165px; }
+  .empower-pillar__content { padding: 18px 12px 0; }
+  .empower-pillar__title { font-size: 23px; }
+  .empower-pillar__description { font-size: 15px; }
+  .empower-pillar__cta { left: 10px; bottom: 10px; padding: 0 12px; }
+}
+
+// 769px to 1023px - two cards then centered third
+@media (min-width: 769px) and (max-width: 1023px) {
+  .journey-section { padding: 60px 24px; }
+  .empower-section { padding: 60px 24px 85px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 32px; }
+  .journey-intro-card { padding: 32px 28px; }
+  .empower-section__header { margin-bottom: 38px; }
+  .empower-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .empower-pillar { max-width: none; }
+  .empower-pillar:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: min(100%, 420px);
+    justify-self: center;
+  }
+  .empower-pillar__card { min-height: 510px; }
+  .empower-pillar__image { height: 190px; }
+  .empower-pillar__title { font-size: 23px; }
+  .empower-pillar__description { font-size: 16px; }
+}
+
+// 481px to 768px - single column
+@media (min-width: 481px) and (max-width: 768px) {
+  .journey-section { padding: 58px 20px; }
+  .empower-section { padding: 58px 20px 78px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 30px; letter-spacing: -0.6px; }
+  .journey-section__header { margin-bottom: 32px; }
+  .journey-intro-card { padding: 30px 26px; }
+  .journey-intro-card__text { font-size: 16px; }
+  .journey-intro-card__highlight { padding: 18px; }
+  .empower-section__header { margin-bottom: 34px; }
+  .empower-section__tagline { font-size: 16px; }
+  .empower-section__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .empower-pillar,
+  .empower-pillar:nth-child(3) { width: 100%; max-width: 480px; }
+  .empower-pillar__card { min-height: 0; padding: 14px 14px 78px; }
+  .empower-pillar__image { height: 210px; }
+  .empower-pillar__content { padding: 22px 18px 18px; }
+  .empower-pillar__title { font-size: 23px; }
+  .empower-pillar__description { font-size: 16px; }
+  .empower-pillar__cta { bottom: 14px; }
+}
+
+// 376px to 480px
+@media (min-width: 376px) and (max-width: 480px) {
+  .journey-section { padding: 48px 16px; }
+  .empower-section { padding: 48px 16px 66px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 28px; letter-spacing: -0.5px; }
+  .journey-section__header { margin-bottom: 28px; }
+  .journey-intro-card { padding: 26px 22px; }
+  .journey-intro-card__text { font-size: 15px; }
+  .journey-intro-card__highlight { padding: 16px; gap: 10px; }
+  .journey-intro-card__highlight-text { font-size: 14px; }
+  .journey-intro-card__highlight-subtext { font-size: 16px; }
+  .empower-section__header { margin-bottom: 30px; }
+  .empower-section__tagline { font-size: 15px; }
+  .empower-section__grid { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .empower-pillar,
+  .empower-pillar:nth-child(3) { width: 100%; max-width: 390px; }
+  .empower-pillar__card { min-height: 0; padding: 12px 12px 74px; }
+  .empower-pillar__image { height: 185px; }
+  .empower-pillar__content { padding: 18px 14px 16px; }
+  .empower-pillar__title { font-size: 22px; }
+  .empower-pillar__description { font-size: 15px; }
+  .empower-pillar__cta { bottom: 12px; }
+}
+
+// 375px and smaller
+@media (max-width: 375px) {
+  .journey-section { padding: 42px 12px; }
+  .empower-section { padding: 42px 12px 60px; }
+  .journey-section__title,
+  .empower-section__title { font-size: 26px; letter-spacing: -0.4px; }
+  .journey-section__header { margin-bottom: 24px; }
+  .journey-intro-card { padding: 22px 18px; }
+  .journey-intro-card__text { font-size: 14px; line-height: 1.7; }
+  .journey-intro-card__highlight { padding: 14px; gap: 10px; flex-direction: column; }
+  .journey-intro-card__highlight-text { font-size: 14px; }
+  .journey-intro-card__highlight-subtext { font-size: 16px; }
+  .empower-section__header { margin-bottom: 26px; }
+  .empower-section__tagline { font-size: 14px; }
+  .empower-section__grid { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .empower-pillar,
+  .empower-pillar:nth-child(3) { width: 100%; max-width: 100%; }
+  .empower-pillar__card { min-height: 0; padding: 12px 12px 72px; }
+  .empower-pillar__image { height: 165px; }
+  .empower-pillar__content { padding: 16px 12px 16px; }
+  .empower-pillar__title { font-size: 21px; }
+  .empower-pillar__description { font-size: 14px; }
+  .empower-pillar__cta { bottom: 10px; left: 10px; }
+}
+
+// Accessibility
 @media (prefers-reduced-motion: reduce) {
-
-    .empower-pillar__card,
-    .empower-pillar__image img,
-    .empower-pillar__image::before,
-    .empower-pillar__title,
-    .empower-pillar__cta,
-    .empower-pillar__arrow {
-
-        transition: none !important;
-        animation: none !important;
-    }
+  .empower-pillar__card,
+  .empower-pillar__image img,
+  .empower-pillar__image::before,
+  .empower-pillar__title,
+  .empower-pillar__cta,
+  .empower-pillar__arrow {
+    transition: none !important;
+    animation: none !important;
+  }
 }

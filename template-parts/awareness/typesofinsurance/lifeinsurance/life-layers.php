@@ -24,34 +24,35 @@ For many, it’s a tax-saving receipt. For others, an investment that quietly un
         'links' => [
             [
                 'title' => __('What it is', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#what-it-is'),
+                'url'   => home_url('/life-understand/#life-insurance-basics'),
                 'icon'  => 'dashicons-shield',
             ],
             [
                 'title' => __('Why it matters', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#why-it-matters'),
+                'url'   => home_url('/life-understand/#life-why-it-matters'),
                 'icon'  => 'dashicons-admin-home',
             ],
-            [
-                'title' => __('Types', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#types'),
-                'icon'  => 'dashicons-list-view',
-            ],
-            [
-                'title' => __('Who can buy', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#who-can-buy'),
+             [
+                'title' => __('Why it \'s not an investment', 'vima-vidya'),
+                'url'   => home_url('/life-understand/#life-not-investment-section'),
                 'icon'  => 'dashicons-groups',
             ],
             [
-                'title' => __('Impact', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#impact'),
-                'icon'  => 'dashicons-shield-alt',
+                'title' => __('Types', 'vima-vidya'),
+                'url'   => home_url('/life-understand/#life-insurance-types'),
+                'icon'  => 'dashicons-list-view',
             ],
-            [
-                'title' => __('10 things to know', 'vima-vidya'),
-                'url'   => home_url('/life-understand/#ten-things'),
-                'icon'  => 'dashicons-location',
-            ],
+           
+            // [
+            //     'title' => __('Impact', 'vima-vidya'),
+            //     'url'   => home_url('/life-understand/#impact'),
+            //     'icon'  => 'dashicons-shield-alt',
+            // ],
+            // [
+            //     'title' => __('10 things to know', 'vima-vidya'),
+            //     'url'   => home_url('/life-understand/#ten-things'),
+            //     'icon'  => 'dashicons-location',
+            // ],
         ],
 
         'cta_text' => __('Start with the basics', 'vima-vidya'),
@@ -82,22 +83,22 @@ It fails when cover is sized to affordability instead of responsibility, when co
             ],
             [
                 'title' => __('Suitability', 'vima-vidya'),
-                'url'   => home_url('/life-evaluate/#suitability'),
+                'url'   => home_url('/life-evaluate/#evaluate-life-lifestages'),
                 'icon'  => 'dashicons-yes-alt',
             ],
             [
                 'title' => __('Fine Print', 'vima-vidya'),
-                'url'   => home_url('/life-evaluate/#fine-print'),
+                'url'   => home_url('/life-evaluate/#evaluate-life-policy-considerations'),
                 'icon'  => 'dashicons-media-document',
             ],
             [
                 'title' => __('Myths', 'vima-vidya'),
-                'url'   => home_url('/life-evaluate/#myth-reality'),
+                'url'   => home_url('/life-evaluate/#life-evaluate-myths'),
                 'icon'  => 'dashicons-info',
             ],
             [
                 'title' => __('Real Scenarios', 'vima-vidya'),
-                'url'   => home_url('/life-evaluate/#lived-experiences'),
+                'url'   => home_url('/life-evaluate/#evaluate-life-real-scenerios'),
                 'icon'  => 'dashicons-format-video',
             ],
         ],
@@ -133,11 +134,11 @@ They’re caused by wrong disclosures, lapsed premiums, missing nominees, and fa
                 'url'   => home_url('/life-act/#dos-donts'),
                 'icon'  => 'dashicons-editor-help',
             ],
-            [
-                'title' => __('What you can claim', 'vima-vidya'),
-                'url'   => home_url('/life-act/#what-you-can-claim'),
-                'icon'  => 'dashicons-yes',
-            ],
+            // [
+            //     'title' => __('What you can claim', 'vima-vidya'),
+            //     'url'   => home_url('/life-act/#what-you-can-claim'),
+            //     'icon'  => 'dashicons-yes',
+            // ],
             [
                 'title' => __('Claim Process', 'vima-vidya'),
                 'url'   => home_url('/life-act/#claims-process'),
@@ -145,7 +146,7 @@ They’re caused by wrong disclosures, lapsed premiums, missing nominees, and fa
             ],
             [
                 'title' => __('Checklist', 'vima-vidya'),
-                'url'   => home_url('/life-act/#checklist'),
+                'url'   => home_url('/life-act/#life-checklist'),
                 'icon'  => 'dashicons-clipboard',
             ],
         ],

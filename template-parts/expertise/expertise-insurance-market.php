@@ -16,9 +16,9 @@
         'cards' => [
             [
                 'slides' => [
-                    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=85&w=1000'
+                   get_template_directory_uri() . '/assets/images/expertise/lloyd-image1.png',
+                   get_template_directory_uri() . '/assets/images/expertise/lloyd-image2.png',
+                   get_template_directory_uri() . '/assets/images/expertise/lloyd-image3.png'
                 ],
                 'tags' => ['Global', 'Standard'],
                 'rating' => '4.9',
@@ -30,9 +30,9 @@
             ],
             [
                 'slides' => [
-                    'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=85&w=1000'
+                   get_template_directory_uri() . '/assets/images/expertise/london-image1.png',
+                   get_template_directory_uri() . '/assets/images/expertise/london-image2.png',
+                   get_template_directory_uri() . '/assets/images/expertise/london-image3.png'
                 ],
                 'tags' => ['Market', 'Clauses'],
                 'rating' => '4.8',
@@ -44,9 +44,9 @@
             ],
             [
                 'slides' => [
-                    'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=85&w=1000',
-                    'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=85&w=1000'
+                    get_template_directory_uri() . '/assets/images/expertise/us-image1.png',
+                    get_template_directory_uri() . '/assets/images/expertise/us-image2.png',
+                    get_template_directory_uri() . '/assets/images/expertise/us-image3.png'
                 ],
                 'tags' => ['U.S.', 'Practices'],
                 'rating' => '4.7',

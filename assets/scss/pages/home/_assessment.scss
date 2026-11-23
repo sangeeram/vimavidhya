@@ -3,7 +3,7 @@
    DYNAMIC ASSESSMENT FLIP CARDS
 ========================================================= */
 @use "../../abstracts/variables" as *;
-:root {
+.vv-assessment-section {
     --navy: #{$color-navy};
     --blue: #{$color-blue};
     --cream: #{$color-cream};
@@ -605,73 +605,6 @@
     }
 
 
-    /* =====================================================
-        TABLET
-    ===================================================== */
-
-    @media (max-width: 1050px) {
-
-        .vv-assessment-grid {
-            grid-template-columns: repeat(
-                2,
-                minmax(0, 1fr)
-            );
-        }
-
-        .vv-assessment-card {
-            height: 500px;
-        }
-    }
-
-
-    /* =====================================================
-        MOBILE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-        padding: $space-section-sm 18px;
-
-        .vv-assessment-header {
-
-            h2 {
-                font-size: 30px;
-            }
-        }
-
-
-        .vv-assessment-grid {
-            grid-template-columns: 1fr;
-
-            gap: $space-element;
-        }
-
-
-        .vv-assessment-card {
-            height: 520px;
-        }
-
-
-        .vv-card-front,
-        .vv-card-back {
-            padding: 26px;
-        }
-
-
-        .vv-card-title {
-            font-size: 24px;
-        }
-
-
-        .vv-recommended-option {
-            font-size: 78px;
-        }
-
-
-        .vv-recommended-text {
-            font-size: $text-lg;
-        }
-    }
 }
 
 .vv-assessment-footer {
@@ -702,4 +635,190 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 22px rgba(18, 59, 105, 0.2);
   }
+}
+// =========================================================
+// RESPONSIVE ASSESSMENT LAYOUT
+// =========================================================
+.vv-assessment-section {
+    --va-heading: 24px;
+    --va-title: 19px;
+    --va-body: 14px;
+    --va-padding: 16px;
+    --va-gap: 16px;
+    --va-height: 440px;
+    --va-columns: 1;
+    --va-answer: 56px;
+    --va-section: 36px;
+    --va-side: 12px;
+    padding: var(--va-section) var(--va-side);
+    width: 100%;
+    min-width: 0;
+    &, *, *::before, *::after { box-sizing: border-box; }
+    .vv-assessment-header {
+        margin-bottom: clamp(24px, 3vw, 52px);
+        h2 { font-size: var(--va-heading); }
+        p { font-size: var(--va-body); }
+    }
+    .vv-assessment-grid {
+        grid-template-columns: repeat(var(--va-columns), minmax(0, 1fr));
+        gap: var(--va-gap);
+        align-items: stretch;
+    }
+    // Overlap faces in a grid so the taller face determines height.
+    .vv-assessment-card { height: auto; min-height: var(--va-height); min-width: 0; display: grid; }
+    .vv-flip-card { display: grid; grid-template-columns: minmax(0, 1fr); height: auto; min-height: 100%; }
+    .vv-card-face { position: relative; inset: auto; grid-area: 1 / 1; height: auto; min-width: 0; overflow-wrap: anywhere; }
+    .vv-card-front, .vv-card-back { padding: var(--va-padding); }
+    .vv-card-title { font-size: var(--va-title); }
+    .vv-question, .vv-option-text { font-size: var(--va-body); }
+    .vv-option { min-width: 0; padding: 8px 12px; }
+    .vv-option-text { min-width: 0; }
+    .vv-options { margin-top: clamp(14px, 1.5vw, 22px); }
+    .vv-card-number { width: clamp(38px, 3vw, 48px); height: clamp(38px, 3vw, 48px); margin-bottom: 14px; }
+    .vv-card-divider { flex-shrink: 0; margin: 14px 0; }
+    .vv-card-action { flex-shrink: 0; text-align: center; }
+    .vv-recommended-option { font-size: var(--va-answer); }
+    .vv-recommended-text { font-size: calc(var(--va-body) + 3px); max-width: 100%; }
+    .vv-answer-title { font-size: var(--va-title); }
+    .vv-info-content, .vv-takeaway-content { font-size: var(--va-body); }
+    .vv-info-box, .vv-takeaway-box { padding: clamp(10px, 1vw, 17px); }
+    .vv-back-action { margin-top: 14px; }
+    .vv-assessment-footer { margin-top: clamp(24px, 3vw, 48px); }
+    .vv-view-faq-btn { max-width: 100%; min-height: 44px; padding: 12px 24px; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+    @media (min-width: 376px) {
+        --va-heading: 28px;
+        --va-title: 22px;
+        --va-body: 14px;
+        --va-padding: 20px;
+        --va-gap: 18px;
+        --va-height: 480px;
+        --va-columns: 1;
+        --va-answer: 60px;
+        --va-section: 40px;
+        --va-side: 16px;
+    }
+    @media (min-width: 481px) {
+        --va-heading: 30px;
+        --va-title: 22px;
+        --va-body: 15px;
+        --va-padding: 24px;
+        --va-gap: 20px;
+        --va-height: 480px;
+        --va-columns: 1;
+        --va-answer: 64px;
+        --va-section: 48px;
+        --va-side: 20px;
+    }
+    @media (min-width: 701px) {
+        --va-heading: 30px;
+        --va-title: 22px;
+        --va-body: 15px;
+        --va-padding: 22px;
+        --va-gap: 20px;
+        --va-height: 500px;
+        --va-columns: 2;
+        --va-answer: 64px;
+        --va-section: 50px;
+        --va-side: 24px;
+    }
+    @media (min-width: 1024px) {
+        --va-heading: 32px;
+        --va-title: 23px;
+        --va-body: 15px;
+        --va-padding: 24px;
+        --va-gap: 24px;
+        --va-height: 500px;
+        --va-columns: 2;
+        --va-answer: 66px;
+        --va-section: 60px;
+        --va-side: 28px;
+    }
+    @media (min-width: 1100px) {
+        --va-heading: 34px;
+        --va-title: 23px;
+        --va-body: 15px;
+        --va-padding: 22px;
+        --va-gap: 20px;
+        --va-height: 520px;
+        --va-columns: 3;
+        --va-answer: 66px;
+        --va-section: 60px;
+        --va-side: 28px;
+    }
+    @media (min-width: 1280px) {
+        --va-heading: 34px;
+        --va-title: 24px;
+        --va-body: 15px;
+        --va-padding: 26px;
+        --va-gap: 24px;
+        --va-height: 520px;
+        --va-columns: 3;
+        --va-answer: 68px;
+        --va-section: 65px;
+        --va-side: 32px;
+    }
+    @media (min-width: 1366px) {
+        --va-heading: 36px;
+        --va-title: 25px;
+        --va-body: 15px;
+        --va-padding: 28px;
+        --va-gap: 26px;
+        --va-height: 530px;
+        --va-columns: 3;
+        --va-answer: 70px;
+        --va-section: 70px;
+        --va-side: 36px;
+    }
+    @media (min-width: 1440px) {
+        --va-heading: 38px;
+        --va-title: 26px;
+        --va-body: 16px;
+        --va-padding: 30px;
+        --va-gap: 28px;
+        --va-height: 540px;
+        --va-columns: 3;
+        --va-answer: 72px;
+        --va-section: 80px;
+        --va-side: 40px;
+    }
+    @media (min-width: 1536px) {
+        --va-heading: 40px;
+        --va-title: 27px;
+        --va-body: 16px;
+        --va-padding: 32px;
+        --va-gap: 30px;
+        --va-height: 550px;
+        --va-columns: 3;
+        --va-answer: 74px;
+        --va-section: 85px;
+        --va-side: 44px;
+    }
+    @media (min-width: 1600px) {
+        --va-heading: 44px;
+        --va-title: 28px;
+        --va-body: 17px;
+        --va-padding: 34px;
+        --va-gap: 32px;
+        --va-height: 560px;
+        --va-columns: 3;
+        --va-answer: 76px;
+        --va-section: 90px;
+        --va-side: 48px;
+    }
+    @media (min-width: 1920px) {
+        --va-heading: 48px;
+        --va-title: 30px;
+        --va-body: 18px;
+        --va-padding: 36px;
+        --va-gap: 36px;
+        --va-height: 580px;
+        --va-columns: 3;
+        --va-answer: 80px;
+        --va-section: 100px;
+        --va-side: 60px;
+    }
+    @media (min-width: 321px) and (max-width: 375px) { --va-heading: 26px; --va-title: 20px; --va-height: 460px; }
+    @media (prefers-reduced-motion: reduce) {
+        .vv-flip-card, .vv-option, .vv-view-faq-btn { transition: none; }
+    }
 }

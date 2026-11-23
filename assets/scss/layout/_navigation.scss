@@ -1,955 +1,1331 @@
 @use "../abstracts/variables" as *;
+
 // ========================================
+
 // VIMA VIDYA
+
 // NAVIGATION COMPONENT
+
 // ========================================
 
 /* --- Component Specific Glass Tokens (Derived from System) --- */
+
 $nav-glass-bg: linear-gradient(
+
   180deg,
+
   rgba($color-white, 0.88) 0%,
+
   rgba($color-white, 0.68) 60%,
+
   rgba($color-white, 0) 100%
+
 );
+
 $nav-dark-glass: rgba($color-navy-dark, 0.97);
 
 /* --- Header Layout --- */
+
 .site-header {
+
   position: absolute;
+
   top: 0;
+
   left: 0;
+
   z-index: 1000;
+
   width: 100%;
+
   font-family: $font-primary;
+
   background: $nav-glass-bg;
+
   backdrop-filter: blur(10px);
+
   -webkit-backdrop-filter: blur(10px);
+
   transition: background $transition-slow, backdrop-filter $transition-slow, box-shadow $transition-slow;
 
   .navbar-container {
+
     width: min(88%, $container-wide);
+
     min-height: 82px;
+
     margin: 0 auto;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: $space-element;
+
   }
 
   /* Logo */
+
   .navbar-logo {
+
     flex: 0 0 auto;
+
     display: flex;
+
     align-items: center;
 
     .logo-link {
+
       display: inline-flex;
+
       align-items: center;
+
       text-decoration: none;
+
       outline: none;
 
       .logo-img {
+
         display: block;
+
         width: 225px;
+
         height: auto;
+
         max-width: 100%;
+
         object-fit: contain;
+
       }
+
     }
+
   }
 
   /* Navigation Base */
+
   .main-navigation {
+
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
+
     gap: $space-element;
+
     margin-left: auto;
+
   }
 
   .nav-menu {
+
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
+
     gap: $space-element;
+
     margin: 0;
+
     padding: 0;
+
     list-style: none;
 
     li {
+
       position: relative;
+
       margin: 0;
+
       padding: 0;
+
       list-style: none;
 
       &::before,
+
       &::after {
+
         display: none;
+
       }
+
     }
 
     /* Top-Level Menu Items */
+
     > li {
+
       position: relative;
 
       > a {
+
         position: relative;
+
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
+
         min-height: 82px;
+
         padding: 0;
+
         color: $color-text;
+
         background: transparent;
+
         text-decoration: none;
+
         font-family: $font-primary;
+
         font-size: $text-base;
+
         font-weight: 700;
+
         line-height: $line-tight;
+
         white-space: nowrap;
+
         outline: none;
+
         transition: color $transition-fast;
 
         /* Active/Hover Indicator Bar */
+
         &::after {
+
           content: "";
+
           position: absolute;
+
           left: 0;
+
           bottom: 18px;
+
           width: 0;
+
           height: 2px;
+
           border-radius: $radius-pill;
+
           background: $color-orange;
+
           transition: width $transition;
+
         }
+
       }
 
       &:hover > a,
+
       &.current-menu-item > a,
+
       &.current-menu-ancestor > a {
+
         color: $color-navy;
 
         &::after {
+
           width: 100%;
+
         }
+
       }
 
       /* Dropdown Arrow Indicator */
+
       &.menu-item-has-children {
+
         > a {
+
           padding-right: 15px;
 
           &::before {
+
             content: "";
+
             display: block;
+
             position: absolute;
+
             top: 50%;
+
             right: 1px;
+
             width: 5px;
+
             height: 5px;
+
             border-right: 1px solid rgba($color-text, 0.65);
+
             border-bottom: 1px solid rgba($color-text, 0.65);
+
             transform: translateY(-70%) rotate(45deg);
+
             transition: transform $transition-fast;
+
           }
+
         }
 
         &:hover > a::before {
+
           transform: translateY(-35%) rotate(225deg);
+
         }
+
       }
 
       /* Level 1 Submenu */
+
       > .sub-menu {
+
         position: absolute;
+
         top: calc(100% - 4px);
+
         left: 50%;
+
         z-index: 100;
+
         min-width: 225px;
+
         margin: 0;
+
         padding: $space-small;
+
         list-style: none;
+
         background: $nav-dark-glass;
+
         border: 1px solid $color-border-dark;
+
         border-radius: $radius-md;
+
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
         backdrop-filter: blur(18px);
+
         -webkit-backdrop-filter: blur(18px);
+
         opacity: 0;
+
         visibility: hidden;
+
         pointer-events: none;
+
         transform: translate(-50%, 10px);
+
         transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
 
         > li {
+
           position: relative;
+
           width: 100%;
 
           > a {
+
             position: relative;
+
             display: flex;
+
             align-items: center;
+
             width: 100%;
+
             min-height: 40px;
+
             padding: 8px $space-small;
+
             border-radius: $radius-sm;
+
             color: $color-text-muted;
+
             background: transparent;
+
             text-decoration: none;
+
             font-size: $text-sm;
+
             font-weight: 400;
+
             white-space: nowrap;
+
             transition: color $transition-fast, background $transition-fast, padding-left $transition-fast;
 
             &::after {
+
               display: none;
+
             }
 
             &:hover {
+
               padding-left: 16px;
+
               color: $color-white;
+
               background: rgba($color-white, 0.08);
+
             }
+
           }
 
           &.current-menu-item > a {
+
             color: $color-white;
+
             background: rgba($color-blue, 0.15);
 
             &::before {
+
               content: "";
+
               width: 6px;
+
               height: 6px;
+
               flex: 0 0 6px;
+
               margin-right: 8px;
+
               border-radius: 50%;
+
               background: $color-success;
+
             }
+
           }
 
           /* Level 2 Submenu */
+
           &.menu-item-has-children {
+
             > a {
+
               padding-right: 25px;
 
               &::after {
+
                 content: "";
+
                 display: block;
+
                 position: absolute;
+
                 right: 12px;
+
                 top: 50%;
+
                 width: 5px;
+
                 height: 5px;
+
                 border-right: 1px solid rgba($color-white, 0.6);
+
                 border-bottom: 1px solid rgba($color-white, 0.6);
+
                 transform: translateY(-50%) rotate(-45deg);
+
               }
+
             }
 
             > .sub-menu {
+
               position: absolute;
+
               top: -$space-small;
+
               left: calc(100% + 8px);
+
               min-width: 210px;
+
               margin: 0;
+
               padding: $space-small;
+
               background: $nav-dark-glass;
+
               border: 1px solid $color-border-dark;
+
               border-radius: $radius-md;
+
               box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
               backdrop-filter: blur(18px);
+
               -webkit-backdrop-filter: blur(18px);
+
               opacity: 0;
+
               visibility: hidden;
+
               pointer-events: none;
+
               transform: translateX(8px);
+
               transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
+
             }
 
             &:hover > .sub-menu {
+
               opacity: 1;
+
               visibility: visible;
+
               pointer-events: auto;
+
               transform: translateX(0);
+
             }
+
           }
+
         }
+
       }
 
       &:hover > .sub-menu {
+
         opacity: 1;
+
         visibility: visible;
+
         pointer-events: auto;
+
         transform: translate(-50%, 0);
+
       }
+
     }
+
   }
 
   /* Language Switcher (GTranslate) */
+
   .vv-language-switcher {
+
     flex: 0 0 auto;
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 6px;
+
     min-height: 38px;
+
     padding: 0 10px;
+
     border: 1px solid $color-border;
+
     border-radius: $radius-sm;
+
     background: rgba($color-white, 0.78);
+
     color: $color-navy;
+
     font-size: $text-xs;
+
     font-weight: 600;
+
     white-space: nowrap;
+
     transition: background $transition-fast, border-color $transition-fast;
 
     &:hover {
+
       background: $color-white;
+
       border-color: rgba($color-navy, 0.25);
+
     }
 
     .vv-language-icon {
+
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-size: $text-sm;
+
       line-height: 1;
+
     }
 
     .gtranslate_wrapper,
+
     .gt_switcher_wrapper,
+
     .gt_float_wrapper {
+
       display: inline-flex;
+
       align-items: center;
+
       font-family: $font-primary;
+
       font-size: $text-xs;
+
     }
 
     select,
+
     .gt_selector {
+
       border: 0;
+
       background: transparent;
+
       color: $color-navy;
+
       font-family: $font-primary;
+
       font-size: $text-xs;
+
       font-weight: 600;
+
       cursor: pointer;
+
       outline: none;
+
       padding-right: 2px;
+
     }
 
     a.glink {
+
       color: $color-navy;
+
       text-decoration: none;
+
       font-weight: 600;
+
       padding: 2px 4px;
+
       border-radius: $radius-sm;
 
       &:hover {
+
         background: rgba($color-navy, 0.06);
+
       }
+
     }
+
   }
 
   /* Primary Call to Action Button */
+
   .header-learning-btn {
+
     flex: 0 0 auto;
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 8px;
+
     min-height: 40px;
+
     padding: 0 16px;
+
     border: 1px solid $color-orange;
+
     border-radius: $radius-sm;
+
     background: $color-orange;
+
     color: $color-white;
+
     text-decoration: none;
+
     font-size: $text-sm;
+
     font-weight: 600;
+
     white-space: nowrap;
+
     box-shadow: 0 7px 20px rgba($color-orange, 0.25);
+
     transition: background $transition-fast, transform $transition-fast, box-shadow $transition-fast;
 
     &:hover {
+
       background: darken($color-orange, 5%);
+
       transform: translateY(-1px);
+
       box-shadow: 0 9px 25px rgba($color-orange, 0.35);
 
       .learning-arrow {
+
         transform: translate(2px, -2px);
+
       }
+
     }
 
     .learning-arrow {
+
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
       width: 20px;
+
       height: 20px;
+
       border-radius: 50%;
+
       background: rgba($color-white, 0.2);
+
       color: $color-white;
+
       font-size: $text-xs;
+
       transition: transform $transition-fast;
+
     }
+
   }
 
   /* Mobile Hamburger Toggle */
+
   .menu-toggle {
+
     display: none;
+
     flex: 0 0 auto;
+
     width: 42px;
+
     height: 42px;
+
     padding: 0;
+
     border: 1px solid $color-border;
+
     border-radius: $radius-sm;
-    background: rgba($color-white, 0.72);
+
+    background: $color-white;
+
     color: $color-navy;
+
     cursor: pointer;
+
     align-items: center;
+
     justify-content: center;
 
     .hamburger-bar {
+
       position: relative;
+
       display: block;
+
       width: 20px;
+
       height: 2px;
+
       border-radius: $radius-pill;
+
       background: $color-navy;
+
       transition: background $transition;
 
       &::before,
+
       &::after {
+
         content: "";
+
         position: absolute;
+
         left: 0;
+
         width: 20px;
+
         height: 2px;
+
         border-radius: $radius-pill;
+
         background: $color-navy;
+
         transition: transform $transition, top $transition;
+
       }
 
       &::before { top: -6px; }
+
       &::after { top: 6px; }
+
     }
 
     &[aria-expanded="true"] .hamburger-bar {
+
       background: transparent;
 
       &::before {
+
         top: 0;
+
         transform: rotate(45deg);
+
       }
+
       &::after {
+
         top: 0;
+
         transform: rotate(-45deg);
+
       }
+
     }
+
   }
 
   /* Sticky State */
+
   &.is-sticky {
+
     position: fixed;
+
     background: rgba($color-white, 0.94);
+
     backdrop-filter: blur(18px);
+
     -webkit-backdrop-filter: blur(18px);
+
     box-shadow: 0 8px 30px rgba($color-navy, 0.12);
 
     .navbar-container {
+
       min-height: 70px;
+
     }
 
     .nav-menu > li > a {
+
       min-height: 70px;
 
       &::after {
+
         bottom: 14px;
+
       }
+
     }
 
     .logo-img {
+
       width: 200px;
+
     }
+
   }
+
 }
 
-// ========================================
-// RESPONSIVE BREAKPOINTS
-// ========================================
 
-/* Tablet & Desktop Adjustments */
-@media (max-width: 1200px) {
+// ============================================================
+// RESPONSIVE DESKTOP NAVIGATION — VIEWPORT WIDTH, NOT INCHES
+// These rules intentionally override the base desktop sizing.
+// ============================================================
+
+// Large desktop: 1920px and wider
+@media (min-width: 1920px) {
   .site-header {
-    .navbar-container {
-      width: calc(100% - 60px);
-      gap: 16px;
-    }
-
-    .main-navigation {
-      gap: 14px;
-    }
-
-    .nav-menu {
-      gap: $space-small;
-
-      > li > a {
-        font-size: $text-sm;
-      }
-    }
-
-    .vv-language-switcher {
-      padding: 0 8px;
+    .navbar-container { width: calc(100% - 96px); max-width: none; min-height: 104px; gap: 28px; }
+    .navbar-logo .logo-link .logo-img { width: 265px; }
+    .main-navigation { gap: 24px; min-width: 0; }
+    .nav-menu { gap: 26px; }
+    .nav-menu > li > a { font-size: 22px; min-height: 104px; }
+    .nav-menu > li > .sub-menu > li > a { font-size: 17px; }
+    .vv-language-switcher { font-size: 16px; min-height: 46px; padding-inline: 14px; }
+    .vv-language-switcher select, .vv-language-switcher .gt_selector,
+    .vv-language-switcher .gtranslate_wrapper,
+    .vv-language-switcher .gt_switcher_wrapper,
+    .vv-language-switcher .gt_float_wrapper { font-size: 16px; }
+    .header-learning-btn { font-size: 17px; min-height: 48px; padding-inline: 20px; }
+    &.is-sticky {
+      .navbar-container { min-height: 88px; }
+      .nav-menu > li > a { min-height: 88px; }
+      .navbar-logo .logo-link .logo-img { width: 235px; }
     }
   }
 }
 
-/* Mobile Viewports (<= 900px) */
+// 1600–1919px
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 80px); max-width: none; min-height: 92px; gap: 20px; }
+    .navbar-logo .logo-link .logo-img { width: 235px; }
+    .main-navigation { gap: 18px; min-width: 0; }
+    .nav-menu { gap: 20px; }
+    .nav-menu > li > a { font-size: 19px; min-height: 92px; }
+    .nav-menu > li > .sub-menu > li > a { font-size: 16px; }
+    .header-learning-btn { font-size: 15px; min-height: 44px; }
+    &.is-sticky {
+      .navbar-container, .nav-menu > li > a { min-height: 78px; }
+      .navbar-logo .logo-link .logo-img { width: 210px; }
+    }
+  }
+}
+
+// 1536–1599px
+@media (min-width: 1536px) and (max-width: 1599px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 64px); min-height: 88px; gap: 16px; }
+    .navbar-logo .logo-link .logo-img { width: 220px; }
+    .main-navigation { gap: 14px; min-width: 0; }
+    .nav-menu { gap: 16px; }
+    .nav-menu > li > a { font-size: 18px; min-height: 88px; }
+    .header-learning-btn { font-size: 14px; padding-inline: 14px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 195px; }
+  }
+}
+
+// 1440–1535px
+@media (min-width: 1440px) and (max-width: 1535px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 56px); gap: 14px; }
+    .navbar-logo .logo-link .logo-img { width: 205px; }
+    .main-navigation { gap: 12px; min-width: 0; }
+    .nav-menu { gap: 14px; }
+    .nav-menu > li > a { font-size: 17px; }
+    .header-learning-btn { font-size: 13px; padding-inline: 12px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 185px; }
+  }
+}
+
+// 1366–1439px
+@media (min-width: 1366px) and (max-width: 1439px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 48px); gap: 12px; }
+    .navbar-logo .logo-link .logo-img { width: 195px; }
+    .main-navigation { gap: 10px; min-width: 0; }
+    .nav-menu { gap: 12px; }
+    .nav-menu > li > a { font-size: 16px; }
+    .header-learning-btn { font-size: 13px; padding-inline: 12px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 180px; }
+  }
+}
+
+// 1280–1365px
+@media (min-width: 1280px) and (max-width: 1365px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 40px); gap: 10px; }
+    .navbar-logo .logo-link .logo-img { width: 180px; }
+    .main-navigation { gap: 9px; min-width: 0; }
+    .nav-menu { gap: 10px; }
+    .nav-menu > li > a { font-size: 15px; }
+    .vv-language-switcher { padding-inline: 7px; }
+    .header-learning-btn { font-size: 12px; padding-inline: 10px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 165px; }
+  }
+}
+
+// 1200–1279px
+@media (min-width: 1200px) and (max-width: 1279px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 32px); gap: 9px; }
+    .navbar-logo .logo-link .logo-img { width: 165px; }
+    .main-navigation { gap: 8px; min-width: 0; }
+    .nav-menu { gap: 8px; }
+    .nav-menu > li > a { font-size: 14px; }
+    .vv-language-switcher { padding-inline: 6px; }
+    .header-learning-btn { font-size: 12px; padding-inline: 9px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 150px; }
+  }
+}
+
+// 1024–1199px
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 28px); gap: 8px; }
+    .navbar-logo .logo-link .logo-img { width: 145px; }
+    .main-navigation { gap: 7px; min-width: 0; }
+    .nav-menu { gap: 6px; }
+    .nav-menu > li > a { font-size: 13px; }
+    .vv-language-switcher { padding-inline: 5px; }
+    .header-learning-btn { font-size: 12px; padding-inline: 8px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 135px; }
+  }
+}
+
+// 901–1023px: compact desktop menu, no hamburger
+@media (min-width: 901px) and (max-width: 1023px) {
+  .site-header {
+    .navbar-container { width: calc(100% - 24px); gap: 6px; }
+    .navbar-logo .logo-link .logo-img { width: 125px; }
+    .main-navigation { gap: 5px; min-width: 0; }
+    .nav-menu { gap: 4px; }
+    .nav-menu > li > a { font-size: 12px; }
+    .vv-language-switcher { padding-inline: 4px; }
+    .header-learning-btn { font-size: 11px; padding-inline: 6px; }
+    &.is-sticky .navbar-logo .logo-link .logo-img { width: 120px; }
+  }
+}
+
+// Allow flex children to shrink instead of forcing overflow.
+@media (min-width: 901px) {
+  .site-header .navbar-container { max-width: none; }
+  .site-header .main-navigation { min-width: 0; }
+}
+
 @media (max-width: 900px) {
+
   .site-header {
-    background: linear-gradient(
-      180deg,
-      rgba($color-white, 0.92),
-      rgba($color-white, 0.72),
-      rgba($color-white, 0)
-    );
+
+    background: linear-gradient(180deg, rgba($color-white, .92), rgba($color-white, .72), rgba($color-white, 0));
 
     .navbar-container {
+
       position: relative;
+
       width: calc(100% - 32px);
+
       min-height: 72px;
+
+      gap: 12px;
+
     }
 
-    .logo-img {
-      width: 160px;
-    }
+    .navbar-logo .logo-link .logo-img { width: clamp(140px, 23vw, 180px); }
 
-    .menu-toggle {
-      display: flex;
-      margin-left: auto;
-    }
+    .menu-toggle { display: flex; margin-left: auto; }
 
     .main-navigation {
+
       position: absolute;
+
       top: calc(100% + 8px);
+
       left: 0;
+
       width: 100%;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: stretch;
+
       gap: 12px;
+
       margin: 0;
+
       padding: 16px;
+
       border: 1px solid $color-border-dark;
+
       border-radius: $radius-md;
+
       background: $nav-dark-glass;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+
       opacity: 0;
+
       visibility: hidden;
+
       pointer-events: none;
+
       transform: translateY(-10px);
+
       transition: opacity $transition-fast, visibility $transition-fast, transform $transition-fast;
 
+      max-height: calc(100dvh - 100px);
+
+      overflow-y: auto;
+
+      overscroll-behavior: contain;
+
       &.is-active {
+
         opacity: 1;
+
         visibility: visible;
+
         pointer-events: auto;
+
         transform: translateY(0);
+
       }
+
     }
 
     .nav-menu {
+
       width: 100%;
+
       flex-direction: column;
+
       align-items: stretch;
+
       gap: 4px;
 
       > li {
+
         width: 100%;
 
         > a {
+
           width: 100%;
+
           min-height: 44px;
+
           justify-content: flex-start;
-          padding: 0 $space-small;
+
+          padding: 8px 12px;
+
           color: $color-text-light;
+
           font-size: $text-sm;
 
-          &::after {
-            left: $space-small;
-            bottom: 5px;
-          }
+          white-space: normal;
+
+          &::after { left: 12px; bottom: 5px; }
+
         }
 
-        &.menu-item-has-children > a::before {
-          right: 15px;
-          border-color: rgba($color-white, 0.7);
-        }
+        &.menu-item-has-children > a::before { right: 15px; border-color: rgba($color-white,.7); }
 
         > .sub-menu {
+
           position: static;
+
           width: 100%;
+
           min-width: 0;
+
           margin: 4px 0;
+
           padding: 6px 8px;
-          background: rgba(0, 0, 0, 0.2);
+
+          background: rgba(0,0,0,.2);
+
           border: 0;
+
           box-shadow: none;
+
           backdrop-filter: none;
+
           opacity: 1;
+
           visibility: visible;
+
           pointer-events: auto;
+
           transform: none;
 
-          > li > a {
-            min-height: 38px;
-            padding: 8px 12px 8px 20px;
-            color: $color-text-muted;
-            font-size: $text-xs;
+          > li {
+
+            > a { min-height: 38px; padding: 8px 12px 8px 20px; color: $color-text-muted; font-size: $text-xs; white-space: normal; }
+
+            > .sub-menu {
+
+              position: static;
+
+              width: 100%;
+
+              min-width: 0;
+
+              margin: 4px 0;
+
+              opacity: 1;
+
+              visibility: visible;
+
+              pointer-events: auto;
+
+              transform: none;
+
+            }
+
           }
+
         }
+
       }
+
     }
 
     .vv-language-switcher {
+
       width: 100%;
+
       justify-content: flex-start;
+
       min-height: 42px;
+
       padding: 0 12px;
-      background: rgba($color-white, 0.08);
+
+      background: rgba($color-white,.08);
+
       border-color: $color-border-dark;
+
       color: $color-white;
 
-      &:hover {
-        background: rgba($color-white, 0.14);
-        border-color: $color-border-dark;
-      }
+      select, .gt_selector, a.glink { color: $color-white; }
 
-      select,
-      .gt_selector,
-      a.glink {
-        color: $color-white;
+      option { background: $color-navy-dark; color: $color-white; }
 
-        option {
-          background: $color-navy-dark;
-          color: $color-white;
-        }
-      }
     }
 
-    .header-learning-btn {
-      width: 100%;
-      min-height: 44px;
-      margin-top: 0;
-      font-size: $text-sm;
+    .header-learning-btn { width: 100%; min-height: 44px; }
+
+    &.is-sticky {
+
+      .navbar-container { min-height: 68px; }
+
+      .navbar-logo .logo-link .logo-img { width: clamp(135px, 22vw, 170px); }
+
     }
+
   }
+
 }
 
-/* Extra Small Devices */
 @media (max-width: 480px) {
+
   .site-header {
-    .navbar-container {
-      width: calc(100% - 24px);
-      min-height: 64px;
-    }
 
-    .logo-img {
-      width: 140px;
-    }
+    .navbar-container { width: calc(100% - 24px); min-height: 64px; }
 
-    .menu-toggle {
-      width: 38px;
-      height: 38px;
-    }
+    .navbar-logo .logo-link .logo-img { width: clamp(125px, 37vw, 150px); }
+
+    .menu-toggle { width: 40px; height: 40px; }
+
+    .main-navigation { padding: 12px; }
+
+    &.is-sticky .navbar-container { min-height: 64px; }
+
   }
+
 }
 
-/* ==========================================
-   TAMIL LANGUAGE — NAVIGATION FONT ADJUSTMENT
-   ========================================== */
 
-html[lang="ta"],
-html[lang="ta-IN"],
-html[lang^="ta-"] {
-
-  .site-header {
-
-    // Main navigation links
+// ============================================================
+// TAMIL ONLY: boxed top-level items, retained from original design.
+// Compact typography helps longer translated labels fit.
+// ============================================================
+@media (min-width: 901px) {
+  html:is([lang="ta"], [lang="ta-IN"], [lang^="ta-"], .vv-tamil) .site-header {
+    .nav-menu { gap: clamp(3px, .4vw, 8px); }
     .nav-menu > li > a {
-      font-size: 12px;
+      min-height: 38px;
+      padding: 7px clamp(5px, .6vw, 12px);
+      font-size: clamp(12px, 1vw, 18px);
       font-weight: 600;
       line-height: 1.5;
+      letter-spacing: 0;
+      white-space: nowrap;
+      background: rgba($color-white, .65);
+      border: 1px solid rgba($color-navy, .12);
+      border-radius: 6px;
+      &::after { display: none; }
     }
-
-    // Dropdown menu links
-    .nav-menu .sub-menu li > a {
-      font-size: 11px;
-      line-height: 1.5;
+    .nav-menu > li.menu-item-has-children > a {
+      padding-right: clamp(18px, 1.3vw, 25px);
+      &::before { right: 7px; }
     }
-
-    // Reduce spacing between Tamil menu items
-    .nav-menu {
-      gap: 12px;
+    .nav-menu > li:hover > a,
+    .nav-menu > li.current-menu-item > a,
+    .nav-menu > li.current-menu-ancestor > a {
+      background: rgba($color-navy, .08);
+      border-color: rgba($color-navy, .3);
+      color: $color-navy;
     }
-
-    // Language switcher
-    .vv-language-switcher {
-      font-size: 11px;
-    }
+    &.is-sticky .nav-menu > li > a { min-height: 38px; background: rgba($color-white, .9); }
+    &.is-sticky .nav-menu > li:hover > a,
+    &.is-sticky .nav-menu > li.current-menu-item > a { background: rgba($color-navy, .08); }
   }
 }
 
-/* Tamil — Smaller desktop screens */
-@media (min-width: 901px) and (max-width: 1366px) {
-
-  html[lang="ta"],
-  html[lang="ta-IN"],
-  html[lang^="ta-"] {
-
-    .site-header {
-
-      .nav-menu {
-        gap: 8px;
-      }
-
-      .nav-menu > li > a {
-        font-size: 16px;
-      }
-
-      .navbar-logo .logo-img {
-        width: 190px;
-      }
+@media (min-width: 901px) and (max-width: 1199px) {
+  html:is([lang="ta"], [lang="ta-IN"], [lang^="ta-"], .vv-tamil) .site-header {
+    .navbar-logo .logo-link .logo-img { width: clamp(115px, 12vw, 145px); }
+    .nav-menu { gap: 3px; }
+    .nav-menu > li > a { padding-inline: 5px; font-size: 12px; }
+    .nav-menu > li.menu-item-has-children > a {
+      padding-right: 16px;
+      &::before { right: 5px; }
     }
   }
 }
+// ========================================
+// NAVBAR ITEM GAP - RESPONSIVE
+// ========================================
 
-/* ============================================
-   VIMA VIDYA — TAMIL NAVIGATION FIX
-   ============================================ */
-
-html.vv-tamil {
-
-  @media (min-width: 901px) {
-
-    .site-header {
-
-      .navbar-container {
-        width: calc(100% - 48px);
-        max-width: 1600px;
-        gap: 18px;
-      }
-
-      // Logo
-      .navbar-logo {
-        flex: 0 0 auto;
-
-        .logo-img {
-          width: 185px;
-        }
-      }
-
-      // Navigation layout
-      .main-navigation {
-        flex: 1 1 auto;
-        min-width: 0;
-        justify-content: flex-end;
-        gap: 18px;
-      }
-
-      // Tamil menu spacing
-      .nav-menu {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 14px;
-
-        > li {
-          flex: 0 0 auto;
-
-          > a {
-            font-size: 12px;
-            font-weight: 600;
-            line-height: 1.5;
-            letter-spacing: 0;
-            white-space: nowrap;
-          }
-        }
-
-        // Dropdown links
-        .sub-menu li > a {
-          font-size: 12px;
-          line-height: 1.6;
-        }
-      }
-
-      // Language selector
-      .vv-language-switcher {
-        flex: 0 0 auto;
-        min-width: 120px;
-        padding: 0 10px;
-      }
-
-      // Sticky header logo
-      &.is-sticky {
-        .navbar-logo .logo-img {
-          width: 175px;
-        }
-      }
-    }
+// Large Desktop
+@media (min-width: 1920px) {
+  .site-header .nav-menu {
+    gap: 36px;
   }
 }
 
-/* ============================================
-   TAMIL — LAPTOP WIDTH
-   ============================================ */
-
-@media (min-width: 901px) and (max-width: 1400px) {
-
-  html.vv-tamil {
-
-    .site-header {
-
-      .navbar-container {
-        width: calc(100% - 32px);
-        gap: 12px;
-      }
-
-      .navbar-logo .logo-img {
-        width: 170px;
-      }
-
-      .main-navigation {
-        gap: 12px;
-      }
-
-      .nav-menu {
-        gap: 9px;
-
-        > li > a {
-          font-size: 16px;
-          font-weight: 600;
-        }
-      }
-
-      .vv-language-switcher {
-        min-width: 105px;
-        padding: 0 7px;
-      }
-
-      &.is-sticky .navbar-logo .logo-img {
-        width: 160px;
-      }
-    }
+// Desktop
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .site-header .nav-menu {
+    gap: 30px;
   }
 }
 
-/* ==========================================
-   TAMIL NAVBAR — SEPARATE MENU BOXES
-   ========================================== */
+// Laptop
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .site-header .nav-menu {
+    gap: 24px;
+  }
+}
 
+// Medium Laptop
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .site-header .nav-menu {
+    gap: 18px;
+  }
+}
+
+// Small Laptop
+@media (min-width: 901px) and (max-width: 1279px) {
+  .site-header .nav-menu {
+    gap: 10px;
+  }
+}
+
+// Tablet and Mobile
+@media (max-width: 900px) {
+  .site-header .nav-menu {
+    gap: 6px;
+  }
+}
 @media (min-width: 901px) {
-
-  html[lang="ta"],
-  html[lang="ta-IN"],
-  html[lang^="ta-"] {
-
-    .site-header {
-
-      .nav-menu {
-        gap: 7px;
-
-        > li {
-
-          > a {
-            min-height: 38px;
-            padding: 8px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            line-height: 1.5;
-            white-space: nowrap;
-
-            // Individual menu box
-            background: rgba($color-white, 0.65);
-            border: 1px solid rgba($color-navy, 0.12);
-            border-radius: 6px;
-
-            transition:
-              background 0.25s ease,
-              border-color 0.25s ease,
-              color 0.25s ease;
-
-            // Remove original underline
-            &::after {
-              display: none;
-            }
-          }
-
-          // Dropdown arrow spacing
-          &.menu-item-has-children > a {
-            padding-right: 24px;
-
-            &::before {
-              right: 10px;
-            }
-          }
-
-          // Hover and active states
-          &:hover > a,
-          &.current-menu-item > a,
-          &.current-menu-ancestor > a {
-            background: rgba($color-navy, 0.08);
-            border-color: rgba($color-navy, 0.3);
-            color: $color-navy;
-          }
-        }
-      }
-
-      // Sticky header
-      &.is-sticky {
-
-        .nav-menu > li > a {
-          min-height: 38px;
-          background: rgba($color-white, 0.9);
-        }
-
-        .nav-menu > li:hover > a,
-        .nav-menu > li.current-menu-item > a {
-          background: rgba($color-navy, 0.08);
-        }
-      }
-    }
+  html:is(
+    [lang="ta"],
+    [lang="ta-IN"],
+    [lang^="ta-"],
+    .vv-tamil
+  ) .site-header .nav-menu {
+    gap: clamp(6px, 0.8vw, 14px);
   }
 }
-
-/* Smaller desktop — Tamil */
-@media (min-width: 901px) and (max-width: 1366px) {
-
-  html[lang="ta"],
-  html[lang="ta-IN"],
-  html[lang^="ta-"] {
-
-    .site-header {
-
-      .nav-menu {
-        gap: 5px;
-
-        > li > a {
-          font-size: 14px;
-          padding: 7px 8px;
-        }
-
-        > li.menu-item-has-children > a {
-          padding-right: 19px;
-
-          &::before {
-            right: 7px;
-          }
-        }
-      }
-    }
-  }
-}
+// Note: GTranslate must update html[lang] or apply .vv-tamil
+// for the Tamil-specific rules to activate.

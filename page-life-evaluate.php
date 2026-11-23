@@ -15,25 +15,25 @@ get_header();
     </a>
 
     <!-- Suitability / Needs -->
-    <a href="#suitability" class="tab-item tab-red">
+    <a href="#evaluate-life-lifestages" class="tab-item tab-red">
         <svg viewBox="0 0 24 24" class="tab-icon"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
         <span class="tab-label">Suitability</span>
     </a>
 
     <!-- Fine Print / Exclusions -->
-    <a href="#fine-print" class="tab-item tab-purple">
+    <a href="#evaluate-life-policy-considerations" class="tab-item tab-purple">
         <svg viewBox="0 0 24 24" class="tab-icon"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         <span class="tab-label">Fine Print</span>
     </a>
 
     <!-- Myths & Reality -->
-    <a href="#myth-reality" class="tab-item tab-dark">
+    <a href="#life-evaluate-myths" class="tab-item tab-dark">
         <svg viewBox="0 0 24 24" class="tab-icon"><path fill="currentColor" d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
         <span class="tab-label">Myths</span>
     </a>
 
     <!-- Real Scenarios / Lived Experiences -->
-    <a href="#lived-experiences" class="tab-item tab-teal">
+    <a href="#evaluate-life-real-scenerios" class="tab-item tab-teal">
         <svg viewBox="0 0 24 24" class="tab-icon"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         <span class="tab-label">Real Scenarios</span>
     </a>
@@ -41,7 +41,7 @@ get_header();
     <!-- Back to Life Insurance Hub -->
     <a href="<?php echo esc_url( home_url( '/life-insurance/' ) ); ?>" class="tab-item tab-gray">
         <svg viewBox="0 0 24 24" class="tab-icon"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-        <span class="tab-label">Life Hub</span>
+        <span class="tab-label">Life Insurance</span>
     </a>
 
     <!-- Back to Awareness -->

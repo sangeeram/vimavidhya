@@ -173,7 +173,7 @@
             </p>
 
 
-            <a href="#feedback"
+            <!-- <a href="#feedback"
                class="site-footer__feedback">
 
                 <span class="site-footer__feedback-icon">
@@ -182,7 +182,7 @@
 
                 Quick Feedback
 
-            </a>
+            </a> -->
 
         </div>
 

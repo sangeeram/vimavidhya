@@ -9,7 +9,7 @@
     $custom_reports_data = [
         'eyebrow' => 'INSIGHTS & ANALYTICS',
         'title' => 'Custom Reports',
-        'image' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=85&w=800',
+        'image' => get_template_directory_uri() . '/assets/images/expertise/customer-image.png',
         'description' => 'These are original reports created by the VimaVidya team to serve the needs of Indian insurance consumers. They analyze needs, behaviors, and educational gaps in risk awareness, offering tailored insights for different user groups—such as students, working professionals, and job seekers.',
         'link_text' => 'Explore Custom Reports',
         'url' => '/contact-us/'

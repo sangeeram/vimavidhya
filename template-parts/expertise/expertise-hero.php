@@ -13,7 +13,7 @@
         'title_blue' => 'Knowledge.',
         'description' =>
             'Discover our core expertise and structured learning modules designed to build lasting financial confidence, smart money management, and long-term wealth.',
-        'background' => 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=85&w=1800',
+        'background' => get_template_directory_uri() . '/assets/images/expertise/banner.png',
         'breadcrumb' => [
             'Home' => home_url('/'),
             'Expertise' => '#'

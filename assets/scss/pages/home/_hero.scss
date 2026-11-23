@@ -626,256 +626,169 @@
 
 
 // =========================================================
-// RESOLUTION-SPECIFIC OPTIMIZATIONS
+// FLUID RESPONSIVE SYSTEM — ALL VIEWPORTS
 // =========================================================
 
-// 1280 × 720 (Compact Laptop / Landscape)
-@media (min-width: 1280px) and (max-width: 1365px) {
+.insurance-hero {
+  box-sizing: border-box;
+  height: clamp(600px, 100svh, 1080px);
+  min-height: 600px;
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  .hero-inner {
+    width: min(calc(100% - clamp(32px, 8vw, 144px)), $container-wide);
+    padding-top: clamp(64px, 9vh, 112px);
+    padding-bottom: clamp(55px, 8vh, 90px);
+  }
+
+  .slide-content {
+    width: min(58%, 720px);
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .slide-title {
+    font-size: clamp(32px, 3.5vw, 64px);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+  }
+
+  .slide-desc {
+    font-size: clamp(14px, 1.08vw, 18px);
+    line-height: 1.55;
+    overflow-wrap: break-word;
+  }
+
+  .hero-actions { gap: clamp(8px, 1vw, 16px); }
+  .hero-btn {
+    min-height: clamp(40px, 3.4vw, 48px);
+    padding-inline: clamp(14px, 1.5vw, 24px);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-slide-number { top: clamp(80px, 12vh, 120px); }
+  .hero-arrow--prev { left: clamp(8px, 1.5vw, 25px); }
+  .hero-arrow--next { right: clamp(8px, 1.5vw, 25px); }
+  .slider-dots { bottom: clamp(16px, 3vh, 30px); }
+}
+
+.hero-categories {
+  flex-wrap: wrap;
+  column-gap: clamp(10px, 2vw, 24px);
+  row-gap: 10px;
+  margin-top: clamp(12px, 2vw, 24px);
+}
+
+// Smaller laptops and landscape tablets
+@media (min-width: 901px) and (max-width: 1366px) {
   .insurance-hero {
-    min-height: 600px;
-    height: 100vh;
-
-    .slide-title {
-      font-size: 44px;
-      margin-bottom: $space-small;
-    }
-
-    .slide-desc {
-      font-size: 14px;
-      margin-bottom: $space-small;
-    }
-
-    .hero-categories {
-      margin-top: $space-small;
-    }
+    .slide-content { width: min(61%, 640px); }
+    .slide-title { font-size: clamp(34px, 3.35vw, 46px); }
+    .slide-desc { font-size: clamp(14px, 1.1vw, 16px); }
   }
 }
 
-// 1366 × 768 (Standard Laptop)
-@media (min-width: 1366px) and (max-width: 1439px) {
-  .insurance-hero {
-    min-height: 650px;
-
-    .slide-title {
-      font-size: 48px;
-    }
-
-    .slide-desc {
-      font-size: 15px;
-    }
-  }
-}
-
-// 1440 × 900 (MacBook / Widescreen Laptop)
-@media (min-width: 1440px) and (max-width: 1535px) {
-  .insurance-hero {
-    .slide-title {
-      font-size: 52px;
-    }
-    .slide-content {
-      max-width: 650px;
-    }
-  }
-}
-
-// 1536 × 864 (Large Laptop / Medium Desktop)
-@media (min-width: 1536px) and (max-width: 1919px) {
-  .insurance-hero {
-    .slide-title {
-      font-size: 56px;
-    }
-    .slide-content {
-      max-width: 680px;
-    }
-  }
-}
-
-// 1920 × 1080 (Full HD Desktop & Above)
-@media (min-width: 1920px) {
-  .insurance-hero {
-    .hero-inner {
-      width: min(85%, $container-wide);
-    }
-
-    .slide-content {
-      max-width: 720px;
-    }
-
-    .slide-title {
-      font-size: 64px;
-    }
-
-    .slide-desc {
-      font-size: 18px;
-    }
-  }
-}
-
-
-// =========================================================
-// RESPONSIVE — TABLET / SMALL DESKTOP
-// =========================================================
-
-@media (max-width: 1200px) {
-  .insurance-hero {
-    .hero-inner {
-      width: 86%;
-    }
-
-    .slide-content {
-      width: 62%;
-    }
-
-    .slide-title {
-      font-size: 46px;
-    }
-
-    .slide-desc {
-      font-size: $text-base;
-    }
-  }
-}
-
-
-// =========================================================
-// RESPONSIVE — TABLET
-// =========================================================
-
-@media (max-width: 900px) {
-  .insurance-hero {
-    min-height: 650px;
-
-    .hero-inner {
-      width: 88%;
-    }
-
-    .slide-content {
-      width: 70%;
-    }
-
-    .slide-title {
-      font-size: 40px;
-    }
-
-    .slide-desc {
-      font-size: $text-xs;
-    }
-
-    .hero-slide-number {
-      right: 5%;
-    }
-  }
-}
-
-
-// =========================================================
-// RESPONSIVE — MOBILE
-// =========================================================
-
-@media (max-width: 700px) {
+// Short laptop windows: 1280x720, 1366x768, browser with toolbars
+@media (min-width: 901px) and (max-height: 780px) {
   .insurance-hero {
     height: 100svh;
-    min-height: 650px;
+    min-height: 540px;
+    .hero-inner { padding-top: 76px; padding-bottom: 48px; }
+    .slide-title { font-size: clamp(30px, 3vw, 46px); margin-bottom: 12px; }
+    .slide-desc { margin-bottom: 14px; line-height: 1.45; }
+    .slide-eyebrow, .slide-tag { margin-bottom: 10px; }
+    .hero-slide-number { top: 76px; }
+    .slider-dots { bottom: 14px; }
+  }
+  .hero-categories { margin-top: 12px; row-gap: 8px; }
+}
 
+// Tablet landscape and compact desktops
+@media (min-width: 701px) and (max-width: 900px) {
+  .insurance-hero {
+    min-height: 620px;
+    .hero-inner { width: calc(100% - 64px); padding-top: 90px; }
+    .slide-content { width: min(75%, 600px); }
+    .slide-title { font-size: clamp(32px, 4.5vw, 42px); }
+    .slide-desc { font-size: 14px; }
     .slide-image-overlay {
-      background: linear-gradient(
-        180deg,
-        rgba($color-cream, 0.1) 0%,
-        rgba($color-cream, 0.45) 35%,
-        rgba($color-cream, 0.88) 70%,
-        rgba($color-cream, 0.98) 100%
-      );
+      background: linear-gradient(90deg, rgba($color-cream, .98) 0%, rgba($color-cream, .87) 45%, rgba($color-cream, .20) 100%);
     }
-
-    .hero-inner {
-      width: calc(100% - 36px);
-      padding-top: 100px;
-      padding-bottom: 65px;
-      align-items: flex-end;
-    }
-
-    .slide-content {
-      width: 100%;
-      max-width: none;
-    }
-
-    .slide-eyebrow {
-      margin-bottom: $space-small;
-      padding: 7px 11px;
-      font-size: 10px;
-    }
-
-    .slide-title {
-      margin-bottom: $space-small;
-      font-size: 34px;
-      line-height: $line-tight;
-      letter-spacing: -0.045em;
-    }
-
-    .slide-desc {
-      max-width: 100%;
-      margin-bottom: $space-element;
-      font-size: $text-xs;
-      line-height: 1.55;
-    }
-
-    .hero-btn {
-      min-height: 42px;
-      padding: 0 17px;
-      font-size: $text-xs;
-    }
-
-    .hero-slide-number {
-      top: 85px;
-      right: 20px;
-    }
-
-    .hero-arrow {
-      width: 36px;
-      height: 36px;
-      opacity: 1;
-      font-size: $text-sm;
-    }
-
-    .hero-arrow--prev {
-      left: 12px;
-    }
-
-    .hero-arrow--next {
-      right: 12px;
-    }
-
-    .slider-dots {
-      bottom: 25px;
-    }
+    .hero-arrow { opacity: 1; }
   }
 }
 
-
-// =========================================================
-// RESPONSIVE — SMALL MOBILE
-// =========================================================
-
-@media (max-width: 420px) {
+// Mobile — image behind top portion, text at bottom
+@media (max-width: 700px) {
   .insurance-hero {
-    min-height: 620px;
+    height: max(100svh, 690px);
+    min-height: 690px;
 
+    .slide-image-wrapper { background-position: 60% center; }
+    .slide-image-overlay {
+      background: linear-gradient(180deg,
+        rgba($color-cream, .06) 0%,
+        rgba($color-cream, .24) 27%,
+        rgba($color-cream, .80) 53%,
+        rgba($color-cream, .98) 75%,
+        $color-cream 100%);
+    }
     .hero-inner {
-      width: calc(100% - 28px);
+      width: calc(100% - 36px);
+      padding: 90px 0 68px;
+      align-items: flex-end;
     }
-
-    .slide-title {
-      font-size: 28px;
-    }
-
-    .slide-desc {
-      font-size: $text-xs;
-    }
-
-    .hero-btn {
-      min-height: 40px;
-      padding: 0 15px;
-      font-size: 10px;
-    }
+    .slide-content { width: 100%; max-width: 100%; }
+    .slide-title { font-size: clamp(27px, 7.5vw, 38px); margin-bottom: 12px; line-height: 1.13; }
+    .slide-desc { font-size: clamp(13px, 3.3vw, 15px); margin-bottom: 14px; line-height: 1.48; }
+    .slide-eyebrow { padding: 6px 10px; font-size: 10px; margin-bottom: 10px; }
+    .slide-tag { margin-bottom: 8px; }
+    .hero-actions { gap: 8px; }
+    .hero-btn { min-height: 42px; padding: 9px 14px; font-size: 12px; }
+    .hero-slide-number { top: 76px; right: 18px; }
+    .hero-arrow { width: 36px; height: 36px; opacity: 1; top: 40%; }
+    .hero-arrow--prev { left: 8px; }
+    .hero-arrow--next { right: 8px; }
+    .slider-dots { bottom: 22px; }
   }
+  .hero-categories { gap: 8px 12px; margin-top: 12px; }
+}
+
+@media (max-width: 375px) {
+  .insurance-hero {
+    height: max(100svh, 730px);
+    min-height: 730px;
+    .hero-inner { width: calc(100% - 28px); padding-bottom: 58px; }
+    .slide-title { font-size: clamp(25px, 7.5vw, 28px); }
+    .slide-desc { font-size: 13px; }
+    .hero-btn { padding-inline: 11px; font-size: 11px; }
+    .hero-arrow { top: 35%; }
+  }
+}
+
+// Short phones in landscape: use a readable desktop-like layout
+@media (max-height: 500px) and (orientation: landscape) {
+  .insurance-hero {
+    height: max(100svh, 420px);
+    min-height: 420px;
+    .hero-inner { padding-top: 55px; padding-bottom: 35px; align-items: center; }
+    .slide-content { width: min(72%, 620px); }
+    .slide-title { font-size: clamp(24px, 3.5vw, 34px); margin-bottom: 8px; }
+    .slide-desc { font-size: 12px; margin-bottom: 8px; }
+    .hero-arrow { top: 50%; }
+    .hero-slide-number { top: 45px; }
+    .slider-dots { bottom: 8px; }
+  }
+}
+
+@media (hover: none) {
+  .insurance-hero .hero-arrow { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insurance-hero .hero-slide,
+  .insurance-hero .slide-content,
+  .insurance-hero .slide-image-wrapper { transition-duration: .01ms; }
 }

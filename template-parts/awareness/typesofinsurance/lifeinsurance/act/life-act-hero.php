@@ -105,14 +105,16 @@ if (is_array($bg_image_obj) && isset($bg_image_obj['url'])) {
         <div class="lifeacthero-navy-bar">
           <nav class="lifeacthero-navy-button-group" role="tablist" aria-label="Topic Chapters">
             <a href="#how-to-apply" class="lifeacthero-navy-btn active" role="tab">How to buy</a>
-            <a href="#what-you-can-claim" class="lifeacthero-navy-btn" role="tab">What you can claim</a>
+            <a href="#dos-donts" class="lifeacthero-navy-btn" role="tab">Do's & Don'ts</a>
+            <!-- <a href="#what-you-can-claim" class="lifeacthero-navy-btn" role="tab">What you can claim</a> -->
             <a href="#claims-process" class="lifeacthero-navy-btn" role="tab">Claims process</a>
             <a href="#documents-required" class="lifeacthero-navy-btn" role="tab">Documents required</a>
-            <a href="#dos-donts" class="lifeacthero-navy-btn" role="tab">Do's & Don'ts</a>
-            <a href="#life-checklist" class="lifeacthero-navy-btn" role="tab">Pre-purchase checklist</a>
+            
+            <a href="#life-checklist" class="lifeacthero-navy-btn" role="tab">Checklist</a>
           </nav>
         </div>
       </div>
+
 
     </div>
   </div>

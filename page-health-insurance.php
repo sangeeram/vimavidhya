@@ -44,7 +44,7 @@ get_header();
 
 
     <!-- Property Insurance -->
-    <a href="<?php echo esc_url( home_url( '/property-insurance/' ) ); ?>"
+    <a href="<?php echo esc_url( home_url( '/health-insurance/' ) ); ?>"
        class="tab-item tab-purple">
 
         <svg viewBox="0 0 24 24" class="tab-icon">
@@ -52,12 +52,12 @@ get_header();
                   d="M12 3L3 10v11h6v-7h6v7h6V10l-9-7z"/>
         </svg>
 
-        <span class="tab-label">Property</span>
+        <span class="tab-label">Health</span>
     </a>
 
 
     <!-- Understand -->
-    <a href="<?php echo esc_url( home_url( '/property-understand/' ) ); ?>"
+    <a href="<?php echo esc_url( home_url( '/health-understand/' ) ); ?>"
        class="tab-item tab-yellow">
 
         <svg viewBox="0 0 24 24" class="tab-icon">
@@ -72,10 +72,40 @@ get_header();
 
         <span class="tab-label">Understand</span>
     </a>
+     <a href="<?php echo esc_url( home_url( '/health-evaluate/' ) ); ?>"
+       class="tab-item tab-teal">
+
+        <svg viewBox="0 0 24 24" class="tab-icon">
+            <path fill="currentColor"
+                  d="M12 2a10 10 0 1 0 0 20
+                     10 10 0 0 0 0-20zm1 17h-2v-2h2v2zm2.07-7.25
+                     -.9.92C13.45 13.4 13 14 13 15h-2v-.5c0-1
+                     .45-1.6 1.17-2.32l1.24-1.26c.37-.36.59-.86
+                     .59-1.42 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.21
+                     1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-0.93 2.25z"/>
+        </svg>
+
+        <span class="tab-label">Evaluate</span>
+    </a>
+     <a href="<?php echo esc_url( home_url( '/health-act/' ) ); ?>"
+       class="tab-item tab-navy">
+
+        <svg viewBox="0 0 24 24" class="tab-icon">
+            <path fill="currentColor"
+                  d="M12 2a10 10 0 1 0 0 20
+                     10 10 0 0 0 0-20zm1 17h-2v-2h2v2zm2.07-7.25
+                     -.9.92C13.45 13.4 13 14 13 15h-2v-.5c0-1
+                     .45-1.6 1.17-2.32l1.24-1.26c.37-.36.59-.86
+                     .59-1.42 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.21
+                     1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-0.93 2.25z"/>
+        </svg>
+
+        <span class="tab-label">Act</span>
+    </a>
 
 
     <!-- Layers -->
-    <a href="#layers"
+    <!-- <a href="#layers"
        class="tab-item tab-teal">
 
         <svg viewBox="0 0 24 24" class="tab-icon">
@@ -85,7 +115,7 @@ get_header();
         </svg>
 
         <span class="tab-label">Layers</span>
-    </a>
+    </a> -->
 
 </nav>
 

@@ -1,0 +1,645 @@
+
+@use "../../abstracts/variables" as *;
+
+// =========================================================
+// VIMA VIDYA
+// INSURANCE CAROUSEL - FULL RESPONSIVE SCSS
+// =========================================================
+
+.section-insurance-carousel {
+
+    // Default: 1280px - 1439px
+    --ic-heading-size: 36px;
+    --ic-title-size: 22px;
+    --ic-hook-size: 13px;
+    --ic-section-padding: 70px;
+    --ic-side-padding: 40px;
+    --ic-header-gap: 32px;
+    --ic-overlay-padding: 20px;
+    --ic-card-radius: 18px;
+    --ic-card-height: 220px;
+    --ic-nav-size: 44px;
+    --ic-nav-offset: -18px;
+    --ic-pagination-gap: 22px;
+    --ic-content-gap: 8px;
+
+    position: relative;
+    width: 100%;
+    min-width: 0;
+
+    padding:
+        var(--ic-section-padding)
+        var(--ic-side-padding);
+
+    background-color: #f8fafc;
+    font-family: $font-primary;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    // =====================================================
+    // CONTAINER
+    // =====================================================
+
+    .insurance-carousel-container {
+        width: 100%;
+        max-width: 1240px;
+        min-width: 0;
+        margin: 0 auto;
+    }
+
+    // =====================================================
+    // HEADER
+    // =====================================================
+
+    .insurance-carousel-header {
+        text-align: center;
+        margin-bottom: var(--ic-header-gap);
+
+        .title {
+            margin: 0;
+            padding: 0;
+
+            font-family: $font-primary;
+            font-size: var(--ic-heading-size);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+
+            color: #062b66;
+
+            overflow-wrap: break-word;
+        }
+    }
+
+    // =====================================================
+    // CAROUSEL SHELL
+    // =====================================================
+
+    .insurance-carousel-shell {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+
+        .swiper {
+            width: 100%;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            min-width: 0;
+            height: auto;
+        }
+    }
+
+    // =====================================================
+    // INSURANCE POSTER
+    // =====================================================
+
+    .insurance-poster {
+        --accent-color: #3b82f6;
+
+        position: relative;
+        display: block;
+
+        width: 100%;
+        min-width: 0;
+        min-height: var(--ic-card-height);
+
+        aspect-ratio: 4 / 3;
+
+        border-radius: var(--ic-card-radius);
+
+        overflow: hidden;
+        isolation: isolate;
+
+        text-decoration: none;
+
+        box-shadow:
+            0 10px 24px rgba(15, 23, 42, 0.12);
+
+        // -------------------------------------------------
+        // POSTER IMAGE
+        // -------------------------------------------------
+
+        img {
+            position: absolute;
+            inset: 0;
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+
+            transition: transform 0.45s ease;
+        }
+
+        &:hover img,
+        &:focus-visible img {
+            transform: scale(1.06);
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: -3px;
+        }
+
+        // -------------------------------------------------
+        // DARK GRADIENT
+        // -------------------------------------------------
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+
+            background: linear-gradient(
+                to top,
+                rgba(15, 23, 42, 0.9) 0%,
+                rgba(15, 23, 42, 0.35) 60%,
+                rgba(15, 23, 42, 0.08) 100%
+            );
+
+            pointer-events: none;
+        }
+
+        // -------------------------------------------------
+        // CONTENT OVERLAY
+        // -------------------------------------------------
+
+        &__overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+
+            padding: var(--ic-overlay-padding);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+
+            gap: var(--ic-content-gap);
+
+            min-width: 0;
+        }
+
+        // -------------------------------------------------
+        // HOOK TEXT
+        // -------------------------------------------------
+
+        &__hook {
+            display: inline-block;
+            max-width: 100%;
+
+            padding: 5px 12px;
+            border-radius: 8px;
+
+            background: var(--accent-color);
+            color: #ffffff;
+
+            font-family: $font-primary;
+            font-size: var(--ic-hook-size);
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+
+            white-space: normal;
+            overflow-wrap: break-word;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        // -------------------------------------------------
+        // INSURANCE TYPE
+        // -------------------------------------------------
+
+        &__type {
+            max-width: 100%;
+
+            margin: 0;
+            padding: 6px 12px;
+
+            border-radius: 8px;
+
+            background: rgba(15, 23, 42, 0.72);
+            border-left: 4px solid var(--accent-color);
+
+            color: #ffffff;
+
+            font-family: $font-primary;
+            font-size: var(--ic-title-size);
+            font-weight: 800;
+            line-height: 1.25;
+
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+    }
+
+    // =====================================================
+    // NAVIGATION ARROWS
+    // =====================================================
+
+    .insurance-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        width: var(--ic-nav-size);
+        height: var(--ic-nav-size);
+
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        border: 1px solid #cbd5e1;
+
+        background: #ffffff;
+        color: #0f172a;
+
+        font-size: clamp(20px, 1.5vw, 28px);
+        line-height: 1;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 6px 16px rgba(15, 23, 42, 0.14);
+
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease;
+
+        &:hover {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 3px;
+        }
+
+        &--prev {
+            left: var(--ic-nav-offset);
+        }
+
+        &--next {
+            right: var(--ic-nav-offset);
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        &.swiper-button-lock {
+            display: none;
+        }
+
+        svg {
+            width: 45%;
+            height: 45%;
+        }
+    }
+
+    // =====================================================
+    // PAGINATION
+    // =====================================================
+
+    .insurance-pagination {
+        position: relative;
+        inset: auto;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+
+        gap: 8px;
+        margin-top: var(--ic-pagination-gap);
+
+        .swiper-pagination-bullet {
+            flex-shrink: 0;
+
+            width: 10px;
+            height: 10px;
+
+            background: #cbd5e1;
+            opacity: 1;
+
+            margin: 0 !important;
+
+            border-radius: 50%;
+
+            transition:
+                width 0.25s ease,
+                background-color 0.25s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #0f172a;
+            width: 24px;
+            border-radius: 999px;
+        }
+    }
+
+    // =====================================================
+    // FULL HD DESKTOP - 1920px AND ABOVE
+    // =====================================================
+
+    @media (min-width: 1920px) {
+
+        --ic-heading-size: 48px;
+        --ic-title-size: 26px;
+        --ic-hook-size: 16px;
+        --ic-section-padding: 100px;
+        --ic-side-padding: 70px;
+        --ic-header-gap: 48px;
+        --ic-overlay-padding: 28px;
+        --ic-card-radius: 22px;
+        --ic-card-height: 280px;
+        --ic-nav-size: 56px;
+        --ic-nav-offset: -24px;
+        --ic-pagination-gap: 32px;
+        --ic-content-gap: 12px;
+
+        .insurance-carousel-container {
+            max-width: 1700px;
+        }
+    }
+
+    // =====================================================
+    // LARGE DESKTOP - 1600px TO 1919px
+    // =====================================================
+
+    @media (min-width: 1600px) and (max-width: 1919px) {
+
+        --ic-heading-size: 44px;
+        --ic-title-size: 24px;
+        --ic-hook-size: 15px;
+        --ic-section-padding: 90px;
+        --ic-side-padding: 56px;
+        --ic-header-gap: 42px;
+        --ic-overlay-padding: 24px;
+        --ic-card-radius: 20px;
+        --ic-card-height: 260px;
+        --ic-nav-size: 50px;
+        --ic-nav-offset: -22px;
+        --ic-pagination-gap: 28px;
+        --ic-content-gap: 10px;
+
+        .insurance-carousel-container {
+            max-width: 1500px;
+        }
+    }
+
+    // =====================================================
+    // LAPTOP - 1440px TO 1599px
+    // =====================================================
+
+    @media (min-width: 1440px) and (max-width: 1599px) {
+
+        --ic-heading-size: 40px;
+        --ic-title-size: 23px;
+        --ic-hook-size: 14px;
+        --ic-section-padding: 80px;
+        --ic-side-padding: 48px;
+        --ic-header-gap: 38px;
+        --ic-overlay-padding: 22px;
+        --ic-card-radius: 18px;
+        --ic-card-height: 240px;
+        --ic-nav-size: 48px;
+        --ic-nav-offset: -20px;
+        --ic-pagination-gap: 26px;
+        --ic-content-gap: 10px;
+
+        .insurance-carousel-container {
+            max-width: 1380px;
+        }
+    }
+
+    // =====================================================
+    // STANDARD LAPTOP - 1280px TO 1439px
+    // =====================================================
+
+    @media (min-width: 1280px) and (max-width: 1439px) {
+
+        --ic-heading-size: 36px;
+        --ic-title-size: 22px;
+        --ic-hook-size: 13px;
+        --ic-section-padding: 70px;
+        --ic-side-padding: 40px;
+        --ic-header-gap: 32px;
+        --ic-overlay-padding: 20px;
+        --ic-card-height: 220px;
+        --ic-nav-size: 44px;
+        --ic-nav-offset: -18px;
+    }
+
+    // =====================================================
+    // COMPACT LAPTOP - 1024px TO 1279px
+    // =====================================================
+
+    @media (min-width: 1024px) and (max-width: 1279px) {
+
+        --ic-heading-size: 34px;
+        --ic-title-size: 21px;
+        --ic-hook-size: 12px;
+        --ic-section-padding: 60px;
+        --ic-side-padding: 36px;
+        --ic-header-gap: 28px;
+        --ic-overlay-padding: 18px;
+        --ic-card-radius: 16px;
+        --ic-card-height: 210px;
+        --ic-nav-size: 42px;
+        --ic-nav-offset: -16px;
+        --ic-pagination-gap: 22px;
+    }
+
+    // =====================================================
+    // LANDSCAPE TABLET - 769px TO 1023px
+    // =====================================================
+
+    @media (min-width: 769px) and (max-width: 1023px) {
+
+        --ic-heading-size: 32px;
+        --ic-title-size: 20px;
+        --ic-hook-size: 12px;
+        --ic-section-padding: 56px;
+        --ic-side-padding: 30px;
+        --ic-header-gap: 26px;
+        --ic-overlay-padding: 16px;
+        --ic-card-radius: 16px;
+        --ic-card-height: 210px;
+        --ic-nav-size: 40px;
+        --ic-nav-offset: -14px;
+        --ic-pagination-gap: 20px;
+    }
+
+    // =====================================================
+    // TABLET - 481px TO 768px
+    // =====================================================
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        --ic-heading-size: 30px;
+        --ic-title-size: 20px;
+        --ic-hook-size: 12px;
+        --ic-section-padding: 48px;
+        --ic-side-padding: 24px;
+        --ic-header-gap: 26px;
+        --ic-overlay-padding: 18px;
+        --ic-card-radius: 16px;
+        --ic-card-height: 210px;
+        --ic-pagination-gap: 20px;
+
+        .insurance-poster {
+            aspect-ratio: 16 / 11;
+        }
+
+        .insurance-nav {
+            display: none;
+        }
+    }
+
+    // =====================================================
+    // MOBILE - 376px TO 480px
+    // =====================================================
+
+    @media (min-width: 376px) and (max-width: 480px) {
+
+        --ic-heading-size: 28px;
+        --ic-title-size: 19px;
+        --ic-hook-size: 12px;
+        --ic-section-padding: 40px;
+        --ic-side-padding: 16px;
+        --ic-header-gap: 22px;
+        --ic-overlay-padding: 16px;
+        --ic-card-radius: 14px;
+        --ic-card-height: 200px;
+        --ic-pagination-gap: 18px;
+        --ic-content-gap: 6px;
+
+        .insurance-poster {
+            aspect-ratio: 16 / 11;
+
+            &__hook {
+                padding: 5px 9px;
+            }
+
+            &__type {
+                padding: 5px 10px;
+            }
+        }
+
+        .insurance-nav {
+            display: none;
+        }
+    }
+
+    // =====================================================
+    // SMALL MOBILE - UP TO 375px
+    // =====================================================
+
+    @media (max-width: 375px) {
+
+        --ic-heading-size: 26px;
+        --ic-title-size: 18px;
+        --ic-hook-size: 11px;
+        --ic-section-padding: 36px;
+        --ic-side-padding: 12px;
+        --ic-header-gap: 20px;
+        --ic-overlay-padding: 12px;
+        --ic-card-radius: 12px;
+        --ic-card-height: 190px;
+        --ic-pagination-gap: 16px;
+        --ic-content-gap: 6px;
+
+        .insurance-poster {
+            aspect-ratio: 16 / 11;
+
+            &__hook {
+                padding: 4px 8px;
+                border-radius: 6px;
+            }
+
+            &__type {
+                padding: 5px 8px;
+                border-left-width: 3px;
+                border-radius: 6px;
+            }
+        }
+
+        .insurance-nav {
+            display: none;
+        }
+
+        .insurance-pagination {
+
+            gap: 6px;
+
+            .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+            }
+
+            .swiper-pagination-bullet-active {
+                width: 20px;
+            }
+        }
+    }
+
+    // =====================================================
+    // TOUCH DEVICES
+    // =====================================================
+
+    @media (hover: none) {
+        .insurance-poster:hover img {
+            transform: none;
+        }
+    }
+
+    // =====================================================
+    // ACCESSIBILITY - REDUCED MOTION
+    // =====================================================
+
+    @media (prefers-reduced-motion: reduce) {
+        .insurance-poster img,
+        .insurance-nav,
+        .swiper-pagination-bullet {
+            transition: none;
+        }
+
+        .insurance-poster:hover img,
+        .insurance-poster:focus-visible img {
+            transform: none;
+        }
+    }
+}

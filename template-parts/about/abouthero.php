@@ -5,7 +5,7 @@ $pageTitle       = "About Us";
 $headingText     = "About Us";
 $subheadingLine1 = "Empowering confidence through knowledge.";
 $subheadingLine2 = "Building a safer tomorrow, together.";
-$bgImagePath     = "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1600&auto=format&fit=crop";
+$bgImagePath     = get_template_directory_uri() . '/assets/images/aboutus/banner.png';
 $founderImagePath= get_template_directory_uri() . '/assets/images/aboutus/founder.png'; // Replace with your uploaded portrait image
 ?>
 

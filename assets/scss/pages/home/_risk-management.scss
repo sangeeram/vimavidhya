@@ -1,776 +1,1513 @@
 
+
 // =========================================================
+
 // VIMA VIDYA
+
 // RISK MANAGEMENT
+
 // LIGHT THEME WITH DARK CARDS
+
 // =========================================================
+
+
 
 @use "../../abstracts/variables" as *;
 
 
+
+
+
 // =========================================================
+
 // RISK MANAGEMENT SECTION
+
 // =========================================================
+
+
 
 .risk-management {
+
     background: $color-light-gray;
+
     color: $color-text;
 
+
+
     padding: $space-section-lg 0;
+
     overflow: hidden;
 
 
-    // =====================================================
-    // CONTAINER
+
+
+
     // =====================================================
 
+    // CONTAINER
+
+    // =====================================================
+
+
+
     &__container {
+
         width: min(100% - 160px, $container-wide);
+
         margin-inline: auto;
+
     }
 
 
-    // =====================================================
-    // INTRO
+
+
+
     // =====================================================
 
+    // INTRO
+
+    // =====================================================
+
+
+
     &__intro {
+
         max-width: 800px;
+
+
 
         margin: 0 auto $space-content;
 
+
+
         text-align: center;
+
         padding: 0 $space-element;
+
     }
+
+
+
 
 
     &__heading {
+
         margin: 0 0 $space-small;
+
+
 
         color: $color-blue-dark;
 
+
+
         font-size: clamp(36px, 4vw, $text-h1);
-        font-weight: 700;
+
+        font-weight: 600;
+
+
 
         line-height: $line-tight;
+
         letter-spacing: -0.03em;
 
+
+
         span {
+
             color: $color-blue;
+
         }
+
     }
+
+
+
 
 
     &__subheading {
+
         max-width: $text-width-wide;
+
+
 
         margin: 0 auto;
 
+
+
         color: $color-text-body;
 
+
+
         font-size: $text-lg;
+
         line-height: $line-body;
+
     }
 
 
-    // =====================================================
-    // SECTION HEADER
+
+
+
     // =====================================================
 
+    // SECTION HEADER
+
+    // =====================================================
+
+
+
     &__header {
+
         display: flex;
+
         align-items: flex-end;
+
         justify-content: space-between;
+
+
 
         gap: $space-content;
 
+
+
         margin-bottom: $space-content;
+
     }
+
+
+
 
 
     &__eyebrow {
+
         display: block;
+
+
 
         margin-bottom: $space-small;
 
+
+
         color: $color-orange;
 
+
+
         font-size: $text-xs;
+
         font-weight: 800;
 
+
+
         line-height: 1;
+
         letter-spacing: 0.14em;
 
+
+
         text-transform: uppercase;
+
     }
+
+
+
 
 
     &__title {
+
         margin: 0;
+
+
 
         color: $color-text;
 
+
+
         font-size: clamp(38px, 4vw, $text-h2);
-        font-weight: 700;
+
+        font-weight: 600;
+
+
 
         line-height: $line-tight;
+
         letter-spacing: -0.035em;
+
     }
+
+
+
 
 
     &__instruction {
+
         width: $text-width-narrow;
+
+
 
         margin: 0;
 
+
+
         color: $color-text-muted;
 
+
+
         font-size: $text-sm;
+
         line-height: $line-body;
+
     }
 
 
-    // =====================================================
-    // OVERVIEW GRID
+
+
+
     // =====================================================
 
+    // OVERVIEW GRID
+
+    // =====================================================
+
+
+
     &__overview {
+
         display: grid;
+
+
 
         grid-template-columns: repeat(2, 1fr);
 
+
+
         gap: $space-element;
 
+
+
         margin-bottom: $space-element;
+
     }
 
 
-    // =====================================================
-    // OVERVIEW CARD
+
+
+
     // =====================================================
 
+    // OVERVIEW CARD
+
+    // =====================================================
+
+
+
     &__overview-card {
+
         display: flex;
+
         flex-direction: column;
+
         justify-content: space-between;
+
+
 
         padding: $space-content;
 
+
+
         background: $color-white;
 
+
+
         border: 1px solid $color-border;
+
         border-radius: $radius-md;
 
+
+
         box-shadow:
+
             0 10px 30px rgba($color-navy, 0.05);
 
+
+
         transition:
+
             border-color $transition,
+
             box-shadow $transition;
 
+
+
         &:hover {
+
             border-color: rgba($color-navy, 0.2);
 
+
+
             box-shadow:
+
                 0 15px 35px rgba($color-navy, 0.08);
+
         }
+
     }
 
 
-    // =====================================================
-    // CARD EYEBROW
+
+
+
     // =====================================================
 
+    // CARD EYEBROW
+
+    // =====================================================
+
+
+
     &__card-eyebrow {
+
         display: block;
+
+
 
         margin-bottom: $space-small;
 
+
+
         color: $color-orange;
 
+
+
         font-size: $text-xs;
+
         font-weight: 800;
+
+
 
         letter-spacing: 0.12em;
 
+
+
         text-transform: uppercase;
+
     }
 
 
-    // =====================================================
-    // OVERVIEW TITLE
+
+
+
     // =====================================================
 
+    // OVERVIEW TITLE
+
+    // =====================================================
+
+
+
     &__overview-title {
+
         margin: 0 0 $space-small;
+
+
 
         color: $color-text;
 
+
+
         font-size: $text-h3;
+
         font-weight: 700;
 
+
+
         line-height: $line-heading;
+
     }
 
 
-    // =====================================================
-    // OVERVIEW BODY
+
+
+
     // =====================================================
 
+    // OVERVIEW BODY
+
+    // =====================================================
+
+
+
     &__overview-body {
+
         margin: 0 0 $space-small;
+
+
 
         color: $color-text-body;
 
+
+
         font-size: $text-sm;
+
         line-height: $line-body;
+
     }
 
 
+
+
+
     // =====================================================
+
     // HIGHLIGHT
+
     // =====================================================
+
+
 
     &__highlight {
+
         margin: auto 0 0;
 
+
+
         padding: $space-small $space-element;
+
+
 
         background: $color-light-blue;
 
+
+
         border-left: 3px solid $color-orange;
+
         border-radius: $radius-sm;
+
+
 
         color: $color-navy;
 
+
+
         font-size: $text-sm;
+
         font-weight: 600;
+
+
 
         line-height: $line-body;
 
+
+
         strong {
+
             color: $color-orange;
+
             font-weight: 700;
+
         }
+
     }
 
 
-    // =====================================================
-    // QUOTE
+
+
+
     // =====================================================
 
+    // QUOTE
+
+    // =====================================================
+
+
+
     &__quote {
+
         margin: 0 0 $space-small;
+
+
 
         padding-left: $space-small;
 
+
+
         border-left: 3px solid $color-orange;
+
+
 
         color: $color-text-body;
 
+
+
         font-size: $text-sm;
+
         font-style: italic;
 
+
+
         line-height: $line-body;
+
     }
 
 
-    // =====================================================
-    // TAG
+
+
+
     // =====================================================
 
+    // TAG
+
+    // =====================================================
+
+
+
     &__tag {
+
         display: inline-block;
+
+
 
         margin-top: auto;
 
+
+
         padding: $space-small $space-element;
+
+
 
         background: $color-light-gray;
 
+
+
         border: 1px solid $color-border;
+
         border-radius: $radius-sm;
+
+
 
         color: $color-text-muted;
 
+
+
         font-size: $text-xs;
+
         font-weight: 700;
 
+
+
         letter-spacing: 0.08em;
+
     }
 
 
+
+
+
     // =====================================================
+
     // SLIDER RAIL
+
     // =====================================================
+
+
 
     &__rail {
+
         position: relative;
 
+
+
         width: 100%;
+
+
 
         overflow: hidden;
 
+
+
         padding: $space-small 0;
+
+
 
         cursor: grab;
 
+
+
         &:active {
+
             cursor: grabbing;
+
         }
 
+
+
         &:hover .risk-management__track {
+
             animation-play-state: paused;
+
         }
+
     }
 
 
-    // =====================================================
-    // SLIDER TRACK
+
+
+
     // =====================================================
 
+    // SLIDER TRACK
+
+    // =====================================================
+
+
+
     &__track {
+
         display: flex;
+
+
 
         width: max-content;
 
+
+
         animation: risk-card-scroll 45s linear infinite;
 
+
+
         will-change: transform;
+
     }
 
 
-    // =====================================================
-    // SLIDER GROUP
+
+
+
     // =====================================================
 
+    // SLIDER GROUP
+
+    // =====================================================
+
+
+
     &__group {
+
         display: flex;
+
+
 
         flex-shrink: 0;
 
+
+
         gap: $space-element;
 
+
+
         padding-inline: $space-small;
+
     }
 
 
-    // =====================================================
-    // KEY TAKEAWAY
+
+
+
     // =====================================================
 
+    // KEY TAKEAWAY
+
+    // =====================================================
+
+
+
     &__takeaway {
+
         position: relative;
+
+
 
         margin-top: $space-content;
 
+
+
         padding: $space-element $space-content;
+
+
 
         background: $color-white;
 
+
+
         border: 1px solid $color-border;
+
         border-left: 4px solid $color-blue;
+
+
 
         border-radius: $radius-md;
 
+
+
         box-shadow:
+
             0 10px 30px rgba($color-navy, 0.05);
 
+
+
         transition:
+
             border-color $transition,
+
             box-shadow $transition;
 
+
+
         &:hover {
+
             box-shadow:
+
                 0 15px 35px rgba($color-navy, 0.08);
+
         }
 
 
-        // -------------------------------------------------
-        // TITLE
+
+
+
         // -------------------------------------------------
 
+        // TITLE
+
+        // -------------------------------------------------
+
+
+
         &-title {
+
             margin: 0 0 $space-small;
+
+
 
             color: $color-text;
 
+
+
             font-size: $text-h3;
+
             font-weight: 700;
 
+
+
             line-height: $line-heading;
+
             letter-spacing: -0.02em;
+
         }
 
 
-        // -------------------------------------------------
-        // BODY
+
+
+
         // -------------------------------------------------
 
+        // BODY
+
+        // -------------------------------------------------
+
+
+
         &-body {
+
             margin: 0 0 $space-small;
+
+
 
             color: $color-text-body;
 
+
+
             font-size: $text-sm;
+
             line-height: $line-body;
 
+
+
             &:last-child {
+
                 margin-bottom: 0;
+
             }
 
+
+
             strong {
+
                 color: $color-orange;
+
                 font-weight: 700;
+
             }
+
         }
+
     }
+
 }
 
 
+
+
+
 // =========================================================
+
 // DARK RISK CARDS
+
 // =========================================================
+
+
 
 .risk-card {
+
     position: relative;
 
+
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: space-between;
 
+
+
     width: 360px;
+
     height: 420px;
+
+
 
     padding: $space-element;
 
+
+
     background: $color-navy;
 
+
+
     border: 1px solid rgba($color-white, 0.08);
+
     border-radius: $radius-lg;
 
+
+
     box-shadow:
+
         0 10px 30px rgba($color-navy-dark, 0.12);
+
+
 
     overflow: hidden;
 
+
+
     transition:
+
         transform $transition,
+
         box-shadow $transition,
+
         border-color $transition;
 
 
+
+
+
     // =====================================================
+
     // BACKGROUND IMAGE
+
     // =====================================================
+
+
 
     &__bg-image {
+
         position: absolute;
+
         inset: 0;
 
+
+
         background-size: cover;
+
         background-position: center;
+
         background-repeat: no-repeat;
+
+
 
         opacity: 0.25;
 
+
+
         mix-blend-mode: overlay;
 
+
+
         transition:
+
             opacity $transition,
+
             transform $transition-slow;
+
     }
 
 
+
+
+
     // =====================================================
+
     // CARD HOVER
+
     // =====================================================
+
+
 
     &:hover {
+
         transform: translateY(-6px);
 
+
+
         box-shadow:
+
             0 18px 40px rgba($color-navy-dark, 0.25);
 
+
+
         border-color:
+
             rgba($color-white, 0.18);
 
+
+
         .risk-card__bg-image {
+
             opacity: 0.4;
 
+
+
             transform: scale(1.05);
+
         }
+
     }
 
 
-    // =====================================================
-    // CONTENT BOX
+
+
+
     // =====================================================
 
+    // CONTENT BOX
+
+    // =====================================================
+
+
+
     &__box {
+
         position: relative;
+
         z-index: 2;
+
+
 
         width: 100%;
 
+
+
         padding: $space-content $space-element;
 
+
+
         margin-top: auto;
+
         margin-bottom: auto;
+
+
 
         background: $color-white;
 
+
+
         border-radius: $radius-md;
+
+
 
         text-align: center;
 
+
+
         box-shadow:
+
             0 4px 20px rgba(0, 0, 0, 0.15);
+
     }
 
 
+
+
+
     // =====================================================
+
     // ICON
+
     // =====================================================
+
+
 
     &__icon {
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
+
+
         width: 40px;
+
         height: 40px;
+
+
 
         margin: 0 auto $space-small;
 
+
+
         svg {
+
             width: 100%;
+
             height: 100%;
+
         }
+
     }
 
 
-    // =====================================================
-    // TITLE
+
+
+
     // =====================================================
 
+    // TITLE
+
+    // =====================================================
+
+
+
     &__title {
+
         margin: 0 0 $space-small;
+
+
 
         color: $color-navy;
 
+
+
         font-size: $text-lg;
+
         font-weight: 800;
 
+
+
         line-height: $line-heading;
+
     }
 
 
-    // =====================================================
-    // DESCRIPTION
+
+
+
     // =====================================================
 
+    // DESCRIPTION
+
+    // =====================================================
+
+
+
     &__description {
+
         margin: 0;
+
+
 
         color: $color-text-muted;
 
+
+
         font-size: $text-sm;
 
+
+
         line-height: $line-body;
+
     }
 
 
+
+
+
     // =====================================================
+
     // BUTTON
+
     // =====================================================
+
+
 
     &__btn {
+
         position: relative;
+
         z-index: 2;
 
+
+
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
+
+
 
         padding: $space-small $space-element;
 
+
+
         background: $color-blue;
 
+
+
         border: 1px solid $color-blue;
+
         border-radius: $radius-sm;
+
+
 
         color: $color-white;
 
+
+
         font-size: $text-sm;
+
         font-weight: 700;
+
+
 
         text-decoration: none;
 
+
+
         box-shadow:
+
             0 4px 14px rgba($color-blue, 0.35);
 
+
+
         transition:
+
             transform $transition-fast,
+
             background $transition-fast;
 
+
+
         &:hover {
+
             background: $color-blue-dark;
 
+
+
             transform: scale(1.03);
+
         }
+
     }
+
 }
 
 
+
+
+
 // =========================================================
+
 // KEYFRAME ANIMATION
+
 // =========================================================
+
+
 
 @keyframes risk-card-scroll {
 
+
+
     from {
+
         transform: translateX(0);
+
     }
+
+
 
     to {
+
         transform: translateX(calc(-50% - #{$space-small}));
+
     }
+
 }
 
 
-// =========================================================
-// RESPONSIVE — 1100px
-// =========================================================
 
-@media (max-width: 1100px) {
-
-    .risk-management {
-
-        &__container {
-            width: calc(100% - 60px);
-        }
-
-        &__header {
-            gap: $space-element;
-        }
-
-        &__instruction {
-            width: 350px;
-            font-size: $text-xs;
-        }
-
-        &__overview-card {
-            padding: 30px;
-        }
-    }
-}
 
 
 // =========================================================
-// RESPONSIVE — 768px
-// =========================================================
 
-@media (max-width: 768px) {
-
-    .risk-management {
-
-        &__intro {
-            margin-bottom: $space-element;
-        }
-
-        &__heading {
-            font-size: 36px;
-        }
-
-        &__subheading {
-            font-size: $text-base;
-            line-height: $line-body;
-        }
-    }
-}
-
-
-// =========================================================
-// RESPONSIVE — 700px
-// =========================================================
-
-@media (max-width: 700px) {
-
-    .risk-management {
-        padding: $space-section-sm 0;
-
-        &__container {
-            width: calc(100% - 32px);
-        }
-
-        &__header {
-            flex-direction: column;
-            align-items: flex-start;
-
-            gap: $space-element;
-
-            margin-bottom: $space-element;
-        }
-
-        &__instruction {
-            width: 100%;
-        }
-
-        &__overview {
-            grid-template-columns: 1fr;
-
-            gap: $space-element;
-        }
-
-        &__takeaway {
-            margin-top: $space-element;
-
-            padding: $space-element;
-
-            &-title {
-                font-size: $text-lg;
-            }
-
-            &-body {
-                font-size: $text-sm;
-            }
-        }
-    }
-
-
-    // -------------------------------------------------------
-    // MOBILE RISK CARD
-    // -------------------------------------------------------
-
-    .risk-card {
-        width: 300px;
-        height: 380px;
-
-        &__box {
-            padding: $space-element $space-small;
-        }
-
-        &__title {
-            font-size: $text-lg;
-        }
-
-        &__description {
-            font-size: $text-sm;
-        }
-    }
-}
-
-
-// =========================================================
 // ACCESSIBILITY
+
 // =========================================================
+
+
 
 @media (prefers-reduced-motion: reduce) {
 
+
+
     .risk-management__track {
+
         animation: none;
+
     }
+
 }
 
+
+
+
+// =========================================================
+// RESPONSIVE SYSTEM — RISK MANAGEMENT
+// Scales typography, cards and spacing by CSS viewport width.
+// Keep this after the component's original styles.
+// =========================================================
+
+.risk-management {
+  --risk-heading: 36px;
+  --risk-section-title: 34px;
+  --risk-body: 16px;
+  --risk-card-width: 350px;
+  --risk-card-min-height: 420px;
+  --risk-card-padding: 24px;
+  --risk-gap: 24px;
+  --risk-section-pad: 76px;
+
+  padding-block: var(--risk-section-pad);
+
+  &__container {
+    width: min(calc(100% - 64px), #{$container-wide});
+  }
+  &__intro { max-width: 860px; padding-inline: 0; }
+  &__heading { font-size: var(--risk-heading); }
+  &__title { font-size: var(--risk-section-title); }
+  &__subheading { font-size: var(--risk-body); }
+  &__header { gap: var(--risk-gap); }
+  &__instruction { width: auto; max-width: 360px; flex: 0 1 360px; }
+  &__overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--risk-gap);
+  }
+  &__overview-card { min-width: 0; padding: var(--risk-card-padding); }
+  &__overview-title, &__takeaway-title { font-size: clamp(20px, 1.7vw, 28px); }
+  &__overview-body, &__highlight, &__quote, &__takeaway-body {
+    font-size: clamp(14px, 0.95vw, 18px);
+  }
+  &__group { gap: var(--risk-gap); }
+  &__takeaway { padding: var(--risk-card-padding); }
+}
+
+.risk-card {
+  box-sizing: border-box;
+  flex: 0 0 var(--risk-card-width);
+  width: var(--risk-card-width);
+  height: auto;
+  min-height: var(--risk-card-min-height);
+  padding: var(--risk-card-padding);
+  gap: 18px;
+
+  &__box { box-sizing: border-box; min-width: 0; padding: 24px 18px; }
+  &__title { font-size: clamp(18px, 1.3vw, 24px); overflow-wrap: anywhere; }
+  &__description { font-size: clamp(14px, 0.9vw, 17px); overflow-wrap: anywhere; }
+  &__btn { max-width: 100%; text-align: center; }
+}
+
+// Large desktop 1920+
+@media (min-width: 1920px) {
+  .risk-management {
+    --risk-heading: 48px;
+    --risk-section-title: 44px;
+    --risk-body: 20px;
+    --risk-card-width: 420px;
+    --risk-card-min-height: 480px;
+    --risk-card-padding: 36px;
+    --risk-gap: 36px;
+    --risk-section-pad: 110px;
+    &__container { width: min(calc(100% - 160px), 1700px); }
+  }
+}
+
+// Desktop 1600–1919
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .risk-management {
+    --risk-heading: 44px;
+    --risk-section-title: 40px;
+    --risk-body: 18px;
+    --risk-card-width: 390px;
+    --risk-card-min-height: 450px;
+    --risk-card-padding: 32px;
+    --risk-gap: 30px;
+    --risk-section-pad: 96px;
+    &__container { width: min(calc(100% - 112px), 1550px); }
+  }
+}
+
+// Laptop 1440–1599
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .risk-management {
+    --risk-heading: 40px;
+    --risk-section-title: 38px;
+    --risk-body: 17px;
+    --risk-card-width: 370px;
+    --risk-card-min-height: 430px;
+    --risk-card-padding: 28px;
+    --risk-gap: 26px;
+    --risk-section-pad: 84px;
+  }
+}
+
+// Laptop 1280–1439
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .risk-management {
+    --risk-heading: 36px;
+    --risk-section-title: 34px;
+    --risk-body: 16px;
+    --risk-card-width: 340px;
+    --risk-card-min-height: 410px;
+    --risk-card-padding: 24px;
+    --risk-gap: 22px;
+    --risk-section-pad: 72px;
+  }
+}
+
+// Compact laptop 1024–1279
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .risk-management {
+    --risk-heading: 32px;
+    --risk-section-title: 30px;
+    --risk-body: 15px;
+    --risk-card-width: 320px;
+    --risk-card-min-height: 400px;
+    --risk-card-padding: 22px;
+    --risk-gap: 20px;
+    --risk-section-pad: 64px;
+    &__container { width: calc(100% - 48px); }
+  }
+}
+
+// Tablet landscape 769–1023
+@media (min-width: 769px) and (max-width: 1023px) {
+  .risk-management {
+    --risk-heading: 32px;
+    --risk-section-title: 30px;
+    --risk-body: 15px;
+    --risk-card-width: 310px;
+    --risk-card-min-height: 400px;
+    --risk-card-padding: 20px;
+    --risk-gap: 18px;
+    --risk-section-pad: 56px;
+    &__container { width: calc(100% - 40px); }
+    &__instruction { max-width: 280px; }
+  }
+}
+
+// Tablet portrait 481–768
+@media (min-width: 481px) and (max-width: 768px) {
+  .risk-management {
+    --risk-heading: 30px;
+    --risk-section-title: 28px;
+    --risk-body: 16px;
+    --risk-card-width: 300px;
+    --risk-card-min-height: 390px;
+    --risk-card-padding: 20px;
+    --risk-gap: 18px;
+    --risk-section-pad: 56px;
+    &__container { width: calc(100% - 40px); }
+    &__header { flex-direction: column; align-items: flex-start; }
+    &__instruction { width: 100%; max-width: 100%; flex: auto; }
+    &__overview { grid-template-columns: minmax(0, 1fr); }
+  }
+}
+
+// Mobile 376–480
+@media (min-width: 376px) and (max-width: 480px) {
+  .risk-management {
+    --risk-heading: 28px;
+    --risk-section-title: 26px;
+    --risk-body: 15px;
+    --risk-card-width: 280px;
+    --risk-card-min-height: 370px;
+    --risk-card-padding: 18px;
+    --risk-gap: 16px;
+    --risk-section-pad: 44px;
+    &__container { width: calc(100% - 32px); }
+    &__intro { margin-bottom: 28px; }
+    &__header { flex-direction: column; align-items: flex-start; }
+    &__instruction { width: 100%; max-width: 100%; flex: auto; }
+    &__overview { grid-template-columns: minmax(0, 1fr); }
+    &__takeaway { margin-top: 22px; }
+  }
+  .risk-card { &__box { padding: 18px 14px; } }
+}
+
+// Small mobile up to 375
+@media (max-width: 375px) {
+  .risk-management {
+    --risk-heading: 26px;
+    --risk-section-title: 24px;
+    --risk-body: 15px;
+    --risk-card-width: min(260px, calc(100vw - 32px));
+    --risk-card-min-height: 360px;
+    --risk-card-padding: 16px;
+    --risk-gap: 14px;
+    --risk-section-pad: 36px;
+    &__container { width: calc(100% - 24px); }
+    &__intro { margin-bottom: 24px; }
+    &__header { flex-direction: column; align-items: flex-start; }
+    &__instruction { width: 100%; max-width: 100%; flex: auto; }
+    &__overview { grid-template-columns: minmax(0, 1fr); }
+  }
+  .risk-card { &__box { padding: 16px 12px; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .risk-card, .risk-card__bg-image { transition: none; }
+}

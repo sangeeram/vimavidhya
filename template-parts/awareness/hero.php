@@ -5,7 +5,7 @@
  * =========================================================
  */
 
-$awareness_hero_img = 'https://images.unsplash.com/photo-1648221350871-e3ae3c8d0f58?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0';
+$awareness_hero_img = get_template_directory_uri() . '/assets/images/awareness/banner.png';
 ?>
 
 <section

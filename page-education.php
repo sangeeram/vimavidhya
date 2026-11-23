@@ -18,7 +18,7 @@ $education_hero = [
         'At VimaVidya, we believe financial knowledge empowers better decisions. We make financial concepts easier to understand, helping individuals and families build confidence, make informed choices, and work towards lasting financial resilience.',
 
     'background' =>
-        'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=85&w=1800',
+       get_template_directory_uri() . '/assets/images/education/banner.png',
 
     'breadcrumb' => [
         'Home' => home_url('/'),

@@ -1,304 +1,1278 @@
+
+@use "sass:color";
 @use "../../abstracts/variables" as *;
 
 // =========================================================
-// STORIES SECTION THEME VARIABLES
+// VIMA VIDYA
+// STORIES - 3D CAROUSEL
+// FULL RESPONSIVE SCSS
 // =========================================================
-$stories-bg-dark: if(variable-exists(color-navy-dark), $color-navy-dark, #08274b);
+
+// =========================================================
+// THEME VARIABLES
+// =========================================================
+
+$stories-bg-dark: $color-navy-dark;
 $stories-card-bg: rgba(#0f172a, 0.75);
-$stories-card-content-bg: white;
+$stories-card-content-bg: $color-white;
 $stories-border-glass: rgba(#ffffff, 0.12);
-$stories-glow-shadow: 0 8px 32px 0 rgba(#000000, 0.37);
+$stories-glow-shadow: 0 8px 32px rgba(#000000, 0.37);
 
-$stories-accent: if(variable-exists(color-blue), $color-blue, #38bdf8);
-$stories-accent-hover: if(variable-exists(color-blue-dark), $color-blue-dark, #0284c7);
-$stories-badge-accent: if(variable-exists(color-orange), $color-orange, #f59e0b);
+$stories-accent: $color-blue;
+$stories-accent-hover: $color-blue-dark;
+$stories-badge-accent: $color-orange;
 
-$stories-text-main: if(variable-exists(color-white), $color-white, #f8fafc);
-$stories-text-muted: if(variable-exists(color-text-muted), $color-text-muted, #94a3b8);
+$stories-text-main: $color-white;
+$stories-text-muted: $color-text-muted;
 
-// Spacing & Layout Tokens
-$stories-padding-section: if(variable-exists(space-section), $space-section, 80px 20px);
-$stories-padding-card-content: if(variable-exists(space-content), $space-content, 24px 22px);
-$stories-gap-element: if(variable-exists(space-element), $space-element, 16px);
-$stories-gap-small: if(variable-exists(space-small), $space-small, 8px);
+$stories-radius-card: $radius-lg;
+$stories-radius-badge: $radius-pill;
+$stories-radius-button: $radius-pill;
 
-// Border Radius Tokens
-$stories-radius-card: if(variable-exists(radius-lg), $radius-lg, 24px);
-$stories-radius-badge: if(variable-exists(radius-pill), $radius-pill, 20px);
-$stories-radius-button: if(variable-exists(radius-pill), $radius-pill, 30px);
+$stories-transition-transform:
+    0.6s cubic-bezier(0.25, 1, 0.5, 1);
 
-// Transitions
-$stories-transition-transform: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-$stories-transition-smooth: if(variable-exists(transition), $transition, 0.2s ease);
+$stories-transition-smooth: $transition;
 
 
 // =========================================================
-// STYLES
+// STORIES SECTION
 // =========================================================
+
 .stories-section {
-  background-color: $stories-bg-dark;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba($stories-accent, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(#9333ea, 0.15) 0%, transparent 40%);
-  padding: $stories-padding-section;
-  text-align: center;
-  overflow: hidden;
 
-  &__header {
-    margin-bottom: 50px;
-    
-    .header-badge {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto $stories-gap-element;
-      background: rgba($stories-accent, 0.1);
-      border: 1px solid rgba($stories-accent, 0.3);
-      border-radius: $radius-pill;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(8px);
-      
-      img, svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
+    // Default: Standard laptop
+    --st-heading-size: 36px;
+    --st-subheading-size: 16px;
+    --st-card-title: 22px;
+    --st-card-body: 15px;
+    --st-badge-size: 12px;
 
-    h2 {
-      font-size: if(variable-exists(text-h2), $text-h2, 2.5rem);
-      color: $stories-text-main;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: $stories-gap-small;
-    }
+    --st-section-padding: 72px;
+    --st-side-padding: 32px;
+    --st-header-gap: 44px;
 
-    p {
-      color: $stories-text-muted;
-      font-size: if(variable-exists(text-lg), $text-lg, 1.05rem);
-    }
-  }
-}
+    --st-container-width: 1240px;
 
-.carousel-container {
-  position: relative;
-  max-width: if(variable-exists(container-width), $container-width, 1200px);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    --st-card-width: 350px;
+    --st-card-height: 460px;
+    --st-image-height: 210px;
+    --st-stage-height: 510px;
+    --st-card-padding: 24px;
 
-.carousel-stage {
-  width: 100%;
-  height: 520px;
-  perspective: 1200px;
-  position: relative;
-}
+    --st-near-offset: 320px;
+    --st-far-offset: 540px;
+    --st-near-depth: -150px;
+    --st-far-depth: -300px;
+    --st-near-rotation: 25deg;
+    --st-far-rotation: 45deg;
 
-.carousel-track {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-}
+    --st-perspective: 1200px;
+    --st-nav-size: 48px;
+    --st-nav-offset: 0px;
+    --st-icon-size: 50px;
+    --st-button-gap: 32px;
+    --st-content-gap: 12px;
 
-// Glassmorphism Card
-.story-card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 360px;
-  background: $stories-card-bg;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid $stories-border-glass;
-  border-radius: $stories-radius-card;
-  overflow: hidden;
-  box-shadow: $stories-glow-shadow;
-  transition: transform $stories-transition-transform, opacity $stories-transition-transform, border-color $stories-transition-smooth;
-  margin-left: -180px;
-  margin-top: -230px;
-
-  &__image-wrap {
     position: relative;
-    height: 220px;
+    width: 100%;
+    min-width: 0;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.9;
+    background-color: $stories-bg-dark;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba($stories-accent, 0.15) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(#9333ea, 0.15) 0%,
+            transparent 40%
+        );
+
+    padding:
+        var(--st-section-padding)
+        var(--st-side-padding);
+
+    text-align: center;
+    font-family: $font-primary;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(#0f172a, 0.95) 100%);
+
+    // =====================================================
+    // SECTION HEADER
+    // =====================================================
+
+    &__header {
+
+        width: 100%;
+        max-width: 1000px;
+
+        margin: 0 auto var(--st-header-gap);
+
+        .header-badge {
+
+            width: var(--st-icon-size);
+            height: var(--st-icon-size);
+
+            margin: 0 auto 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba($stories-accent, 0.1);
+            border: 1px solid rgba($stories-accent, 0.3);
+            border-radius: $radius-pill;
+
+            backdrop-filter: blur(8px);
+
+            img,
+            svg {
+                display: block;
+                width: 48%;
+                height: 48%;
+            }
+        }
+
+        h2 {
+
+            margin: 0 0 10px;
+            padding: 0;
+
+            font-family: $font-primary;
+            font-size: var(--st-heading-size);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+
+            color: $stories-text-main;
+
+            overflow-wrap: anywhere;
+        }
+
+        p {
+
+            max-width: 850px;
+            margin: 0 auto;
+
+            font-family: $font-primary;
+            font-size: var(--st-subheading-size);
+            line-height: $line-body;
+
+            color: $stories-text-muted;
+
+            overflow-wrap: anywhere;
+        }
     }
-  }
 
-  &__badge {
-    position: absolute;
-    bottom: 14px;
-    left: $stories-gap-element;
-    z-index: 2;
-    background: rgba(#0f172a, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba($color-white, 0.15);
-    color: $stories-accent;
-    font-size: if(variable-exists(text-xs), $text-xs, 0.75rem);
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    padding: 6px 14px;
-    border-radius: $stories-radius-badge;
-    display: inline-flex;
-    align-items: center;
-    gap: $stories-gap-small;
 
-    .badge-icon {
-      width: 14px;
-      height: 14px;
-      color: $stories-badge-accent;
-    }
-  }
+    // =====================================================
+    // CAROUSEL CONTAINER
+    // =====================================================
 
-  &__content {
-    padding: $stories-padding-card-content;
-    text-align: left;
-    background-color: $stories-card-content-bg;
+    .carousel-container {
 
-    h3 {
-      font-size: if(variable-exists(text-h3), $text-h3, 1.25rem);
-      color: black;
-      font-weight: 600;
-      margin-bottom: $stories-gap-small;
+        position: relative;
+
+        width: 100%;
+        max-width: var(--st-container-width);
+        min-width: 0;
+
+        margin: 0 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    p {
-      font-size: if(variable-exists(text-sm), $text-sm, 0.875rem);
-      color: $stories-text-muted;
-      line-height: if(variable-exists(line-body), $line-body, 1.6);
-      margin-bottom: 20px;
-    }
-  }
 
-  &__link {
-    color: $stories-accent;
-    font-weight: 600;
-    font-size: if(variable-exists(text-sm), $text-sm, 0.9rem);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: $stories-gap-small;
-    transition: color $stories-transition-smooth;
+    // =====================================================
+    // 3D CAROUSEL STAGE
+    // =====================================================
 
-    img, svg {
-      width: 16px;
-      height: 16px;
-      transition: transform $stories-transition-smooth;
+    .carousel-stage {
+
+        position: relative;
+
+        width: 100%;
+        min-width: 0;
+
+        height: var(--st-stage-height);
+
+        perspective: var(--st-perspective);
     }
 
-    &:hover {
-      color: lighten($stories-accent, 10%);
 
-      img, svg {
-        transform: translateX(5px);
-      }
+    // =====================================================
+    // CAROUSEL TRACK
+    // =====================================================
+
+    .carousel-track {
+
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        transform-style: preserve-3d;
     }
-  }
 
-  // 3D Rotations
-  &.active {
-    transform: translate3d(0, 0, 0) rotateY(0deg);
-    z-index: 3;
-    opacity: 1;
-    border-color: rgba($stories-accent, 0.4);
-    box-shadow: 0 12px 40px rgba(#000000, 0.6), 0 0 20px rgba($stories-accent, 0.15);
-  }
 
-  &.prev-card {
-    transform: translate3d(-340px, 0, -150px) rotateY(25deg);
-    z-index: 2;
-    opacity: 0.65;
-  }
+    // =====================================================
+    // GLASSMORPHISM STORY CARD
+    // =====================================================
 
-  &.next-card {
-    transform: translate3d(340px, 0, -150px) rotateY(-25deg);
-    z-index: 2;
-    opacity: 0.65;
-  }
+    .story-card {
 
-  &.far-prev {
-    transform: translate3d(-580px, 0, -300px) rotateY(45deg);
-    z-index: 1;
-    opacity: 0.25;
-  }
+        position: absolute;
 
-  &.far-next {
-    transform: translate3d(580px, 0, -300px) rotateY(-45deg);
-    z-index: 1;
-    opacity: 0.25;
-  }
+        left: 50%;
+        top: 50%;
 
-  @media (max-width: 768px) {
-    width: 280px;
-    margin-left: -140px;
+        width: var(--st-card-width);
+        height: var(--st-card-height);
 
-    &.prev-card { transform: translate3d(-180px, 0, -100px) rotateY(20deg); }
-    &.next-card { transform: translate3d(180px, 0, -100px) rotateY(-20deg); }
-    &.far-prev, &.far-next { display: none; }
-  }
-}
+        max-width: 100%;
 
-// Nav Buttons
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 48px;
-  height: 48px;
-  border-radius: $radius-pill;
-  background: rgba(#161b22, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid $stories-border-glass;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background $stories-transition-smooth, border-color $stories-transition-smooth;
+        // Centre card dynamically at every breakpoint
+        margin-left: calc(var(--st-card-width) / -2);
+        margin-top: calc(var(--st-card-height) / -2);
 
-  img, svg {
-    width: 18px;
-    height: 18px;
-    color: $stories-text-main;
-  }
+        display: flex;
+        flex-direction: column;
 
-  &:hover {
-    background: rgba($stories-accent, 0.2);
-    border-color: $stories-accent;
-  }
+        min-width: 0;
 
-  &.prev { left: -10px; }
-  &.next { right: -10px; }
-}
+        background: $stories-card-bg;
 
-.btn-primary {
-  display: inline-block;
-  background: linear-gradient(135deg, $stories-accent-hover 0%, darken($stories-accent-hover, 10%) 100%);
-  color: $color-white;
-  padding: 14px 32px;
-  border-radius: $stories-radius-button;
-  font-weight: 600;
-  text-decoration: none;
-  margin-top: 35px;
-  box-shadow: 0 4px 15px rgba($stories-accent-hover, 0.3);
-  transition: transform $stories-transition-smooth, box-shadow $stories-transition-smooth;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba($stories-accent-hover, 0.5);
-  }
+        border: 1px solid $stories-border-glass;
+        border-radius: $stories-radius-card;
+
+        overflow: hidden;
+
+        box-shadow: $stories-glow-shadow;
+
+        transition:
+            transform $stories-transition-transform,
+            opacity $stories-transition-transform,
+            border-color $stories-transition-smooth;
+
+        backface-visibility: hidden;
+
+
+        // =================================================
+        // CARD IMAGE
+        // =================================================
+
+        &__image-wrap {
+
+            position: relative;
+
+            width: 100%;
+            height: var(--st-image-height);
+
+            flex-shrink: 0;
+            overflow: hidden;
+
+            img {
+
+                display: block;
+
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+                object-position: center;
+
+                opacity: 0.9;
+
+                transition:
+                    transform $stories-transition-transform;
+            }
+
+            &::after {
+
+                content: "";
+
+                position: absolute;
+                inset: 0;
+
+                background: linear-gradient(
+                    180deg,
+                    transparent 30%,
+                    rgba(#0f172a, 0.95) 100%
+                );
+
+                pointer-events: none;
+            }
+        }
+
+
+        // =================================================
+        // STORY CATEGORY BADGE
+        // =================================================
+
+        &__badge {
+
+            position: absolute;
+
+            bottom: 14px;
+            left: 14px;
+            z-index: 2;
+
+            max-width: calc(100% - 28px);
+
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 6px 14px;
+
+            background: rgba(#0f172a, 0.85);
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba($color-white, 0.15);
+            border-radius: $stories-radius-badge;
+
+            color: $stories-accent;
+
+            font-size: var(--st-badge-size);
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: 0.5px;
+
+            white-space: normal;
+            overflow-wrap: anywhere;
+
+            .badge-icon {
+
+                width: 14px;
+                height: 14px;
+
+                flex-shrink: 0;
+
+                color: $stories-badge-accent;
+            }
+        }
+
+
+        // =================================================
+        // CARD CONTENT
+        // =================================================
+
+        &__content {
+
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            width: 100%;
+            min-width: 0;
+            min-height: 0;
+
+            padding: var(--st-card-padding);
+
+            text-align: left;
+
+            background-color: $stories-card-content-bg;
+
+            // Allows long translated content to remain accessible
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            scrollbar-width: thin;
+
+            h3 {
+
+                margin: 0 0 var(--st-content-gap);
+                padding: 0;
+
+                font-family: $font-primary;
+                font-size: var(--st-card-title);
+                font-weight: 600;
+                line-height: 1.25;
+
+                color: $color-navy;
+
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
+            p {
+
+                margin: 0 0 18px;
+
+                font-family: $font-primary;
+                font-size: var(--st-card-body);
+                font-weight: 400;
+                line-height: $line-body;
+
+                color: $color-text-body;
+
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+        }
+
+
+        // =================================================
+        // READ STORY LINK
+        // =================================================
+
+        &__link {
+
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+
+            flex-shrink: 0;
+
+            gap: 8px;
+
+            max-width: 100%;
+            min-height: 32px;
+
+            margin-top: auto;
+
+            color: $stories-accent;
+
+            font-family: $font-primary;
+            font-weight: 600;
+            font-size: var(--st-card-body);
+            line-height: 1.4;
+
+            text-decoration: none;
+            overflow-wrap: anywhere;
+
+            transition:
+                color $stories-transition-smooth;
+
+            img,
+            svg {
+
+                width: 16px;
+                height: 16px;
+
+                flex-shrink: 0;
+
+                transition:
+                    transform $stories-transition-smooth;
+            }
+
+            &:hover {
+
+                color: $stories-accent-hover;
+
+                img,
+                svg {
+                    transform: translateX(5px);
+                }
+            }
+
+            &:focus-visible {
+                outline: 2px solid $stories-accent;
+                outline-offset: 3px;
+            }
+        }
+
+
+        // =================================================
+        // ACTIVE CARD
+        // =================================================
+
+        &.active {
+
+            transform:
+                translate3d(0, 0, 0)
+                rotateY(0deg);
+
+            z-index: 3;
+            opacity: 1;
+
+            border-color: rgba($stories-accent, 0.4);
+
+            box-shadow:
+                0 12px 40px rgba(#000000, 0.6),
+                0 0 20px rgba($stories-accent, 0.15);
+        }
+
+
+        // =================================================
+        // PREVIOUS CARD
+        // =================================================
+
+        &.prev-card {
+
+            transform:
+                translate3d(
+                    calc(var(--st-near-offset) * -1),
+                    0,
+                    var(--st-near-depth)
+                )
+                rotateY(var(--st-near-rotation));
+
+            z-index: 2;
+            opacity: 0.65;
+        }
+
+
+        // =================================================
+        // NEXT CARD
+        // =================================================
+
+        &.next-card {
+
+            transform:
+                translate3d(
+                    var(--st-near-offset),
+                    0,
+                    var(--st-near-depth)
+                )
+                rotateY(
+                    calc(var(--st-near-rotation) * -1)
+                );
+
+            z-index: 2;
+            opacity: 0.65;
+        }
+
+
+        // =================================================
+        // FAR PREVIOUS CARD
+        // =================================================
+
+        &.far-prev {
+
+            transform:
+                translate3d(
+                    calc(var(--st-far-offset) * -1),
+                    0,
+                    var(--st-far-depth)
+                )
+                rotateY(var(--st-far-rotation));
+
+            z-index: 1;
+            opacity: 0.25;
+        }
+
+
+        // =================================================
+        // FAR NEXT CARD
+        // =================================================
+
+        &.far-next {
+
+            transform:
+                translate3d(
+                    var(--st-far-offset),
+                    0,
+                    var(--st-far-depth)
+                )
+                rotateY(
+                    calc(var(--st-far-rotation) * -1)
+                );
+
+            z-index: 1;
+            opacity: 0.25;
+        }
+    }
+
+
+    // =====================================================
+    // CAROUSEL NAVIGATION
+    // =====================================================
+
+    .carousel-btn {
+
+        position: absolute;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        z-index: 10;
+
+        width: var(--st-nav-size);
+        height: var(--st-nav-size);
+
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: $radius-pill;
+
+        background: rgba(#161b22, 0.7);
+        backdrop-filter: blur(12px);
+
+        border: 1px solid $stories-border-glass;
+
+        color: $stories-text-main;
+
+        cursor: pointer;
+
+        transition:
+            background $stories-transition-smooth,
+            border-color $stories-transition-smooth;
+
+        img,
+        svg {
+
+            display: block;
+
+            width: 42%;
+            height: 42%;
+
+            color: $stories-text-main;
+        }
+
+        &:hover {
+
+            background: rgba($stories-accent, 0.2);
+            border-color: $stories-accent;
+        }
+
+        &:focus-visible {
+
+            outline: 2px solid $stories-accent;
+            outline-offset: 3px;
+        }
+
+        &.prev {
+            left: var(--st-nav-offset);
+        }
+
+        &.next {
+            right: var(--st-nav-offset);
+        }
+    }
+
+
+    // =====================================================
+    // EXPLORE STORIES BUTTON
+    // Scoped to avoid affecting other website buttons
+    // =====================================================
+
+    .btn-primary {
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        max-width: 100%;
+        min-height: 44px;
+
+        margin-top: var(--st-button-gap);
+
+        padding: 14px 32px;
+
+        background: linear-gradient(
+            135deg,
+            $stories-accent-hover 0%,
+            color.adjust(
+                $stories-accent-hover,
+                $lightness: -10%
+            ) 100%
+        );
+
+        color: $color-white;
+
+        border-radius: $stories-radius-button;
+
+        font-family: $font-primary;
+        font-size: var(--st-card-body);
+        font-weight: 600;
+        line-height: 1.4;
+
+        text-decoration: none;
+
+        white-space: normal;
+        overflow-wrap: anywhere;
+
+        box-shadow:
+            0 4px 15px rgba($stories-accent-hover, 0.3);
+
+        transition:
+            transform $stories-transition-smooth,
+            box-shadow $stories-transition-smooth;
+
+        &:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 20px rgba($stories-accent-hover, 0.5);
+        }
+
+        &:focus-visible {
+
+            outline: 2px solid $stories-text-main;
+            outline-offset: 3px;
+        }
+    }
+
+
+    // =====================================================
+    // RESPONSIVE BREAKPOINTS
+    // =====================================================
+
+
+    // =====================================================
+    // FULL HD / LARGE DESKTOP - 1920px+
+    // =====================================================
+
+    @media (min-width: 1920px) {
+
+        --st-heading-size: 48px;
+        --st-subheading-size: 20px;
+        --st-card-title: 28px;
+        --st-card-body: 18px;
+        --st-badge-size: 14px;
+
+        --st-section-padding: 110px;
+        --st-side-padding: 64px;
+        --st-header-gap: 60px;
+
+        --st-container-width: 1700px;
+
+        --st-card-width: 440px;
+        --st-card-height: 560px;
+        --st-image-height: 260px;
+        --st-stage-height: 620px;
+        --st-card-padding: 32px;
+
+        --st-near-offset: 410px;
+        --st-far-offset: 720px;
+        --st-near-depth: -180px;
+        --st-far-depth: -350px;
+
+        --st-perspective: 1500px;
+        --st-nav-size: 58px;
+        --st-icon-size: 64px;
+        --st-button-gap: 40px;
+        --st-content-gap: 16px;
+    }
+
+
+    // =====================================================
+    // LARGE DESKTOP - 1600px TO 1919px
+    // =====================================================
+
+    @media (1600px <= width < 1920px) {
+
+        --st-heading-size: 44px;
+        --st-subheading-size: 18px;
+        --st-card-title: 26px;
+        --st-card-body: 17px;
+        --st-badge-size: 13px;
+
+        --st-section-padding: 95px;
+        --st-side-padding: 48px;
+        --st-header-gap: 52px;
+
+        --st-container-width: 1500px;
+
+        --st-card-width: 400px;
+        --st-card-height: 520px;
+        --st-image-height: 240px;
+        --st-stage-height: 580px;
+        --st-card-padding: 28px;
+
+        --st-near-offset: 375px;
+        --st-far-offset: 650px;
+        --st-near-depth: -165px;
+        --st-far-depth: -320px;
+
+        --st-perspective: 1400px;
+        --st-nav-size: 54px;
+        --st-icon-size: 58px;
+        --st-button-gap: 36px;
+    }
+
+
+    // =====================================================
+    // LARGE LAPTOP - 1536px TO 1599px
+    // =====================================================
+
+    @media (1536px <= width < 1600px) {
+
+        --st-heading-size: 40px;
+        --st-subheading-size: 17px;
+        --st-card-title: 24px;
+        --st-card-body: 16px;
+
+        --st-section-padding: 85px;
+        --st-side-padding: 44px;
+        --st-header-gap: 48px;
+
+        --st-container-width: 1440px;
+
+        --st-card-width: 380px;
+        --st-card-height: 500px;
+        --st-image-height: 230px;
+        --st-stage-height: 550px;
+        --st-card-padding: 26px;
+
+        --st-near-offset: 350px;
+        --st-far-offset: 600px;
+
+        --st-nav-size: 52px;
+        --st-icon-size: 54px;
+    }
+
+
+    // =====================================================
+    // LAPTOP - 1440px TO 1535px
+    // =====================================================
+
+    @media (1440px <= width < 1536px) {
+
+        --st-heading-size: 38px;
+        --st-subheading-size: 17px;
+        --st-card-title: 23px;
+        --st-card-body: 16px;
+
+        --st-section-padding: 80px;
+        --st-side-padding: 40px;
+        --st-header-gap: 46px;
+
+        --st-container-width: 1360px;
+
+        --st-card-width: 370px;
+        --st-card-height: 480px;
+        --st-image-height: 225px;
+        --st-stage-height: 535px;
+        --st-card-padding: 25px;
+
+        --st-near-offset: 340px;
+        --st-far-offset: 570px;
+
+        --st-nav-size: 50px;
+        --st-icon-size: 52px;
+    }
+
+
+    // =====================================================
+    // STANDARD LAPTOP - 1366px TO 1439px
+    // =====================================================
+
+    @media (1366px <= width < 1440px) {
+
+        --st-heading-size: 36px;
+        --st-subheading-size: 16px;
+        --st-card-title: 22px;
+        --st-card-body: 15px;
+
+        --st-section-padding: 72px;
+        --st-side-padding: 36px;
+
+        --st-card-width: 350px;
+        --st-card-height: 460px;
+        --st-image-height: 210px;
+        --st-stage-height: 510px;
+
+        --st-near-offset: 320px;
+        --st-far-offset: 540px;
+    }
+
+
+    // =====================================================
+    // COMPACT LAPTOP - 1280px TO 1365px
+    // =====================================================
+
+    @media (1280px <= width < 1366px) {
+
+        --st-heading-size: 34px;
+        --st-subheading-size: 15px;
+        --st-card-title: 21px;
+        --st-card-body: 15px;
+
+        --st-section-padding: 65px;
+        --st-side-padding: 32px;
+        --st-header-gap: 40px;
+
+        --st-card-width: 330px;
+        --st-card-height: 440px;
+        --st-image-height: 200px;
+        --st-stage-height: 490px;
+        --st-card-padding: 22px;
+
+        --st-near-offset: 300px;
+        --st-far-offset: 500px;
+
+        --st-nav-size: 46px;
+        --st-icon-size: 48px;
+    }
+
+
+    // =====================================================
+    // SMALL LAPTOP / LARGE TABLET
+    // 1024px TO 1279px
+    // =====================================================
+
+    @media (1024px <= width < 1280px) {
+
+        --st-heading-size: 32px;
+        --st-subheading-size: 15px;
+        --st-card-title: 21px;
+        --st-card-body: 14px;
+
+        --st-section-padding: 60px;
+        --st-side-padding: 28px;
+        --st-header-gap: 36px;
+
+        --st-card-width: 310px;
+        --st-card-height: 430px;
+        --st-image-height: 190px;
+        --st-stage-height: 480px;
+        --st-card-padding: 20px;
+
+        --st-near-offset: 265px;
+        --st-near-depth: -120px;
+        --st-near-rotation: 22deg;
+
+        --st-perspective: 1100px;
+        --st-nav-size: 44px;
+        --st-icon-size: 46px;
+
+        .story-card {
+
+            &.far-prev,
+            &.far-next {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+    }
+
+
+    // =====================================================
+    // LANDSCAPE TABLET - 769px TO 1023px
+    // =====================================================
+
+    @media (768px < width < 1024px) {
+
+        --st-heading-size: 30px;
+        --st-subheading-size: 15px;
+        --st-card-title: 20px;
+        --st-card-body: 14px;
+
+        --st-section-padding: 55px;
+        --st-side-padding: 24px;
+        --st-header-gap: 32px;
+
+        --st-card-width: 300px;
+        --st-card-height: 420px;
+        --st-image-height: 185px;
+        --st-stage-height: 470px;
+        --st-card-padding: 20px;
+
+        --st-near-offset: 210px;
+        --st-near-depth: -110px;
+        --st-near-rotation: 20deg;
+
+        --st-perspective: 1000px;
+        --st-nav-size: 44px;
+        --st-icon-size: 44px;
+
+        .story-card {
+
+            &.far-prev,
+            &.far-next {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+    }
+
+
+    // =====================================================
+    // PORTRAIT TABLET - 481px TO 768px
+    // =====================================================
+
+    @media (480px < width <= 768px) {
+
+        --st-heading-size: 30px;
+        --st-subheading-size: 15px;
+        --st-card-title: 20px;
+        --st-card-body: 14px;
+        --st-badge-size: 11px;
+
+        --st-section-padding: 50px;
+        --st-side-padding: 20px;
+        --st-header-gap: 30px;
+
+        --st-card-width:
+            min(300px, calc(100vw - 110px));
+
+        --st-card-height: 420px;
+        --st-image-height: 185px;
+        --st-stage-height: 460px;
+        --st-card-padding: 18px;
+
+        --st-near-offset: 175px;
+        --st-near-depth: -100px;
+        --st-near-rotation: 18deg;
+
+        --st-perspective: 900px;
+        --st-nav-size: 44px;
+        --st-icon-size: 42px;
+        --st-button-gap: 28px;
+
+        .story-card {
+
+            &.far-prev,
+            &.far-next {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
+        .carousel-btn {
+
+            background: rgba(#0f172a, 0.95);
+        }
+    }
+
+
+    // =====================================================
+    // COMMON MOBILE LAYOUT - 480px AND BELOW
+    // =====================================================
+
+    @media (max-width: 480px) {
+
+        --st-heading-size: 28px;
+        --st-subheading-size: 14px;
+        --st-card-title: 20px;
+        --st-card-body: 14px;
+        --st-badge-size: 11px;
+
+        --st-section-padding: 44px;
+        --st-side-padding: 16px;
+        --st-header-gap: 24px;
+
+        --st-card-width:
+            min(290px, calc(100vw - 48px));
+
+        --st-card-height: 410px;
+        --st-image-height: 180px;
+        --st-stage-height: 440px;
+        --st-card-padding: 18px;
+
+        --st-nav-size: 44px;
+        --st-icon-size: 40px;
+        --st-button-gap: 24px;
+        --st-content-gap: 10px;
+
+        .carousel-container {
+
+            padding-bottom: 52px;
+        }
+
+        .story-card {
+
+            // Show only active card on phones.
+            // Keep inactive cards available for JS transitions.
+
+            &:not(.active) {
+
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+
+                transform:
+                    translate3d(0, 0, -100px)
+                    scale(0.94);
+            }
+
+            &.active {
+
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+
+                transform:
+                    translate3d(0, 0, 0)
+                    rotateY(0deg);
+            }
+
+            &__badge {
+
+                left: 10px;
+                bottom: 10px;
+
+                padding: 5px 10px;
+
+                max-width: calc(100% - 20px);
+            }
+        }
+
+        // Move arrows below the card
+        // to avoid covering the story content.
+
+        .carousel-btn {
+
+            top: auto;
+            bottom: 0;
+
+            transform: none;
+
+            &.prev {
+                left: calc(50% - 54px);
+            }
+
+            &.next {
+                right: calc(50% - 54px);
+            }
+        }
+
+        .btn-primary {
+
+            padding: 12px 26px;
+        }
+    }
+
+
+    // =====================================================
+    // SMALL MOBILE - 321px TO 375px
+    // =====================================================
+
+    @media (320px < width <= 375px) {
+
+        --st-heading-size: 26px;
+        --st-subheading-size: 14px;
+        --st-card-title: 19px;
+        --st-card-body: 14px;
+
+        --st-section-padding: 38px;
+        --st-side-padding: 12px;
+        --st-header-gap: 22px;
+
+        --st-card-width:
+            min(270px, calc(100vw - 40px));
+
+        --st-card-height: 400px;
+        --st-image-height: 165px;
+        --st-stage-height: 425px;
+        --st-card-padding: 16px;
+
+        --st-nav-size: 44px;
+        --st-icon-size: 38px;
+        --st-button-gap: 22px;
+    }
+
+
+    // =====================================================
+    // EXTRA SMALL MOBILE - 320px AND BELOW
+    // =====================================================
+
+    @media (max-width: 320px) {
+
+        --st-heading-size: 24px;
+        --st-subheading-size: 13px;
+        --st-card-title: 18px;
+        --st-card-body: 14px;
+        --st-badge-size: 10px;
+
+        --st-section-padding: 34px;
+        --st-side-padding: 10px;
+        --st-header-gap: 20px;
+
+        --st-card-width:
+            min(240px, calc(100vw - 32px));
+
+        --st-card-height: 390px;
+        --st-image-height: 150px;
+        --st-stage-height: 415px;
+        --st-card-padding: 14px;
+
+        --st-nav-size: 44px;
+        --st-icon-size: 36px;
+        --st-button-gap: 20px;
+
+        .btn-primary {
+
+            width: 100%;
+            max-width: 240px;
+
+            padding: 12px 18px;
+        }
+    }
+
+
+    // =====================================================
+    // SHORT LAPTOP SCREENS / LANDSCAPE TABLETS
+    // =====================================================
+
+    @media (min-width: 1024px) and (max-height: 800px) {
+
+        --st-section-padding: 48px;
+        --st-header-gap: 28px;
+        --st-button-gap: 24px;
+        --st-icon-size: 42px;
+    }
+
+    @media (min-width: 1024px) and (max-height: 720px) {
+
+        --st-section-padding: 40px;
+        --st-header-gap: 24px;
+        --st-button-gap: 20px;
+
+        --st-card-height: 410px;
+        --st-image-height: 180px;
+        --st-stage-height: 450px;
+        --st-card-padding: 18px;
+    }
+
+
+    // =====================================================
+    // ACCESSIBILITY - REDUCED MOTION
+    // =====================================================
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .story-card,
+        .story-card__image-wrap img,
+        .story-card__link,
+        .story-card__link img,
+        .story-card__link svg,
+        .carousel-btn,
+        .btn-primary {
+
+            transition: none;
+            animation: none;
+        }
+
+        .btn-primary:hover {
+            transform: none;
+        }
+
+        .story-card__link:hover {
+
+            img,
+            svg {
+                transform: none;
+            }
+        }
+    }
 }

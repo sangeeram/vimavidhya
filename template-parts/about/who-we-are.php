@@ -2,8 +2,7 @@
 $sub_heading    = "THE JOURNEY";
 $title_main     = "How VimaVidya Began";
 
-$main_image_url = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop";
-
+$main_image_url = get_template_directory_uri() . '/assets/images/aboutus/how-vima.png';
 $journey_steps = [
     [
         'id'          => 'beginning',
